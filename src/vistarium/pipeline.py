@@ -26,7 +26,7 @@ log = logging.getLogger("vistarium.pipeline")
 
 
 def resolve_time_of_day(
-    caption_text: str, exif_hour: int | None, model_time_of_day: str, model_evidence: str
+    caption_text: str, exif_hour: int | None, model_time_of_day: str
 ) -> tuple[str, str]:
     """Deterministic time-of-day evidence takes priority over the model's
     visual_inference when available -- see exif_util.py. EXIF is checked
@@ -36,13 +36,21 @@ def resolve_time_of_day(
     validation checkpoint -- "Dawn Marsh" in a photo credit list matched
     the "dawn" keyword and overrode a correct 11:42 AM EXIF timestamp with
     an incorrect "morning" bucket; see DECISIONS.md). Returns
-    (time_of_day, time_of_day_evidence)."""
+    (time_of_day, time_of_day_evidence).
+
+    Deliberately does not accept or trust the model's own self-reported
+    time_of_day_evidence: the grammar's enum lets it emit "caption" or
+    "exif_timestamp" even though it only ever receives pixels, and it did
+    so at least once in that same checkpoint run. Claude Code, not the
+    model, decides which evidence source was actually used -- when
+    falling through to the model's guess, the evidence is unconditionally
+    "visual_inference"."""
     if exif_hour is not None:
         return exif_util.hour_to_bucket(exif_hour), "exif_timestamp"
     caption_bucket = exif_util.caption_time_of_day(caption_text)
     if caption_bucket:
         return caption_bucket, "caption"
-    return model_time_of_day, model_evidence
+    return model_time_of_day, "visual_inference"
 
 
 def build_record(candidate: nps_client.NPSCandidate, image_path: Path) -> dict | None:
@@ -60,7 +68,6 @@ def build_record(candidate: nps_client.NPSCandidate, image_path: Path) -> dict |
         candidate.caption_text,
         exif_hour,
         model_fields["time_of_day"],
-        model_fields["time_of_day_evidence"],
     )
 
     with Image.open(image_path) as img:

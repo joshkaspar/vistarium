@@ -132,9 +132,26 @@ pass's implausible 19/22 "morning"). 18/22 final records are now backed
 by a real, correctly-selected EXIF timestamp; the remaining 4 by a
 Title-only caption match.
 
-Decision: caption evidence restricted to Title only; time-of-day evidence priority is EXIF SubIFD DateTimeOriginal/DateTimeDigitized > IFD0 DateTime > Title caption match > model visual_inference
-Alternatives-considered: keep full Title+AltText+Description+Keywords for caption matching; keep original caption-before-EXIF priority; ignore the DateTime/DateTimeOriginal distinction
-Rationale: both alternatives were the literal cause of demonstrated, confidently-wrong output on real data -- this is the checkpoint step doing exactly its intended job
+**Bug 3 -- the model's self-reported `time_of_day_evidence` can't be
+trusted either.** Found while hand-verifying the reconciled dataset
+image-by-image (not from a metrics scan -- this one only showed up by
+actually looking): "National Mall & Memorial Parks" had
+`time_of_day_evidence: "caption"` even though its title has no
+time-of-day word at all and it has no EXIF. `resolve_time_of_day()`'s
+fallback branch was returning the model's own self-reported evidence
+label verbatim -- but the grammar's enum lets the model emit `"caption"`
+or `"exif_timestamp"` even though it only ever receives pixels, and
+apparently did so here despite the prompt explicitly instructing it to
+use `"visual_inference"`. Fix: the fallback now always returns
+`"visual_inference"` unconditionally, ignoring whatever the model
+claims -- Claude Code, not the model, decides which evidence source was
+actually used, since only Claude Code knows what was actually fed to
+it. Changed 3 records' evidence label (not their time_of_day value,
+which happened to already match).
+
+Decision: caption evidence restricted to Title only; time-of-day evidence priority is EXIF SubIFD DateTimeOriginal/DateTimeDigitized > IFD0 DateTime > Title caption match > model visual_inference (evidence label always assigned by Claude Code, never taken from the model's own output)
+Alternatives-considered: keep full Title+AltText+Description+Keywords for caption matching; keep original caption-before-EXIF priority; ignore the DateTime/DateTimeOriginal distinction; trust the model's self-reported evidence field
+Rationale: every alternative here was the literal cause of demonstrated, confidently-wrong output on real data -- this is the checkpoint step doing exactly its intended job
 Outcome: resolved
 
 Also, two mechanical resilience fixes landed the same session, prompted
