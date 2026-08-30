@@ -5,6 +5,7 @@ format and rules. This file is the primary input for any later
 narrative-assembly (retrospective, write-up) process.
 
 ## 2026-08-29 -- Project kickoff: model choice, schema split, crop_anchor scheme
+Commit: 55a3581
 [agent-drafted, Josh-approved]
 
 Context: before writing any pipeline code, worked through whether wopr
