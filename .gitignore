@@ -17,3 +17,7 @@ wheels/
 /data/
 .pytest_cache/
 .ruff_cache/
+
+# Internal research, not for publication -- TERMS_OF_USE.md's substance
+# is committed, this background doc isn't
+/docs/rights-research.md

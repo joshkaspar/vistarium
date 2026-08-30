@@ -259,3 +259,53 @@ exif_timestamp / 8 visual_inference / 2 caption after this fix (was 233/6/2
 before it) -- Kenai's photos are heavily EXIF-backed (professional NPS
 photography), so the sentinel-date failure mode, while real, affected a
 small fraction (5/219) of this batch.
+
+## 2026-08-30 -- Rights-of-depicted-people policy: disclaimer, not per-image vetting
+[agent-drafted, Josh-approved]
+
+Context: spot-checking the Kenai license flags surfaced a real, distinct
+question from the license-flag calibration itself -- does an
+identifiable person appearing in an otherwise public-domain NPS photo
+create an actual legal problem for redistributing it? Josh had Claude
+(web) research this properly rather than treating my own "my general
+understanding" answer as sufficient, and brought back a prepared
+`TERMS_OF_USE.md` (reviewed and adopted here) along with the findings
+below. The underlying research write-up isn't part of this repo.
+
+The finding: copyright status and a depicted person's right of
+publicity/privacy are legally independent. NPS's photos being
+uncopyrightable government works settles nothing about a third party's
+own rights in their likeness, because NPS never held those rights to
+begin with and can't waive what it doesn't own. Separately, though: US
+right-of-publicity/privacy law is state-law, non-uniform, and
+overwhelmingly keyed to *commercial* use (advertising, merchandise,
+implied endorsement) with editorial/documentary/noncommercial use
+consistently exempted, reinforced by the First Amendment and (per
+*Maloney v. T3Media*, 9th Cir. 2017) by courts treating distribution of
+the photographic work itself differently from using someone's likeness
+in an ad. Every comparable archive (NPS itself, Library of Congress,
+Smithsonian Open Access, Flickr Commons, Wikimedia Commons) handles this
+identical situation the same way: a disclaimer stating copyright and
+publicity/privacy are separate, no warranty that images are free of
+third-party rights, no model releases obtained, and reuser
+responsibility -- not per-image legal vetting or takedowns in advance.
+
+Decision: adopt the industry-standard disclaimer/reuser-responsibility posture (TERMS_OF_USE.md + a README "License & Rights" section) rather than building any per-image publicity-rights vetting into the pipeline
+Alternatives-considered: exclude/blur every image with an identifiable person regardless of prominence; get a formal legal opinion before doing anything further; do nothing / ignore the question
+Rationale: the disclaimer approach is the actual professional norm for this exact situation (every peer archive researched uses it, not stricter vetting), the underlying law overwhelmingly protects noncommercial/editorial use, and building automated publicity-rights vetting would be solving a problem the data doesn't show exists at meaningful scale for a landscape-photo project
+Outcome: resolved for the current noncommercial phase -- the research's own staged recommendations flag concrete triggers for revisiting this with a real attorney: monetization (ads, print sales, sponsorships), or curating around specific identifiable individuals rather than landscapes-with-incidental-people
+
+Practical note: this doesn't change the existing `license_confidence`
+flagging or the `primary_subject`-based site-inclusion policy -- both
+already push the actually-risky case (a person as the clear, prominent,
+identifiable subject) toward `human_activity`, which is already excluded
+from the current landscape-only site build. The disclaimer covers the
+residual case within scope: `landscape` images with an incidental
+person `flagged_for_review`, which is exactly the "definable
+group"/incidental-presence category the research found to be the
+best-protected fact pattern anyway (e.g. California's statutory
+crowd/incidental carve-out, which generalizes across the researched
+states).
+
+`TERMS_OF_USE.md`'s contact field is still a placeholder pending Josh's
+choice of contact method before the repo goes public.

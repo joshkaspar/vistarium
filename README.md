@@ -49,6 +49,30 @@ both quickly. The repo holds small preview thumbnails (WebP, computed
 from `thumbnail_crop_16x9`) and the JSON metadata index only. Full images
 are linked to their original source URL.
 
+## License & Rights
+
+Images on Vistarium are sourced from open-access government and museum
+archives (currently the National Park Service). Each image's recorded
+license reflects what the source institution states, and is not
+independently verified or guaranteed by this project.
+
+Copyright-free status does not necessarily resolve every right that may
+apply -- notably, a depicted person's right of privacy or publicity is
+separate from copyright and is not waived by an archive's public-domain
+designation. Users are responsible for verifying licenses on the
+original source and for their own lawful use of any downloaded
+material, including not infringing on the rights of third parties.
+
+This isn't a hedge added after the fact -- it's the same approach NPS,
+the Library of Congress, Smithsonian Open Access, Flickr Commons, and
+Wikimedia Commons all take for exactly this situation (a disclaimer and
+reuser responsibility, not per-image model releases), and it's why
+`license_confidence`/`license_evidence` exist as separate fields from
+the base `license` string in the first place -- see `schema.json` and
+`DECISIONS.md`, 2026-08-30.
+
+See [TERMS_OF_USE.md](./TERMS_OF_USE.md) for the full rights statement.
+
 ## Setup
 
 Requires [`uv`](https://docs.astral.sh/uv/) (already available via `mise`
@@ -87,8 +111,10 @@ photographs -- kept for audit, not shown on the site).
 
 ## Status
 
-NPS scraper + model harness built and unit-tested; not yet run at real
-volume. Next step per the build order is the 20-50 image validation
-checkpoint (hand-check schema compliance, time-of-day accuracy, and
-especially the license flag-for-review behavior) before scaling up. See
-`ROADMAP.md` for the site build and additional sources, both later.
+NPS scraper + model harness built, unit-tested, and validated by hand
+against real data: a 22-image checkpoint batch and a 220-image
+single-park run (Kenai Fjords), both fully image-by-image reviewed, not
+just schema-checked. Three real bugs in the deterministic evidence
+pipeline were found and fixed this way -- see `DECISIONS.md` for the
+full narrative of each. Current dataset: 246 records across 6 parks.
+Next: the static site build and additional sources -- see `ROADMAP.md`.
