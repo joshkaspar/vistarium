@@ -66,6 +66,29 @@ def build_record(candidate: nps_client.NPSCandidate, image_path: Path) -> dict |
     return record
 
 
+def _load_checkpoint(checkpoint_path: Path) -> tuple[dict[str, dict], set[str]]:
+    """Returns (outcomes_by_id, processed_ids) from a prior run's checkpoint,
+    or ({}, set()) if none exists. `outcomes_by_id` maps candidate ID to the
+    checkpoint line (with "id", "outcome", and "record" if outcome is
+    "catalog" or "excluded") -- this is what lets a resumed run rebuild the
+    full catalog across interruptions instead of only this invocation's
+    work."""
+    outcomes: dict[str, dict] = {}
+    if checkpoint_path.exists():
+        for line in checkpoint_path.read_text().splitlines():
+            if not line.strip():
+                continue
+            entry = json.loads(line)
+            outcomes[entry["id"]] = entry
+    return outcomes, set(outcomes.keys())
+
+
+def _write_checkpoint_line(checkpoint_path: Path, entry: dict) -> None:
+    with open(checkpoint_path, "a") as f:
+        f.write(json.dumps(entry) + "\n")
+        f.flush()
+
+
 def run(
     *,
     limit: int,
@@ -75,43 +98,68 @@ def run(
     terms: list[str] | None,
 ) -> None:
     images_dir = workdir / "images"
+    checkpoint_path = workdir / "checkpoint.jsonl"
+    workdir.mkdir(parents=True, exist_ok=True)
+
+    outcomes, already_processed = _load_checkpoint(checkpoint_path)
+    if already_processed:
+        log.info("resuming: %d candidates already processed in a prior run", len(already_processed))
+
     log.info("searching NPS...")
     candidates = nps_client.search_candidates(terms=terms)
     log.info("found %d unique candidates", len(candidates))
-    candidates = candidates[:limit]
+    new_candidates = [c for c in candidates if c.id not in already_processed][:limit]
+    log.info("processing %d new candidates this run", len(new_candidates))
 
     dedup = Deduplicator()
-    records: list[dict] = []
-    excluded: list[dict] = []
+    # Pre-seed dedup with already-downloaded images so a resumed run still
+    # catches duplicates against work done in a prior invocation.
+    if images_dir.exists():
+        for existing in images_dir.glob("*.jpg"):
+            dedup.is_duplicate(existing)
 
-    for i, candidate in enumerate(candidates, 1):
-        log.info("[%d/%d] %s: %s", i, len(candidates), candidate.id, candidate.title[:60])
+    for i, candidate in enumerate(new_candidates, 1):
+        log.info("[%d/%d] %s: %s", i, len(new_candidates), candidate.id, candidate.title[:60])
         try:
             image_path = nps_client.download_image(candidate, images_dir)
         except Exception as e:
             log.warning("download failed for %s: %s", candidate.id, e)
+            _write_checkpoint_line(
+                checkpoint_path, {"id": candidate.id, "outcome": "download_failed"}
+            )
             continue
 
         dup_of = dedup.is_duplicate(image_path)
         if dup_of is not None:
             log.info("  duplicate of %s, skipping", dup_of.name)
+            _write_checkpoint_line(checkpoint_path, {"id": candidate.id, "outcome": "duplicate"})
             continue
 
         record = build_record(candidate, image_path)
         if record is None:
+            _write_checkpoint_line(
+                checkpoint_path, {"id": candidate.id, "outcome": "no_model_json"}
+            )
             continue
 
         try:
             schema_validate.validate_record(record)
         except Exception as e:
             log.error("  schema validation failed for %s: %s", candidate.id, e)
+            _write_checkpoint_line(
+                checkpoint_path, {"id": candidate.id, "outcome": "invalid_schema"}
+            )
             continue
 
-        if record["is_photograph"] is False:
+        outcome = "excluded" if record["is_photograph"] is False else "catalog"
+        if outcome == "excluded":
             log.info("  not a photograph, routing to excluded set")
-            excluded.append(record)
-        else:
-            records.append(record)
+        entry = {"id": candidate.id, "outcome": outcome, "record": record}
+        _write_checkpoint_line(checkpoint_path, entry)
+        outcomes[candidate.id] = entry
+
+    records = [o["record"] for o in outcomes.values() if o["outcome"] == "catalog"]
+    excluded = [o["record"] for o in outcomes.values() if o["outcome"] == "excluded"]
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(records, indent=2))
