@@ -25,6 +25,26 @@ from vistarium.model_client import ModelJudgmentError, judge_image
 log = logging.getLogger("vistarium.pipeline")
 
 
+def resolve_time_of_day(
+    caption_text: str, exif_hour: int | None, model_time_of_day: str, model_evidence: str
+) -> tuple[str, str]:
+    """Deterministic time-of-day evidence takes priority over the model's
+    visual_inference when available -- see exif_util.py. EXIF is checked
+    first, ahead of caption text: a real camera timestamp is a hard fact,
+    while caption regex matching is a heuristic prone to false positives
+    from proper names (found live in this project's own 2026-08-30
+    validation checkpoint -- "Dawn Marsh" in a photo credit list matched
+    the "dawn" keyword and overrode a correct 11:42 AM EXIF timestamp with
+    an incorrect "morning" bucket; see DECISIONS.md). Returns
+    (time_of_day, time_of_day_evidence)."""
+    if exif_hour is not None:
+        return exif_util.hour_to_bucket(exif_hour), "exif_timestamp"
+    caption_bucket = exif_util.caption_time_of_day(caption_text)
+    if caption_bucket:
+        return caption_bucket, "caption"
+    return model_time_of_day, model_evidence
+
+
 def build_record(candidate: nps_client.NPSCandidate, image_path: Path) -> dict | None:
     """Returns a schema-valid record, or None if the model never returned
     usable JSON for this image (logged, not raised -- one bad image
@@ -35,17 +55,13 @@ def build_record(candidate: nps_client.NPSCandidate, image_path: Path) -> dict |
         log.warning("skipping %s: %s", candidate.id, e)
         return None
 
-    # Deterministic time-of-day evidence takes priority over the model's
-    # visual_inference when available with confidence -- see exif_util.py.
-    caption_bucket = exif_util.caption_time_of_day(candidate.caption_text)
     exif_hour = exif_util.exif_capture_hour(image_path)
-    if caption_bucket:
-        model_fields["time_of_day"] = caption_bucket
-        model_fields["time_of_day_evidence"] = "caption"
-    elif exif_hour is not None:
-        model_fields["time_of_day"] = exif_util.hour_to_bucket(exif_hour)
-        model_fields["time_of_day_evidence"] = "exif_timestamp"
-    # else: keep whatever the model returned (visual_inference).
+    model_fields["time_of_day"], model_fields["time_of_day_evidence"] = resolve_time_of_day(
+        candidate.caption_text,
+        exif_hour,
+        model_fields["time_of_day"],
+        model_fields["time_of_day_evidence"],
+    )
 
     with Image.open(image_path) as img:
         img_w, img_h = img.size

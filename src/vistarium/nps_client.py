@@ -143,17 +143,15 @@ def extract_payload(html: str) -> dict | None:
 
 def asset_to_candidate(asset: dict, term: str) -> NPSCandidate:
     ci = asset.get("ConstraintsInformation") or {}
-    caption_text = " ".join(
-        filter(
-            None,
-            [
-                _s(asset.get("Title")),
-                _s(asset.get("AltText")),
-                _s(asset.get("Description")),
-                _s(asset.get("Keywords")),
-            ],
-        )
-    )
+    # Deliberately Title only, not AltText/Description/Keywords -- found live
+    # in the 2026-08-30 validation checkpoint that Description/Keywords can
+    # carry generic park-level boilerplate ("landscapes that witnessed the
+    # dawn of the Revolutionary War", repeated verbatim across many distinct
+    # Minute Man NHP assets) rather than anything specific to the individual
+    # photo, which produced confidently wrong time-of-day matches on 15/26
+    # records in that run. Title is the one field consistently written
+    # per-photo. See DECISIONS.md.
+    caption_text = _s(asset.get("Title")).strip()
     exif_raw = (
         asset.get("ImageCreateDateTime") or (asset.get("ImageCreateDate") or {}).get("Date") or ""
     )

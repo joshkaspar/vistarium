@@ -77,3 +77,74 @@ Also found, unrelated to any of the above: one real NPS source file
 sniffing handled it fine in the pipeline; logged in `ROADMAP.md` as a
 possible future hardening item, not fixed now since it's a single
 known instance so far.
+
+## 2026-08-30 -- Validation checkpoint: two real time_of_day bugs found and fixed
+[agent-drafted, Josh-approved]
+
+Context: ran the 20-image validation checkpoint (build order step 2) for
+the first time against real NPS data. Two of the 22 catalog records'
+`time_of_day` values were spot-checked against their actual images and
+found wrong, which traced back to two separate, real bugs in the
+deterministic evidence pipeline -- not model errors. Both were fixed and
+the full checkpoint dataset was reconciled and re-validated against
+`schema.json` (26/26 still valid) rather than just patched over.
+
+**Bug 1 -- caption evidence contaminated by park-level boilerplate,
+not photo-specific text.** `caption_time_of_day()` was fed a
+concatenation of Title + AltText + Description + Keywords
+(`nps_client.py`'s `caption_text`). For Minute Man NHP assets, this
+included a generic park-history sentence -- "landscapes that witnessed
+the dawn of the Revolutionary War" -- repeated verbatim across many
+unrelated photos, none of which are actually about dawn. This produced
+a confidently wrong "morning" `time_of_day` on 15 of 22 catalog records
+in the first pass, none of which involved dawn/morning light at all.
+Separately, one caption's photo-credit list contained a person named
+"Dawn Marsh," which the same regex also matched as the time-of-day word
+"dawn." Fix, two parts: (1) `nps_client.py`'s `caption_text` narrowed to
+Title only -- the one field consistently written per-photo, confirmed
+by checking that none of the 15 wrong matches came from Title; (2)
+`pipeline.py`'s evidence priority flipped to check EXIF before caption
+(a real camera timestamp is a hard fact; caption regex matching is a
+heuristic), via a new `resolve_time_of_day()` helper with direct test
+coverage including a regression test for the exact "Dawn Marsh" case.
+
+**Bug 2 -- EXIF's own `DateTime` tag is file-modified time, not
+capture time.** `exif_capture_hour()` read whichever of
+`DateTimeOriginal`/`DateTime` it found first from `img.getexif()`'s flat
+IFD0 dict, which doesn't include `DateTimeOriginal` at all -- that tag
+lives in the Exif SubIFD, reachable only via `exif.get_ifd(ExifTags.IFD.Exif)`.
+So the code fell back to IFD0's plain `DateTime`, which is a
+last-modified timestamp that editing software freely overwrites on
+save. Caught on "Sandhill Cranes in Rosy Morning Light": real capture
+time (`DateTimeOriginal`, Exif SubIFD) was 2017-12-03 07:03:21 --
+morning, matching the title -- but IFD0's `DateTime` showed a 2025
+Photoshop re-save at 22:46:39, producing an incorrect "night" bucket.
+Fix: `exif_capture_hour()` now checks `DateTimeOriginal`/
+`DateTimeDigitized` in the Exif SubIFD first, falling back to IFD0
+`DateTime` only when neither exists. Direct test coverage added,
+including the exact re-save-overwrites-original-timestamp scenario.
+
+After both fixes, re-reconciling the same 22-record dataset (no new
+model calls needed -- only the deterministic evidence changed) shifted
+`time_of_day` on 8 further records and produced a much more plausible
+overall distribution (11 afternoon / 8 morning / 3 night, vs. the first
+pass's implausible 19/22 "morning"). 18/22 final records are now backed
+by a real, correctly-selected EXIF timestamp; the remaining 4 by a
+Title-only caption match.
+
+Decision: caption evidence restricted to Title only; time-of-day evidence priority is EXIF SubIFD DateTimeOriginal/DateTimeDigitized > IFD0 DateTime > Title caption match > model visual_inference
+Alternatives-considered: keep full Title+AltText+Description+Keywords for caption matching; keep original caption-before-EXIF priority; ignore the DateTime/DateTimeOriginal distinction
+Rationale: both alternatives were the literal cause of demonstrated, confidently-wrong output on real data -- this is the checkpoint step doing exactly its intended job
+Outcome: resolved
+
+Also, two mechanical resilience fixes landed the same session, prompted
+by the checkpoint run itself getting killed by something outside the
+process (not a crash) partway through twice in a row: `run()` now
+writes a `data/checkpoint.jsonl` line after every candidate (resumable
+across interruptions) and caches NPS search results to
+`data/candidates_cache.json` (the 28-term search alone took 90-100s,
+most of a short run's time budget if redone on every retry). See the
+commit history for these -- no `Decision:` trailer, since neither was a
+choice between real alternatives, just fixing a real gap the same way
+the smoke-test scripts in `wopr/model_tests/` were already fixed
+earlier in this project.

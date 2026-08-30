@@ -58,27 +58,38 @@ def hour_to_bucket(hour: int) -> str:
     return "night"
 
 
-_DATETIME_TAG_IDS = {
-    tag_id for tag_id, name in ExifTags.TAGS.items() if name in ("DateTimeOriginal", "DateTime")
-}
+def _parse_hour(value) -> int | None:
+    # EXIF datetime format: "YYYY:MM:DD HH:MM:SS"
+    m = re.search(r"\d{4}:\d{2}:\d{2}\s+(\d{2}):\d{2}:\d{2}", str(value or ""))
+    return int(m.group(1)) if m else None
 
 
 def exif_capture_hour(path: Path) -> int | None:
     """Read the capture hour (0-23) from an image file's real EXIF data, or
-    None if no usable timestamp tag is present."""
+    None if no usable timestamp tag is present.
+
+    DateTimeOriginal/DateTimeDigitized (in the Exif SubIFD) are checked
+    first, ahead of the base IFD0 DateTime tag -- DateTime is the file's
+    last-modified timestamp, not capture time, and editing software
+    routinely rewrites it on save. Found live in the 2026-08-30 validation
+    checkpoint: a photo titled "Rosy Morning Light" had its real capture
+    time (2017-12-03 07:03:21, from DateTimeOriginal) overwritten in IFD0's
+    DateTime by a 2025 Photoshop re-save (2025-04-02 22:46:39), which this
+    function used to read instead, producing an incorrect "night" bucket
+    for a genuinely morning photo. See DECISIONS.md."""
     try:
         with Image.open(path) as img:
             exif = img.getexif()
+            if not exif:
+                return None
+            sub_ifd = exif.get_ifd(ExifTags.IFD.Exif)
     except Exception:
         return None
-    if not exif:
-        return None
-    for tag_id in _DATETIME_TAG_IDS:
-        value = exif.get(tag_id)
-        if not value:
-            continue
-        # EXIF datetime format: "YYYY:MM:DD HH:MM:SS"
-        m = re.search(r"\d{4}:\d{2}:\d{2}\s+(\d{2}):\d{2}:\d{2}", str(value))
-        if m:
-            return int(m.group(1))
-    return None
+
+    for tag_name in ("DateTimeOriginal", "DateTimeDigitized"):
+        tag_id = next((k for k, v in ExifTags.TAGS.items() if v == tag_name), None)
+        hour = _parse_hour(sub_ifd.get(tag_id)) if tag_id is not None else None
+        if hour is not None:
+            return hour
+
+    return _parse_hour(exif.get(306))  # IFD0 DateTime -- last resort only
