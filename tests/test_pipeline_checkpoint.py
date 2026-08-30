@@ -2,7 +2,12 @@ from pathlib import Path
 from unittest.mock import patch
 
 from vistarium.nps_client import NPSCandidate
-from vistarium.pipeline import _load_checkpoint, _search_with_cache, _write_checkpoint_line
+from vistarium.pipeline import (
+    _filter_by_park,
+    _load_checkpoint,
+    _search_with_cache,
+    _write_checkpoint_line,
+)
 
 
 def test_load_checkpoint_missing_file_returns_empty(tmp_path: Path):
@@ -74,3 +79,23 @@ def test_search_with_cache_refresh_forces_new_search(tmp_path: Path):
         _search_with_cache(cache, terms=None, refresh=False)
         _search_with_cache(cache, terms=None, refresh=True)
     assert m.call_count == 2
+
+
+def test_filter_by_park_case_insensitive_substring():
+    candidates = [
+        NPSCandidate(id="1", park="Kenai Fjords National Park"),
+        NPSCandidate(id="2", park="Zion National Park"),
+        NPSCandidate(id="3", park="Kenai Fjords National Park"),
+    ]
+    result = _filter_by_park(candidates, "kenai")
+    assert [c.id for c in result] == ["1", "3"]
+
+
+def test_filter_by_park_none_returns_all():
+    candidates = [NPSCandidate(id="1", park="Zion National Park")]
+    assert _filter_by_park(candidates, None) == candidates
+
+
+def test_filter_by_park_no_match_returns_empty():
+    candidates = [NPSCandidate(id="1", park="Zion National Park")]
+    assert _filter_by_park(candidates, "Denali") == []

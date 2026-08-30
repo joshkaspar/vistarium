@@ -130,6 +130,17 @@ def _search_with_cache(
     return candidates
 
 
+def _filter_by_park(
+    candidates: list[nps_client.NPSCandidate], park: str | None
+) -> list[nps_client.NPSCandidate]:
+    """Case-insensitive substring match against each candidate's park field.
+    Returns `candidates` unchanged if `park` is None/empty."""
+    if not park:
+        return candidates
+    needle = park.lower()
+    return [c for c in candidates if needle in c.park.lower()]
+
+
 def run(
     *,
     limit: int,
@@ -138,6 +149,7 @@ def run(
     excluded_out_path: Path,
     terms: list[str] | None,
     refresh_search: bool = False,
+    park: str | None = None,
 ) -> None:
     images_dir = workdir / "images"
     checkpoint_path = workdir / "checkpoint.jsonl"
@@ -151,6 +163,9 @@ def run(
     log.info("searching NPS (cached unless --refresh-search)...")
     candidates = _search_with_cache(candidates_cache_path, terms, refresh_search)
     log.info("found %d unique candidates", len(candidates))
+    if park:
+        candidates = _filter_by_park(candidates, park)
+        log.info("filtered to %d candidates matching park %r", len(candidates), park)
     new_candidates = [c for c in candidates if c.id not in already_processed][:limit]
     log.info("processing %d new candidates this run", len(new_candidates))
 
@@ -241,6 +256,10 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="re-scan NPS instead of using the cached candidate list from a prior run",
     )
+    parser.add_argument(
+        "--park",
+        help="restrict to candidates whose park field contains this (case-insensitive substring)",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args(argv)
 
@@ -256,6 +275,7 @@ def main(argv: list[str] | None = None) -> int:
         excluded_out_path=args.excluded_out,
         terms=args.terms,
         refresh_search=args.refresh_search,
+        park=args.park,
     )
     return 0
 
