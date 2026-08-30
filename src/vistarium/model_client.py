@@ -31,12 +31,12 @@ from __future__ import annotations
 import base64
 import io
 import json
+import os
 from pathlib import Path
 
 import requests
 from PIL import Image
 
-BASE_URL = "http://192.168.68.146:8080"  # wopr; no DNS entry for `wopr` off-LAN, see ~/Projects/wopr/AGENTS.md
 MODEL = "qwen3.8-27b:low"
 MAX_DIM = 1568
 REQUEST_TIMEOUT_S = 180
@@ -76,6 +76,22 @@ Respond with ONLY the JSON object, no other text."""
 
 class ModelJudgmentError(RuntimeError):
     """Raised when the model never returns schema-valid JSON after retries."""
+
+
+class ConfigError(RuntimeError):
+    """Raised for missing/invalid configuration -- distinct from a runtime
+    model failure, so callers (and error messages) can tell "you forgot to
+    set something up" apart from "the model itself misbehaved"."""
+
+
+def _wopr_base_url() -> str:
+    url = os.environ.get("WOPR_BASE_URL")
+    if not url:
+        raise ConfigError(
+            "WOPR_BASE_URL is not set. Copy .env.example to .env and set it to your "
+            "local model endpoint (e.g. llama-swap's address), or export it directly."
+        )
+    return url.rstrip("/")
 
 
 def _load_and_encode(path: Path) -> str:
@@ -123,11 +139,12 @@ def judge_image(image_path: Path) -> dict:
         "grammar": JSON_GRAMMAR,
     }
 
+    base_url = _wopr_base_url()
     last_exc: Exception | None = None
     for _attempt in range(MAX_RETRIES + 1):
         try:
             r = requests.post(
-                f"{BASE_URL}/v1/chat/completions", json=body, timeout=REQUEST_TIMEOUT_S
+                f"{base_url}/v1/chat/completions", json=body, timeout=REQUEST_TIMEOUT_S
             )
             r.raise_for_status()
             message = r.json()["choices"][0]["message"]

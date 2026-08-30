@@ -16,6 +16,7 @@ import logging
 import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
 from PIL import Image
 
 from vistarium import crop, exif_util, nps_client, schema_validate
@@ -216,6 +217,7 @@ def run(
 
 
 def main(argv: list[str] | None = None) -> int:
+    load_dotenv()  # WOPR_BASE_URL and any future secrets come from .env, not hardcoded values
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--limit",
