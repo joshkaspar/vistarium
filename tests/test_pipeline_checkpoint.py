@@ -1,6 +1,8 @@
 from pathlib import Path
+from unittest.mock import patch
 
-from vistarium.pipeline import _load_checkpoint, _write_checkpoint_line
+from vistarium.nps_client import NPSCandidate
+from vistarium.pipeline import _load_checkpoint, _search_with_cache, _write_checkpoint_line
 
 
 def test_load_checkpoint_missing_file_returns_empty(tmp_path: Path):
@@ -37,3 +39,38 @@ def test_later_write_for_same_id_overwrites_in_memory_view(tmp_path: Path):
     _write_checkpoint_line(checkpoint, {"id": "a", "outcome": "catalog", "record": {"id": "a"}})
     outcomes, _ = _load_checkpoint(checkpoint)
     assert outcomes["a"]["outcome"] == "catalog"
+
+
+def test_search_with_cache_calls_search_on_first_run(tmp_path: Path):
+    cache = tmp_path / "candidates_cache.json"
+    fake_candidates = [NPSCandidate(id="1", title="a"), NPSCandidate(id="2", title="b")]
+    with patch(
+        "vistarium.pipeline.nps_client.search_candidates", return_value=fake_candidates
+    ) as m:
+        result = _search_with_cache(cache, terms=None, refresh=False)
+    m.assert_called_once()
+    assert [c.id for c in result] == ["1", "2"]
+    assert cache.exists()
+
+
+def test_search_with_cache_skips_search_on_second_run(tmp_path: Path):
+    cache = tmp_path / "candidates_cache.json"
+    fake_candidates = [NPSCandidate(id="1", title="a")]
+    with patch(
+        "vistarium.pipeline.nps_client.search_candidates", return_value=fake_candidates
+    ) as m:
+        _search_with_cache(cache, terms=None, refresh=False)
+        result = _search_with_cache(cache, terms=None, refresh=False)
+    m.assert_called_once()  # only the first call hit the network
+    assert [c.id for c in result] == ["1"]
+
+
+def test_search_with_cache_refresh_forces_new_search(tmp_path: Path):
+    cache = tmp_path / "candidates_cache.json"
+    fake_candidates = [NPSCandidate(id="1", title="a")]
+    with patch(
+        "vistarium.pipeline.nps_client.search_candidates", return_value=fake_candidates
+    ) as m:
+        _search_with_cache(cache, terms=None, refresh=False)
+        _search_with_cache(cache, terms=None, refresh=True)
+    assert m.call_count == 2

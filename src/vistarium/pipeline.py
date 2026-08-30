@@ -10,6 +10,7 @@ not a replacement for the human review it requires.
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import json
 import logging
 import sys
@@ -89,6 +90,22 @@ def _write_checkpoint_line(checkpoint_path: Path, entry: dict) -> None:
         f.flush()
 
 
+def _search_with_cache(
+    cache_path: Path, terms: list[str] | None, refresh: bool
+) -> list[nps_client.NPSCandidate]:
+    """NPS search across ~28 terms takes 90+ seconds -- most of a short
+    run's time budget if it has to be redone on every retry. Cache the
+    results to disk; pass refresh=True (--refresh-search) to force a
+    re-scan (e.g. to pick up newly-added NPS assets)."""
+    if cache_path.exists() and not refresh:
+        raw = json.loads(cache_path.read_text())
+        return [nps_client.NPSCandidate(**c) for c in raw]
+
+    candidates = nps_client.search_candidates(terms=terms)
+    cache_path.write_text(json.dumps([dataclasses.asdict(c) for c in candidates]))
+    return candidates
+
+
 def run(
     *,
     limit: int,
@@ -96,17 +113,19 @@ def run(
     out_path: Path,
     excluded_out_path: Path,
     terms: list[str] | None,
+    refresh_search: bool = False,
 ) -> None:
     images_dir = workdir / "images"
     checkpoint_path = workdir / "checkpoint.jsonl"
+    candidates_cache_path = workdir / "candidates_cache.json"
     workdir.mkdir(parents=True, exist_ok=True)
 
     outcomes, already_processed = _load_checkpoint(checkpoint_path)
     if already_processed:
         log.info("resuming: %d candidates already processed in a prior run", len(already_processed))
 
-    log.info("searching NPS...")
-    candidates = nps_client.search_candidates(terms=terms)
+    log.info("searching NPS (cached unless --refresh-search)...")
+    candidates = _search_with_cache(candidates_cache_path, terms, refresh_search)
     log.info("found %d unique candidates", len(candidates))
     new_candidates = [c for c in candidates if c.id not in already_processed][:limit]
     log.info("processing %d new candidates this run", len(new_candidates))
@@ -192,6 +211,11 @@ def main(argv: list[str] | None = None) -> int:
         dest="terms",
         help="restrict search to specific term(s); repeatable",
     )
+    parser.add_argument(
+        "--refresh-search",
+        action="store_true",
+        help="re-scan NPS instead of using the cached candidate list from a prior run",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args(argv)
 
@@ -206,6 +230,7 @@ def main(argv: list[str] | None = None) -> int:
         out_path=args.out,
         excluded_out_path=args.excluded_out,
         terms=args.terms,
+        refresh_search=args.refresh_search,
     )
     return 0
 
