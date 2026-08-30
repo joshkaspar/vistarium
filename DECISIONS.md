@@ -207,3 +207,55 @@ Decision: filter the current site build to primary_subject=landscape only; wildl
 Alternatives-considered: include structure now and sort it out later; drop wildlife from the schema entirely instead of just filtering it
 Rationale: landscape is unambiguous; wildlife has a plausible future use so keeping full data costs nothing; structure needs a real "is this one interesting" signal that doesn't exist yet, and one sample (the MIMA farmhouse) isn't enough to design that signal from
 Outcome: open-issue -- structure explicitly left undecided, not resolved
+
+## 2026-08-30 -- Kenai Fjords park-scale run: third EXIF bug found and fixed
+[agent-drafted, Josh-approved]
+
+Context: first scale-up past the 22-image checkpoint -- 220 candidates
+from a single park (`--park` filter added this session), chosen because
+it was the largest single-park slice of the existing candidate cache
+and a genuine landscape park, to test whether park-concentrated volume
+surfaces different problems than the deliberately diverse checkpoint
+did. It did: a third real EXIF bug, distinct from both prior ones.
+
+**Bug 3 -- a camera's never-set clock produces a valid-looking but
+fake timestamp.** 5 photos (all titled generically "Kenai Fjords
+National Park," clearly the same camera/session) had `DateTimeOriginal`
+stamped `2000:01:01 00:00:0X` -- not corrupted or unparseable, just a
+real value that happens to be the well-known default cameras fall back
+to when their clock battery has died or was never configured. Hour 0
+bucketed to "night" with full confidence, for photos that (per the
+overcast/foggy conditions actually visible in most of them) may or may
+not actually be night -- the point is the pipeline had no business
+being *confident* either way from this timestamp. The same camera's
+IFD0 `DateTime` fallback also produced a plausible-but-wrong value
+(`2023:02:17 21:07:57`, almost certainly an upload/processing
+touch-date) that would have caused the identical failure a second way
+if used as a fallback.
+
+Fix: `exif_capture_hour()` now rejects known sentinel dates
+(`_SENTINEL_DATES = {"2000:01:01"}`) rather than accepting them as real
+capture evidence, and -- new refinement beyond the first two EXIF
+fixes -- a sentinel `DateTimeOriginal`/`DateTimeDigitized` now also
+suppresses the IFD0 `DateTime` last-resort fallback, since a sentinel
+primary timestamp is a strong signal the same camera's other metadata
+is equally untrustworthy. All 5 affected records re-reconciled: their
+`time_of_day_evidence` correctly moved to `visual_inference`, and their
+`time_of_day` value happened to stay "night" -- checked directly
+against the actual images, 4 of 5 are genuinely dark/heavily-overcast
+shots where that's a defensible model read, not a repeat of the earlier
+bugs' confident-wrong pattern.
+
+Decision: reject known EXIF sentinel dates, and suppress the IFD0 DateTime fallback when the primary SubIFD timestamp is itself a sentinel
+Alternatives-considered: only guard DateTimeOriginal/DateTimeDigitized directly and still allow the IFD0 fallback to run (rejected -- demonstrated on this exact data to produce a second wrong answer, not a hypothetical risk)
+Rationale: a sentinel timestamp is evidence about the whole camera's metadata reliability, not just one field; falling through to caption/model when no evidence can be trusted beats confidently asserting a coin-flip
+Outcome: resolved
+
+Full-dataset stats after this run (246 total: 241 catalog + 5 excluded,
+spanning the original 5-park checkpoint batch plus Kenai Fjords):
+`primary_subject` landscape 136 / human_activity 64 / wildlife 35 /
+vehicle 3 / structure 2 / document 1. `time_of_day_evidence` now 231
+exif_timestamp / 8 visual_inference / 2 caption after this fix (was 233/6/2
+before it) -- Kenai's photos are heavily EXIF-backed (professional NPS
+photography), so the sentinel-date failure mode, while real, affected a
+small fraction (5/219) of this batch.
