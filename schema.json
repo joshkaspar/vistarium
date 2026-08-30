@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vistarium.local/schema.json",
+  "title": "Vistarium catalog record",
+  "description": "One record per curated image. Fields are tagged in their description as either 'deterministic' (Claude Code fills these in from source catalog metadata or computed image properties, never sent to the model) or 'model' (the only fields sent to and returned by the local judgment model, grammar-constrained, one image at a time). See project-kickoff.md and DECISIONS.md for the reasoning behind this split.",
+  "type": "object",
+  "required": [
+    "id", "source", "source_url", "image_url", "title", "date", "park",
+    "license", "is_photograph", "time_of_day", "time_of_day_evidence",
+    "license_confidence", "license_evidence", "primary_subject",
+    "people_present", "people_prominence", "crop_anchor", "frame_type",
+    "tags", "thumbnail_crop_16x9"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "description": "deterministic -- source asset ID" },
+    "source": { "type": "string", "enum": ["nps"], "description": "deterministic -- will grow as more sources are added (loc, si, met, aic, nypl)" },
+    "source_url": { "type": "string", "format": "uri", "description": "deterministic -- link to the item's page on the source site" },
+    "image_url": { "type": "string", "format": "uri", "description": "deterministic -- link to the full-resolution original, not re-hosted" },
+    "title": { "type": "string", "description": "deterministic" },
+    "photographer": { "type": ["string", "null"], "description": "deterministic" },
+    "date": { "type": ["string", "null"], "description": "deterministic -- capture/creation date from source metadata, ISO 8601 if known" },
+    "park": { "type": "string", "description": "deterministic -- NPS unit name; renamed/generalized to a 'collection' concept when non-NPS sources are added" },
+    "license": {
+      "type": "string",
+      "description": "deterministic -- base rights string scraped from source metadata (e.g. NPS's ConstraintsInformation). The model does NOT determine this; it only flags ambiguity on top of it via license_confidence/license_evidence."
+    },
+
+    "is_photograph": {
+      "type": "boolean",
+      "description": "model -- false for paintings, illustrations, engravings, sketches, maps, or other non-photographic images. Gates trust in every other model field: if false, time_of_day/primary_subject/crop_anchor are not meaningful and the record should be excluded from the photograph catalog (kept for audit, not shown on the site)."
+    },
+    "time_of_day": {
+      "type": "string",
+      "enum": ["morning", "afternoon", "evening", "night"],
+      "description": "model -- but see time_of_day_evidence: the pipeline should prefer a deterministic caption/EXIF-derived bucket over the model's visual_inference when one is available with confidence; the model is the fallback for images where text/EXIF evidence is absent or ambiguous, not the first source of truth."
+    },
+    "time_of_day_evidence": {
+      "type": "string",
+      "enum": ["caption", "exif_timestamp", "visual_inference"],
+      "description": "Which evidence the time_of_day value is actually based on. 'caption' and 'exif_timestamp' are set deterministically by Claude Code when source text/EXIF gives a confident bucket; 'visual_inference' means the model call was made and used because no stronger evidence existed."
+    },
+    "license_confidence": {
+      "type": "string",
+      "enum": ["confirmed", "flagged_for_review"],
+      "description": "model -- must generalize past NPS's clean public-domain case once LOC/Smithsonian/Met/AIC/NYPL are added, since those mix true public domain with donor-restricted or rights-reserved items inside 'open access' collections. Anything not clearly and confidently public domain gets flagged_for_review, never silently decided by the model or the pipeline."
+    },
+    "license_evidence": {
+      "type": "string",
+      "description": "model -- one short sentence: what was seen (a visible copyright notice, watermark, signature, catalog number) or 'no rights concerns visible' if confirmed."
+    },
+    "primary_subject": {
+      "type": "string",
+      "enum": ["landscape", "wildlife", "structure", "vehicle", "human_activity"],
+      "description": "model -- site-filtering metadata, not an accept/reject gate."
+    },
+    "people_present": {
+      "type": "boolean",
+      "description": "model -- site-filtering metadata, not an accept/reject gate. Do not reject images outright based on people being present."
+    },
+    "people_prominence": {
+      "type": "string",
+      "enum": ["none", "background", "midground", "foreground_focal"],
+      "description": "model -- site-filtering metadata, not an accept/reject gate."
+    },
+    "crop_anchor": {
+      "type": "string",
+      "enum": ["center", "top", "bottom", "left", "right"],
+      "description": "model -- coarse direction the main subject/point of interest is weighted toward, used by Claude Code to compute exact crop boxes at whatever aspect ratio a consumer needs. Deliberately 5-way, not 9-way: a 2026-08-29 smoke test (see DECISIONS.md) found the diagonal-corner tier tracked the single brightest point in frame (sun glare, a bright star) rather than the actual subject in two separate cases, which is worse than the coarseness it was meant to fix."
+    },
+    "frame_type": {
+      "type": "string",
+      "enum": ["full_bleed", "matted", "multi_panel", "stereograph"],
+      "description": "model -- distinct from crop_anchor: whether the scanned file is a plain photo filling the frame vs. one with visible mat/border/mount around it, multiple images in one file, or a stereograph card. Matted/multi_panel/stereograph images may need a deterministic border-detection pass before crop_anchor math is applied."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "model -- short lowercase visual descriptors for site search/filtering."
+    },
+
+    "thumbnail_crop_16x9": {
+      "type": "object",
+      "description": "deterministic -- computed by Claude Code (src/vistarium/crop.py) from crop_anchor and the image's real pixel dimensions. This is what actually gets used to render the site's 16:9 preview thumbnail; the model never sees or produces pixel coordinates.",
+      "required": ["x", "y", "w", "h"],
+      "properties": {
+        "x": { "type": "integer", "minimum": 0 },
+        "y": { "type": "integer", "minimum": 0 },
+        "w": { "type": "integer", "minimum": 1 },
+        "h": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    }
+  }
+}

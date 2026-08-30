@@ -1,0 +1,43 @@
+[project]
+name = "vistarium"
+version = "0.1.0"
+description = "Public domain / open-access landscape photograph curator (NPS first, more sources later)"
+authors = [
+    { name = "joshkaspar", email = "joshuakaspar@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "jsonschema>=4.26.0",
+    "pillow>=12.3.0",
+    "python-dotenv>=1.2.3",
+    "requests>=2.34.2",
+]
+
+[project.scripts]
+vistarium = "vistarium:main"
+
+[build-system]
+requires = ["uv_build>=0.12.1,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.5",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# GBNF grammar and the model prompt are long single-line/single-block
+# literals by nature -- wrapping them would make the actual grammar
+# harder to read, not easier.
+"src/vistarium/model_client.py" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
