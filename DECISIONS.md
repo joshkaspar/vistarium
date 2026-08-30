@@ -165,3 +165,45 @@ commit history for these -- no `Decision:` trailer, since neither was a
 choice between real alternatives, just fixing a real gap the same way
 the smoke-test scripts in `wopr/model_tests/` were already fixed
 earlier in this project.
+
+## 2026-08-30 -- primary_subject gains "document"; site-inclusion policy set for current sources
+[agent-drafted, Josh-approved]
+
+Context: hand-reviewing the checkpoint dataset's images, Josh flagged
+`ab8e0d9a...` ("February 1925 Issue of Courier Journal") as a real
+photograph of a newspaper page, correctly caught by `is_photograph=true`
+but forced into `primary_subject: human_activity` for lack of a better
+option -- and noted this collection will keep hitting more of the same
+shape (maps, museum display photos, website screenshots) as more
+sources are added, distinct from `c1df195b...` (a map *graphic*, already
+correctly excluded via `is_photograph=false`).
+
+Decision: add "document" to primary_subject's enum -- for genuine photographs whose subject is a document/informational object (newspaper page, museum placard, interpretive sign, map, screenshot), keeping it distinct from is_photograph=false (non-photographic media, regardless of subject)
+Alternatives-considered: force these into human_activity or landscape (the only two enum values a photo-of-a-newspaper could plausibly be squeezed into); add a boolean is_document flag instead of a primary_subject value
+Rationale: a plain enum value is consistent with every other primary_subject case and needs no new schema shape; forcing into an existing value was actively misleading (the newspaper's true "activity" content is 1925 news, not anything happening in front of this camera)
+Outcome: resolved
+
+Existing checkpoint data was corrected directly (`ab8e0d9a...` ->
+`document`) rather than re-run through the model, since the correct
+value was already known with certainty from the hand-review; no other
+records were affected.
+
+Separately, set the site-inclusion policy for the current NPS-only
+dataset (not a schema change -- computed at site-build/filtering time
+from `primary_subject`, not stored as a new per-record field):
+
+- `landscape` -- included, this is the collection's actual subject.
+- `human_activity`, `document` -- excluded. Neither fits "landscape
+  photography."
+- `wildlife` -- excluded from the current build, but tracked (already
+  is, via `primary_subject` -- no special handling needed) for a
+  possible future wildlife-focused addition.
+- `structure` -- undecided, tabled. Some famous structures would make
+  good wallpapers; most probably wouldn't, and there's no cheap way yet
+  to tell the difference automatically. Revisit once there's a real
+  need or a plausible heuristic, rather than deciding blind on 1 sample.
+
+Decision: filter the current site build to primary_subject=landscape only; wildlife tracked but held back; structure explicitly deferred, not decided either way
+Alternatives-considered: include structure now and sort it out later; drop wildlife from the schema entirely instead of just filtering it
+Rationale: landscape is unambiguous; wildlife has a plausible future use so keeping full data costs nothing; structure needs a real "is this one interesting" signal that doesn't exist yet, and one sample (the MIMA farmhouse) isn't enough to design that signal from
+Outcome: open-issue -- structure explicitly left undecided, not resolved

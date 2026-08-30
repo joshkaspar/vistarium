@@ -49,6 +49,16 @@ def test_bad_enum_value_fails():
     assert not is_valid(record)
 
 
+def test_document_primary_subject_accepted():
+    # Added 2026-08-30 for genuine photographs of document-like things
+    # (newspaper pages, museum placards, signs, maps, screenshots) --
+    # distinct from is_photograph=false, which is for non-photographic
+    # media regardless of subject. See DECISIONS.md.
+    record = copy.deepcopy(VALID_RECORD)
+    record["primary_subject"] = "document"
+    assert is_valid(record)
+
+
 def test_corner_anchor_rejected_by_schema():
     # The 9-way corner scheme was tested and rejected -- schema.json should
     # still only accept the 5-way set even if a caller tries to sneak one in.

@@ -47,7 +47,7 @@ root ::= "{" ws "\"is_photograph\"" ws ":" ws boolean ws "," ws "\"time_of_day\"
 tod ::= "\"morning\"" | "\"afternoon\"" | "\"evening\"" | "\"night\""
 todevidence ::= "\"caption\"" | "\"exif_timestamp\"" | "\"visual_inference\""
 licenseconfidence ::= "\"confirmed\"" | "\"flagged_for_review\""
-primarysubject ::= "\"landscape\"" | "\"wildlife\"" | "\"structure\"" | "\"vehicle\"" | "\"human_activity\""
+primarysubject ::= "\"landscape\"" | "\"wildlife\"" | "\"structure\"" | "\"vehicle\"" | "\"human_activity\"" | "\"document\""
 peopleprominence ::= "\"none\"" | "\"background\"" | "\"midground\"" | "\"foreground_focal\""
 cropanchor ::= "\"center\"" | "\"top\"" | "\"bottom\"" | "\"left\"" | "\"right\""
 frametype ::= "\"full_bleed\"" | "\"matted\"" | "\"multi_panel\"" | "\"stereograph\""
@@ -64,7 +64,7 @@ PROMPT = """Look at this photograph and produce a JSON object with exactly these
 - time_of_day_evidence: caption | exif_timestamp | visual_inference -- use "visual_inference" since you only have the pixels, not real EXIF/caption data
 - license_confidence: confirmed | flagged_for_review -- flag if the image itself shows something that complicates its stated public-domain/open status (visible watermark, third-party logo, recognizable identifiable person in a way that suggests a rights concern, embedded copyright notice, or is not a photograph at all)
 - license_evidence: one short sentence, what you saw (or "no rights concerns visible" if confirmed)
-- primary_subject: landscape | wildlife | structure | vehicle | human_activity
+- primary_subject: landscape | wildlife | structure | vehicle | human_activity | document -- use "document" for a genuine photograph of a document-like thing (a newspaper page, museum placard, interpretive sign, map, or screenshot), not for the image itself being a scanned document/map/painting (that's is_photograph=false instead)
 - people_present: true/false
 - people_prominence: none | background | midground | foreground_focal
 - crop_anchor: center | top | bottom | left | right -- which direction the main subject/point of interest is weighted toward, for downstream cropping to arbitrary aspect ratios

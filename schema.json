@@ -51,8 +51,8 @@
     },
     "primary_subject": {
       "type": "string",
-      "enum": ["landscape", "wildlife", "structure", "vehicle", "human_activity"],
-      "description": "model -- site-filtering metadata, not an accept/reject gate."
+      "enum": ["landscape", "wildlife", "structure", "vehicle", "human_activity", "document"],
+      "description": "model -- site-filtering metadata, not an accept/reject gate. 'document' added 2026-08-30 (see DECISIONS.md) for genuine photographs whose subject is a document/informational object rather than a scene -- a photographed newspaper page, museum placard, interpretive sign, map, or screenshot. Distinct from is_photograph=false, which is for non-photographic media (paintings, scans, graphics) regardless of subject matter; 'document' is for real photographs of document-like things."
     },
     "people_present": {
       "type": "boolean",
