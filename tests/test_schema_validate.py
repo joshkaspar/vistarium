@@ -59,6 +59,15 @@ def test_document_primary_subject_accepted():
     assert is_valid(record)
 
 
+def test_detail_primary_subject_accepted():
+    # Added 2026-08-31 for close-up/macro shots of a small piece of the
+    # environment (moss, scat, bark texture) with no scenic composition --
+    # distinct from "landscape" (a scene/vista). See DECISIONS.md.
+    record = copy.deepcopy(VALID_RECORD)
+    record["primary_subject"] = "detail"
+    assert is_valid(record)
+
+
 def test_corner_anchor_rejected_by_schema():
     # The 9-way corner scheme was tested and rejected -- schema.json should
     # still only accept the 5-way set even if a caller tries to sneak one in.

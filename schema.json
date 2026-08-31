@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://vistarium.local/schema.json",
   "title": "Vistarium catalog record",
-  "description": "One record per curated image. Fields are tagged in their description as either 'deterministic' (Claude Code fills these in from source catalog metadata or computed image properties, never sent to the model) or 'model' (the only fields sent to and returned by the local judgment model, grammar-constrained, one image at a time). See project-kickoff.md and DECISIONS.md for the reasoning behind this split.",
+  "description": "One record per curated image. Fields are tagged in their description as either 'deterministic' (Claude Code fills these in from source catalog metadata or computed image properties, never sent to the model) or 'model' (the only fields sent to and returned by the local judgment model, grammar-constrained, one image at a time). See DECISIONS.md for the reasoning behind this split.",
   "type": "object",
   "required": [
     "id", "source", "source_url", "image_url", "title", "date", "park",
@@ -51,8 +51,8 @@
     },
     "primary_subject": {
       "type": "string",
-      "enum": ["landscape", "wildlife", "structure", "vehicle", "human_activity", "document"],
-      "description": "model -- site-filtering metadata, not an accept/reject gate. 'document' added 2026-08-30 (see DECISIONS.md) for genuine photographs whose subject is a document/informational object rather than a scene -- a photographed newspaper page, museum placard, interpretive sign, map, or screenshot. Distinct from is_photograph=false, which is for non-photographic media (paintings, scans, graphics) regardless of subject matter; 'document' is for real photographs of document-like things."
+      "enum": ["landscape", "wildlife", "structure", "vehicle", "human_activity", "document", "detail"],
+      "description": "model -- site-filtering metadata, not an accept/reject gate. 'document' added 2026-08-30 (see DECISIONS.md) for genuine photographs whose subject is a document/informational object rather than a scene -- a photographed newspaper page, museum placard, interpretive sign, map, or screenshot. Distinct from is_photograph=false, which is for non-photographic media (paintings, scans, graphics) regardless of subject matter; 'document' is for real photographs of document-like things. 'detail' added 2026-08-31 (see DECISIONS.md) for a close-up/macro shot of a small piece of the natural or built environment -- moss on bark, animal scat, gravel, bark texture, a single leaf or pinecone -- where the frame has no scenic composition, as distinct from 'landscape' (a scene/vista) or 'wildlife' (an animal)."
     },
     "people_present": {
       "type": "boolean",

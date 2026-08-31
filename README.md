@@ -42,7 +42,7 @@ vision model, grammar-constrained, one image at a time:
   "time_of_day_evidence": "caption | exif_timestamp | visual_inference",
   "license_confidence": "confirmed | flagged_for_review",
   "license_evidence": "string",
-  "primary_subject": "landscape | wildlife | structure | vehicle | human_activity | document",
+  "primary_subject": "landscape | wildlife | structure | vehicle | human_activity | document | detail",
   "people_present": true,
   "people_prominence": "none | background | midground | foreground_focal",
   "crop_anchor": "center | top | bottom | left | right",

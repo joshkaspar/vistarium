@@ -309,3 +309,37 @@ states).
 
 `TERMS_OF_USE.md`'s contact field is still a placeholder pending Josh's
 choice of contact method before the repo goes public.
+
+## 2026-08-31 -- primary_subject gains "detail"; two misclassified records fixed
+[agent-drafted, Josh-approved]
+
+Context: after the site went live, Josh spot-checked the published
+gallery and flagged two records as clearly not landscape: `c63f318d...`
+("Bear scat on a trail at Exit Glacier") and `a0e94a5c...` ("Various
+moss and lichens cover the trunk of a tree..."). Both are real close-up/
+macro photographs -- a pile of bear scat on gravel, moss/lichen/pinecone
+texture on a tree trunk -- classified `landscape` by the model, likely
+because both have a forest setting and no better enum value existed.
+Neither is a scenic composition; the frame is dominated by one small
+object with no vista.
+
+Decision: add "detail" to primary_subject's enum, for a close-up/macro shot of a small piece of the environment (moss on bark, scat, gravel, bark texture, a single leaf/pinecone) with no scenic composition, distinct from "landscape" (a scene/vista) and "wildlife" (an animal)
+Alternatives-considered: force these into "wildlife" (scat isn't an animal) or leave them in "landscape" and rely on tags alone for filtering; add a separate boolean flag instead of an enum value
+Rationale: same reasoning as the "document" addition -- a plain enum value is consistent with every other primary_subject case, and tags alone don't let the site-build filter exclude these the way it already excludes human_activity/document
+Outcome: resolved
+
+Both known-bad records were corrected directly to `detail` in both
+`data/catalog.json` and `data/checkpoint.jsonl` (the latter so the
+correction survives a future pipeline re-run, which rebuilds
+catalog.json from the checkpoint) rather than re-run through the model,
+since the correct value was already known with certainty from Josh's
+hand-review. Site-inclusion policy updated: `detail` is excluded from
+the landscape-only site build, same treatment as `human_activity`/
+`document`.
+
+Open question, not yet acted on: whether other `detail`-shaped
+misclassifications remain undetected in the existing 136-record
+landscape set (these two were caught by a partial spot-check, not a
+full review) -- worth a full re-classification pass under the updated
+prompt if Josh wants that assurance before trusting the rest of the
+dataset.
