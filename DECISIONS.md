@@ -16,13 +16,13 @@ produce.
 
 **Model choice**: no audition run. `qwen3.8-27b:low` was already
 validated for this exact task family twice over on this same inference
-box: a head-to-head vision-accuracy eval against `qwen2.5-vl-32b`/
-`qwen-vl` (2026-08-17, a listing-scanner project) and a 5-model
-side-by-side on the direct predecessor of this project (`pdscan-books`,
-2026-08-21), where it was the only model that ever actually opened and
-visually inspected an image before judging it. A follow-up smoke test
-(79 real images, see below) confirmed grammar-constrained structured
-output works reliably against it.
+box, in earlier unrelated projects: a head-to-head vision-accuracy eval
+against `qwen2.5-vl-32b`/`qwen-vl` on real-world listing photos
+(2026-08-17), and a 5-model side-by-side on a direct predecessor of this
+project's own curation task (2026-08-21), where it was the only model
+that ever actually opened and visually inspected an image before
+judging it. A follow-up smoke test (79 real images, see below) confirmed
+grammar-constrained structured output works reliably against it.
 
 Decision: use `qwen3.8-27b:low` (wopr's existing default) as the judgment model; no new model audition
 Alternatives-considered: qwen2.5-vl-32b, qwen-vl, muse-glimmer, gemma-31b, gpt-oss-20b (all previously ruled out on this box for this task family)
@@ -71,12 +71,12 @@ land entirely in `reasoning_content` with `content` left empty despite a
 `stop` finish_reason. `model_client.py`'s `_extract_json` checks both
 fields. Found live during the first real image+grammar test run.
 
-Also found, unrelated to any of the above: one real NPS source file
-(`pdscan-landscapes-qwen38-v2/images/evening/06_nps_...jpg`) has a
-`.jpg` extension but is actually TIFF-encoded data. PIL's content-based
-sniffing handled it fine in the pipeline; logged in `ROADMAP.md` as a
-possible future hardening item, not fixed now since it's a single
-known instance so far.
+Also found, unrelated to any of the above: one real NPS source image
+(seen in an earlier unrelated project working with the same source) has
+a `.jpg` extension but is actually TIFF-encoded data. PIL's
+content-based sniffing handled it fine in the pipeline; logged in
+`ROADMAP.md` as a possible future hardening item, not fixed now since
+it's a single known instance so far.
 
 ## 2026-08-30 -- Validation checkpoint: two real time_of_day bugs found and fixed
 [agent-drafted, Josh-approved]

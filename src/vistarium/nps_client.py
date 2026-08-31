@@ -1,8 +1,8 @@
 """NPS Gallery (npgallery.nps.gov) candidate harvesting.
 
-Adapted from the working scraper in pdscan-landscapes-qwen38-v2/scripts/
-nps_scan.py (proven against the live site 2026-08-22/23). No published
-JSON API -- the site embeds a `var search = {...}` JSON payload in the
+Adapted from a scraper design proven against the live site in an
+earlier, unrelated project (2026-08-22/23). No published JSON API --
+the site embeds a `var search = {...}` JSON payload in the
 search-results HTML.
 
 Endpoint shape:

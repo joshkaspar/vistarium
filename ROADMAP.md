@@ -55,13 +55,13 @@ decided.
   -- see `DECISIONS.md`. Could be revisited with a reworded prompt that
   explicitly excludes brightness/glare as a signal, but not worth doing
   speculatively.
-- **Self-hosted image mirror on Zuul** (behind the existing Cloudflare
-  Tunnel), as an alternative to linking straight to source URLs, if
-  source availability ever proves unreliable enough to matter.
+- **Self-hosted image mirror** on our own infrastructure, as an
+  alternative to linking straight to source URLs, if source
+  availability ever proves unreliable enough to matter.
 - File-format sniffing hardening: two real NPS source files now found
-  with a `.jpg` extension but actual TIFF-encoded bytes inside (one in
-  `pdscan-landscapes-qwen38-v2`, one in this project's own 2026-08-30
-  checkpoint batch). PIL handles both fine via content-sniffing and nothing
-  has broken because of it, but it's no longer a one-off -- worth a
-  defensive content-type check somewhere in the pipeline if a third
-  instance turns up.
+  with a `.jpg` extension but actual TIFF-encoded bytes inside (one seen
+  in an earlier unrelated project working with the same source, one in
+  this project's own 2026-08-30 checkpoint batch). PIL handles both fine
+  via content-sniffing and nothing has broken because of it, but it's no
+  longer a one-off -- worth a defensive content-type check somewhere in
+  the pipeline if a third instance turns up.
