@@ -8,15 +8,13 @@ and presents them on a filterable static site (GitHub Pages). Starting
 with the National Park Service (NPS) API only; other sources (Library of
 Congress, Smithsonian, Met, Art Institute of Chicago, NYPL) come later,
 once the NPS pipeline is proven. See `ROADMAP.md` for what's not built
-yet and `DECISIONS.md` for why things are built the way they are.
+yet.
 
-Photography only -- public domain paintings/illustrations are for other
-projects, not this one; see `schema.json`'s `is_photograph` gate.
 
 ## Data
 
 Every catalog record has two parts, populated separately and never
-mixed together -- see `DECISIONS.md`, 2026-08-29, for why.
+mixed together.
 
 **Catalog metadata** -- pulled directly from the source API, unedited:
 
@@ -58,12 +56,6 @@ deterministically by Claude Code from `crop_anchor` and the image's real
 dimensions, never produced by the model itself (see "Why crop_anchor,
 not a crop box" below).
 
-`people_prominence` is a filter axis for the site, not a reject gate --
-images with people are included and filterable, never silently dropped
-for that reason alone (though the current site build filters to
-`primary_subject: landscape` only for a separate reason -- see
-`DECISIONS.md`, 2026-08-30, "site-inclusion policy").
-
 Full schema definition (with the reasoning behind every field) lives in
 [`schema.json`](./schema.json).
 
@@ -71,7 +63,7 @@ Full schema definition (with the reasoning behind every field) lives in
 
 Every step that can be deterministic is: API pagination, download,
 dedup, EXIF reading, crop math, schema validation. A local vision model
-(`qwen3.8-27b`, served from a home inference box, `wopr`) is used for
+(`qwen3.8-27b`, served from a home inference box) is used for
 exactly three narrow, bounded judgment calls per image -- time-of-day,
 license/rights ambiguity, and subject/composition metadata -- and
 nothing else. It never explores an API, never counts, never tracks
@@ -91,19 +83,7 @@ unreliable at precise spatial grounding, and the site doesn't know in
 advance what aspect ratio a given consumer (desktop wallpaper, mobile,
 something else) will actually need. `src/vistarium/crop.py` computes
 exact crop boxes deterministically from the anchor at whatever ratio is
-needed, on demand. A 9-way variant (adding diagonal corners) was tested
-against 79 real images and rejected -- see `DECISIONS.md`, 2026-08-29 --
-because when the model did pick a corner, it tracked the single
-brightest point in the frame (sun glare, a bright star) rather than the
-actual subject, which is worse than the coarseness it was meant to fix.
-
-## Why full-res images aren't stored in the repo
-
-GitHub Pages has a ~1GB published-site soft limit and ~100GB/month soft
-bandwidth limit; thousands of full-resolution wallpapers would blow past
-both quickly. The repo holds small preview thumbnails (WebP, computed
-from `thumbnail_crop_16x9`) and the JSON metadata index only. Full images
-are linked to their original source URL.
+needed, on demand.
 
 ## License & Rights
 
@@ -141,8 +121,7 @@ See [TERMS_OF_USE.md](./TERMS_OF_USE.md) for the full rights statement.
 
 ## Setup
 
-Requires [`uv`](https://docs.astral.sh/uv/) (already available via `mise`
-on this box).
+Requires [`uv`](https://docs.astral.sh/uv/).
 
 ```bash
 uv sync                 # installs pinned deps from uv.lock
@@ -153,7 +132,7 @@ uv run ruff format .    # format
 ```
 
 Run the pipeline (defaults to a 20-image batch, matching the
-validation-checkpoint step described in `DECISIONS.md`, 2026-08-30):
+validation-checkpoint used at the beginning of the project):
 
 ```bash
 uv run vistarium --limit 20
