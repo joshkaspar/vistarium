@@ -3,9 +3,10 @@ Agent Policy: Decision Logging & Commit Discipline
 
 Purpose: make every future commit self-sufficient for explaining "why,"
 without adding overhead to routine work. Applies to any agent (Claude
-Code or a human) committing to this repo. Adapted from the same policy
-in the `wopr` repo (`AGENT_DECISION_POLICY.md`), per this project's own
-maintainability requirements (see `DECISIONS.md`, 2026-08-29).
+Code or a human) committing to this repo. This is this project's own
+take on the standard "architecture decision record" (ADR) pattern --
+see `DECISIONS.md`, 2026-08-29, for the maintainability requirements
+that established it.
 
 ## 1. Two classes of commit
 

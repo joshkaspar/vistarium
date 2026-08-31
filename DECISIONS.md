@@ -15,14 +15,14 @@ composition), and iterated on the exact JSON schema those calls should
 produce.
 
 **Model choice**: no audition run. `qwen3.8-27b:low` was already
-validated for this exact task family twice over in the `wopr` repo: a
-head-to-head vision-accuracy eval against `qwen2.5-vl-32b`/`qwen-vl`
-(2026-08-17, listing-scanner project) and a 5-model side-by-side on the
-direct predecessor of this project (`pdscan-books`, 2026-08-21), where
-it was the only model that ever actually opened and visually inspected
-an image before judging it. A follow-up smoke test (79 real images, see
-below) confirmed grammar-constrained structured output works reliably
-against it.
+validated for this exact task family twice over on this same inference
+box: a head-to-head vision-accuracy eval against `qwen2.5-vl-32b`/
+`qwen-vl` (2026-08-17, a listing-scanner project) and a 5-model
+side-by-side on the direct predecessor of this project (`pdscan-books`,
+2026-08-21), where it was the only model that ever actually opened and
+visually inspected an image before judging it. A follow-up smoke test
+(79 real images, see below) confirmed grammar-constrained structured
+output works reliably against it.
 
 Decision: use `qwen3.8-27b:low` (wopr's existing default) as the judgment model; no new model audition
 Alternatives-considered: qwen2.5-vl-32b, qwen-vl, muse-glimmer, gemma-31b, gpt-oss-20b (all previously ruled out on this box for this task family)
@@ -163,8 +163,8 @@ across interruptions) and caches NPS search results to
 most of a short run's time budget if redone on every retry). See the
 commit history for these -- no `Decision:` trailer, since neither was a
 choice between real alternatives, just fixing a real gap the same way
-the smoke-test scripts in `wopr/model_tests/` were already fixed
-earlier in this project.
+an earlier smoke-test script (used to validate the model choice above)
+had already been fixed for the identical failure mode.
 
 ## 2026-08-30 -- primary_subject gains "document"; site-inclusion policy set for current sources
 [agent-drafted, Josh-approved]

@@ -77,7 +77,6 @@ license/rights ambiguity, and subject/composition metadata -- and
 nothing else. It never explores an API, never counts, never tracks
 state across images. This isn't a style preference: an earlier
 side-by-side comparison of 5 local models on the same curation task
-(logged in the `wopr` repo's `DECISIONS.md`/`model_tests/`, 2026-08-21)
 found every model except the one eventually chosen would fabricate
 counts, skip visual verification entirely, or silently drop candidates
 when given more autonomy than this. Keeping the model's job narrow and

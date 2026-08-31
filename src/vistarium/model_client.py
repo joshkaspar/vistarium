@@ -1,9 +1,8 @@
 """The one narrow, bounded call to the local judgment model.
 
 Everything here was validated empirically against wopr's qwen3.8-27b
-before being written into the pipeline -- see
-~/Projects/wopr/model_tests/vision_smoke_test*.py and DECISIONS.md,
-2026-08-29, for the actual runs this is built from:
+before being written into the pipeline -- see DECISIONS.md, 2026-08-29,
+for the actual runs this is built from:
 
 - Grammar-constrained JSON via llama.cpp's `grammar` request field, not
   OpenAI-style response_format -- wopr's qwen3.8-27b does not advertise
@@ -21,9 +20,8 @@ before being written into the pipeline -- see
   diagonal corners -- corners were tested and tracked the single
   brightest point in frame (sun glare, a bright star) rather than the
   actual subject in two separate cases.
-- reasoning_effort=low is the validated preset (SYSTEM.md, 2026-08-17
-  listing-scanner eval): cuts verbose output ~74% with no correctness
-  cost found on this task family.
+- reasoning_effort=low is the validated preset: cuts verbose output
+  ~74% with no correctness cost found on this task family.
 """
 
 from __future__ import annotations
