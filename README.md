@@ -188,3 +188,9 @@ just schema-checked. Three real bugs in the deterministic evidence
 pipeline were found and fixed this way -- see `DECISIONS.md` for the
 full narrative of each. Current dataset: 246 records across 6 parks.
 Next: the static site build and additional sources -- see `ROADMAP.md`.
+
+## Project background
+
+For the story of how this project is built (local-vs-cloud model
+division of labor, the vibe-coding approach, why people aren't a reject
+gate) see my upcoming post on [joshkaspar.dev](https://joshkaspar.dev).
