@@ -43,7 +43,7 @@ By downloading, viewing, or otherwise using any image or metadata from Vistarium
 
 ## 6. Reporting a concern
 
-If you are depicted in an image on this site and have a concern about its inclusion, or if you believe an image's rights status has been recorded incorrectly, please contact us at **[CONTACT EMAIL]**. We will review the request and, where appropriate, remove or restrict the image while we look into it.
+If you are depicted in an image on this site and have a concern about its inclusion, or if you believe an image's rights status has been recorded incorrectly, please [open an issue on this repository](https://github.com/joshkaspar/vistarium/issues). We will review the request and, where appropriate, remove or restrict the image while we look into it.
 
 ## 7. Changes to these terms
 
