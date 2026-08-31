@@ -3,7 +3,7 @@
 Feature ideas and known gaps that came up during the build, deliberately
 kept out of the current task so they don't scope-creep it. Not
 prioritized/dated -- see `DECISIONS.md` for things that were actually
-decided and `project-kickoff.md` for the build order these feed into.
+decided.
 
 ## Near-term (build order steps 2+)
 

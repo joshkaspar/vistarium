@@ -7,8 +7,8 @@ from museum and archive APIs, classifies them with structured metadata,
 and presents them on a filterable static site (GitHub Pages). Starting
 with the National Park Service (NPS) API only; other sources (Library of
 Congress, Smithsonian, Met, Art Institute of Chicago, NYPL) come later,
-once the NPS pipeline is proven. See `project-kickoff.md` for the full
-original spec and `ROADMAP.md` for what's not built yet.
+once the NPS pipeline is proven. See `ROADMAP.md` for what's not built
+yet and `DECISIONS.md` for why things are built the way they are.
 
 Photography only -- public domain paintings/illustrations are for other
 projects, not this one; see `schema.json`'s `is_photograph` gate.
@@ -153,8 +153,8 @@ uv run ruff check .     # lint
 uv run ruff format .    # format
 ```
 
-Run the pipeline (defaults to a 20-image batch, matching the build
-order's validation-checkpoint step -- see `project-kickoff.md`):
+Run the pipeline (defaults to a 20-image batch, matching the
+validation-checkpoint step described in `DECISIONS.md`, 2026-08-30):
 
 ```bash
 uv run vistarium --limit 20
