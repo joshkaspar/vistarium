@@ -66,3 +66,11 @@ def crop_box(img_w: int, img_h: int, target_w: int, target_h: int, anchor: str) 
 def crop_16x9(img_w: int, img_h: int, anchor: str) -> CropBox:
     """Convenience wrapper for the site's 16:9 preview thumbnail."""
     return crop_box(img_w, img_h, 16, 9, anchor)
+
+
+def crop_9x16(img_w: int, img_h: int, anchor: str) -> CropBox:
+    """Convenience wrapper for the site's 9:16 preview thumbnail, used for
+    portrait-original images -- see DECISIONS.md, 2026-08-31. Forcing a
+    16:9 crop on a portrait photo can throw away most of the frame; this
+    keeps the native orientation instead."""
+    return crop_box(img_w, img_h, 9, 16, anchor)

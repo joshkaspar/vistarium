@@ -17,21 +17,34 @@ from pathlib import Path
 
 from PIL import Image
 
-from vistarium.crop import crop_16x9
+from vistarium.crop import crop_9x16, crop_16x9
 
 THUMB_WIDTH = 1200
 WEBP_QUALITY = 82
 
 
-def _thumbnail(src_path: Path, dest_path: Path, anchor: str) -> None:
+def _thumbnail(src_path: Path, dest_path: Path, anchor: str) -> str:
+    """Renders the thumbnail and returns its aspect ratio as "16/9" or
+    "9/16" -- portrait originals get a portrait thumbnail instead of a
+    forced 16:9 crop, which can throw away most of the frame (see
+    DECISIONS.md, 2026-08-31). The caller needs the ratio to size the
+    gallery tile correctly."""
     with Image.open(src_path) as im:
         im = im.convert("RGB")
-        box = crop_16x9(im.width, im.height, anchor)
+        portrait = im.height > im.width
+        if portrait:
+            box = crop_9x16(im.width, im.height, anchor)
+            thumb_w = round(THUMB_WIDTH * 9 / 16)
+            thumb_h = THUMB_WIDTH
+        else:
+            box = crop_16x9(im.width, im.height, anchor)
+            thumb_w = THUMB_WIDTH
+            thumb_h = round(THUMB_WIDTH * 9 / 16)
         cropped = im.crop((box["x"], box["y"], box["x"] + box["w"], box["y"] + box["h"]))
-        thumb_h = round(THUMB_WIDTH * 9 / 16)
-        cropped = cropped.resize((THUMB_WIDTH, thumb_h), Image.LANCZOS)
+        cropped = cropped.resize((thumb_w, thumb_h), Image.LANCZOS)
         dest_path.parent.mkdir(parents=True, exist_ok=True)
         cropped.save(dest_path, "WEBP", quality=WEBP_QUALITY)
+        return "9/16" if portrait else "16/9"
 
 
 def build_site(
@@ -47,7 +60,7 @@ def build_site(
         if not src_path.exists():
             continue
         thumb_name = f"{record['id']}.webp"
-        _thumbnail(src_path, thumbs_dir / thumb_name, record["crop_anchor"])
+        aspect = _thumbnail(src_path, thumbs_dir / thumb_name, record["crop_anchor"])
         index.append(
             {
                 "id": record["id"],
@@ -62,6 +75,7 @@ def build_site(
                 "people_prominence": record["people_prominence"],
                 "tags": record["tags"],
                 "thumb": f"{thumbs_dirname}/{thumb_name}",
+                "aspect": aspect,
             }
         )
 

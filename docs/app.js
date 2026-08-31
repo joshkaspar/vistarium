@@ -41,7 +41,8 @@
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
-        <img src="${record.thumb}" alt="${escapeHtml(record.title)}" loading="lazy" />
+        <img src="${record.thumb}" alt="${escapeHtml(record.title)}" loading="lazy"
+             style="aspect-ratio: ${record.aspect || "16/9"}" />
         <div class="card-meta">${escapeHtml(record.park)} &middot; ${escapeHtml(record.time_of_day)}</div>
       `;
       card.addEventListener("click", () => openLightbox(record));

@@ -96,6 +96,7 @@ main#gallery {
   padding: 0 1.5rem 2rem;
   max-width: 90rem;
   margin: 0 auto;
+  align-items: start;
 }
 
 .card {
@@ -109,7 +110,7 @@ main#gallery {
 .card img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 9; /* overridden inline per-card for portrait originals */
   object-fit: cover;
 }
 

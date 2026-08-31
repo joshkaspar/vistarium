@@ -17,7 +17,8 @@
       "sunset",
       "water reflection"
     ],
-    "thumb": "thumbs/c0dfa440-a63f-4b36-852b-9e4179bbd6f9.webp"
+    "thumb": "thumbs/c0dfa440-a63f-4b36-852b-9e4179bbd6f9.webp",
+    "aspect": "16/9"
   },
   {
     "id": "746957b1-533e-49ff-93ce-2401b565e2bb",
@@ -37,7 +38,8 @@
       "sunset",
       "water"
     ],
-    "thumb": "thumbs/746957b1-533e-49ff-93ce-2401b565e2bb.webp"
+    "thumb": "thumbs/746957b1-533e-49ff-93ce-2401b565e2bb.webp",
+    "aspect": "9/16"
   },
   {
     "id": "152900fc-6b19-477e-a15d-04f6ffeacdbf",
@@ -57,7 +59,8 @@
       "valley",
       "clear sky"
     ],
-    "thumb": "thumbs/152900fc-6b19-477e-a15d-04f6ffeacdbf.webp"
+    "thumb": "thumbs/152900fc-6b19-477e-a15d-04f6ffeacdbf.webp",
+    "aspect": "16/9"
   },
   {
     "id": "d2fd0077-bce1-479a-994d-6936f24410fb",
@@ -78,7 +81,8 @@
       "people",
       "night"
     ],
-    "thumb": "thumbs/d2fd0077-bce1-479a-994d-6936f24410fb.webp"
+    "thumb": "thumbs/d2fd0077-bce1-479a-994d-6936f24410fb.webp",
+    "aspect": "16/9"
   },
   {
     "id": "6784530e-d862-4261-9da4-2ef7ffcfdaf6",
@@ -98,7 +102,8 @@
       "storm",
       "horizon"
     ],
-    "thumb": "thumbs/6784530e-d862-4261-9da4-2ef7ffcfdaf6.webp"
+    "thumb": "thumbs/6784530e-d862-4261-9da4-2ef7ffcfdaf6.webp",
+    "aspect": "16/9"
   },
   {
     "id": "741a9b27-c13c-4f37-9e84-5a09ff9e1259",
@@ -119,7 +124,8 @@
       "stars",
       "volcanic glow"
     ],
-    "thumb": "thumbs/741a9b27-c13c-4f37-9e84-5a09ff9e1259.webp"
+    "thumb": "thumbs/741a9b27-c13c-4f37-9e84-5a09ff9e1259.webp",
+    "aspect": "16/9"
   },
   {
     "id": "a16f6718-6b32-4d7b-8bfa-49ec1ba43af7",
@@ -140,7 +146,8 @@
       "blue_sky",
       "vegetation"
     ],
-    "thumb": "thumbs/a16f6718-6b32-4d7b-8bfa-49ec1ba43af7.webp"
+    "thumb": "thumbs/a16f6718-6b32-4d7b-8bfa-49ec1ba43af7.webp",
+    "aspect": "16/9"
   },
   {
     "id": "c0e1f652-fb94-4670-9e51-9989ac457fd8",
@@ -160,7 +167,8 @@
       "clouds",
       "trees"
     ],
-    "thumb": "thumbs/c0e1f652-fb94-4670-9e51-9989ac457fd8.webp"
+    "thumb": "thumbs/c0e1f652-fb94-4670-9e51-9989ac457fd8.webp",
+    "aspect": "16/9"
   },
   {
     "id": "732c1491-3fc0-443f-bff0-f2c8e2aa757a",
@@ -180,7 +188,8 @@
       "clouds",
       "countryside"
     ],
-    "thumb": "thumbs/732c1491-3fc0-443f-bff0-f2c8e2aa757a.webp"
+    "thumb": "thumbs/732c1491-3fc0-443f-bff0-f2c8e2aa757a.webp",
+    "aspect": "16/9"
   },
   {
     "id": "5027507c-a52f-41f7-aeca-ba41a0c8e810",
@@ -200,7 +209,8 @@
       "clouds",
       "tree-line"
     ],
-    "thumb": "thumbs/5027507c-a52f-41f7-aeca-ba41a0c8e810.webp"
+    "thumb": "thumbs/5027507c-a52f-41f7-aeca-ba41a0c8e810.webp",
+    "aspect": "16/9"
   },
   {
     "id": "689321b5-1eee-4754-b582-89adcbb2f276",
@@ -221,7 +231,8 @@
       "trees",
       "landscape"
     ],
-    "thumb": "thumbs/689321b5-1eee-4754-b582-89adcbb2f276.webp"
+    "thumb": "thumbs/689321b5-1eee-4754-b582-89adcbb2f276.webp",
+    "aspect": "16/9"
   },
   {
     "id": "cdba7584-a10e-4882-8871-7ae755bc2b0a",
@@ -241,7 +252,8 @@
       "clouds",
       "plants"
     ],
-    "thumb": "thumbs/cdba7584-a10e-4882-8871-7ae755bc2b0a.webp"
+    "thumb": "thumbs/cdba7584-a10e-4882-8871-7ae755bc2b0a.webp",
+    "aspect": "16/9"
   },
   {
     "id": "9544c351-f358-4d08-ab55-8abf9d6eeccd",
@@ -262,7 +274,8 @@
       "meadow",
       "path"
     ],
-    "thumb": "thumbs/9544c351-f358-4d08-ab55-8abf9d6eeccd.webp"
+    "thumb": "thumbs/9544c351-f358-4d08-ab55-8abf9d6eeccd.webp",
+    "aspect": "16/9"
   },
   {
     "id": "320b11d5-6898-404f-a6e3-bff7beee89ce",
@@ -282,7 +295,8 @@
       "reflection",
       "alpine"
     ],
-    "thumb": "thumbs/320b11d5-6898-404f-a6e3-bff7beee89ce.webp"
+    "thumb": "thumbs/320b11d5-6898-404f-a6e3-bff7beee89ce.webp",
+    "aspect": "16/9"
   },
   {
     "id": "45eee168-f46b-40a1-920a-8b3df2c671f8",
@@ -302,7 +316,8 @@
       "silhouette",
       "snow-capped"
     ],
-    "thumb": "thumbs/45eee168-f46b-40a1-920a-8b3df2c671f8.webp"
+    "thumb": "thumbs/45eee168-f46b-40a1-920a-8b3df2c671f8.webp",
+    "aspect": "16/9"
   },
   {
     "id": "d5a0db7d-59f4-4776-a245-5aca17dd45c6",
@@ -322,7 +337,8 @@
       "mountain",
       "black-and-white"
     ],
-    "thumb": "thumbs/d5a0db7d-59f4-4776-a245-5aca17dd45c6.webp"
+    "thumb": "thumbs/d5a0db7d-59f4-4776-a245-5aca17dd45c6.webp",
+    "aspect": "16/9"
   },
   {
     "id": "3ffa34b8-aba0-4e36-8f71-acb8ff2fc549",
@@ -342,7 +358,8 @@
       "valley",
       "sky"
     ],
-    "thumb": "thumbs/3ffa34b8-aba0-4e36-8f71-acb8ff2fc549.webp"
+    "thumb": "thumbs/3ffa34b8-aba0-4e36-8f71-acb8ff2fc549.webp",
+    "aspect": "16/9"
   },
   {
     "id": "e6bc5d0a-7287-4f70-ac4f-d232c1105295",
@@ -363,7 +380,8 @@
       "trail",
       "wildflowers"
     ],
-    "thumb": "thumbs/e6bc5d0a-7287-4f70-ac4f-d232c1105295.webp"
+    "thumb": "thumbs/e6bc5d0a-7287-4f70-ac4f-d232c1105295.webp",
+    "aspect": "16/9"
   },
   {
     "id": "7e0b5aa9-b509-4f5c-ad51-e331faad381c",
@@ -383,7 +401,8 @@
       "rocks",
       "outdoors"
     ],
-    "thumb": "thumbs/7e0b5aa9-b509-4f5c-ad51-e331faad381c.webp"
+    "thumb": "thumbs/7e0b5aa9-b509-4f5c-ad51-e331faad381c.webp",
+    "aspect": "16/9"
   },
   {
     "id": "15fc4c1b-2e1d-4732-a0f4-3b00e51f794c",
@@ -403,7 +422,8 @@
       "tourist",
       "boat-rail"
     ],
-    "thumb": "thumbs/15fc4c1b-2e1d-4732-a0f4-3b00e51f794c.webp"
+    "thumb": "thumbs/15fc4c1b-2e1d-4732-a0f4-3b00e51f794c.webp",
+    "aspect": "16/9"
   },
   {
     "id": "e9be1ead-4b92-4dd9-97c1-6cce9b9613ce",
@@ -424,7 +444,8 @@
       "outdoor",
       "tourists"
     ],
-    "thumb": "thumbs/e9be1ead-4b92-4dd9-97c1-6cce9b9613ce.webp"
+    "thumb": "thumbs/e9be1ead-4b92-4dd9-97c1-6cce9b9613ce.webp",
+    "aspect": "16/9"
   },
   {
     "id": "fc5299fd-de56-4166-b375-bf65d42418fa",
@@ -444,7 +465,8 @@
       "mountain",
       "crack"
     ],
-    "thumb": "thumbs/fc5299fd-de56-4166-b375-bf65d42418fa.webp"
+    "thumb": "thumbs/fc5299fd-de56-4166-b375-bf65d42418fa.webp",
+    "aspect": "16/9"
   },
   {
     "id": "9bf71d1d-6147-4d53-b074-d8fea1db1897",
@@ -465,7 +487,8 @@
       "rocky",
       "alaska"
     ],
-    "thumb": "thumbs/9bf71d1d-6147-4d53-b074-d8fea1db1897.webp"
+    "thumb": "thumbs/9bf71d1d-6147-4d53-b074-d8fea1db1897.webp",
+    "aspect": "16/9"
   },
   {
     "id": "2ac69d9c-7eff-4fa3-a589-f383dacfa551",
@@ -485,7 +508,8 @@
       "mountain",
       "alaska"
     ],
-    "thumb": "thumbs/2ac69d9c-7eff-4fa3-a589-f383dacfa551.webp"
+    "thumb": "thumbs/2ac69d9c-7eff-4fa3-a589-f383dacfa551.webp",
+    "aspect": "16/9"
   },
   {
     "id": "724d85d1-4317-41c5-82dd-7755f7777362",
@@ -506,7 +530,8 @@
       "valley",
       "blue-ice"
     ],
-    "thumb": "thumbs/724d85d1-4317-41c5-82dd-7755f7777362.webp"
+    "thumb": "thumbs/724d85d1-4317-41c5-82dd-7755f7777362.webp",
+    "aspect": "16/9"
   },
   {
     "id": "fc2090be-5632-4791-8225-4ff33d6fe42d",
@@ -527,7 +552,8 @@
       "gravel",
       "cloudy"
     ],
-    "thumb": "thumbs/fc2090be-5632-4791-8225-4ff33d6fe42d.webp"
+    "thumb": "thumbs/fc2090be-5632-4791-8225-4ff33d6fe42d.webp",
+    "aspect": "16/9"
   },
   {
     "id": "3fcf0e79-c5e1-4b5d-8ec1-268e42c90179",
@@ -548,7 +574,8 @@
       "water",
       "snow"
     ],
-    "thumb": "thumbs/3fcf0e79-c5e1-4b5d-8ec1-268e42c90179.webp"
+    "thumb": "thumbs/3fcf0e79-c5e1-4b5d-8ec1-268e42c90179.webp",
+    "aspect": "16/9"
   },
   {
     "id": "4ca98481-6fb4-484c-8fc5-1ca23fae47a6",
@@ -568,7 +595,8 @@
       "mountain",
       "ice"
     ],
-    "thumb": "thumbs/4ca98481-6fb4-484c-8fc5-1ca23fae47a6.webp"
+    "thumb": "thumbs/4ca98481-6fb4-484c-8fc5-1ca23fae47a6.webp",
+    "aspect": "16/9"
   },
   {
     "id": "cf862466-c9e6-40ad-ae0e-583f24710cf7",
@@ -588,7 +616,8 @@
       "mountains",
       "alpine"
     ],
-    "thumb": "thumbs/cf862466-c9e6-40ad-ae0e-583f24710cf7.webp"
+    "thumb": "thumbs/cf862466-c9e6-40ad-ae0e-583f24710cf7.webp",
+    "aspect": "9/16"
   },
   {
     "id": "7e728f6d-d90c-4d09-b971-eb4f7b061b65",
@@ -608,7 +637,8 @@
       "climber",
       "snow"
     ],
-    "thumb": "thumbs/7e728f6d-d90c-4d09-b971-eb4f7b061b65.webp"
+    "thumb": "thumbs/7e728f6d-d90c-4d09-b971-eb4f7b061b65.webp",
+    "aspect": "16/9"
   },
   {
     "id": "5cb1ff83-9a81-4766-92be-61a3cacc5954",
@@ -628,7 +658,8 @@
       "wildflowers",
       "snow"
     ],
-    "thumb": "thumbs/5cb1ff83-9a81-4766-92be-61a3cacc5954.webp"
+    "thumb": "thumbs/5cb1ff83-9a81-4766-92be-61a3cacc5954.webp",
+    "aspect": "16/9"
   },
   {
     "id": "0a5e3470-b8e1-4430-8aa7-1756e2796f2f",
@@ -648,7 +679,8 @@
       "forest",
       "sea"
     ],
-    "thumb": "thumbs/0a5e3470-b8e1-4430-8aa7-1756e2796f2f.webp"
+    "thumb": "thumbs/0a5e3470-b8e1-4430-8aa7-1756e2796f2f.webp",
+    "aspect": "16/9"
   },
   {
     "id": "a41a4c70-83a9-4f56-bf82-4af9dd4c6bca",
@@ -668,7 +700,8 @@
       "fog",
       "water"
     ],
-    "thumb": "thumbs/a41a4c70-83a9-4f56-bf82-4af9dd4c6bca.webp"
+    "thumb": "thumbs/a41a4c70-83a9-4f56-bf82-4af9dd4c6bca.webp",
+    "aspect": "16/9"
   },
   {
     "id": "da56cbc2-03fd-42e3-a901-e18b9f487706",
@@ -688,7 +721,8 @@
       "evergreen",
       "misty"
     ],
-    "thumb": "thumbs/da56cbc2-03fd-42e3-a901-e18b9f487706.webp"
+    "thumb": "thumbs/da56cbc2-03fd-42e3-a901-e18b9f487706.webp",
+    "aspect": "16/9"
   },
   {
     "id": "62ea4414-94e0-46e1-ab13-dc371ab084eb",
@@ -708,7 +742,8 @@
       "mist",
       "overcast"
     ],
-    "thumb": "thumbs/62ea4414-94e0-46e1-ab13-dc371ab084eb.webp"
+    "thumb": "thumbs/62ea4414-94e0-46e1-ab13-dc371ab084eb.webp",
+    "aspect": "16/9"
   },
   {
     "id": "8c28623e-3a39-4c2c-805f-759d64295d77",
@@ -729,7 +764,8 @@
       "water",
       "forestry"
     ],
-    "thumb": "thumbs/8c28623e-3a39-4c2c-805f-759d64295d77.webp"
+    "thumb": "thumbs/8c28623e-3a39-4c2c-805f-759d64295d77.webp",
+    "aspect": "16/9"
   },
   {
     "id": "b6f6cc49-5fd2-4ab7-ad1d-e2838b0204db",
@@ -750,7 +786,8 @@
       "park ranger",
       "alpine"
     ],
-    "thumb": "thumbs/b6f6cc49-5fd2-4ab7-ad1d-e2838b0204db.webp"
+    "thumb": "thumbs/b6f6cc49-5fd2-4ab7-ad1d-e2838b0204db.webp",
+    "aspect": "16/9"
   },
   {
     "id": "c9f0bbec-9a09-43c8-8596-fdb9138d9231",
@@ -770,7 +807,8 @@
       "clouds",
       "silhouette"
     ],
-    "thumb": "thumbs/c9f0bbec-9a09-43c8-8596-fdb9138d9231.webp"
+    "thumb": "thumbs/c9f0bbec-9a09-43c8-8596-fdb9138d9231.webp",
+    "aspect": "16/9"
   },
   {
     "id": "5bd7d3f5-40be-4980-a5b9-b0ab40dc6ebb",
@@ -790,7 +828,8 @@
       "mountain",
       "nature"
     ],
-    "thumb": "thumbs/5bd7d3f5-40be-4980-a5b9-b0ab40dc6ebb.webp"
+    "thumb": "thumbs/5bd7d3f5-40be-4980-a5b9-b0ab40dc6ebb.webp",
+    "aspect": "9/16"
   },
   {
     "id": "1b21bbd1-e59f-4ecd-85b7-b80364e287ef",
@@ -810,7 +849,8 @@
       "coastline",
       "snow-capped"
     ],
-    "thumb": "thumbs/1b21bbd1-e59f-4ecd-85b7-b80364e287ef.webp"
+    "thumb": "thumbs/1b21bbd1-e59f-4ecd-85b7-b80364e287ef.webp",
+    "aspect": "16/9"
   },
   {
     "id": "b37c142d-a883-4809-9d0a-aba9fb80fcec",
@@ -831,7 +871,8 @@
       "rocky",
       "snow-capped"
     ],
-    "thumb": "thumbs/b37c142d-a883-4809-9d0a-aba9fb80fcec.webp"
+    "thumb": "thumbs/b37c142d-a883-4809-9d0a-aba9fb80fcec.webp",
+    "aspect": "16/9"
   },
   {
     "id": "3be62a63-4a19-4448-b8a2-c0252afb17b9",
@@ -851,7 +892,8 @@
       "mountains",
       "alpine"
     ],
-    "thumb": "thumbs/3be62a63-4a19-4448-b8a2-c0252afb17b9.webp"
+    "thumb": "thumbs/3be62a63-4a19-4448-b8a2-c0252afb17b9.webp",
+    "aspect": "16/9"
   },
   {
     "id": "3a212b1b-de30-4d06-a2a3-36007dcbd9c2",
@@ -871,7 +913,8 @@
       "black sand",
       "overcast"
     ],
-    "thumb": "thumbs/3a212b1b-de30-4d06-a2a3-36007dcbd9c2.webp"
+    "thumb": "thumbs/3a212b1b-de30-4d06-a2a3-36007dcbd9c2.webp",
+    "aspect": "16/9"
   },
   {
     "id": "d78451cb-e09c-4181-8a75-b6fb682a4129",
@@ -892,7 +935,8 @@
       "greenery",
       "driftwood"
     ],
-    "thumb": "thumbs/d78451cb-e09c-4181-8a75-b6fb682a4129.webp"
+    "thumb": "thumbs/d78451cb-e09c-4181-8a75-b6fb682a4129.webp",
+    "aspect": "16/9"
   },
   {
     "id": "3905a902-40bc-48e5-b65e-7ca33e59f4c0",
@@ -912,7 +956,8 @@
       "clouds",
       "alpine"
     ],
-    "thumb": "thumbs/3905a902-40bc-48e5-b65e-7ca33e59f4c0.webp"
+    "thumb": "thumbs/3905a902-40bc-48e5-b65e-7ca33e59f4c0.webp",
+    "aspect": "16/9"
   },
   {
     "id": "8b8eb06f-33a2-44bc-9f60-a3db5c5c0902",
@@ -933,7 +978,8 @@
       "grass",
       "alpine"
     ],
-    "thumb": "thumbs/8b8eb06f-33a2-44bc-9f60-a3db5c5c0902.webp"
+    "thumb": "thumbs/8b8eb06f-33a2-44bc-9f60-a3db5c5c0902.webp",
+    "aspect": "16/9"
   },
   {
     "id": "8d6f4950-c241-464b-aad3-920ec7a6026e",
@@ -953,7 +999,8 @@
       "valley",
       "cloudy"
     ],
-    "thumb": "thumbs/8d6f4950-c241-464b-aad3-920ec7a6026e.webp"
+    "thumb": "thumbs/8d6f4950-c241-464b-aad3-920ec7a6026e.webp",
+    "aspect": "16/9"
   },
   {
     "id": "a24ff914-ff5a-4dde-8475-7977364edc94",
@@ -974,7 +1021,8 @@
       "river",
       "forest"
     ],
-    "thumb": "thumbs/a24ff914-ff5a-4dde-8475-7977364edc94.webp"
+    "thumb": "thumbs/a24ff914-ff5a-4dde-8475-7977364edc94.webp",
+    "aspect": "16/9"
   },
   {
     "id": "6e1ae139-9a35-44f4-986c-88462e4f67ce",
@@ -994,7 +1042,8 @@
       "water",
       "overcast"
     ],
-    "thumb": "thumbs/6e1ae139-9a35-44f4-986c-88462e4f67ce.webp"
+    "thumb": "thumbs/6e1ae139-9a35-44f4-986c-88462e4f67ce.webp",
+    "aspect": "16/9"
   },
   {
     "id": "2eaa7354-4c41-4bfb-af3e-9b3c96b63700",
@@ -1014,7 +1063,8 @@
       "snow",
       "overcast"
     ],
-    "thumb": "thumbs/2eaa7354-4c41-4bfb-af3e-9b3c96b63700.webp"
+    "thumb": "thumbs/2eaa7354-4c41-4bfb-af3e-9b3c96b63700.webp",
+    "aspect": "16/9"
   },
   {
     "id": "96573b21-799b-46e3-822c-d3fa113c2b6c",
@@ -1034,7 +1084,8 @@
       "clouds",
       "pine_forest"
     ],
-    "thumb": "thumbs/96573b21-799b-46e3-822c-d3fa113c2b6c.webp"
+    "thumb": "thumbs/96573b21-799b-46e3-822c-d3fa113c2b6c.webp",
+    "aspect": "16/9"
   },
   {
     "id": "6d3c85f5-4530-4d1b-abd6-38fe13c48d25",
@@ -1054,7 +1105,8 @@
       "meadow",
       "clouds"
     ],
-    "thumb": "thumbs/6d3c85f5-4530-4d1b-abd6-38fe13c48d25.webp"
+    "thumb": "thumbs/6d3c85f5-4530-4d1b-abd6-38fe13c48d25.webp",
+    "aspect": "16/9"
   },
   {
     "id": "70b292df-d722-4265-8677-474b60f0f586",
@@ -1075,7 +1127,8 @@
       "green-slopes",
       "alpine"
     ],
-    "thumb": "thumbs/70b292df-d722-4265-8677-474b60f0f586.webp"
+    "thumb": "thumbs/70b292df-d722-4265-8677-474b60f0f586.webp",
+    "aspect": "16/9"
   },
   {
     "id": "cfd2fa0f-5835-4cee-8c16-a5586162bf10",
@@ -1095,7 +1148,8 @@
       "clouds",
       "coast"
     ],
-    "thumb": "thumbs/cfd2fa0f-5835-4cee-8c16-a5586162bf10.webp"
+    "thumb": "thumbs/cfd2fa0f-5835-4cee-8c16-a5586162bf10.webp",
+    "aspect": "16/9"
   },
   {
     "id": "fd44fccc-76fc-4e18-876c-691de6141b27",
@@ -1115,7 +1169,8 @@
       "clouds",
       "fjord"
     ],
-    "thumb": "thumbs/fd44fccc-76fc-4e18-876c-691de6141b27.webp"
+    "thumb": "thumbs/fd44fccc-76fc-4e18-876c-691de6141b27.webp",
+    "aspect": "16/9"
   },
   {
     "id": "f97b56d1-4d10-43d0-9cde-89f1d71d47d5",
@@ -1135,7 +1190,8 @@
       "trees",
       "snow"
     ],
-    "thumb": "thumbs/f97b56d1-4d10-43d0-9cde-89f1d71d47d5.webp"
+    "thumb": "thumbs/f97b56d1-4d10-43d0-9cde-89f1d71d47d5.webp",
+    "aspect": "16/9"
   },
   {
     "id": "d7460237-cff8-4827-8062-07fb03d9338c",
@@ -1156,7 +1212,8 @@
       "alpine",
       "water"
     ],
-    "thumb": "thumbs/d7460237-cff8-4827-8062-07fb03d9338c.webp"
+    "thumb": "thumbs/d7460237-cff8-4827-8062-07fb03d9338c.webp",
+    "aspect": "16/9"
   },
   {
     "id": "98f0a5cc-da1d-413c-9a3e-e7d6bc6b7c63",
@@ -1176,7 +1233,8 @@
       "clouds",
       "reflection"
     ],
-    "thumb": "thumbs/98f0a5cc-da1d-413c-9a3e-e7d6bc6b7c63.webp"
+    "thumb": "thumbs/98f0a5cc-da1d-413c-9a3e-e7d6bc6b7c63.webp",
+    "aspect": "16/9"
   },
   {
     "id": "809909ca-a1c6-4b42-a1a8-fe4dd067e4a1",
@@ -1196,7 +1254,8 @@
       "iceberg",
       "reflection"
     ],
-    "thumb": "thumbs/809909ca-a1c6-4b42-a1a8-fe4dd067e4a1.webp"
+    "thumb": "thumbs/809909ca-a1c6-4b42-a1a8-fe4dd067e4a1.webp",
+    "aspect": "16/9"
   },
   {
     "id": "748a5b77-e744-45fd-8caf-7d6cb36d8933",
@@ -1216,7 +1275,8 @@
       "overcast-sky",
       "coastline"
     ],
-    "thumb": "thumbs/748a5b77-e744-45fd-8caf-7d6cb36d8933.webp"
+    "thumb": "thumbs/748a5b77-e744-45fd-8caf-7d6cb36d8933.webp",
+    "aspect": "16/9"
   },
   {
     "id": "93b82eba-2744-4876-b0df-1fa156366803",
@@ -1236,7 +1296,8 @@
       "cloudy",
       "water"
     ],
-    "thumb": "thumbs/93b82eba-2744-4876-b0df-1fa156366803.webp"
+    "thumb": "thumbs/93b82eba-2744-4876-b0df-1fa156366803.webp",
+    "aspect": "16/9"
   },
   {
     "id": "f1cb60a3-0fdc-498e-b975-7360ba5862ea",
@@ -1257,7 +1318,8 @@
       "overcast",
       "evergreen"
     ],
-    "thumb": "thumbs/f1cb60a3-0fdc-498e-b975-7360ba5862ea.webp"
+    "thumb": "thumbs/f1cb60a3-0fdc-498e-b975-7360ba5862ea.webp",
+    "aspect": "16/9"
   },
   {
     "id": "e2edfa7e-269c-4a61-a0d3-f3e8677c1bb9",
@@ -1278,7 +1340,8 @@
       "reflection",
       "valley"
     ],
-    "thumb": "thumbs/e2edfa7e-269c-4a61-a0d3-f3e8677c1bb9.webp"
+    "thumb": "thumbs/e2edfa7e-269c-4a61-a0d3-f3e8677c1bb9.webp",
+    "aspect": "16/9"
   },
   {
     "id": "870a71ac-634e-4367-9ce8-76ecea764c98",
@@ -1299,7 +1362,8 @@
       "water",
       "clouds"
     ],
-    "thumb": "thumbs/870a71ac-634e-4367-9ce8-76ecea764c98.webp"
+    "thumb": "thumbs/870a71ac-634e-4367-9ce8-76ecea764c98.webp",
+    "aspect": "16/9"
   },
   {
     "id": "2a471cd0-4872-439c-ad63-168012769bc3",
@@ -1320,7 +1384,8 @@
       "snow",
       "overcast"
     ],
-    "thumb": "thumbs/2a471cd0-4872-439c-ad63-168012769bc3.webp"
+    "thumb": "thumbs/2a471cd0-4872-439c-ad63-168012769bc3.webp",
+    "aspect": "16/9"
   },
   {
     "id": "e06c9d98-6668-45a2-afa3-08e111caf674",
@@ -1340,7 +1405,8 @@
       "fireweed",
       "nature"
     ],
-    "thumb": "thumbs/e06c9d98-6668-45a2-afa3-08e111caf674.webp"
+    "thumb": "thumbs/e06c9d98-6668-45a2-afa3-08e111caf674.webp",
+    "aspect": "16/9"
   },
   {
     "id": "07d731b8-e499-49cb-9d48-8abc042043e0",
@@ -1361,7 +1427,8 @@
       "photographer",
       "gravel"
     ],
-    "thumb": "thumbs/07d731b8-e499-49cb-9d48-8abc042043e0.webp"
+    "thumb": "thumbs/07d731b8-e499-49cb-9d48-8abc042043e0.webp",
+    "aspect": "16/9"
   },
   {
     "id": "b4feabf8-da7d-49a5-b631-6f8bbda80e6f",
@@ -1382,7 +1449,8 @@
       "rocky",
       "clouds"
     ],
-    "thumb": "thumbs/b4feabf8-da7d-49a5-b631-6f8bbda80e6f.webp"
+    "thumb": "thumbs/b4feabf8-da7d-49a5-b631-6f8bbda80e6f.webp",
+    "aspect": "16/9"
   },
   {
     "id": "0c3d04cf-9f4a-4c24-9081-cb34fcae6722",
@@ -1402,7 +1470,8 @@
       "clouds",
       "rocky terrain"
     ],
-    "thumb": "thumbs/0c3d04cf-9f4a-4c24-9081-cb34fcae6722.webp"
+    "thumb": "thumbs/0c3d04cf-9f4a-4c24-9081-cb34fcae6722.webp",
+    "aspect": "16/9"
   },
   {
     "id": "03be1d5b-c134-48f2-8310-e248bf115d0d",
@@ -1422,7 +1491,8 @@
       "terrain",
       "crack"
     ],
-    "thumb": "thumbs/03be1d5b-c134-48f2-8310-e248bf115d0d.webp"
+    "thumb": "thumbs/03be1d5b-c134-48f2-8310-e248bf115d0d.webp",
+    "aspect": "16/9"
   },
   {
     "id": "b288d522-3cf3-47f5-b881-a5f76943f4e1",
@@ -1442,7 +1512,8 @@
       "rocky",
       "alpine"
     ],
-    "thumb": "thumbs/b288d522-3cf3-47f5-b881-a5f76943f4e1.webp"
+    "thumb": "thumbs/b288d522-3cf3-47f5-b881-a5f76943f4e1.webp",
+    "aspect": "16/9"
   },
   {
     "id": "e505b002-7c38-438b-9fe7-514483190603",
@@ -1463,7 +1534,8 @@
       "person",
       "rocky"
     ],
-    "thumb": "thumbs/e505b002-7c38-438b-9fe7-514483190603.webp"
+    "thumb": "thumbs/e505b002-7c38-438b-9fe7-514483190603.webp",
+    "aspect": "16/9"
   },
   {
     "id": "4d9637a5-7100-4af9-a2d5-443a6e4b25fd",
@@ -1484,7 +1556,8 @@
       "arctic",
       "calving"
     ],
-    "thumb": "thumbs/4d9637a5-7100-4af9-a2d5-443a6e4b25fd.webp"
+    "thumb": "thumbs/4d9637a5-7100-4af9-a2d5-443a6e4b25fd.webp",
+    "aspect": "16/9"
   },
   {
     "id": "a00d6be1-7238-4e63-8e71-8647541b41ff",
@@ -1505,7 +1578,8 @@
       "snow",
       "water"
     ],
-    "thumb": "thumbs/a00d6be1-7238-4e63-8e71-8647541b41ff.webp"
+    "thumb": "thumbs/a00d6be1-7238-4e63-8e71-8647541b41ff.webp",
+    "aspect": "16/9"
   },
   {
     "id": "aaff296c-3913-47a0-87b7-ab0e755a14ab",
@@ -1526,7 +1600,8 @@
       "fjord",
       "alpine"
     ],
-    "thumb": "thumbs/aaff296c-3913-47a0-87b7-ab0e755a14ab.webp"
+    "thumb": "thumbs/aaff296c-3913-47a0-87b7-ab0e755a14ab.webp",
+    "aspect": "16/9"
   },
   {
     "id": "2e79236a-fa64-40fa-a2c6-de56f6097831",
@@ -1547,7 +1622,8 @@
       "scandinavia",
       "water"
     ],
-    "thumb": "thumbs/2e79236a-fa64-40fa-a2c6-de56f6097831.webp"
+    "thumb": "thumbs/2e79236a-fa64-40fa-a2c6-de56f6097831.webp",
+    "aspect": "16/9"
   },
   {
     "id": "2b9d5dd5-8398-4c38-92a7-0f3f657823ae",
@@ -1568,7 +1644,8 @@
       "alpine",
       "rock"
     ],
-    "thumb": "thumbs/2b9d5dd5-8398-4c38-92a7-0f3f657823ae.webp"
+    "thumb": "thumbs/2b9d5dd5-8398-4c38-92a7-0f3f657823ae.webp",
+    "aspect": "16/9"
   },
   {
     "id": "5bd60be2-8620-4cc9-a485-e49a63e2c303",
@@ -1588,7 +1665,8 @@
       "snow",
       "rock"
     ],
-    "thumb": "thumbs/5bd60be2-8620-4cc9-a485-e49a63e2c303.webp"
+    "thumb": "thumbs/5bd60be2-8620-4cc9-a485-e49a63e2c303.webp",
+    "aspect": "16/9"
   },
   {
     "id": "5e3902d6-f945-46da-8c03-e515600d202e",
@@ -1609,7 +1687,8 @@
       "overcast",
       "alpine"
     ],
-    "thumb": "thumbs/5e3902d6-f945-46da-8c03-e515600d202e.webp"
+    "thumb": "thumbs/5e3902d6-f945-46da-8c03-e515600d202e.webp",
+    "aspect": "16/9"
   },
   {
     "id": "a731e115-4249-48d1-b6b7-74d70cfd2384",
@@ -1629,7 +1708,8 @@
       "reflection",
       "arctic"
     ],
-    "thumb": "thumbs/a731e115-4249-48d1-b6b7-74d70cfd2384.webp"
+    "thumb": "thumbs/a731e115-4249-48d1-b6b7-74d70cfd2384.webp",
+    "aspect": "16/9"
   },
   {
     "id": "fe4bddfd-9f7f-4c4c-9f2e-149c49962a5a",
@@ -1649,7 +1729,8 @@
       "snow",
       "fjord"
     ],
-    "thumb": "thumbs/fe4bddfd-9f7f-4c4c-9f2e-149c49962a5a.webp"
+    "thumb": "thumbs/fe4bddfd-9f7f-4c4c-9f2e-149c49962a5a.webp",
+    "aspect": "16/9"
   },
   {
     "id": "3133dcc8-428e-4315-ace2-903d419e32f5",
@@ -1669,7 +1750,8 @@
       "water",
       "coastline"
     ],
-    "thumb": "thumbs/3133dcc8-428e-4315-ace2-903d419e32f5.webp"
+    "thumb": "thumbs/3133dcc8-428e-4315-ace2-903d419e32f5.webp",
+    "aspect": "16/9"
   },
   {
     "id": "930e349e-6d2d-4b48-a77f-0f9ea20617fe",
@@ -1690,7 +1772,8 @@
       "valley",
       "wildflowers"
     ],
-    "thumb": "thumbs/930e349e-6d2d-4b48-a77f-0f9ea20617fe.webp"
+    "thumb": "thumbs/930e349e-6d2d-4b48-a77f-0f9ea20617fe.webp",
+    "aspect": "16/9"
   },
   {
     "id": "b3084edb-f349-4f76-9b8b-6781fbeec3cc",
@@ -1710,7 +1793,8 @@
       "rocky",
       "alpine"
     ],
-    "thumb": "thumbs/b3084edb-f349-4f76-9b8b-6781fbeec3cc.webp"
+    "thumb": "thumbs/b3084edb-f349-4f76-9b8b-6781fbeec3cc.webp",
+    "aspect": "16/9"
   },
   {
     "id": "cee2e0a9-f83b-46cf-bc54-a978a184a726",
@@ -1730,7 +1814,8 @@
       "mountains",
       "landscape"
     ],
-    "thumb": "thumbs/cee2e0a9-f83b-46cf-bc54-a978a184a726.webp"
+    "thumb": "thumbs/cee2e0a9-f83b-46cf-bc54-a978a184a726.webp",
+    "aspect": "16/9"
   },
   {
     "id": "0ec5cc21-227f-4a82-b347-addfa5062ed1",
@@ -1751,7 +1836,8 @@
       "clouds",
       "sky"
     ],
-    "thumb": "thumbs/0ec5cc21-227f-4a82-b347-addfa5062ed1.webp"
+    "thumb": "thumbs/0ec5cc21-227f-4a82-b347-addfa5062ed1.webp",
+    "aspect": "16/9"
   },
   {
     "id": "e66b3809-1314-4e72-8009-547bbb3809e2",
@@ -1772,7 +1858,8 @@
       "wildflower",
       "snowcap"
     ],
-    "thumb": "thumbs/e66b3809-1314-4e72-8009-547bbb3809e2.webp"
+    "thumb": "thumbs/e66b3809-1314-4e72-8009-547bbb3809e2.webp",
+    "aspect": "16/9"
   },
   {
     "id": "b8e0f993-f82a-4769-8294-5a8d293d9a64",
@@ -1793,7 +1880,8 @@
       "valley",
       "alpine"
     ],
-    "thumb": "thumbs/b8e0f993-f82a-4769-8294-5a8d293d9a64.webp"
+    "thumb": "thumbs/b8e0f993-f82a-4769-8294-5a8d293d9a64.webp",
+    "aspect": "16/9"
   },
   {
     "id": "9f506827-59c0-4fbf-a35a-d31c16b7f382",
@@ -1813,7 +1901,8 @@
       "rock",
       "alpine"
     ],
-    "thumb": "thumbs/9f506827-59c0-4fbf-a35a-d31c16b7f382.webp"
+    "thumb": "thumbs/9f506827-59c0-4fbf-a35a-d31c16b7f382.webp",
+    "aspect": "16/9"
   },
   {
     "id": "7b77b55b-c0f9-4670-9078-f8b9b6b48c3d",
@@ -1833,7 +1922,8 @@
       "blue",
       "water"
     ],
-    "thumb": "thumbs/7b77b55b-c0f9-4670-9078-f8b9b6b48c3d.webp"
+    "thumb": "thumbs/7b77b55b-c0f9-4670-9078-f8b9b6b48c3d.webp",
+    "aspect": "16/9"
   },
   {
     "id": "9cedfe42-3ebb-4796-a22f-67324d040d8d",
@@ -1854,7 +1944,8 @@
       "mountain",
       "arctic"
     ],
-    "thumb": "thumbs/9cedfe42-3ebb-4796-a22f-67324d040d8d.webp"
+    "thumb": "thumbs/9cedfe42-3ebb-4796-a22f-67324d040d8d.webp",
+    "aspect": "16/9"
   },
   {
     "id": "cb05edea-91e7-453e-b8b3-8987b3fca64e",
@@ -1875,7 +1966,8 @@
       "water",
       "nature"
     ],
-    "thumb": "thumbs/cb05edea-91e7-453e-b8b3-8987b3fca64e.webp"
+    "thumb": "thumbs/cb05edea-91e7-453e-b8b3-8987b3fca64e.webp",
+    "aspect": "16/9"
   },
   {
     "id": "67f0a91d-0fd3-4923-aa6f-655785e29206",
@@ -1896,7 +1988,8 @@
       "snow",
       "arctic"
     ],
-    "thumb": "thumbs/67f0a91d-0fd3-4923-aa6f-655785e29206.webp"
+    "thumb": "thumbs/67f0a91d-0fd3-4923-aa6f-655785e29206.webp",
+    "aspect": "16/9"
   },
   {
     "id": "4c0c0503-c165-4ec1-beba-082cc9bf16c4",
@@ -1916,7 +2009,8 @@
       "valley",
       "cold"
     ],
-    "thumb": "thumbs/4c0c0503-c165-4ec1-beba-082cc9bf16c4.webp"
+    "thumb": "thumbs/4c0c0503-c165-4ec1-beba-082cc9bf16c4.webp",
+    "aspect": "16/9"
   },
   {
     "id": "39bf469e-cc6a-46f6-9010-9776d71c6108",
@@ -1937,7 +2031,8 @@
       "alpine",
       "ridge"
     ],
-    "thumb": "thumbs/39bf469e-cc6a-46f6-9010-9776d71c6108.webp"
+    "thumb": "thumbs/39bf469e-cc6a-46f6-9010-9776d71c6108.webp",
+    "aspect": "16/9"
   },
   {
     "id": "a33857ee-dcba-4451-8f65-1acd1c5e1d54",
@@ -1957,7 +2052,8 @@
       "alpine landscape",
       "ice field"
     ],
-    "thumb": "thumbs/a33857ee-dcba-4451-8f65-1acd1c5e1d54.webp"
+    "thumb": "thumbs/a33857ee-dcba-4451-8f65-1acd1c5e1d54.webp",
+    "aspect": "16/9"
   },
   {
     "id": "b2c67c84-5ae7-4db3-8662-802e7317dfd6",
@@ -1977,7 +2073,8 @@
       "alpine",
       "valley"
     ],
-    "thumb": "thumbs/b2c67c84-5ae7-4db3-8662-802e7317dfd6.webp"
+    "thumb": "thumbs/b2c67c84-5ae7-4db3-8662-802e7317dfd6.webp",
+    "aspect": "16/9"
   },
   {
     "id": "5cc4cc8f-8eab-4185-9571-467315aba693",
@@ -1997,7 +2094,8 @@
       "ice",
       "aerial"
     ],
-    "thumb": "thumbs/5cc4cc8f-8eab-4185-9571-467315aba693.webp"
+    "thumb": "thumbs/5cc4cc8f-8eab-4185-9571-467315aba693.webp",
+    "aspect": "16/9"
   },
   {
     "id": "16298747-ea9b-48b7-8051-1ce06d0b5a04",
@@ -2018,7 +2116,8 @@
       "aerial",
       "monochrome"
     ],
-    "thumb": "thumbs/16298747-ea9b-48b7-8051-1ce06d0b5a04.webp"
+    "thumb": "thumbs/16298747-ea9b-48b7-8051-1ce06d0b5a04.webp",
+    "aspect": "16/9"
   },
   {
     "id": "9a03ad80-8b2a-406a-bd86-21312d8a8b1e",
@@ -2038,7 +2137,8 @@
       "aerial",
       "alpine"
     ],
-    "thumb": "thumbs/9a03ad80-8b2a-406a-bd86-21312d8a8b1e.webp"
+    "thumb": "thumbs/9a03ad80-8b2a-406a-bd86-21312d8a8b1e.webp",
+    "aspect": "16/9"
   },
   {
     "id": "97a8f677-a2d2-479f-9105-9e3cd8bdfa1e",
@@ -2058,7 +2158,8 @@
       "mountain",
       "cloudy"
     ],
-    "thumb": "thumbs/97a8f677-a2d2-479f-9105-9e3cd8bdfa1e.webp"
+    "thumb": "thumbs/97a8f677-a2d2-479f-9105-9e3cd8bdfa1e.webp",
+    "aspect": "16/9"
   },
   {
     "id": "1dff907f-0e39-4aa0-887c-57a2619407f7",
@@ -2078,7 +2179,8 @@
       "aerial",
       "peaks"
     ],
-    "thumb": "thumbs/1dff907f-0e39-4aa0-887c-57a2619407f7.webp"
+    "thumb": "thumbs/1dff907f-0e39-4aa0-887c-57a2619407f7.webp",
+    "aspect": "16/9"
   },
   {
     "id": "abe6a200-a43c-4140-b367-213a16680ca5",
@@ -2098,7 +2200,8 @@
       "aerial",
       "arctic"
     ],
-    "thumb": "thumbs/abe6a200-a43c-4140-b367-213a16680ca5.webp"
+    "thumb": "thumbs/abe6a200-a43c-4140-b367-213a16680ca5.webp",
+    "aspect": "16/9"
   },
   {
     "id": "ebb06a65-edc1-45e5-ae6e-e1bdd3d8eb21",
@@ -2119,7 +2222,8 @@
       "arctic",
       "rocky-ridge"
     ],
-    "thumb": "thumbs/ebb06a65-edc1-45e5-ae6e-e1bdd3d8eb21.webp"
+    "thumb": "thumbs/ebb06a65-edc1-45e5-ae6e-e1bdd3d8eb21.webp",
+    "aspect": "16/9"
   },
   {
     "id": "3373e620-d425-4687-942c-a88a746ea6a2",
@@ -2139,7 +2243,8 @@
       "sky",
       "clouds"
     ],
-    "thumb": "thumbs/3373e620-d425-4687-942c-a88a746ea6a2.webp"
+    "thumb": "thumbs/3373e620-d425-4687-942c-a88a746ea6a2.webp",
+    "aspect": "16/9"
   },
   {
     "id": "00bec253-9869-4ff1-9937-e539c7fdb162",
@@ -2159,7 +2264,8 @@
       "alpine",
       "sky"
     ],
-    "thumb": "thumbs/00bec253-9869-4ff1-9937-e539c7fdb162.webp"
+    "thumb": "thumbs/00bec253-9869-4ff1-9937-e539c7fdb162.webp",
+    "aspect": "16/9"
   },
   {
     "id": "fe6cfd7f-142a-441c-b66c-a593e758927f",
@@ -2180,7 +2286,8 @@
       "arctic",
       "rock outcropping"
     ],
-    "thumb": "thumbs/fe6cfd7f-142a-441c-b66c-a593e758927f.webp"
+    "thumb": "thumbs/fe6cfd7f-142a-441c-b66c-a593e758927f.webp",
+    "aspect": "16/9"
   },
   {
     "id": "9cbbca65-8a75-4d7f-bd1b-525d3117697c",
@@ -2201,7 +2308,8 @@
       "overcast",
       "winter"
     ],
-    "thumb": "thumbs/9cbbca65-8a75-4d7f-bd1b-525d3117697c.webp"
+    "thumb": "thumbs/9cbbca65-8a75-4d7f-bd1b-525d3117697c.webp",
+    "aspect": "16/9"
   },
   {
     "id": "85ddcf2e-a746-4010-bea9-8af635f5a6b1",
@@ -2222,7 +2330,8 @@
       "arctic",
       "icebergs"
     ],
-    "thumb": "thumbs/85ddcf2e-a746-4010-bea9-8af635f5a6b1.webp"
+    "thumb": "thumbs/85ddcf2e-a746-4010-bea9-8af635f5a6b1.webp",
+    "aspect": "16/9"
   },
   {
     "id": "a69fb825-3026-416d-8f7c-64288c0a06d0",
@@ -2243,7 +2352,8 @@
       "calving-front",
       "clouds"
     ],
-    "thumb": "thumbs/a69fb825-3026-416d-8f7c-64288c0a06d0.webp"
+    "thumb": "thumbs/a69fb825-3026-416d-8f7c-64288c0a06d0.webp",
+    "aspect": "16/9"
   },
   {
     "id": "da64bf2c-02da-4a8d-a045-d05b31fc29c1",
@@ -2264,7 +2374,8 @@
       "snow",
       "arctic"
     ],
-    "thumb": "thumbs/da64bf2c-02da-4a8d-a045-d05b31fc29c1.webp"
+    "thumb": "thumbs/da64bf2c-02da-4a8d-a045-d05b31fc29c1.webp",
+    "aspect": "16/9"
   },
   {
     "id": "35457b1f-00f8-4845-8866-892afec3ad0b",
@@ -2284,7 +2395,8 @@
       "ice",
       "fjord"
     ],
-    "thumb": "thumbs/35457b1f-00f8-4845-8866-892afec3ad0b.webp"
+    "thumb": "thumbs/35457b1f-00f8-4845-8866-892afec3ad0b.webp",
+    "aspect": "16/9"
   },
   {
     "id": "278d21fb-32fd-4338-ae76-f59aa1868155",
@@ -2304,7 +2416,8 @@
       "mountain",
       "water"
     ],
-    "thumb": "thumbs/278d21fb-32fd-4338-ae76-f59aa1868155.webp"
+    "thumb": "thumbs/278d21fb-32fd-4338-ae76-f59aa1868155.webp",
+    "aspect": "16/9"
   },
   {
     "id": "aa609210-c601-4836-ad12-26330be58b82",
@@ -2325,7 +2438,8 @@
       "ice",
       "water"
     ],
-    "thumb": "thumbs/aa609210-c601-4836-ad12-26330be58b82.webp"
+    "thumb": "thumbs/aa609210-c601-4836-ad12-26330be58b82.webp",
+    "aspect": "16/9"
   },
   {
     "id": "357181c0-2674-4d93-a529-0dff85018a26",
@@ -2346,7 +2460,8 @@
       "photography",
       "alaska"
     ],
-    "thumb": "thumbs/357181c0-2674-4d93-a529-0dff85018a26.webp"
+    "thumb": "thumbs/357181c0-2674-4d93-a529-0dff85018a26.webp",
+    "aspect": "16/9"
   },
   {
     "id": "ed166e74-5694-440e-a7d9-38a43c127d31",
@@ -2366,7 +2481,8 @@
       "water",
       "mountain"
     ],
-    "thumb": "thumbs/ed166e74-5694-440e-a7d9-38a43c127d31.webp"
+    "thumb": "thumbs/ed166e74-5694-440e-a7d9-38a43c127d31.webp",
+    "aspect": "16/9"
   },
   {
     "id": "d67d6dbc-500b-469f-b540-26d8c1b73e65",
@@ -2387,7 +2503,8 @@
       "overcast",
       "calypso"
     ],
-    "thumb": "thumbs/d67d6dbc-500b-469f-b540-26d8c1b73e65.webp"
+    "thumb": "thumbs/d67d6dbc-500b-469f-b540-26d8c1b73e65.webp",
+    "aspect": "16/9"
   },
   {
     "id": "b6cc5781-2903-4521-8538-999ef3442362",
@@ -2407,7 +2524,8 @@
       "ice",
       "landscape"
     ],
-    "thumb": "thumbs/b6cc5781-2903-4521-8538-999ef3442362.webp"
+    "thumb": "thumbs/b6cc5781-2903-4521-8538-999ef3442362.webp",
+    "aspect": "16/9"
   },
   {
     "id": "922c84e9-cf7f-414d-9953-27c9d7aec346",
@@ -2427,7 +2545,8 @@
       "mountain",
       "water"
     ],
-    "thumb": "thumbs/922c84e9-cf7f-414d-9953-27c9d7aec346.webp"
+    "thumb": "thumbs/922c84e9-cf7f-414d-9953-27c9d7aec346.webp",
+    "aspect": "16/9"
   },
   {
     "id": "07a8e21f-b557-4ce5-ab92-079d024b8e2a",
@@ -2447,7 +2566,8 @@
       "snow",
       "alpine"
     ],
-    "thumb": "thumbs/07a8e21f-b557-4ce5-ab92-079d024b8e2a.webp"
+    "thumb": "thumbs/07a8e21f-b557-4ce5-ab92-079d024b8e2a.webp",
+    "aspect": "16/9"
   },
   {
     "id": "71a07061-e167-4948-a647-4bc58fe48b11",
@@ -2468,7 +2588,8 @@
       "snow",
       "valley"
     ],
-    "thumb": "thumbs/71a07061-e167-4948-a647-4bc58fe48b11.webp"
+    "thumb": "thumbs/71a07061-e167-4948-a647-4bc58fe48b11.webp",
+    "aspect": "16/9"
   },
   {
     "id": "e06455a8-f8d3-4084-9e57-319b2b841a55",
@@ -2487,7 +2608,8 @@
       "valley",
       "clouds"
     ],
-    "thumb": "thumbs/e06455a8-f8d3-4084-9e57-319b2b841a55.webp"
+    "thumb": "thumbs/e06455a8-f8d3-4084-9e57-319b2b841a55.webp",
+    "aspect": "16/9"
   },
   {
     "id": "12350673-2a38-4eed-b150-172fedfe1dc5",
@@ -2507,7 +2629,8 @@
       "sky",
       "peaks"
     ],
-    "thumb": "thumbs/12350673-2a38-4eed-b150-172fedfe1dc5.webp"
+    "thumb": "thumbs/12350673-2a38-4eed-b150-172fedfe1dc5.webp",
+    "aspect": "16/9"
   },
   {
     "id": "934c7d34-0e65-4373-9be1-2c52173af331",
@@ -2527,7 +2650,8 @@
       "gravel",
       "wetland"
     ],
-    "thumb": "thumbs/934c7d34-0e65-4373-9be1-2c52173af331.webp"
+    "thumb": "thumbs/934c7d34-0e65-4373-9be1-2c52173af331.webp",
+    "aspect": "16/9"
   },
   {
     "id": "c63f318d-221b-4809-8775-387999af8b9f",
@@ -2546,7 +2670,8 @@
       "animal-droppings",
       "gravel"
     ],
-    "thumb": "thumbs/c63f318d-221b-4809-8775-387999af8b9f.webp"
+    "thumb": "thumbs/c63f318d-221b-4809-8775-387999af8b9f.webp",
+    "aspect": "16/9"
   },
   {
     "id": "ef8b46f2-484d-4255-90c9-c6ee7b933bc5",
@@ -2566,7 +2691,8 @@
       "lake",
       "lupine"
     ],
-    "thumb": "thumbs/ef8b46f2-484d-4255-90c9-c6ee7b933bc5.webp"
+    "thumb": "thumbs/ef8b46f2-484d-4255-90c9-c6ee7b933bc5.webp",
+    "aspect": "9/16"
   },
   {
     "id": "2314844f-c465-48f6-8626-f67ce92ff094",
@@ -2587,7 +2713,8 @@
       "fjord",
       "winter"
     ],
-    "thumb": "thumbs/2314844f-c465-48f6-8626-f67ce92ff094.webp"
+    "thumb": "thumbs/2314844f-c465-48f6-8626-f67ce92ff094.webp",
+    "aspect": "16/9"
   },
   {
     "id": "669e4ae5-2076-4278-9c09-691f0e77b215",
@@ -2607,7 +2734,8 @@
       "rocks",
       "sea"
     ],
-    "thumb": "thumbs/669e4ae5-2076-4278-9c09-691f0e77b215.webp"
+    "thumb": "thumbs/669e4ae5-2076-4278-9c09-691f0e77b215.webp",
+    "aspect": "16/9"
   },
   {
     "id": "367c3f75-bf96-4bc2-81f0-2961de3d612b",
@@ -2628,7 +2756,8 @@
       "calm water",
       "coastal cliff"
     ],
-    "thumb": "thumbs/367c3f75-bf96-4bc2-81f0-2961de3d612b.webp"
+    "thumb": "thumbs/367c3f75-bf96-4bc2-81f0-2961de3d612b.webp",
+    "aspect": "16/9"
   },
   {
     "id": "93cde025-fda1-4c59-8a28-8335759f0f91",
@@ -2649,7 +2778,8 @@
       "fog",
       "bird"
     ],
-    "thumb": "thumbs/93cde025-fda1-4c59-8a28-8335759f0f91.webp"
+    "thumb": "thumbs/93cde025-fda1-4c59-8a28-8335759f0f91.webp",
+    "aspect": "16/9"
   },
   {
     "id": "77e92180-5e93-4744-9070-590ab07d47d0",
@@ -2669,7 +2799,8 @@
       "evergreen",
       "water"
     ],
-    "thumb": "thumbs/77e92180-5e93-4744-9070-590ab07d47d0.webp"
+    "thumb": "thumbs/77e92180-5e93-4744-9070-590ab07d47d0.webp",
+    "aspect": "16/9"
   },
   {
     "id": "18d2be72-0232-4c93-9450-70423f05b1a0",
@@ -2690,7 +2821,8 @@
       "overcast",
       "water"
     ],
-    "thumb": "thumbs/18d2be72-0232-4c93-9450-70423f05b1a0.webp"
+    "thumb": "thumbs/18d2be72-0232-4c93-9450-70423f05b1a0.webp",
+    "aspect": "16/9"
   },
   {
     "id": "acefdad4-3a29-4c7c-a1fb-0d839866c6f2",
@@ -2711,7 +2843,8 @@
       "mountains",
       "overcast"
     ],
-    "thumb": "thumbs/acefdad4-3a29-4c7c-a1fb-0d839866c6f2.webp"
+    "thumb": "thumbs/acefdad4-3a29-4c7c-a1fb-0d839866c6f2.webp",
+    "aspect": "16/9"
   },
   {
     "id": "e04f48a8-2610-49a8-8bac-fd2eb8295361",
@@ -2731,7 +2864,8 @@
       "clouds",
       "moody"
     ],
-    "thumb": "thumbs/e04f48a8-2610-49a8-8bac-fd2eb8295361.webp"
+    "thumb": "thumbs/e04f48a8-2610-49a8-8bac-fd2eb8295361.webp",
+    "aspect": "16/9"
   },
   {
     "id": "bc118291-29ec-4326-b5fe-8991856d3300",
@@ -2751,7 +2885,8 @@
       "woodland",
       "sunlight"
     ],
-    "thumb": "thumbs/bc118291-29ec-4326-b5fe-8991856d3300.webp"
+    "thumb": "thumbs/bc118291-29ec-4326-b5fe-8991856d3300.webp",
+    "aspect": "16/9"
   },
   {
     "id": "a0e94a5c-9bdd-43f5-a0b2-09fe6bead332",
@@ -2771,6 +2906,7 @@
       "lichen",
       "undergrowth"
     ],
-    "thumb": "thumbs/a0e94a5c-9bdd-43f5-a0b2-09fe6bead332.webp"
+    "thumb": "thumbs/a0e94a5c-9bdd-43f5-a0b2-09fe6bead332.webp",
+    "aspect": "16/9"
   }
 ]
