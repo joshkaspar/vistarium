@@ -18,6 +18,7 @@ Issues = "https://github.com/joshkaspar/vistarium/issues"
 
 [project.scripts]
 vistarium = "vistarium:main"
+vistarium-build-site = "vistarium.build_site:main"
 
 [build-system]
 requires = ["uv_build>=0.12.1,<0.13.0"]

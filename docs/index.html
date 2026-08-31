@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vistarium</title>
+<meta name="description" content="Open-access landscape photography, filtered by location, time of day, and subject." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <h1>Vistarium</h1>
+  <p class="tagline">Open-access landscape photography, filtered by location, time of day, and subject.</p>
+  <p class="source-note">
+    Public domain photographs from the <a href="https://www.nps.gov/">National Park Service</a>.
+    See <a href="https://github.com/joshkaspar/vistarium">the source</a> and
+    <a href="https://github.com/joshkaspar/vistarium/blob/master/TERMS_OF_USE.md">terms of use</a>.
+  </p>
+</header>
+
+<div id="filters">
+  <label>
+    Park
+    <select id="filter-park"><option value="">All parks</option></select>
+  </label>
+  <label>
+    Time of day
+    <select id="filter-time">
+      <option value="">Any time</option>
+      <option value="morning">Morning</option>
+      <option value="afternoon">Afternoon</option>
+      <option value="evening">Evening</option>
+      <option value="night">Night</option>
+    </select>
+  </label>
+  <label>
+    People
+    <select id="filter-people">
+      <option value="">Any</option>
+      <option value="none">None</option>
+      <option value="background">Background</option>
+      <option value="midground">Midground</option>
+      <option value="foreground_focal">Foreground / focal</option>
+    </select>
+  </label>
+  <label>
+    Tag
+    <input id="filter-tag" type="text" placeholder="e.g. sunset, glacier" />
+  </label>
+  <span id="result-count"></span>
+</div>
+
+<main id="gallery"></main>
+
+<div id="lightbox" class="hidden">
+  <div id="lightbox-content">
+    <button id="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+    <div id="lightbox-info"></div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    Metadata is <a href="https://github.com/joshkaspar/vistarium/blob/master/LICENSE-DATA">CC0</a>.
+    Images are public domain per the source institution -- see each photo's license note and the
+    <a href="https://github.com/joshkaspar/vistarium/blob/master/TERMS_OF_USE.md">full rights statement</a>
+    before reuse.
+  </p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -142,6 +142,16 @@ Writes `data/catalog.json` (schema-valid photograph records) and
 `data/excluded_non_photo.json` (images the model flagged as not
 photographs -- kept for audit, not shown on the site).
 
+Build the static site from an existing catalog:
+
+```bash
+uv run vistarium-build-site
+```
+
+Writes `docs/data.json` and `docs/thumbs/*.webp` from
+`data/catalog.json`, filtered to `primary_subject: landscape`. `docs/`
+is what GitHub Pages serves.
+
 ## Project layout
 
 - `schema.json` -- versioned source of truth for the catalog record shape. Changes here are decision commits (see `AGENT_DECISION_POLICY.md`).
@@ -152,6 +162,8 @@ photographs -- kept for audit, not shown on the site).
 - `src/vistarium/model_client.py` -- the one call site for the local judgment model, grammar-constrained.
 - `src/vistarium/schema_validate.py` -- validates records against `schema.json`.
 - `src/vistarium/pipeline.py` -- orchestrates the above; CLI entry point.
+- `src/vistarium/build_site.py` -- renders `docs/` (WebP thumbnails + `data.json`) from `data/catalog.json`, filtered to `primary_subject: landscape`.
+- `docs/` -- the static site itself (GitHub Pages, vanilla HTML/CSS/JS, no build step).
 - `tests/` -- real coverage for every deterministic component above.
 - `TERMS_OF_USE.md` -- the full rights statement (see "License & Rights" above).
 - `LICENSE` / `LICENSE-DATA` -- MIT (code) and CC0 (Vistarium's own metadata), respectively.
@@ -165,7 +177,8 @@ single-park run (Kenai Fjords), both fully image-by-image reviewed, not
 just schema-checked. Three real bugs in the deterministic evidence
 pipeline were found and fixed this way -- see `DECISIONS.md` for the
 full narrative of each. Current dataset: 246 records across 6 parks.
-Next: the static site build and additional sources -- see `ROADMAP.md`.
+Static site built from that dataset (`docs/`, GitHub Pages, 136
+landscape records). Next: additional sources -- see `ROADMAP.md`.
 
 ## Project background
 

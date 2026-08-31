@@ -1,7 +1,7 @@
 """Validate catalog records against the checked-in schema.json.
 
-schema.json is the versioned source of truth (see project-kickoff.md);
-changes to it are decision commits, never silent.
+schema.json is the versioned source of truth; changes to it are decision
+commits, never silent (see AGENT_DECISION_POLICY.md).
 """
 
 from __future__ import annotations

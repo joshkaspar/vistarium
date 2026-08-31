@@ -27,11 +27,15 @@ decided.
   night). Worth a future pass where a large EXIF/model disagreement gets
   routed to `flagged_for_review`-style manual attention, the same way
   license ambiguity already is, rather than trusting EXIF unconditionally.
-- GitHub repo hosting split: WebP thumbnail generation from
-  `thumbnail_crop_16x9` isn't built yet -- `pipeline.py` computes the
-  crop box but doesn't render/save the actual thumbnail file.
-- Static site (build order step 5): filterable by park, time of day,
-  primary subject, people prominence, tags. Not started.
+- ~~GitHub repo hosting split: WebP thumbnail generation~~ -- **done
+  2026-08-31**: `build_site.py` renders `docs/thumbs/*.webp` from
+  `thumbnail_crop_16x9` at build time (not stored as a pipeline output).
+- ~~Static site (build order step 5)~~ -- **done 2026-08-31**: vanilla
+  HTML/CSS/JS gallery in `docs/`, filterable by park, time of day, and
+  people prominence, plus free-text tag search. `primary_subject` isn't
+  a site filter since only `landscape` is published at all (see
+  site-inclusion policy, `DECISIONS.md`). Lightbox links out to
+  `source_url` for full resolution -- no full-size images in the repo.
 
 ## Later sources (build order step 6)
 
