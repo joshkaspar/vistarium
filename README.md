@@ -10,6 +10,63 @@ Congress, Smithsonian, Met, Art Institute of Chicago, NYPL) come later,
 once the NPS pipeline is proven. See `project-kickoff.md` for the full
 original spec and `ROADMAP.md` for what's not built yet.
 
+Photography only -- public domain paintings/illustrations are for other
+projects, not this one; see `schema.json`'s `is_photograph` gate.
+
+## Data
+
+Every catalog record has two parts, populated separately and never
+mixed together -- see `DECISIONS.md`, 2026-08-29, for why.
+
+**Catalog metadata** -- pulled directly from the source API, unedited:
+
+```json
+{
+  "id": "string",
+  "source": "nps",
+  "source_url": "string",
+  "image_url": "string",
+  "title": "string",
+  "photographer": "string | null",
+  "date": "string | null",
+  "park": "string",
+  "license": "string"
+}
+```
+
+**Model judgment** -- the only fields sent to/returned by the local
+vision model, grammar-constrained, one image at a time:
+
+```json
+{
+  "is_photograph": true,
+  "time_of_day": "morning | afternoon | evening | night",
+  "time_of_day_evidence": "caption | exif_timestamp | visual_inference",
+  "license_confidence": "confirmed | flagged_for_review",
+  "license_evidence": "string",
+  "primary_subject": "landscape | wildlife | structure | vehicle | human_activity | document",
+  "people_present": true,
+  "people_prominence": "none | background | midground | foreground_focal",
+  "crop_anchor": "center | top | bottom | left | right",
+  "frame_type": "full_bleed | matted | multi_panel | stereograph",
+  "tags": ["string"]
+}
+```
+
+Plus `thumbnail_crop_16x9` -- a pixel crop box, but computed
+deterministically by Claude Code from `crop_anchor` and the image's real
+dimensions, never produced by the model itself (see "Why crop_anchor,
+not a crop box" below).
+
+`people_prominence` is a filter axis for the site, not a reject gate --
+images with people are included and filterable, never silently dropped
+for that reason alone (though the current site build filters to
+`primary_subject: landscape` only for a separate reason -- see
+`DECISIONS.md`, 2026-08-30, "site-inclusion policy").
+
+Full schema definition (with the reasoning behind every field) lives in
+[`schema.json`](./schema.json).
+
 ## Why the mechanical/model split
 
 Every step that can be deterministic is: API pagination, download,
@@ -51,10 +108,20 @@ are linked to their original source URL.
 
 ## License & Rights
 
-Images on Vistarium are sourced from open-access government and museum
-archives (currently the National Park Service). Each image's recorded
-license reflects what the source institution states, and is not
-independently verified or guaranteed by this project.
+Three different things are licensed three different ways here -- don't
+assume one license covers all of it:
+
+- **This repo's code** (`src/vistarium/`, tests, tooling) is
+  [MIT-licensed](./LICENSE) -- yours to reuse freely.
+- **Vistarium's own metadata** (`schema.json` and the classification
+  fields it defines -- `time_of_day`, `primary_subject`, `tags`, and the
+  rest) is [CC0](./LICENSE-DATA) -- public domain, no attribution
+  required.
+- **The images themselves are not covered by either license.** Each
+  image's rights status is recorded per-item in its own metadata
+  (`license`, `license_confidence`, `license_evidence`), reflecting what
+  the source institution states -- not independently verified or
+  guaranteed by this project.
 
 Copyright-free status does not necessarily resolve every right that may
 apply -- notably, a depicted person's right of privacy or publicity is
@@ -68,8 +135,8 @@ the Library of Congress, Smithsonian Open Access, Flickr Commons, and
 Wikimedia Commons all take for exactly this situation (a disclaimer and
 reuser responsibility, not per-image model releases), and it's why
 `license_confidence`/`license_evidence` exist as separate fields from
-the base `license` string in the first place -- see `schema.json` and
-`DECISIONS.md`, 2026-08-30.
+the base `license` string in the first place -- see `DECISIONS.md`,
+2026-08-30.
 
 See [TERMS_OF_USE.md](./TERMS_OF_USE.md) for the full rights statement.
 
@@ -108,6 +175,9 @@ photographs -- kept for audit, not shown on the site).
 - `src/vistarium/schema_validate.py` -- validates records against `schema.json`.
 - `src/vistarium/pipeline.py` -- orchestrates the above; CLI entry point.
 - `tests/` -- real coverage for every deterministic component above.
+- `TERMS_OF_USE.md` -- the full rights statement (see "License & Rights" above).
+- `LICENSE` / `LICENSE-DATA` -- MIT (code) and CC0 (Vistarium's own metadata), respectively.
+- `DECISIONS.md` / `ROADMAP.md` / `AGENT_DECISION_POLICY.md` -- decision log, future work, and the commit discipline behind both.
 
 ## Status
 

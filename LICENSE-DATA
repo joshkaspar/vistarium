@@ -1,0 +1,27 @@
+Vistarium's own metadata -- schema.json and the classification fields it
+defines (time_of_day, primary_subject, tags, and the rest of the model-
+judgment and deterministic fields Claude Code and the local model add on
+top of each source's catalog record) -- is dedicated to the public domain
+under CC0 1.0 Universal.
+
+To the extent possible under law, the author(s) of Vistarium have waived
+all copyright and related or neighboring rights to this metadata. You can
+copy, modify, distribute, and use it, even for commercial purposes, all
+without asking permission.
+
+Full legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+This dedication applies only to Vistarium's own structured metadata. It
+does NOT apply to:
+
+- the images themselves, whose rights status is recorded per-item in
+  their own metadata and is not something this project holds or can
+  grant (see TERMS_OF_USE.md); or
+- catalog fields pulled unedited from a source institution's own API
+  (title, photographer, date, park, license, source_url, image_url --
+  see README.md's "Data" section for the deterministic/model split),
+  which are facts about the source record, not this project's own
+  creative contribution.
+
+Vistarium's code is separately licensed under the MIT License -- see
+LICENSE.
