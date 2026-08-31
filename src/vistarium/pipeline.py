@@ -193,7 +193,18 @@ def run(
             _write_checkpoint_line(checkpoint_path, {"id": candidate.id, "outcome": "duplicate"})
             continue
 
-        record = build_record(candidate, image_path)
+        try:
+            record = build_record(candidate, image_path)
+        except Exception as e:
+            # Broader than ModelJudgmentError on purpose -- e.g. a source
+            # file large enough to trip PIL's decompression-bomb guard.
+            # One bad image shouldn't abort every remaining candidate in
+            # the run; see DECISIONS.md, 2026-08-31.
+            log.warning("  unexpected error building record for %s: %s", candidate.id, e)
+            _write_checkpoint_line(
+                checkpoint_path, {"id": candidate.id, "outcome": "processing_error"}
+            )
+            continue
         if record is None:
             _write_checkpoint_line(
                 checkpoint_path, {"id": candidate.id, "outcome": "no_model_json"}

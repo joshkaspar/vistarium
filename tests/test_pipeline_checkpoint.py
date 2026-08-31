@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from unittest.mock import patch
 
@@ -7,6 +8,7 @@ from vistarium.pipeline import (
     _load_checkpoint,
     _search_with_cache,
     _write_checkpoint_line,
+    run,
 )
 
 
@@ -99,3 +101,32 @@ def test_filter_by_park_none_returns_all():
 def test_filter_by_park_no_match_returns_empty():
     candidates = [NPSCandidate(id="1", park="Zion National Park")]
     assert _filter_by_park(candidates, "Denali") == []
+
+
+def test_run_survives_unexpected_error_building_one_record(tmp_path: Path):
+    # A source file large/malformed enough to trip PIL's decompression-bomb
+    # guard (or any other unexpected error) should be skipped, not abort
+    # every remaining candidate in the run -- see DECISIONS.md, 2026-08-31.
+    workdir = tmp_path / "data"
+    candidate = NPSCandidate(id="bad-1", park="Zion National Park")
+    fake_image = tmp_path / "bad-1.jpg"
+    fake_image.write_bytes(b"not a real image")
+
+    with (
+        patch("vistarium.pipeline._search_with_cache", return_value=[candidate]),
+        patch("vistarium.pipeline.nps_client.download_image", return_value=fake_image),
+        patch("vistarium.pipeline.Deduplicator.is_duplicate", return_value=None),
+        patch("vistarium.pipeline.build_record", side_effect=RuntimeError("boom")),
+    ):
+        run(
+            limit=10,
+            workdir=workdir,
+            out_path=workdir / "catalog.json",
+            excluded_out_path=workdir / "excluded_non_photo.json",
+            terms=None,
+        )
+
+    checkpoint_lines = (workdir / "checkpoint.jsonl").read_text().splitlines()
+    entries = [json.loads(line) for line in checkpoint_lines]
+    assert entries == [{"id": "bad-1", "outcome": "processing_error"}]
+    assert json.loads((workdir / "catalog.json").read_text()) == []

@@ -343,3 +343,32 @@ landscape set (these two were caught by a partial spot-check, not a
 full review) -- worth a full re-classification pass under the updated
 prompt if Josh wants that assurance before trusting the rest of the
 dataset.
+
+## 2026-08-31 -- 8-park scale-up: unhandled decompression-bomb crash abandons the rest of a run
+[agent-drafted, Josh-approved]
+
+Context: scaling from single-park (Kenai Fjords) to an 8-park batch
+(Yosemite, Grand Canyon, Yellowstone, Glacier, Zion, Grand Teton,
+Acadia, Olympic), searched per-park via `"<park> landscape"`/`"<park>
+scenic"` terms rather than the generic scenic-keyword pool -- a plain
+park-name text search (tried first) returns mostly non-photo
+administrative/planning documents (maps, scenic-analysis reports),
+`"<park> landscape"`/`"<park> scenic"` returns a much higher photo
+fraction. Mid-run, `judge_image()` raised an uncaught
+`PIL.Image.DecompressionBombError` on an oversized source file (a
+195-megapixel scenic-analysis map graphic, itself one of the
+non-photo documents this search still occasionally surfaces). Because
+`run()`'s loop only wrapped `build_record()`'s known
+`ModelJudgmentError`, this uncaught exception crashed the entire `uv
+run vistarium` process -- abandoning every remaining candidate for
+that park's run, not just the one bad image.
+
+Decision: wrap the `build_record()` call in `run()`'s loop in a broad `except Exception`, writing a `processing_error` checkpoint outcome and continuing to the next candidate, same resilience pattern already used for download failures and schema-validation failures
+Alternatives-considered: catch `DecompressionBombError` specifically; raise PIL's decompression-bomb limit instead of catching around it; validate image dimensions before calling the model
+Rationale: the specific exception type isn't the point -- any unexpected per-image failure (this one, or a future truncated file, corrupt EXIF block, or transient model-call error not already covered) should skip that one candidate, not silently abandon the rest of a multi-hundred-candidate run with no checkpoint trace of what was never attempted
+Outcome: resolved -- regression test added (`test_run_survives_unexpected_error_building_one_record`)
+
+Practical note: nothing was lost by the earlier crash -- `checkpoint.jsonl`
+only marks a candidate processed after it succeeds or fails cleanly, so
+the abandoned candidates simply weren't marked as done and were picked
+up again once the run resumed with the fix in place.
