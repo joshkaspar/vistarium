@@ -3,7 +3,7 @@ name = "vistarium"
 version = "0.1.0"
 description = "Public domain / open-access landscape photograph curator (NPS first, more sources later)"
 authors = [
-    { name = "joshkaspar", email = "joshuakaspar@gmail.com" }
+    { name = "joshkaspar" }
 ]
 requires-python = ">=3.12"
 dependencies = [
@@ -12,6 +12,9 @@ dependencies = [
     "python-dotenv>=1.2.3",
     "requests>=2.34.2",
 ]
+
+[project.urls]
+Issues = "https://github.com/joshkaspar/vistarium/issues"
 
 [project.scripts]
 vistarium = "vistarium:main"
