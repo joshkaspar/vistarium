@@ -37,20 +37,14 @@ decided.
   site-inclusion policy, `DECISIONS.md`). Lightbox links out to
   `source_url` for full resolution -- no full-size images in the repo.
 
-- **Dominant/overall color filter.** Separate from `color_mode`
-  (color vs. monochrome) -- some users will want to filter by the
-  actual dominant hue of a landscape photo (blue, green, white/snow,
-  etc.), e.g. for matching a wallpaper to a desktop theme. Undecided
-  whether this is deterministic (a k-means/histogram dominant-color
-  bucket over the pixels) or a model field. Worth noting from the
-  `color_mode` experience (2026-08-31, `DECISIONS.md`): that field
-  failed as pixel statistics because it required a semantic judgment
-  ("is this a B&W photographic *process*"), which pixels alone can't
-  answer -- a dominant-hue bucket is a different, more literal
-  question (what color are most of the pixels), which is exactly what
-  histogram/k-means color-quantization is good at. Likely a better fit
-  for deterministic than `color_mode` was, but prototype and check
-  against real examples before committing, same lesson as always.
+- ~~Dominant/overall color filter~~ -- **added to the model 2026-09-01**
+  (see `DECISIONS.md`): `dominant_color`, same field-ownership reasoning
+  as `color_mode` after all -- a quick pixel-histogram prototype failed
+  on a real image (a red-rock canyon with a big blue sky scored "cyan,"
+  the sky's uniform pixels outvoting the darker but visually-dominant
+  canyon), confirming this needed perceptual/compositional judgment,
+  not literal pixel-counting. Not yet required in `schema.json` --
+  needs a corpus backfill first, see the same `DECISIONS.md` entry.
 - ~~NPS's own curated per-park photo galleries, not just keyword
   search~~ -- **superseded 2026-09-01**: the underlying gap (Acadia's
   results feeling thin) is fixed more foundationally by

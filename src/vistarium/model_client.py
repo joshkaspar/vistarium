@@ -41,7 +41,7 @@ REQUEST_TIMEOUT_S = 180
 MAX_RETRIES = 2
 
 JSON_GRAMMAR = r"""
-root ::= "{" ws "\"is_photograph\"" ws ":" ws boolean ws "," ws "\"time_of_day\"" ws ":" ws tod ws "," ws "\"time_of_day_evidence\"" ws ":" ws todevidence ws "," ws "\"license_confidence\"" ws ":" ws licenseconfidence ws "," ws "\"license_evidence\"" ws ":" ws string ws "," ws "\"primary_subject\"" ws ":" ws primarysubject ws "," ws "\"people_present\"" ws ":" ws boolean ws "," ws "\"people_prominence\"" ws ":" ws peopleprominence ws "," ws "\"crop_anchor\"" ws ":" ws cropanchor ws "," ws "\"frame_type\"" ws ":" ws frametype ws "," ws "\"color_mode\"" ws ":" ws colormode ws "," ws "\"tags\"" ws ":" ws tags ws "}"
+root ::= "{" ws "\"is_photograph\"" ws ":" ws boolean ws "," ws "\"time_of_day\"" ws ":" ws tod ws "," ws "\"time_of_day_evidence\"" ws ":" ws todevidence ws "," ws "\"license_confidence\"" ws ":" ws licenseconfidence ws "," ws "\"license_evidence\"" ws ":" ws string ws "," ws "\"primary_subject\"" ws ":" ws primarysubject ws "," ws "\"people_present\"" ws ":" ws boolean ws "," ws "\"people_prominence\"" ws ":" ws peopleprominence ws "," ws "\"crop_anchor\"" ws ":" ws cropanchor ws "," ws "\"frame_type\"" ws ":" ws frametype ws "," ws "\"color_mode\"" ws ":" ws colormode ws "," ws "\"dominant_color\"" ws ":" ws dominantcolor ws "," ws "\"tags\"" ws ":" ws tags ws "}"
 tod ::= "\"morning\"" | "\"afternoon\"" | "\"evening\"" | "\"night\""
 todevidence ::= "\"caption\"" | "\"exif_timestamp\"" | "\"visual_inference\""
 licenseconfidence ::= "\"confirmed\"" | "\"flagged_for_review\""
@@ -50,6 +50,7 @@ peopleprominence ::= "\"none\"" | "\"background\"" | "\"midground\"" | "\"foregr
 cropanchor ::= "\"center\"" | "\"top\"" | "\"bottom\"" | "\"left\"" | "\"right\""
 frametype ::= "\"full_bleed\"" | "\"matted\"" | "\"multi_panel\"" | "\"stereograph\""
 colormode ::= "\"color\"" | "\"monochrome\""
+dominantcolor ::= "\"red\"" | "\"orange\"" | "\"yellow\"" | "\"green\"" | "\"blue\"" | "\"purple\"" | "\"white\"" | "\"gray\"" | "\"black\""
 boolean ::= "true" | "false"
 string ::= "\"" ([^"\\])* "\""
 tags ::= "[" ws "]" | "[" ws string (ws "," ws string)* ws "]"
@@ -69,6 +70,7 @@ PROMPT = """Look at this photograph and produce a JSON object with exactly these
 - crop_anchor: center | top | bottom | left | right -- which direction the main subject/point of interest is weighted toward, for downstream cropping to arbitrary aspect ratios
 - frame_type: full_bleed | matted | multi_panel | stereograph -- is this a plain photo filling the frame, a scan with visible mat/border/mount around it, multiple images in one file, or a stereograph card?
 - color_mode: color | monochrome -- "monochrome" for black-and-white/grayscale/sepia-toned images (including a color scan of a black-and-white print or negative), "color" for anything with real color information, even if muted, desaturated, or shot in flat/overcast light. Judge this the way a person looking at the image would, not by how saturated it looks -- a dim, grey, foggy color photo is still "color".
+- dominant_color: red | orange | yellow | green | blue | purple | white | gray | black -- the single color a person would say this photo is dominated by, judged by visual impression and subject, NOT by literally counting pixels. A red-rock canyon photographed with a large blue sky above it is "orange" or "red" (the canyon is the subject), not "blue" just because the sky covers more area. Use "white" for snow/fog/bright overcast scenes, "gray" for flat overcast/muted scenes with no clear hue, "black" for night scenes. For monochrome photos, judge the toning (e.g. "gray" for neutral B&W, "orange" for a strongly sepia-toned print).
 - tags: a short JSON array of 3-6 lowercase single/double-word visual descriptors (subject matter, notable features)
 
 Respond with ONLY the JSON object, no other text."""

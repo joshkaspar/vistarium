@@ -103,6 +103,26 @@ def test_bad_aesthetic_method_rejected():
     assert not is_valid(record)
 
 
+def test_missing_dominant_color_still_valid():
+    # Deliberately optional for now -- added to model_client.py's grammar
+    # mid-scrape, so older/in-flight records won't have it yet. Will be
+    # promoted to required once the corpus is backfilled. See DECISIONS.md.
+    assert "dominant_color" not in VALID_RECORD
+    assert is_valid(VALID_RECORD)
+
+
+def test_dominant_color_accepted():
+    record = copy.deepcopy(VALID_RECORD)
+    record["dominant_color"] = "red"
+    assert is_valid(record)
+
+
+def test_bad_dominant_color_rejected():
+    record = copy.deepcopy(VALID_RECORD)
+    record["dominant_color"] = "cyan"
+    assert not is_valid(record)
+
+
 def test_corner_anchor_rejected_by_schema():
     # The 9-way corner scheme was tested and rejected -- schema.json should
     # still only accept the 5-way set even if a caller tries to sneak one in.

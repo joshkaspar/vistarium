@@ -99,6 +99,12 @@
       "description": "model -- site-filtering metadata, not an accept/reject gate. Added 2026-08-31 (see DECISIONS.md) after archival black-and-white scans (common among matted/scanned frame_type records) turned up in the 8-park scale-up with no way to filter for them. Deliberately a model judgment call, not computed from pixel statistics: two different deterministic heuristics (mean HSV saturation, then hue-diversity above a saturation floor) were tried and rejected after both misclassified a meaningful fraction of genuinely-color-but-heavily-desaturated photos (overcast/foggy Alaska coastal scenes, black sand beaches) as monochrome, and vice versa -- the two categories are not cleanly separable by pixel math on this dataset."
     },
 
+    "dominant_color": {
+      "type": "string",
+      "enum": ["red", "orange", "yellow", "green", "blue", "purple", "white", "gray", "black"],
+      "description": "model -- site-filtering metadata, not an accept/reject gate. Added 2026-09-01 (see DECISIONS.md), same reasoning as color_mode: a pixel-majority dominant-hue computation was tried and rejected after a red-rock canyon photo with a large blue sky above it came back 'cyan' -- the sky's uniform, saturated pixels outvoted the darker (but visually dominant/subject) canyon rock on pure pixel count. The model judges perceptual/compositional dominant color the way a person would, not by literally counting pixels. Deliberately NOT required yet: added to model_client.py's grammar mid-scrape (a batch was already in flight using the prior grammar, already loaded in that process's memory) -- will be promoted to required once the full corpus is backfilled."
+    },
+
     "aesthetic_score": {
       "type": "number",
       "description": "aesthetic-model -- raw output of the LAION aesthetics predictor v2 (src/vistarium/aesthetic_score.py), a CLIP-based regression model trained on human aesthetic ratings. Not on a fixed 0-10 scale in practice; meaningful only as a relative ranking within the current corpus, not as an absolute unit. Added 2026-09-01 (see DECISIONS.md) to power a 'sort by aesthetic rating' site feature as more, less-curated sources get added. Deliberately not required: populated by a separate post-process stage (vistarium-score-aesthetics), not the main pipeline run, so a freshly-scraped record may not have it yet -- see aesthetic_method."

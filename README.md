@@ -48,6 +48,7 @@ vision model, grammar-constrained, one image at a time:
   "crop_anchor": "center | top | bottom | left | right",
   "frame_type": "full_bleed | matted | multi_panel | stereograph",
   "color_mode": "color | monochrome",
+  "dominant_color": "red | orange | yellow | green | blue | purple | white | gray | black",
   "tags": ["string"]
 }
 ```

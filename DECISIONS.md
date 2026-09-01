@@ -560,3 +560,32 @@ A medium-confidence second tier was also identified but not yet run:
 the 8 "Carriage Roads - [Loop]" albums and 3 "Hike ___" trail-photo
 albums (~200 more images) -- no "Access:" caveat and plausibly scenic,
 but less certain than the top tier from description alone.
+
+## 2026-09-01 -- dominant_color added mid-scrape; same lesson as color_mode, this time built ASAP on purpose
+[agent-drafted, Josh-approved]
+
+Context: ROADMAP had flagged a "dominant/overall color" filter (blue,
+green, white, etc. -- distinct from color_mode) as maybe-deterministic,
+maybe-model, unresolved. Josh, mid-Acadia-album-scrape, asked the right
+question before more corpus got added: if this ends up needing the
+model, it should go into the grammar *now*, not after -- every image
+scraped before the field exists is one more image that needs a
+backfill later. Same principle as the color_mode lesson from the day
+before, applied proactively this time instead of discovered by
+shipping the wrong version first.
+
+Tested deterministic first, fast: a pixel-majority dominant-hue bucket
+(HSV histogram over saturation/value-filtered pixels, achromatic
+fallback for white/gray/black). Failed immediately on a real image --
+a red-rock Grand Canyon photo with a large blue sky above it scored
+"cyan," because the sky's uniform saturated pixels outvoted the darker
+(shadowed, but visually dominant/subject) canyon rock on pure pixel
+count. Same root cause as color_mode's rejected heuristics: pixel-area
+dominance isn't the same question as perceptual/compositional dominant
+color, which is what "what color is this photo" actually means to a
+person.
+
+Decision: add dominant_color (red | orange | yellow | green | blue | purple | white | gray | black) to model_client.py's grammar/prompt as a model field, NOT deterministic
+Alternatives-considered: keep tuning the pixel-histogram heuristic (weight by inverse distance from center, subject-detection first); defer the decision until after the current scrape batch finished
+Rationale: same as color_mode -- this needs perceptual/compositional judgment a VLM handles natively, not a pixel-counting proxy for it; deferring would have let the in-flight ~450-image Acadia batch (and any further scraping) accumulate without the field, growing the eventual backfill
+Outcome: resolved -- added to the grammar immediately, smoke-tested against 4 real images including the failing Grand Canyon case (now correctly "red") and the color_mode edge cases (black sand beach -> "gray", archival B&W -> "gray", a blue-dominant sunset/water shot -> "blue", all checked against the actual images). Deliberately NOT added to schema.json's required list yet: the Acadia album scrape was already running when this landed, using model_client.py's prior grammar already loaded in that process's memory -- marking it required would have made every remaining candidate in that live run fail schema validation. Will promote to required once a backfill pass covers the whole corpus, including whatever this in-flight batch adds without it.
