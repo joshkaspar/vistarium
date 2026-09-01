@@ -56,6 +56,34 @@ def test_ambiguous_caption_with_no_exif_falls_back_to_model():
     assert (tod, evidence) == ("afternoon", "visual_inference")
 
 
+def test_regression_matted_scan_exif_is_not_trusted():
+    # Real bug found 2026-08-31 scraping Yosemite: a 1937 archival negative
+    # (frame_type="matted", visible mat/border/burned-in caption) had EXIF
+    # DateTimeOriginal "2017:06:30 01:10:03" -- the *scan* timestamp, not
+    # the capture time -- bucketing an obviously bright daytime photo to
+    # "night". EXIF must be skipped entirely for non-full_bleed frame
+    # types, falling through to the model's visual read instead.
+    tod, evidence = resolve_time_of_day(
+        caption_text="Miguel Meadows",
+        exif_hour=1,  # would bucket to "night" if trusted
+        model_time_of_day="afternoon",
+        frame_type="matted",
+    )
+    assert (tod, evidence) == ("afternoon", "visual_inference")
+
+
+def test_full_bleed_still_trusts_exif():
+    # Default frame_type ("full_bleed") preserves the original behavior --
+    # a native digital photo's EXIF is trustworthy.
+    tod, evidence = resolve_time_of_day(
+        caption_text="A view of the canyon",
+        exif_hour=8,
+        model_time_of_day="afternoon",
+        frame_type="full_bleed",
+    )
+    assert (tod, evidence) == ("morning", "exif_timestamp")
+
+
 def test_regression_model_self_reported_evidence_is_never_trusted():
     # Real bug found in the same checkpoint run: the model's grammar lets
     # it emit "caption" or "exif_timestamp" as its own time_of_day_evidence

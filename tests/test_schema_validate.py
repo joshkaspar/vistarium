@@ -27,6 +27,7 @@ VALID_RECORD = {
     "frame_type": "full_bleed",
     "tags": ["valley", "sunrise", "mountains"],
     "thumbnail_crop_16x9": {"x": 0, "y": 100, "w": 1600, "h": 900},
+    "color_mode": "color",
 }
 
 
@@ -66,6 +67,18 @@ def test_detail_primary_subject_accepted():
     record = copy.deepcopy(VALID_RECORD)
     record["primary_subject"] = "detail"
     assert is_valid(record)
+
+
+def test_monochrome_color_mode_accepted():
+    record = copy.deepcopy(VALID_RECORD)
+    record["color_mode"] = "monochrome"
+    assert is_valid(record)
+
+
+def test_missing_color_mode_rejected():
+    record = copy.deepcopy(VALID_RECORD)
+    del record["color_mode"]
+    assert not is_valid(record)
 
 
 def test_corner_anchor_rejected_by_schema():

@@ -8,6 +8,7 @@
   const parkSelect = document.getElementById("filter-park");
   const timeSelect = document.getElementById("filter-time");
   const peopleSelect = document.getElementById("filter-people");
+  const colorSelect = document.getElementById("filter-color");
   const tagInput = document.getElementById("filter-tag");
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
@@ -28,6 +29,7 @@
     if (parkSelect.value && record.park !== parkSelect.value) return false;
     if (timeSelect.value && record.time_of_day !== timeSelect.value) return false;
     if (peopleSelect.value && record.people_prominence !== peopleSelect.value) return false;
+    if (colorSelect.value && record.color_mode !== colorSelect.value) return false;
     const tagQuery = tagInput.value.trim().toLowerCase();
     if (tagQuery && !record.tags.some((t) => t.toLowerCase().includes(tagQuery))) return false;
     return true;
@@ -84,7 +86,9 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  [parkSelect, timeSelect, peopleSelect].forEach((el) => el.addEventListener("change", render));
+  [parkSelect, timeSelect, peopleSelect, colorSelect].forEach((el) =>
+    el.addEventListener("change", render)
+  );
   tagInput.addEventListener("input", render);
 
   fetch("data.json")

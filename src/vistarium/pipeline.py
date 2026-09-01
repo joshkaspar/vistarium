@@ -1,10 +1,10 @@
 """End-to-end NPS pipeline: search -> download -> dedup -> judge -> merge -> validate.
 
-Build order step 1 (project-kickoff.md): get the mechanical pipeline and
-the model judgment step working end-to-end against NPS only. Step 2 (a
-20-50 image validation checkpoint, hand-checked before scaling volume) is
-a deliberate separate action -- this script is what that checkpoint runs,
-not a replacement for the human review it requires.
+Gets the mechanical pipeline and the model judgment step working
+end-to-end against NPS only. A validation checkpoint (a small batch,
+hand-checked before scaling volume) is a deliberate separate action --
+this script is what that checkpoint runs, not a replacement for the
+human review it requires.
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ log = logging.getLogger("vistarium.pipeline")
 
 
 def resolve_time_of_day(
-    caption_text: str, exif_hour: int | None, model_time_of_day: str
+    caption_text: str, exif_hour: int | None, model_time_of_day: str, frame_type: str = "full_bleed"
 ) -> tuple[str, str]:
     """Deterministic time-of-day evidence takes priority over the model's
     visual_inference when available -- see exif_util.py. EXIF is checked
@@ -39,6 +39,15 @@ def resolve_time_of_day(
     an incorrect "morning" bucket; see DECISIONS.md). Returns
     (time_of_day, time_of_day_evidence).
 
+    `frame_type != "full_bleed"` (matted/multi_panel/stereograph) means
+    this is a scan of a physical print/negative, not a native digital
+    photo -- its EXIF DateTimeOriginal is when the print was *scanned*,
+    not when the photo was *taken*, and is not trustworthy as a capture
+    timestamp at all (found live 2026-08-31: a 1937 Yosemite negative's
+    scan EXIF read "01:10 AM," bucketing an obviously bright daytime
+    photo to "night"). EXIF is skipped entirely for these, falling
+    through to caption/visual_inference same as if no EXIF existed.
+
     Deliberately does not accept or trust the model's own self-reported
     time_of_day_evidence: the grammar's enum lets it emit "caption" or
     "exif_timestamp" even though it only ever receives pixels, and it did
@@ -46,7 +55,7 @@ def resolve_time_of_day(
     model, decides which evidence source was actually used -- when
     falling through to the model's guess, the evidence is unconditionally
     "visual_inference"."""
-    if exif_hour is not None:
+    if exif_hour is not None and frame_type == "full_bleed":
         return exif_util.hour_to_bucket(exif_hour), "exif_timestamp"
     caption_bucket = exif_util.caption_time_of_day(caption_text)
     if caption_bucket:
@@ -69,6 +78,7 @@ def build_record(candidate: nps_client.NPSCandidate, image_path: Path) -> dict |
         candidate.caption_text,
         exif_hour,
         model_fields["time_of_day"],
+        model_fields["frame_type"],
     )
 
     with Image.open(image_path) as img:

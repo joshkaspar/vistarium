@@ -372,3 +372,62 @@ Practical note: nothing was lost by the earlier crash -- `checkpoint.jsonl`
 only marks a candidate processed after it succeeds or fails cleanly, so
 the abandoned candidates simply weren't marked as done and were picked
 up again once the run resumed with the fix in place.
+
+## 2026-08-31 -- Scanned prints' EXIF is scan time, not capture time; matted/multi_panel/stereograph now skip EXIF entirely
+[agent-drafted, Josh-approved]
+
+Context: Josh, reviewing the fresh 8-park batch, was about to correct a
+run of Kenai Fjords photos tagged `night`, then stopped himself --
+Alaska's near-24-hour summer daylight means a real midnight timestamp
+can still look bright, so `night` isn't automatically wrong just
+because a photo looks light. Investigating anyway surfaced a different,
+concrete bug: 38 records (mostly Yosemite, frame_type `matted`/
+`multi_panel` -- archival scans with a visible mat/border/burned-in
+caption, e.g. a 1937 "Miguel Meadows, Yosemite N.P." negative) had
+`time_of_day_evidence: exif_timestamp` sourced from the file's EXIF
+`DateTimeOriginal` -- except that timestamp was `2017:06:30 01:10:03`,
+clearly when the print was *scanned* for digitization, not 1937 when it
+was taken. 1:10 AM bucketed a bright daytime photo to `night`. Unlike
+the earlier sentinel-date bug (`2000:01:01`, an obviously-fake default),
+this EXIF value is realistic-looking and passes every existing sentinel
+check -- there's no way to catch it from the timestamp alone.
+
+Decision: resolve_time_of_day() now takes frame_type and skips EXIF entirely (falling through to caption, then visual_inference) whenever frame_type != "full_bleed"
+Alternatives-considered: try to detect "scan-like" EXIF patterns (e.g. suspiciously round timestamps); trust EXIF but flag matted/multi_panel/stereograph records for manual review instead of overriding automatically
+Rationale: frame_type already tells us, for free, that this file is a scan of a physical print/negative -- for exactly that category, "when was this file's EXIF written" and "when was the photo taken" are different questions by construction, not just occasionally unreliable; no pattern-matching on the timestamp itself can fix that
+Outcome: resolved -- regression test added; 38 already-published records corrected directly (re-ran judge_image() for a fresh visual read on each, since the model's original visual guess was discarded, not stored, the first time) rather than guessed at. All 38 moved off `night` (28 -> afternoon, 2 -> evening via caption, remainder afternoon/evening) -- consistent with these being ordinary daytime archival photos, not an argument either way about the Alaska midnight-sun case that started the investigation.
+
+Separate note on the original question: the Alaska midnight-sun concern
+itself remains a real, *unfixed* open issue -- `hour_to_bucket()` still
+assumes standard mid-latitude day/night hours with no geographic/
+seasonal awareness, which is exactly the ROADMAP item "cross-check
+EXIF-derived time_of_day against the model's own visual guess" already
+flagged as not-yet-built. Investigating this session's report did
+surface one real bug (worth fixing), but did not resolve the underlying
+concern that prompted it.
+
+## 2026-08-31 -- color_mode added; two deterministic heuristics tried and rejected in favor of a model field
+[agent-drafted, Josh-approved]
+
+Context: reviewing the same archival scans, Josh flagged that the
+catalog has no way to filter black-and-white photos from color ones --
+"just a tag" undersold it; he wants it as real structured metadata for
+site sorting, not a free-text tag. First attempt was deterministic (this
+looked like a pure pixel-math fact, not a judgment call): mean HSV
+saturation over a downsampled image, calibrated against the known
+archival-scan batch (~6-22 for confirmed B&W, ~25+ for confirmed color).
+It immediately mis-tagged a real photo -- a black-sand Kenai Fjords
+beach in flat grey overcast light, genuinely color but so desaturated
+it scored *below* several confirmed black-and-white archival scans
+(mean 9.2 vs. 9.2-17.6). A second attempt (circular variance of hue
+among above-floor-saturation pixels, meant to distinguish a real color
+scene's diverse hues from a scanned print's uniform tint/grain noise)
+tested worse at scale -- roughly 15/40 false positives and 6/40 false
+negatives on a random sample, because scan artifacts and dim real-world
+color content both violate the assumption in different, unpredictable
+ways.
+
+Decision: make color_mode a model-judged field (added to model_client.py's grammar/prompt) rather than a deterministic computation
+Alternatives-considered: keep tuning the pixel-saturation threshold; combine both heuristics with a manual-review middle band; ship the first (mean-saturation) version anyway since it was "mostly right"
+Rationale: two independent, reasonable pixel-statistics approaches both failed on real data from this exact dataset (moody/overcast coastal Alaska light, archival scan noise) -- the categories aren't cleanly separable by pixel math here, and a vision-language model handles "is this black-and-white" natively and far more reliably than statistical proxies for it. This is the same reasoning that put time_of_day, license_confidence, and primary_subject on the model side of the split in the first place; color_mode was mis-scoped as deterministic at first, not a case for stretching a deterministic approach further
+Outcome: resolved -- color_mode is now the 11th model-judged field, single grammar/prompt addition (no separate API call). The 765 already-published records were backfilled via a full judge_image() call per local image, keeping only the new color_mode value and leaving every other already-reviewed field untouched.

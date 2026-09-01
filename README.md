@@ -47,6 +47,7 @@ vision model, grammar-constrained, one image at a time:
   "people_prominence": "none | background | midground | foreground_focal",
   "crop_anchor": "center | top | bottom | left | right",
   "frame_type": "full_bleed | matted | multi_panel | stereograph",
+  "color_mode": "color | monochrome",
   "tags": ["string"]
 }
 ```

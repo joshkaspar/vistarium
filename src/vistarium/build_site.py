@@ -73,6 +73,7 @@ def build_site(
                 "source_url": record["source_url"],
                 "time_of_day": record["time_of_day"],
                 "people_prominence": record["people_prominence"],
+                "color_mode": record["color_mode"],
                 "tags": record["tags"],
                 "thumb": f"{thumbs_dirname}/{thumb_name}",
                 "aspect": aspect,

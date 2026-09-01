@@ -9,7 +9,7 @@
     "license", "is_photograph", "time_of_day", "time_of_day_evidence",
     "license_confidence", "license_evidence", "primary_subject",
     "people_present", "people_prominence", "crop_anchor", "frame_type",
-    "tags", "thumbnail_crop_16x9"
+    "tags", "thumbnail_crop_16x9", "color_mode"
   ],
   "additionalProperties": false,
   "properties": {
@@ -91,6 +91,12 @@
         "h": { "type": "integer", "minimum": 1 }
       },
       "additionalProperties": false
+    },
+
+    "color_mode": {
+      "type": "string",
+      "enum": ["color", "monochrome"],
+      "description": "model -- site-filtering metadata, not an accept/reject gate. Added 2026-08-31 (see DECISIONS.md) after archival black-and-white scans (common among matted/scanned frame_type records) turned up in the 8-park scale-up with no way to filter for them. Deliberately a model judgment call, not computed from pixel statistics: two different deterministic heuristics (mean HSV saturation, then hue-diversity above a saturation floor) were tried and rejected after both misclassified a meaningful fraction of genuinely-color-but-heavily-desaturated photos (overcast/foggy Alaska coastal scenes, black sand beaches) as monochrome, and vice versa -- the two categories are not cleanly separable by pixel math on this dataset."
     }
   }
 }
