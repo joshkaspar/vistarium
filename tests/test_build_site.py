@@ -2,7 +2,7 @@ import json
 
 from PIL import Image
 
-from vistarium.build_site import _date_sortable, build_site
+from vistarium.build_site import _date_sortable, _is_360_panorama, build_site
 
 
 def _record(rid, subject="landscape", anchor="center"):
@@ -134,3 +134,34 @@ def test_build_site_skips_records_missing_local_image(tmp_path):
 
     assert count == 0
     assert json.loads((out_dir / "data.json").read_text()) == []
+
+
+def test_is_360_panorama_detects_nps_titling_conventions():
+    assert _is_360_panorama("Acadia National Park (360 photo)")
+    assert _is_360_panorama("Acadia National Park (360 image)")
+    assert _is_360_panorama("Acadia National Park (360 degrees)")
+    assert _is_360_panorama("Grand Canyon Lodge Sun Room - 360 ° Panorama")
+    assert not _is_360_panorama("Wood's Ridge")
+    assert not _is_360_panorama("Grand Canyon National Park Winter Storm")
+
+
+def test_build_site_excludes_360_panoramas(tmp_path):
+    catalog = [
+        _record("normal-1", "landscape"),
+        _record("pano-1", "landscape"),
+    ]
+    catalog[1]["title"] = "Acadia National Park (360 photo)"
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "normal-1.jpg")
+    Image.new("RGB", (400, 300), "blue").save(images_dir / "pano-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(catalog_path, images_dir, out_dir)
+
+    assert count == 1
+    data = json.loads((out_dir / "data.json").read_text())
+    assert data[0]["id"] == "normal-1"

@@ -62,11 +62,27 @@ def _thumbnail(src_path: Path, dest_path: Path, anchor: str) -> str:
         return "9/16" if portrait else "16/9"
 
 
+def _is_360_panorama(title: str) -> bool:
+    """NPS titles genuine equirectangular 360-degree panoramas explicitly
+    ("360 photo", "360 image", "360 degrees", "360 Panorama") -- found
+    live 2026-09-01 scraping Acadia's albums. No crop_anchor/crop box can
+    fix the inherent barrel distortion of an equirectangular projection
+    (visible curved horizon, warped foreground, tripod/camera often in
+    frame); these can't be made into a good wallpaper by cropping, unlike
+    genuine wide-format panoramic photography (which isn't titled this
+    way and crops fine). See DECISIONS.md."""
+    return "360" in title
+
+
 def build_site(
     catalog_path: Path, images_dir: Path, out_dir: Path, thumbs_dirname: str = "thumbs"
 ) -> int:
     catalog = json.loads(catalog_path.read_text())
-    landscape = [r for r in catalog if r.get("primary_subject") == "landscape"]
+    landscape = [
+        r
+        for r in catalog
+        if r.get("primary_subject") == "landscape" and not _is_360_panorama(r.get("title", ""))
+    ]
 
     thumbs_dir = out_dir / thumbs_dirname
     index: list[dict] = []

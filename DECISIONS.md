@@ -589,3 +589,34 @@ Decision: add dominant_color (red | orange | yellow | green | blue | purple | wh
 Alternatives-considered: keep tuning the pixel-histogram heuristic (weight by inverse distance from center, subject-detection first); defer the decision until after the current scrape batch finished
 Rationale: same as color_mode -- this needs perceptual/compositional judgment a VLM handles natively, not a pixel-counting proxy for it; deferring would have let the in-flight ~450-image Acadia batch (and any further scraping) accumulate without the field, growing the eventual backfill
 Outcome: resolved -- added to the grammar immediately, smoke-tested against 4 real images including the failing Grand Canyon case (now correctly "red") and the color_mode edge cases (black sand beach -> "gray", archival B&W -> "gray", a blue-dominant sunset/water shot -> "blue", all checked against the actual images). Deliberately NOT added to schema.json's required list yet: the Acadia album scrape was already running when this landed, using model_client.py's prior grammar already loaded in that process's memory -- marking it required would have made every remaining candidate in that live run fail schema validation. Will promote to required once a backfill pass covers the whole corpus, including whatever this in-flight batch adds without it.
+
+## 2026-09-01 -- Acadia album batch results; 360-degree panoramas excluded from the site
+[agent-drafted, Josh-approved]
+
+Context: the 17-album, 460-candidate Acadia batch (see the curated-
+albums entry above) finished: 1235 total catalog records (up from 775),
+308/460 (67%) landscape -- a markedly better hit rate than any prior
+strategy (keyword search, Categories:Scenic random sampling). 459/460
+correctly attributed to Acadia National Park (one outlier, a
+Geologic Resources Division cross-tag, not investigated further --
+negligible).
+
+Reviewing the batch, several titles contained "360" ("Acadia National
+Park (360 photo)", "360 degree view from Bass Harbor Head Light",
+"Grand Canyon Lodge Sun Room - 360 Panorama" from an earlier batch).
+Checked one: a genuine 2:1-aspect equirectangular panorama with visible
+barrel distortion (curved rock ledges, warped foreground) and a tripod/
+camera in frame. No crop_anchor/crop box can fix that -- cropping an
+equirectangular projection to 16:9 just shows a slice of the same
+distortion, not a corrected rectilinear view. Distinct from genuine
+wide-format panoramic photography (e.g. the earlier-found "Wood's
+Ridge"/"Smith Peak" 1937 fire-lookout panoramas, also ~2:1 aspect but
+optically flat, no distortion, crops fine) -- aspect ratio alone isn't
+the right signal, but NPS's own titling convention ("360 photo/image/
+degrees/Panorama") reliably distinguishes the two, confirmed against
+all cases found in the corpus so far.
+
+Decision: exclude records whose title contains "360" from the published site (build_site.py's _is_360_panorama()), alongside the existing primary_subject:landscape filter
+Alternatives-considered: add a model field for panorama/projection type (another grammar change + backfill, same day as two others); attempt actual equirectangular-to-rectilinear reprojection (real engineering effort for a handful of images); leave them in and accept the distortion
+Rationale: purely deterministic, zero model cost, and the title convention has been 100% reliable on every case found so far -- no need for a model judgment call or new field when a cheap, accurate signal already exists in data already being scraped
+Outcome: resolved -- regression test added (test_is_360_panorama_detects_nps_titling_conventions, test_build_site_excludes_360_panoramas)
