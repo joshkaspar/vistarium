@@ -346,6 +346,88 @@ def fetch_unit_codes() -> dict[str, str]:
     }
 
 
+@dataclass
+class AlbumInfo:
+    """Metadata for one curated album -- discovery only, not itself a
+    photo candidate. See list_park_albums()."""
+
+    id: str
+    title: str
+    description: str
+    asset_count: int
+
+
+def list_park_albums(park_code: str, max_pages: int = 20) -> list[AlbumInfo]:
+    """Lists every album NPGallery has tagged under a park
+    (`ResourceTypes:Album`), for a human to review and pick from. There's
+    no reliable way to automatically tell a landscape-worthy album
+    ("Carriage Roads - Day Mountain Loop") from an administrative one
+    ("Acadia Awards Gathering 2025") from title/description alone --
+    confirmed live 2026-09-01, Acadia alone has 211 albums spanning both.
+    Discovery only; pass a chosen album's id to search_album()."""
+    qs = urllib.parse.urlencode(
+        [
+            ("filter", f"Units:{park_code}"),
+            ("filter", "ResourceTypes:Album"),
+            ("view", "grid"),
+            ("sort", "default"),
+        ]
+    )
+    first = extract_payload(_http_get(f"{BASE}/SearchResults?{qs}"))
+    if not first:
+        return []
+
+    search_id = first.get("SearchID")
+    page_size = first.get("PageSize") or 500
+    result_count = first.get("ResultCount") or 0
+    total_pages = min(max_pages, -(-result_count // page_size) or 1)  # ceil div
+
+    payloads = [first]
+    with ThreadPoolExecutor(6) as ex:
+        futs = {ex.submit(_fetch_page, search_id, p): p for p in range(2, total_pages + 1)}
+        for fut in as_completed(futs):
+            _sid, _page, payload = fut.result()
+            if payload:
+                payloads.append(payload)
+
+    albums = []
+    for payload in payloads:
+        for row in payload.get("Results") or []:
+            a = row.get("Asset") or {}
+            albums.append(
+                AlbumInfo(
+                    id=str(a.get("AssetID")),
+                    title=_s(a.get("Title")).strip(),
+                    description=_s(a.get("Description")).strip(),
+                    asset_count=a.get("AssetCount") or 0,
+                )
+            )
+    return albums
+
+
+def search_album(album_id: str, park_code: str | None = None) -> list[NPSCandidate]:
+    """Fetches every image in one hand-curated album by id (see
+    list_park_albums()) -- the highest-payoff strategy for landscape-
+    worthy content: these are park staff's own picks, not a keyword or
+    category guess. Different endpoint shape than the SearchResults
+    pages (a direct JSON response, no HTML/embedded-payload wrapper to
+    extract), but the same Asset structure -- reuses asset_to_candidate()
+    unchanged. 2000-image page size comfortably covers any real curated
+    album (the largest seen so far is in the dozens, not hundreds)."""
+    qs = urllib.parse.urlencode({"pagesize": "2000", "primarytype": "image"})
+    text = _http_get(f"{BASE}/api/search/execute/albumid/{album_id}?{qs}")
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError:
+        return []
+
+    term = f"album:{album_id}"
+    return [
+        asset_to_candidate(row.get("Asset") or {}, term, park_code=park_code)
+        for row in payload.get("Results") or []
+    ]
+
+
 def download_image(candidate: NPSCandidate, dest_dir: Path) -> Path:
     """Download the full-resolution original to dest_dir, named by asset ID.
     Returns the local path. Raises requests.RequestException on failure

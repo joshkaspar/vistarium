@@ -93,22 +93,39 @@ something else) will actually need. `src/vistarium/crop.py` computes
 exact crop boxes deterministically from the anchor at whatever ratio is
 needed, on demand.
 
-## Why search by NPS's own Scenic category, not keywords
+## Why curated albums, not keywords or categories, drive content
 
-The scraper's preferred search is `nps_client.search_park_scenic()`:
-NPGallery's own per-park `Categories:Scenic` tag, not a hand-picked list
-of scenic keywords searched across the whole site. Found live
-2026-09-01: searching the literal terms "Acadia" + "night" surfaced
-none of Acadia's own official "Night Skies" gallery (Milky Way, comet,
-and planet photos titled things like "Venus over Breakneck Pond") --
-their titles simply don't contain the word "night." Keyword search
-can't find what it can't match on text; `Categories:Scenic` is NPS's
-own classification, not a guess. A park's real candidate pool under
-this search can be large (15,242 for Kenai Fjords alone) -- nothing
-downloads or reaches the judgment model until `--limit` lets it
-through, and candidates are drawn by random sample from the full pool,
-not NPS's own (non-random) default result order. See `DECISIONS.md`
-for the full investigation.
+Three search strategies exist in `nps_client.py`, in order of
+preference:
+
+1. **`search_album()`** -- NPGallery's own hand-curated albums (park
+   staff's own picks, e.g. Acadia's "Cadillac Mountain" or "Acadia's
+   Night Skies"). The primary content strategy. There's no reliable way
+   to automate *which* albums are landscape-worthy versus
+   administrative (a park's albums split roughly evenly between real
+   scenic collections and things like staff meeting photos or
+   ADA-accessibility parking-lot documentation, distinguishable by
+   description but not by any pattern a script can key on) -- so
+   picking albums is a one-time human/Claude review per park, via
+   `list_park_albums()`, not an automated filter.
+2. **`search_park_scenic()`** -- NPGallery's per-park `Categories:Scenic`
+   tag. A smoke-test/volume tier, not the main strategy: broader and
+   uncurated at the per-photo level, but still NPS's own
+   classification, not a guess.
+3. **`search_candidates()`** (`DEFAULT_TERMS` keyword search) -- the
+   original approach, kept for ad hoc use. Found live 2026-09-01: it
+   missed Acadia's entire official "Night Skies" gallery (Milky Way,
+   comet, and planet photos titled things like "Venus over Breakneck
+   Pond") even when searching the literal terms "Acadia" + "night" --
+   their titles simply don't contain the word "night." Keyword search
+   can't find what it can't match on text.
+
+A park's real candidate pool under any of these can be large (15,242
+Categories:Scenic images for Kenai Fjords alone) -- nothing downloads
+or reaches the judgment model until `--limit` lets it through, and
+candidates are drawn by random sample from the pool, not NPS's own
+(non-random) default result order. See `DECISIONS.md` for the full
+investigation.
 
 ## Sort by Aesthetic Rating (AI)
 

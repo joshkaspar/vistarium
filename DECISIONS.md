@@ -524,3 +524,39 @@ Kenai Fjords' full 15,242-candidate pool alone would take ~2.6 days
 continuous, and the site-wide 308,802-image Scenic category ~53 days --
 confirming --limit + random sampling per run is the permanent strategy
 here, not a stopgap.
+
+## 2026-09-01 -- Curated albums as the primary content strategy, Categories:Scenic as the smoke-test tier
+[agent-drafted, Josh-approved]
+
+Context: with search_park_scenic() working, the next question was
+strategy -- keep scraping more parks under Categories:Scenic (still
+NPS's own categorization, but automated/uncurated at the per-photo
+level), or go after NPGallery's hand-curated albums first (the ones
+`list_park_albums()`/`search_album()` were built for the same day).
+Josh's call: albums are already curated, so they're the higher-payoff
+strategy; Categories:Scenic random sampling stays useful as a smoke
+test, not the main approach.
+
+Confirmed the album-selection problem is real, not hypothetical:
+Acadia alone has 211 albums, spanning genuine scenic collections
+("Cadillac Mountain," "Acadia's Night Skies," "Sand Beach to Otter
+Point") and administrative/historical ones in roughly equal measure
+("Acadia Awards Gathering 2025," 1930s George B. Dorr correspondence/
+receipts, ADA-accessibility "Access: ___" documentation for every
+parking lot and picnic area in the park). Title/description alone is
+readable well enough for a human (or Claude, reviewing the list) to
+sort landscape-worthy albums from administrative ones, but there's no
+reliable *algorithmic* signal to automate the split -- "Duck Brook
+Bridge" and "Eagle Lake Boat Ramp Parking" read identically to a
+keyword filter despite one being scenic and the other a parking-lot
+photo survey.
+
+Decision: hand-review each park's album list (title/description) to pick a landscape-worthy shortlist, then scrape exactly those via search_album() -- not an automated album-selection heuristic
+Alternatives-considered: score every album's own thumbnail/description with the aesthetic predictor or the judgment model to auto-select; keyword-filter album titles (e.g. reject anything containing "Access:" or "Meeting")
+Rationale: a title-keyword filter would still misfire (many genuinely scenic albums have plain place-name titles indistinguishable from administrative ones without reading the description closely), and scoring 211 albums' worth of thumbnails to pick ~15 worth 500 real images is more model-call overhead than just reading 211 short lines once per park -- this is a case where cheap human/Claude judgment beats building a classifier for a one-time, per-park decision
+Outcome: resolved for Acadia -- 17 albums picked from its 211 (Night Skies, Seasons, Cadillac Mountain, Baker Island, Sand Beach to Otter Point, Schoodic Peninsula, Acadia's Summits, Best of Acadia, Views of Acadia, Winter Storms Jan 2024, Acadia's Lighthouses, Acadia's Geologic Features, Jordan Pond + Jordan Pond Path, and 2 general "Acadia National Park" collections including one from a dedicated NPS volunteer photographer), 470 candidates total. A 10-image smoke test (per this session's own established practice) ran clean before committing to the full batch: 7/10 landscape, 1 structure, 2 detail, zero wildlife/document/human_activity, zero park-misattribution -- a markedly better hit rate than either keyword search or the broader Categories:Scenic pool. Full ~460-image remainder launched in the background afterward.
+
+A medium-confidence second tier was also identified but not yet run:
+the 8 "Carriage Roads - [Loop]" albums and 3 "Hike ___" trail-photo
+albums (~200 more images) -- no "Access:" caveat and plausibly scenic,
+but less certain than the top tier from description alone.

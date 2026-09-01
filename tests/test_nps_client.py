@@ -8,6 +8,8 @@ from vistarium.nps_client import (
     asset_to_candidate,
     extract_payload,
     fetch_unit_codes,
+    list_park_albums,
+    search_album,
     search_park_scenic,
 )
 
@@ -173,3 +175,51 @@ def test_fetch_unit_codes_empty_when_no_units_facet():
     payload = _html('{"SearchID": "sid-1", "PageCount": 1, "Filters": []}')
     with patch("vistarium.nps_client._http_get", return_value=payload):
         assert fetch_unit_codes() == {}
+
+
+def test_list_park_albums_parses_album_metadata():
+    payload = _html(
+        '{"SearchID": "sid-1", "PageCount": 1, "PageSize": 500, "ResultCount": 2, '
+        '"Results": ['
+        '{"Asset": {"AssetID": "alb-1", "Title": "Night Skies", '
+        '"Description": "Milky Way photos", "AssetCount": 12}}, '
+        '{"Asset": {"AssetID": "alb-2", "Title": "Staff Meeting", '
+        '"Description": "2025 gathering", "AssetCount": 5}}'
+        "]}"
+    )
+    with patch("vistarium.nps_client._http_get", return_value=payload):
+        albums = list_park_albums("ACAD")
+
+    assert len(albums) == 2
+    assert albums[0].id == "alb-1"
+    assert albums[0].title == "Night Skies"
+    assert albums[0].asset_count == 12
+
+
+def test_list_park_albums_empty_when_no_payload():
+    with patch("vistarium.nps_client._http_get", return_value="<html>no results</html>"):
+        assert list_park_albums("ZZZZ") == []
+
+
+def test_search_album_parses_direct_json_response():
+    # Different endpoint shape than SearchResults pages -- a bare JSON
+    # response, not HTML with an embedded `var search = {...}` payload.
+    raw_json = (
+        '{"AlbumID": "alb-1", "Results": ['
+        '{"Asset": {"AssetID": "x", "Title": "Winter Atop Cadillac", '
+        '"NPSUnits": [{"Name": "Acadia National Park", "Code": "ACAD"}]}}'
+        "]}"
+    )
+    with patch("vistarium.nps_client._http_get", return_value=raw_json):
+        results = search_album("alb-1", park_code="ACAD")
+
+    assert len(results) == 1
+    assert results[0].id == "x"
+    assert results[0].title == "Winter Atop Cadillac"
+    assert results[0].park == "Acadia National Park"
+    assert results[0].search_terms == ["album:alb-1"]
+
+
+def test_search_album_returns_empty_on_bad_json():
+    with patch("vistarium.nps_client._http_get", return_value="not json"):
+        assert search_album("alb-1") == []

@@ -130,6 +130,7 @@ def _search_with_cache(
     terms: list[str] | None,
     refresh: bool,
     park_code: str | None = None,
+    album_ids: list[str] | None = None,
 ) -> list[nps_client.NPSCandidate]:
     """NPS search takes real time (a park's Categories:Scenic search alone
     can be several requests) -- most of a short run's time budget if it
@@ -137,15 +138,28 @@ def _search_with_cache(
     refresh=True (--refresh-search) to force a re-scan (e.g. to pick up
     newly-added NPS assets).
 
-    park_code (--park-code) uses nps_client.search_park_scenic() -- NPS's
-    own Categories:Scenic tag scoped to that park, the preferred strategy
-    (see nps_client.py's module docstring, DECISIONS.md 2026-09-01) over
-    guessing at DEFAULT_TERMS keywords. terms is ignored when set."""
+    Precedence, highest first: album_ids (--album-id, repeatable) fetches
+    one or more hand-curated albums via nps_client.search_album() -- the
+    highest-payoff strategy (park staff's own picks, not a keyword or
+    category guess; there's no reliable way to automatically tell a
+    landscape-worthy album from an administrative one, so a human picks
+    IDs from nps_client.list_park_albums() first). Falls back to
+    park_code (--park-code), nps_client.search_park_scenic()'s
+    Categories:Scenic tag scoped to a park -- a good smoke-test/volume
+    strategy, weaker than curated albums but far better than guessed
+    keywords. Falls back to terms (DEFAULT_TERMS) last. See
+    nps_client.py's module docstring and DECISIONS.md, 2026-09-01."""
     if cache_path.exists() and not refresh:
         raw = json.loads(cache_path.read_text())
         return [nps_client.NPSCandidate(**c) for c in raw]
 
-    if park_code:
+    if album_ids:
+        by_id: dict[str, nps_client.NPSCandidate] = {}
+        for album_id in album_ids:
+            for cand in nps_client.search_album(album_id, park_code=park_code):
+                by_id.setdefault(cand.id, cand)
+        candidates = list(by_id.values())
+    elif park_code:
         candidates = nps_client.search_park_scenic(park_code)
     else:
         candidates = nps_client.search_candidates(terms=terms)
@@ -193,6 +207,7 @@ def run(
     refresh_search: bool = False,
     park: str | None = None,
     park_code: str | None = None,
+    album_ids: list[str] | None = None,
 ) -> None:
     images_dir = workdir / "images"
     checkpoint_path = workdir / "checkpoint.jsonl"
@@ -204,7 +219,9 @@ def run(
         log.info("resuming: %d candidates already processed in a prior run", len(already_processed))
 
     log.info("searching NPS (cached unless --refresh-search)...")
-    candidates = _search_with_cache(candidates_cache_path, terms, refresh_search, park_code)
+    candidates = _search_with_cache(
+        candidates_cache_path, terms, refresh_search, park_code, album_ids
+    )
     log.info("found %d unique candidates", len(candidates))
     if park:
         candidates = _filter_by_park(candidates, park)
@@ -323,6 +340,17 @@ def main(argv: list[str] | None = None) -> int:
             "Resolve a code from a park name with nps_client.fetch_unit_codes()."
         ),
     )
+    parser.add_argument(
+        "--album-id",
+        action="append",
+        dest="album_ids",
+        help=(
+            "NPGallery album id (repeatable) -- fetches a hand-curated album's "
+            "full contents (see nps_client.search_album/list_park_albums). "
+            "The highest-payoff strategy: park staff's own picks, not a "
+            "keyword or category guess. Overrides --park-code and --term."
+        ),
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args(argv)
 
@@ -340,6 +368,7 @@ def main(argv: list[str] | None = None) -> int:
         refresh_search=args.refresh_search,
         park=args.park,
         park_code=args.park_code,
+        album_ids=args.album_ids,
     )
     return 0
 
