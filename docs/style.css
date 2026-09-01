@@ -116,6 +116,11 @@ main#gallery {
   padding: 0 1.5rem 2rem;
   max-width: 90rem;
   margin: 0 auto;
+  /* Critical: without this, grid's default "stretch" clamps every card to
+     a single 10px auto-row before app.js gets a chance to measure its
+     real height and set grid-row-end -- the measurement itself would be
+     reading the clamped box, not the card's intended content height. */
+  align-items: start;
 }
 
 .card {
