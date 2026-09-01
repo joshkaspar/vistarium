@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://vistarium.local/schema.json",
   "title": "Vistarium catalog record",
-  "description": "One record per curated image. Fields are tagged in their description as either 'deterministic' (Claude Code fills these in from source catalog metadata or computed image properties, never sent to the model) or 'model' (the only fields sent to and returned by the local judgment model, grammar-constrained, one image at a time). See DECISIONS.md for the reasoning behind this split.",
+  "description": "One record per curated image. Fields are tagged in their description as 'deterministic' (Claude Code fills these in from source catalog metadata or computed image properties, never sent to any model), 'model' (the only fields sent to and returned by the local judgment model, grammar-constrained, one image at a time), or 'aesthetic-model' (a separate, unrelated model -- a CLIP-based aesthetics regressor, not the judgment model -- run as its own post-process stage, not required on every record). See DECISIONS.md for the reasoning behind this split.",
   "type": "object",
   "required": [
     "id", "source", "source_url", "image_url", "title", "date", "park",
@@ -97,6 +97,16 @@
       "type": "string",
       "enum": ["color", "monochrome"],
       "description": "model -- site-filtering metadata, not an accept/reject gate. Added 2026-08-31 (see DECISIONS.md) after archival black-and-white scans (common among matted/scanned frame_type records) turned up in the 8-park scale-up with no way to filter for them. Deliberately a model judgment call, not computed from pixel statistics: two different deterministic heuristics (mean HSV saturation, then hue-diversity above a saturation floor) were tried and rejected after both misclassified a meaningful fraction of genuinely-color-but-heavily-desaturated photos (overcast/foggy Alaska coastal scenes, black sand beaches) as monochrome, and vice versa -- the two categories are not cleanly separable by pixel math on this dataset."
+    },
+
+    "aesthetic_score": {
+      "type": "number",
+      "description": "aesthetic-model -- raw output of the LAION aesthetics predictor v2 (src/vistarium/aesthetic_score.py), a CLIP-based regression model trained on human aesthetic ratings. Not on a fixed 0-10 scale in practice; meaningful only as a relative ranking within the current corpus, not as an absolute unit. Added 2026-09-01 (see DECISIONS.md) to power a 'sort by aesthetic rating' site feature as more, less-curated sources get added. Deliberately not required: populated by a separate post-process stage (vistarium-score-aesthetics), not the main pipeline run, so a freshly-scraped record may not have it yet -- see aesthetic_method."
+    },
+    "aesthetic_method": {
+      "type": "string",
+      "enum": ["laion_predictor_v2", "manual_review", "pending"],
+      "description": "aesthetic-model -- which method produced aesthetic_score (or that none has run yet). 'manual_review' is reserved for a future human-override workflow, not currently used."
     }
   }
 }

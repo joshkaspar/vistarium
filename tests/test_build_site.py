@@ -2,7 +2,7 @@ import json
 
 from PIL import Image
 
-from vistarium.build_site import build_site
+from vistarium.build_site import _date_sortable, build_site
 
 
 def _record(rid, subject="landscape", anchor="center"):
@@ -72,6 +72,53 @@ def test_build_site_uses_portrait_thumbnail_for_portrait_originals(tmp_path):
 
     with Image.open(out_dir / "thumbs" / "port-1.webp") as im:
         assert im.height > im.width
+
+
+def test_date_sortable_parses_source_format():
+    assert _date_sortable("03/20/2022") == "2022-03-20"
+
+
+def test_date_sortable_none_for_missing_date():
+    assert _date_sortable(None) is None
+
+
+def test_date_sortable_none_for_unparseable_date():
+    assert _date_sortable("not a date") is None
+
+
+def test_build_site_includes_aesthetic_score_and_date_sortable(tmp_path):
+    catalog = [_record("land-1", "landscape")]
+    catalog[0]["aesthetic_score"] = 5.42
+    catalog[0]["aesthetic_method"] = "laion_predictor_v2"
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "land-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    build_site(catalog_path, images_dir, out_dir)
+
+    data = json.loads((out_dir / "data.json").read_text())
+    assert data[0]["aesthetic_score"] == 5.42
+    assert data[0]["date_sortable"] == "2024-01-01"
+
+
+def test_build_site_null_aesthetic_score_when_not_yet_scored(tmp_path):
+    catalog = [_record("land-1", "landscape")]  # no aesthetic_score key at all
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "land-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    build_site(catalog_path, images_dir, out_dir)
+
+    data = json.loads((out_dir / "data.json").read_text())
+    assert data[0]["aesthetic_score"] is None
 
 
 def test_build_site_skips_records_missing_local_image(tmp_path):

@@ -5,6 +5,8 @@
 
   const gallery = document.getElementById("gallery");
   const resultCount = document.getElementById("result-count");
+  const sortSelect = document.getElementById("sort-by");
+  const sortNote = document.getElementById("sort-note");
   const parkSelect = document.getElementById("filter-park");
   const timeSelect = document.getElementById("filter-time");
   const peopleSelect = document.getElementById("filter-people");
@@ -25,6 +27,22 @@
     }
   }
 
+  const SORTERS = {
+    // Nulls (not-yet-scored / no source date) always sort last, regardless
+    // of direction -- see build_site.py's _date_sortable for why ~65% of
+    // records have no date at all.
+    aesthetic: (a, b) => {
+      if (a.aesthetic_score == null) return b.aesthetic_score == null ? 0 : 1;
+      if (b.aesthetic_score == null) return -1;
+      return b.aesthetic_score - a.aesthetic_score;
+    },
+    date: (a, b) => {
+      if (a.date_sortable == null) return b.date_sortable == null ? 0 : 1;
+      if (b.date_sortable == null) return -1;
+      return b.date_sortable < a.date_sortable ? -1 : b.date_sortable > a.date_sortable ? 1 : 0;
+    },
+  };
+
   function matches(record) {
     if (parkSelect.value && record.park !== parkSelect.value) return false;
     if (timeSelect.value && record.time_of_day !== timeSelect.value) return false;
@@ -36,7 +54,9 @@
   }
 
   function render() {
-    const filtered = records.filter(matches);
+    const sorter = SORTERS[sortSelect.value] || SORTERS.aesthetic;
+    const filtered = records.filter(matches).sort(sorter);
+    sortNote.classList.toggle("hidden", sortSelect.value !== "aesthetic");
     resultCount.textContent = `${filtered.length} of ${records.length}`;
     gallery.innerHTML = "";
     for (const record of filtered) {
@@ -86,7 +106,7 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  [parkSelect, timeSelect, peopleSelect, colorSelect].forEach((el) =>
+  [sortSelect, parkSelect, timeSelect, peopleSelect, colorSelect].forEach((el) =>
     el.addEventListener("change", render)
   );
   tagInput.addEventListener("input", render);

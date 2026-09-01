@@ -89,17 +89,34 @@ header h1 {
   align-self: center;
 }
 
+#sort-note {
+  max-width: 60rem;
+  margin: -0.5rem auto 1rem;
+  padding: 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+#sort-note.hidden {
+  display: none;
+}
+
 main#gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+  /* CSS multi-column, not grid -- a portrait card in a grid row forces
+     every card in that row to the same height, leaving gaps next to the
+     shorter landscape cards beside it. Columns let each card take only
+     the height it needs and the next one flows right underneath. */
+  columns: 280px;
+  column-gap: 1rem;
   padding: 0 1.5rem 2rem;
   max-width: 90rem;
   margin: 0 auto;
-  align-items: start;
 }
 
 .card {
+  break-inside: avoid;
+  margin-bottom: 1rem;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;

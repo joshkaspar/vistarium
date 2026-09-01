@@ -20,6 +20,13 @@
 
 <div id="filters">
   <label>
+    Sort by
+    <select id="sort-by">
+      <option value="aesthetic">Aesthetic Rating (AI)</option>
+      <option value="date">Date taken</option>
+    </select>
+  </label>
+  <label>
     Park
     <select id="filter-park"><option value="">All parks</option></select>
   </label>
@@ -57,6 +64,7 @@
   </label>
   <span id="result-count"></span>
 </div>
+<p id="sort-note">Ranked by an AI model trained on human aesthetic ratings, not by a curator.</p>
 
 <main id="gallery"></main>
 

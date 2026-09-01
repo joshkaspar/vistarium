@@ -57,6 +57,13 @@ deterministically by Claude Code from `crop_anchor` and the image's real
 dimensions, never produced by the model itself (see "Why crop_anchor,
 not a crop box" below).
 
+A third, optional pair -- `aesthetic_score` (float) and
+`aesthetic_method` (`laion_predictor_v2 | manual_review | pending`) --
+comes from neither: a separate CLIP-based aesthetics model
+([`src/vistarium/aesthetic_score.py`](./src/vistarium/aesthetic_score.py)),
+run as its own post-process stage, not required on every record. See
+"Sort by Aesthetic Rating (AI)" below.
+
 Full schema definition (with the reasoning behind every field) lives in
 [`schema.json`](./schema.json).
 
@@ -85,6 +92,28 @@ advance what aspect ratio a given consumer (desktop wallpaper, mobile,
 something else) will actually need. `src/vistarium/crop.py` computes
 exact crop boxes deterministically from the anchor at whatever ratio is
 needed, on demand.
+
+## Sort by Aesthetic Rating (AI)
+
+The site defaults to sorting by a predicted-aesthetic score instead of
+whatever order images were scraped in. As more, less-curated sources
+get added, the ratio of wallpaper-worthy photos to mediocre ones will
+drop; this is meant to let people find the good ones without the site
+needing to be hand-curated.
+
+The score comes from [LAION's aesthetics predictor
+v2](https://github.com/LAION-AI/aesthetic-predictor) -- a CLIP-based
+model trained on human aesthetic ratings, the same tool NVIDIA's own
+[NeMo Curator](https://github.com/NVIDIA/NeMo-Curator) ships for
+dataset-quality filtering. It's disclosed right in the sort control
+("Aesthetic Rating (AI)"), not buried in a separate page, and the raw
+score is never shown per-photo -- only used to order results. Run as
+its own pipeline stage (`vistarium-score-aesthetics`, needs the
+`aesthetic` extra -- `uv sync --extra aesthetic`), not part of the main
+scrape/judge pipeline: it's a different model for a different purpose
+(ranking a large corpus, not structured per-image judgment), and
+torch/transformers are a genuinely heavy (~1-2GB) dependency not every
+contributor needs.
 
 ## License & Rights
 
@@ -163,6 +192,7 @@ is what GitHub Pages serves.
 - `src/vistarium/model_client.py` -- the one call site for the local judgment model, grammar-constrained.
 - `src/vistarium/schema_validate.py` -- validates records against `schema.json`.
 - `src/vistarium/pipeline.py` -- orchestrates the above; CLI entry point.
+- `src/vistarium/aesthetic_score.py` -- LAION aesthetics predictor scoring, its own optional pipeline stage (needs the `aesthetic` extra).
 - `src/vistarium/build_site.py` -- renders `docs/` (WebP thumbnails + `data.json`) from `data/catalog.json`, filtered to `primary_subject: landscape`.
 - `docs/` -- the static site itself (GitHub Pages, vanilla HTML/CSS/JS, no build step).
 - `tests/` -- real coverage for every deterministic component above.

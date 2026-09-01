@@ -81,6 +81,28 @@ def test_missing_color_mode_rejected():
     assert not is_valid(record)
 
 
+def test_missing_aesthetic_fields_still_valid():
+    # aesthetic_score/aesthetic_method are deliberately optional -- a
+    # freshly-scraped record won't have them until the separate
+    # vistarium-score-aesthetics post-process stage runs.
+    assert "aesthetic_score" not in VALID_RECORD
+    assert is_valid(VALID_RECORD)
+
+
+def test_aesthetic_score_and_method_accepted():
+    record = copy.deepcopy(VALID_RECORD)
+    record["aesthetic_score"] = 5.234
+    record["aesthetic_method"] = "laion_predictor_v2"
+    assert is_valid(record)
+
+
+def test_bad_aesthetic_method_rejected():
+    record = copy.deepcopy(VALID_RECORD)
+    record["aesthetic_score"] = 5.234
+    record["aesthetic_method"] = "vibes"
+    assert not is_valid(record)
+
+
 def test_corner_anchor_rejected_by_schema():
     # The 9-way corner scheme was tested and rejected -- schema.json should
     # still only accept the 5-way set even if a caller tries to sneak one in.

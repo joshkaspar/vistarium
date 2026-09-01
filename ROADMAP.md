@@ -37,6 +37,41 @@ decided.
   site-inclusion policy, `DECISIONS.md`). Lightbox links out to
   `source_url` for full resolution -- no full-size images in the repo.
 
+- **Dominant/overall color filter.** Separate from `color_mode`
+  (color vs. monochrome) -- some users will want to filter by the
+  actual dominant hue of a landscape photo (blue, green, white/snow,
+  etc.), e.g. for matching a wallpaper to a desktop theme. Undecided
+  whether this is deterministic (a k-means/histogram dominant-color
+  bucket over the pixels) or a model field. Worth noting from the
+  `color_mode` experience (2026-08-31, `DECISIONS.md`): that field
+  failed as pixel statistics because it required a semantic judgment
+  ("is this a B&W photographic *process*"), which pixels alone can't
+  answer -- a dominant-hue bucket is a different, more literal
+  question (what color are most of the pixels), which is exactly what
+  histogram/k-means color-quantization is good at. Likely a better fit
+  for deterministic than `color_mode` was, but prototype and check
+  against real examples before committing, same lesson as always.
+- **NPS's own curated per-park photo galleries, not just keyword
+  search.** Investigating why Acadia's results felt thin compared to
+  its actual scenery (2026-09-01), Josh found NPS publishes curated
+  photo galleries per park outside the generic search-results flow --
+  e.g. https://www.nps.gov/acad/learn/photosmultimedia/photogallery.htm
+  linking to https://www.nps.gov/media/photo/gallery.htm?pg=3539176&id=F810EE82-155D-451F-67D336A09FC76A3F,
+  a gallery of individual items like
+  https://www.nps.gov/media/photo/gallery-item.htm?pg=3539176&id=f810f106-155d-451f-67af-71bee230cbe6&gid=F810EE82-155D-451F-67D336A09FC76A3F.
+  The item IDs are the same UUID format `nps_client.py` already uses
+  (`npgallery.nps.gov/GetAsset/<id>/...`), and the asset itself is
+  reachable at `nps.gov/npgallery/GetAsset/<id>/proxy/hires` -- a
+  different derivative path than the `/Original` one currently used,
+  worth checking for differences. So this isn't a new institution/API
+  to onboard (unlike Library of Congress etc. below) -- it's the same
+  underlying NPGallery asset store, reached via park-curated gallery
+  pages (`gid`/`pg` params) instead of blind keyword search, and it
+  plausibly surfaces park staff's own picks rather than whatever a
+  scenic-keyword text search happens to match. Worth a scraper pass
+  once someone maps the gallery-listing endpoint's actual shape (the
+  two URLs above are the only samples on hand so far).
+
 ## Later sources (build order step 6)
 
 - Library of Congress, Smithsonian, Met, AIC, NYPL -- each needs its own

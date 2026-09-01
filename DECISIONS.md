@@ -431,3 +431,51 @@ Decision: make color_mode a model-judged field (added to model_client.py's gramm
 Alternatives-considered: keep tuning the pixel-saturation threshold; combine both heuristics with a manual-review middle band; ship the first (mean-saturation) version anyway since it was "mostly right"
 Rationale: two independent, reasonable pixel-statistics approaches both failed on real data from this exact dataset (moody/overcast coastal Alaska light, archival scan noise) -- the categories aren't cleanly separable by pixel math here, and a vision-language model handles "is this black-and-white" natively and far more reliably than statistical proxies for it. This is the same reasoning that put time_of_day, license_confidence, and primary_subject on the model side of the split in the first place; color_mode was mis-scoped as deterministic at first, not a case for stretching a deterministic approach further
 Outcome: resolved -- color_mode is now the 11th model-judged field, single grammar/prompt addition (no separate API call). The 765 already-published records were backfilled via a full judge_image() call per local image, keeping only the new color_mode value and leaving every other already-reviewed field untouched.
+
+## 2026-09-01 -- aesthetic_score added: "sort by Aesthetic Rating (AI)"
+[agent-drafted, Josh-approved]
+
+Context: as more, less-curated sources get added, the ratio of
+wallpaper-worthy images to mediocre ones will drop -- Josh wants a
+"sort by predicted quality" feature so users can wade through volume
+without the site needing to be hand-curated. Proposal: score every
+image with LAION's aesthetics predictor v2 (a CLIP-based regression
+model trained on human aesthetic ratings, `shunk031/aesthetics-
+predictor-v2-sac-logos-ava1-l14-linearMSE`), the same tool NVIDIA's own
+NeMo Curator ships for exactly this purpose.
+
+Piloted before committing to a full run (per the lesson from the same
+day's color_mode work -- verify before scaling): 43 images spanning the
+trickiest cases (archival B&W scans, a heavily desaturated black-sand-
+beach photo that fooled both rejected color_mode heuristics) scored in
+40s batched on wopr's CPU (0.92s/image). Top-scored image was a genuine
+striking Grand Canyon vista; bottom-scored was a stitched panorama with
+visible seams, a survey marker card, and a watermark -- the signal
+tracks "good wallpaper" well. Full 765-record catalog then scored the
+same way (~12 min), published via an artifact showing the real
+distribution (range 4.06-6.85, median ~5.15-5.19, roughly bell-shaped)
+plus the top/bottom 20 of the 411 published landscapes for visual
+validation -- Josh confirmed the results were "stunning."
+
+Decision: add aesthetic_score (float) + aesthetic_method (enum: laion_predictor_v2 | manual_review | pending) as a new field pair, deliberately NOT required in schema.json (populated by a separate post-process stage, vistarium-score-aesthetics, not the main pipeline run); expose it in the site only as a "Sort by: Aesthetic Rating (AI)" dropdown option (default), never as a visible per-photo number, with a one-line disclosure caption under the sort control
+Alternatives-considered: fold scoring into model_client.py's single judgment call; display the raw/normalized score on each card; a generic "Recommended" label with disclosure only in an About page; percentile-normalize the stored value instead of storing raw
+Rationale: torch/transformers is a genuinely heavy (~1-2GB) dependency and a different stack entirely (CLIP regression, not GBNF-constrained llama.cpp) serving a different purpose (ranking, not structured per-field judgment) -- kept as its own module (aesthetic_score.py) and pyproject.toml optional extra, run on wopr rather than the dev VM (which doesn't have the disk headroom). Raw score is stored rather than percentile because sorting by either produces the identical order within one site build -- percentile would only matter if the number were ever displayed/bucketed, which it deliberately isn't. In-label disclosure ("(AI)" in the dropdown option itself, not buried in an About page) was Josh's own call: upfront at the point of use, not clunky, on the bet that users will try it, see it beats wading through mediocre images unsorted, and not mind
+Outcome: resolved. Also added build_site.py's _date_sortable() to normalize the deterministic MM/DD/YYYY date field into a client-sortable ISO string for the "Date taken" sort option (~65% of records have no source date at all, mostly archival scans -- both sorts push nulls last, never crash)
+
+Practical infrastructure note: wopr got a proper `vistarium` package
+install (editable, `--extra aesthetic`) in its own venv rather than a
+disposable pilot script, so `vistarium-score-aesthetics` is a real,
+reusable command there for future scrape batches, not a one-off. wopr
+needed `python3.12-venv` installed via passwordless sudo (worked; the
+earlier dev-VM blocker on interactive sudo doesn't apply there).
+
+Separately: the dev VM hit 96% disk usage (2.2GB free) partway through
+this work, briefly worse (98%, 1.4GB free) after carelessly staging a
+900MB tarball locally instead of streaming straight to wopr. Fixed by
+deleting that tarball, clearing safe/reversible tool caches (uv, plus
+Josh-approved ms-playwright/node-gyp/electron/go-build/pip caches and
+an unrelated old project directory), landing at 4.1GB free. No runaway
+log was the cause this time (checked systemd journal and searched for
+large files) -- just legitimate accumulation (13GB of `data/images/`,
+several 400+MB individual source files, other tools' caches) on a
+48GB disk with no prior cleanup discipline.

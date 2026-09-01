@@ -13,12 +13,23 @@ dependencies = [
     "requests>=2.34.2",
 ]
 
+[project.optional-dependencies]
+# Heavy (torch/transformers, ~1-2GB) -- deliberately not a core dependency.
+# Install with `uv sync --extra aesthetic` on a machine with room for it
+# (this project runs it on wopr, not the dev VM). See aesthetic_score.py.
+aesthetic = [
+    "simple-aesthetics-predictor>=0.1.2",
+    "transformers>=4.57.0",
+    "torch>=2.13.0",
+]
+
 [project.urls]
 Issues = "https://github.com/joshkaspar/vistarium/issues"
 
 [project.scripts]
 vistarium = "vistarium:main"
 vistarium-build-site = "vistarium.build_site:main"
+vistarium-score-aesthetics = "vistarium.aesthetic_score:main"
 
 [build-system]
 requires = ["uv_build>=0.12.1,<0.13.0"]

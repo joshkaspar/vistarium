@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import datetime
 from pathlib import Path
 
 from PIL import Image
@@ -21,6 +22,20 @@ from vistarium.crop import crop_9x16, crop_16x9
 
 THUMB_WIDTH = 1200
 WEBP_QUALITY = 82
+
+
+def _date_sortable(date_str: str | None) -> str | None:
+    """Normalizes the deterministic MM/DD/YYYY date field (from NPS source
+    metadata) to an ISO string the site can sort on client-side, or None
+    if absent/unparseable -- about 65% of records have no source date at
+    all (common among archival scans), so callers must handle None by
+    sorting those last, not by crashing."""
+    if not date_str:
+        return None
+    try:
+        return datetime.strptime(date_str, "%m/%d/%Y").date().isoformat()
+    except ValueError:
+        return None
 
 
 def _thumbnail(src_path: Path, dest_path: Path, anchor: str) -> str:
@@ -77,6 +92,8 @@ def build_site(
                 "tags": record["tags"],
                 "thumb": f"{thumbs_dirname}/{thumb_name}",
                 "aspect": aspect,
+                "aesthetic_score": record.get("aesthetic_score"),
+                "date_sortable": _date_sortable(record["date"]),
             }
         )
 
