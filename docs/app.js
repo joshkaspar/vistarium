@@ -53,6 +53,24 @@
     return true;
   }
 
+  // Must match main#gallery's grid-auto-rows and gap in style.css.
+  const MASONRY_ROW_PX = 10;
+  const MASONRY_GAP_PX = 16;
+
+  function applyMasonrySpans() {
+    // Two passes (measure all, then write all) so setting one card's
+    // grid-row-end span can't force a layout recalc that skews the next
+    // card's measurement -- a card's height depends only on its own
+    // width/aspect-ratio, never on other cards' spans, so this is safe.
+    const cards = Array.from(gallery.children);
+    const spans = cards.map((card) =>
+      Math.ceil((card.getBoundingClientRect().height + MASONRY_GAP_PX) / (MASONRY_ROW_PX + MASONRY_GAP_PX))
+    );
+    cards.forEach((card, i) => {
+      card.style.gridRowEnd = `span ${spans[i]}`;
+    });
+  }
+
   function render() {
     const sorter = SORTERS[sortSelect.value] || SORTERS.aesthetic;
     const filtered = records.filter(matches).sort(sorter);
@@ -70,6 +88,7 @@
       card.addEventListener("click", () => openLightbox(record));
       gallery.appendChild(card);
     }
+    applyMasonrySpans();
   }
 
   function escapeHtml(s) {
@@ -110,6 +129,12 @@
     el.addEventListener("change", render)
   );
   tagInput.addEventListener("input", render);
+
+  let resizeTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(applyMasonrySpans, 150);
+  });
 
   fetch("data.json")
     .then((r) => r.json())
