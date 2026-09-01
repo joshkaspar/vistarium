@@ -9,7 +9,7 @@
     "license", "is_photograph", "time_of_day", "time_of_day_evidence",
     "license_confidence", "license_evidence", "primary_subject",
     "people_present", "people_prominence", "crop_anchor", "frame_type",
-    "tags", "thumbnail_crop_16x9", "color_mode"
+    "tags", "thumbnail_crop_16x9", "color_mode", "dominant_color"
   ],
   "additionalProperties": false,
   "properties": {
@@ -102,7 +102,7 @@
     "dominant_color": {
       "type": "string",
       "enum": ["red", "orange", "yellow", "green", "blue", "purple", "white", "gray", "black"],
-      "description": "model -- site-filtering metadata, not an accept/reject gate. Added 2026-09-01 (see DECISIONS.md), same reasoning as color_mode: a pixel-majority dominant-hue computation was tried and rejected after a red-rock canyon photo with a large blue sky above it came back 'cyan' -- the sky's uniform, saturated pixels outvoted the darker (but visually dominant/subject) canyon rock on pure pixel count. The model judges perceptual/compositional dominant color the way a person would, not by literally counting pixels. Deliberately NOT required yet: added to model_client.py's grammar mid-scrape (a batch was already in flight using the prior grammar, already loaded in that process's memory) -- will be promoted to required once the full corpus is backfilled."
+      "description": "model -- site-filtering metadata, not an accept/reject gate. Added 2026-09-01 (see DECISIONS.md), same reasoning as color_mode: a pixel-majority dominant-hue computation was tried and rejected after a red-rock canyon photo with a large blue sky above it came back 'cyan' -- the sky's uniform, saturated pixels outvoted the darker (but visually dominant/subject) canyon rock on pure pixel count. The model judges perceptual/compositional dominant color the way a person would, not by literally counting pixels. Added mid-scrape (a batch was already in flight using the prior grammar) so was optional at first; promoted to required 2026-09-01 once the full corpus was backfilled."
     },
 
     "aesthetic_score": {

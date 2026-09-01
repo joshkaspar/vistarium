@@ -28,6 +28,7 @@ VALID_RECORD = {
     "tags": ["valley", "sunrise", "mountains"],
     "thumbnail_crop_16x9": {"x": 0, "y": 100, "w": 1600, "h": 900},
     "color_mode": "color",
+    "dominant_color": "green",
 }
 
 
@@ -103,12 +104,12 @@ def test_bad_aesthetic_method_rejected():
     assert not is_valid(record)
 
 
-def test_missing_dominant_color_still_valid():
-    # Deliberately optional for now -- added to model_client.py's grammar
-    # mid-scrape, so older/in-flight records won't have it yet. Will be
-    # promoted to required once the corpus is backfilled. See DECISIONS.md.
-    assert "dominant_color" not in VALID_RECORD
-    assert is_valid(VALID_RECORD)
+def test_missing_dominant_color_rejected():
+    # Promoted from optional to required 2026-09-01 once the corpus was
+    # backfilled -- see DECISIONS.md.
+    record = copy.deepcopy(VALID_RECORD)
+    del record["dominant_color"]
+    assert not is_valid(record)
 
 
 def test_dominant_color_accepted():
