@@ -668,3 +668,27 @@ Decision: LICENSE-DATA and README.md's "License & Rights" section now license CC
 Alternatives-considered: keep CC0 but drop only the per-field carve-out; keep the field-level split but change CC0 to CC BY; a separate license per field category
 Rationale: individual descriptive fields (time_of_day, tags) carry thin-to-no independent copyright on their own -- the actual unit of authorship is the compiled, curated, scored index itself (which images were selected, how they're described), which is what compilation copyright protects and what CC BY should therefore cover as a whole, not piecemeal
 Outcome: resolved. Images remain entirely outside both licenses, unchanged -- that split (images vs. metadata) is a real difference in asset class and ownership, not the kind of per-field split being removed here.
+
+## 2026-09-01 -- GPU aesthetic-scoring benchmark: inference is free, preprocessing is the bottleneck, the NPS throttle is the real ceiling
+[agent-drafted, Josh-approved]
+
+Context: before scaling curate.py up to real volume, benchmarked
+aesthetic_score.py's real throughput on wopr's GPU (CUDA-enabled torch
+installed there for this; the pilot venv had been CPU-only), per
+Josh's request. 150 real Acadia thumbnails (not synthetic -- real
+JPEG decode/preprocessing behaves differently), batch size sweep
+[1, 8, 16, 32, 64], scripts/benchmark_aesthetic.py.
+
+Results: GPU inference time is ~flat regardless of batch size (~12ms/
+batch whether scoring 1 image or 64) -- the CLIP forward pass is
+essentially free on this hardware. The real cost is CPU-side
+preprocessing (PIL decode + CLIPProcessor's resize/normalize), which
+scales ~linearly with batch size (11ms/image at batch=1, ~11.7ms/image
+at batch=64 -- nearly identical per-image cost). Throughput still rises
+with batch size (45 img/s at batch=1 -> 84 img/s at batch=64) purely
+from amortizing fixed per-call/Python-loop overhead across more images,
+not from any real preprocessing speedup. Cold start (model load + first
+batch): 7.68s, one-time.
+
+Decision: set aesthetic_score.py's default BATCH_SIZE to 64 (best throughput observed; diminishing but still real returns past 32)
+Outcome: resolved. At ~85 img/s, GPU-batched scoring makes even huge candidate pools cheap in absolute terms -- Kenai Fjords' full 15,242-image Categories:Scenic pool would score in ~3 minutes, versus ~4 hours at the CPU pilot's ~1 img/s. But this surfaces a different, previously-invisible bottleneck: nps_client's request throttle (1000 req/hour, one request per thumbnail fetched) means fetching that same 15,242-thumbnail pool alone would take ~15 hours, regardless of how fast scoring is. Scoring throughput is no longer the constraint on how much of NPGallery this project can practically curate -- bandwidth/throttle is. Worth weighing directly when picking how many parks/candidates to curate next, not something to revisit later as a surprise.

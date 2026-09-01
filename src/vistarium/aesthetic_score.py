@@ -27,7 +27,14 @@ from pathlib import Path
 
 MODEL_ID = "shunk031/aesthetics-predictor-v2-sac-logos-ava1-l14-linearMSE"
 AESTHETIC_METHOD = "aesthetics_predictor_v2_l14_linearMSE"
-BATCH_SIZE = 16
+# Benchmarked live 2026-09-01 on wopr's GPU (150 real thumbnails, batch
+# sweep 1/8/16/32/64) -- see DECISIONS.md and scripts/benchmark_aesthetic.py.
+# GPU inference is ~flat (~12ms/batch) regardless of batch size; CPU-side
+# preprocessing (image decode + CLIP transform) is the real bottleneck and
+# scales linearly, so bigger batches mainly amortize fixed per-call
+# overhead. 64 gave the best throughput observed (84 img/s vs. 45 img/s at
+# batch=1) with diminishing-but-still-real returns past 32.
+BATCH_SIZE = 64
 
 _predictor = None
 _processor = None
