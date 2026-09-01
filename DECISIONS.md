@@ -479,3 +479,48 @@ log was the cause this time (checked systemd journal and searched for
 large files) -- just legitimate accumulation (13GB of `data/images/`,
 several 400+MB individual source files, other tools' caches) on a
 48GB disk with no prior cleanup discipline.
+
+## 2026-09-01 -- Search by NPS's own Categories:Scenic tag, not guessed keywords
+[agent-drafted, Josh-approved]
+
+Context: deciding whether to scrape more parks or investigate NPS's
+curated photo galleries first, Josh went looking for evidence and found
+Acadia's official "Night Skies" gallery (Milky Way/comet/night-sky
+photos, e.g. "Venus over Breakneck Pond") -- confirmed live that
+searching "Acadia" + "night" (an unambiguous query) surfaces none of
+them, since their titles don't contain "night" as text. That's a
+structural gap in DEFAULT_TERMS keyword search, not a ranking problem.
+
+Investigating the curated-gallery angle (hand-inspecting the gallery
+page's embedded JS) turned up something bigger: NPGallery's advanced
+search supports `filter=Units:<code>&filter=Categories:Scenic&filter=
+ResourceTypes:Image`, targeting NPS's own per-park content
+categorization directly. Same embedded-JSON payload extract_payload()
+already parses, same Asset shape asset_to_candidate() already handles
+-- confirmed live: Acadia alone has 2,537 Scenic-category images (vs.
+whatever a handful of keyword guesses happened to match), Kenai Fjords
+has 15,242. Categories facet counts confirm Scenic (308,802 site-wide)
+is the right category, distinct from Historic/Museum/Map/etc.
+
+Decision: add nps_client.search_park_scenic(park_code) as the preferred search strategy (Units:<code> + Categories:Scenic + ResourceTypes:Image), with fetch_unit_codes() to resolve a park's 4-letter code from its display name via the same "Units" filter facet (683 units, one HTTP request, no separate API/key needed); keep DEFAULT_TERMS/search_candidates for ad hoc cross-park term search, not removed
+Alternatives-considered: pursue the curated-album path instead (nps.gov/media/photo/gallery.htm's hardcoded per-park albumIDs + /api/album/metadata) -- still a good secondary idea (NPS park staff's own picks, a further-curated subset), but Categories:Scenic is more foundational: it covers all NPS scenic photography per park, not just the albums someone happened to hand-build a page for
+Rationale: this isn't really a new feature, it's fixing the scraper's core search strategy -- every future scrape benefits, so it belongs before scraping more parks with the weaker method, not after
+Outcome: resolved. Two real bugs found and fixed live before trusting this at scale:
+1. asset_to_candidate() always trusted NPSUnits[0] for the `park` field. A shared historical asset can be cross-tagged under several NPS units at once (found live: one Grand Teton search hit was tagged under Devils Tower, Grand Canyon, Grand Teton, AND the Museum Management Program simultaneously) -- units[0] was Devils Tower, silently mislabeling a Grand Teton candidate. Fixed by threading park_code through to prefer the NPSUnits entry matching the unit actually searched for, falling back to units[0] only when no park_code is given (generic keyword search) or none matches.
+2. DEFAULT_MAX_PAGES_PER_PARK (20, ~10,000 candidates) would have silently truncated Kenai Fjords' real 15,242-candidate pool by a third, and NPS's own default result order isn't random -- raised to 200 pages (a backstop, not a target; fetching search-result pages is cheap, no model calls involved).
+
+Separately: pipeline.run() previously took new candidates via a
+positional `[:limit]` slice. With per-park pools now in the thousands
+(vs. hundreds under keyword search), that would bias every run toward
+whatever NPS's own default sort puts first, not a representative sample
+of the park's photography. Replaced with _sample_candidates(), a real
+random.sample() over the unprocessed pool.
+
+Practical note: search only builds a candidate *list* (cheap, metadata-
+only HTTP calls); nothing downloads or runs through the judgment model
+until pipeline.run()'s --limit lets it through, unchanged. At the
+model's real per-image rate (~10-20s observed this session), processing
+Kenai Fjords' full 15,242-candidate pool alone would take ~2.6 days
+continuous, and the site-wide 308,802-image Scenic category ~53 days --
+confirming --limit + random sampling per run is the permanent strategy
+here, not a stopgap.

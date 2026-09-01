@@ -2,7 +2,14 @@
 like the real `var search = {...}` blob nps_client.py extracts from HTML,
 not a live fixture, since the real site has no stable public sample data."""
 
-from vistarium.nps_client import asset_to_candidate, extract_payload
+from unittest.mock import patch
+
+from vistarium.nps_client import (
+    asset_to_candidate,
+    extract_payload,
+    fetch_unit_codes,
+    search_park_scenic,
+)
 
 SAMPLE_HTML = """
 <html><body>
@@ -62,3 +69,107 @@ def test_asset_to_candidate_handles_missing_optional_fields():
     assert cand.photographer is None
     assert cand.park == ""
     assert cand.license == ""
+
+
+MULTI_UNIT_ASSET = {
+    "AssetID": "333",
+    "Title": "Holy Cross",
+    "NPSUnits": [
+        {"Name": "Devils Tower National Monument", "Code": "DETO"},
+        {"Name": "Grand Canyon National Park", "Code": "GRCA"},
+        {"Name": "Grand Teton National Park", "Code": "GRTE"},
+        {"Name": "Museum Management Program", "Code": "MMP"},
+    ],
+}
+
+
+def test_asset_to_candidate_prefers_matching_unit_over_first():
+    # Real bug found live 2026-09-01: a shared historical asset cross-
+    # tagged under 4 NPS units, searched via Units:GRTE -- units[0] was
+    # Devils Tower, not the park actually searched for.
+    cand = asset_to_candidate(MULTI_UNIT_ASSET, term="scenic:GRTE", park_code="GRTE")
+    assert cand.park == "Grand Teton National Park"
+
+
+def test_asset_to_candidate_falls_back_to_first_unit_without_park_code():
+    cand = asset_to_candidate(MULTI_UNIT_ASSET, term="holy cross")
+    assert cand.park == "Devils Tower National Monument"
+
+
+def test_asset_to_candidate_falls_back_when_park_code_not_listed():
+    cand = asset_to_candidate(MULTI_UNIT_ASSET, term="scenic:ZION", park_code="ZION")
+    assert cand.park == "Devils Tower National Monument"
+
+
+def _html(payload_json: str) -> str:
+    return f"<html><body><script>var search = {payload_json};</script></body></html>"
+
+
+def test_search_park_scenic_paginates_and_dedupes():
+    # Page 1 has 2 assets, page 2 has 1 new + 1 repeat of page 1's first --
+    # real NPGallery pages can overlap slightly; must dedupe by AssetID.
+    page1 = _html(
+        '{"SearchID": "sid-1", "PageCount": 2, "PageSize": 2, "ResultCount": 3, '
+        '"Results": [{"Asset": {"AssetID": "a"}}, {"Asset": {"AssetID": "b"}}]}'
+    )
+    page2 = _html(
+        '{"SearchID": "sid-1", "PageCount": 2, "PageSize": 2, "ResultCount": 3, '
+        '"Results": [{"Asset": {"AssetID": "b"}}, {"Asset": {"AssetID": "c"}}]}'
+    )
+
+    def fake_http_get(url):
+        if "page=2" in url:
+            return page2
+        return page1
+
+    with patch("vistarium.nps_client._http_get", side_effect=fake_http_get):
+        results = search_park_scenic("ACAD")
+
+    assert {c.id for c in results} == {"a", "b", "c"}
+    assert all(c.search_terms == ["scenic:ACAD"] for c in results)
+
+
+def test_search_park_scenic_returns_empty_when_no_payload():
+    with patch("vistarium.nps_client._http_get", return_value="<html>no results</html>"):
+        assert search_park_scenic("ZZZZ") == []
+
+
+def test_search_park_scenic_respects_max_pages():
+    page1 = _html(
+        '{"SearchID": "sid-1", "PageCount": 5, "PageSize": 1, "ResultCount": 5, '
+        '"Results": [{"Asset": {"AssetID": "a"}}]}'
+    )
+    calls = []
+
+    def fake_http_get(url):
+        calls.append(url)
+        return page1
+
+    with patch("vistarium.nps_client._http_get", side_effect=fake_http_get):
+        search_park_scenic("ACAD", max_pages=2)
+
+    # 1 probe request + at most 1 more page (max_pages=2, capped below the
+    # 5 pages ResultCount/PageSize would otherwise imply).
+    assert len(calls) == 2
+
+
+def test_fetch_unit_codes_parses_units_facet():
+    payload = _html(
+        '{"SearchID": "sid-1", "PageCount": 1, "Filters": ['
+        '{"Term": "Categories", "Items": [{"Attribute": "Scenic"}]}, '
+        '{"Term": "Units", "Items": ['
+        '{"Attribute": "ACAD", "DisplayName": "Acadia National Park"}, '
+        '{"Attribute": "GRCA", "DisplayName": "Grand Canyon National Park"}'
+        "]}]}"
+    )
+    with patch("vistarium.nps_client._http_get", return_value=payload):
+        codes = fetch_unit_codes()
+
+    assert codes["Acadia National Park"] == "ACAD"
+    assert codes["Grand Canyon National Park"] == "GRCA"
+
+
+def test_fetch_unit_codes_empty_when_no_units_facet():
+    payload = _html('{"SearchID": "sid-1", "PageCount": 1, "Filters": []}')
+    with patch("vistarium.nps_client._http_get", return_value=payload):
+        assert fetch_unit_codes() == {}

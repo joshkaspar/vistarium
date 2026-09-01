@@ -13,6 +13,7 @@ import argparse
 import dataclasses
 import json
 import logging
+import random
 import sys
 from pathlib import Path
 
@@ -125,17 +126,29 @@ def _write_checkpoint_line(checkpoint_path: Path, entry: dict) -> None:
 
 
 def _search_with_cache(
-    cache_path: Path, terms: list[str] | None, refresh: bool
+    cache_path: Path,
+    terms: list[str] | None,
+    refresh: bool,
+    park_code: str | None = None,
 ) -> list[nps_client.NPSCandidate]:
-    """NPS search across ~28 terms takes 90+ seconds -- most of a short
-    run's time budget if it has to be redone on every retry. Cache the
-    results to disk; pass refresh=True (--refresh-search) to force a
-    re-scan (e.g. to pick up newly-added NPS assets)."""
+    """NPS search takes real time (a park's Categories:Scenic search alone
+    can be several requests) -- most of a short run's time budget if it
+    has to be redone on every retry. Cache the results to disk; pass
+    refresh=True (--refresh-search) to force a re-scan (e.g. to pick up
+    newly-added NPS assets).
+
+    park_code (--park-code) uses nps_client.search_park_scenic() -- NPS's
+    own Categories:Scenic tag scoped to that park, the preferred strategy
+    (see nps_client.py's module docstring, DECISIONS.md 2026-09-01) over
+    guessing at DEFAULT_TERMS keywords. terms is ignored when set."""
     if cache_path.exists() and not refresh:
         raw = json.loads(cache_path.read_text())
         return [nps_client.NPSCandidate(**c) for c in raw]
 
-    candidates = nps_client.search_candidates(terms=terms)
+    if park_code:
+        candidates = nps_client.search_park_scenic(park_code)
+    else:
+        candidates = nps_client.search_candidates(terms=terms)
     cache_path.write_text(json.dumps([dataclasses.asdict(c) for c in candidates]))
     return candidates
 
@@ -151,6 +164,25 @@ def _filter_by_park(
     return [c for c in candidates if needle in c.park.lower()]
 
 
+def _sample_candidates(
+    candidates: list[nps_client.NPSCandidate],
+    already_processed: set[str],
+    limit: int,
+) -> list[nps_client.NPSCandidate]:
+    """Randomly samples up to `limit` not-yet-processed candidates.
+
+    Deliberately not a positional [:limit] slice -- NPS's own default
+    result ordering is not random, and a park's real candidate pool can
+    be huge (15,242 for Kenai Fjords alone via Categories:Scenic, see
+    DECISIONS.md 2026-09-01), so taking the first N would silently bias
+    every run toward whatever NPS happens to sort first rather than a
+    representative slice of the park's actual photography."""
+    unprocessed = [c for c in candidates if c.id not in already_processed]
+    if len(unprocessed) <= limit:
+        return unprocessed
+    return random.sample(unprocessed, limit)
+
+
 def run(
     *,
     limit: int,
@@ -160,6 +192,7 @@ def run(
     terms: list[str] | None,
     refresh_search: bool = False,
     park: str | None = None,
+    park_code: str | None = None,
 ) -> None:
     images_dir = workdir / "images"
     checkpoint_path = workdir / "checkpoint.jsonl"
@@ -171,13 +204,13 @@ def run(
         log.info("resuming: %d candidates already processed in a prior run", len(already_processed))
 
     log.info("searching NPS (cached unless --refresh-search)...")
-    candidates = _search_with_cache(candidates_cache_path, terms, refresh_search)
+    candidates = _search_with_cache(candidates_cache_path, terms, refresh_search, park_code)
     log.info("found %d unique candidates", len(candidates))
     if park:
         candidates = _filter_by_park(candidates, park)
         log.info("filtered to %d candidates matching park %r", len(candidates), park)
-    new_candidates = [c for c in candidates if c.id not in already_processed][:limit]
-    log.info("processing %d new candidates this run", len(new_candidates))
+    new_candidates = _sample_candidates(candidates, already_processed, limit)
+    log.info("processing %d new candidates this run (random sample)", len(new_candidates))
 
     dedup = Deduplicator()
     # Pre-seed dedup with already-downloaded images so a resumed run still
@@ -281,6 +314,15 @@ def main(argv: list[str] | None = None) -> int:
         "--park",
         help="restrict to candidates whose park field contains this (case-insensitive substring)",
     )
+    parser.add_argument(
+        "--park-code",
+        help=(
+            "4-letter NPS unit code (e.g. ACAD) -- searches that park's own "
+            "Categories:Scenic tag directly instead of guessing DEFAULT_TERMS "
+            "keywords (see nps_client.search_park_scenic). Overrides --term. "
+            "Resolve a code from a park name with nps_client.fetch_unit_codes()."
+        ),
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args(argv)
 
@@ -297,6 +339,7 @@ def main(argv: list[str] | None = None) -> int:
         terms=args.terms,
         refresh_search=args.refresh_search,
         park=args.park,
+        park_code=args.park_code,
     )
     return 0
 

@@ -9,6 +9,18 @@ Endpoint shape:
   1. GET /SearchResults?allFields=<term>&PrimaryType=image  -> SearchID + page 1
   2. GET /SearchResults/<SearchID>?page=N                   -> further pages
   3. Images: GET /GetAsset/<AssetID>/Original                (full-res)
+
+Preferred search strategy (2026-09-01, see DECISIONS.md): NPGallery's own
+advanced search supports filter params -- `filter=Units:<code>&filter=
+Categories:Scenic&filter=ResourceTypes:Image` -- which target NPS's own
+per-park "Scenic" categorization directly, instead of guessing at
+DEFAULT_TERMS keywords. Same embedded-JSON payload, same asset_to_
+candidate() parsing; only the query differs. Discovered by hand-browsing
+the site's own advanced-search UI after keyword search was found to miss
+entire named collections (e.g. Acadia's official "Night Skies" curated
+gallery never surfaced for the literal terms "Acadia" + "night").
+search_park_scenic() is the entry point; DEFAULT_TERMS/search_candidates
+are kept for ad hoc/cross-park term search, not removed.
 """
 
 from __future__ import annotations
@@ -141,7 +153,18 @@ def extract_payload(html: str) -> dict | None:
     return json.loads(html[start:end])
 
 
-def asset_to_candidate(asset: dict, term: str) -> NPSCandidate:
+def asset_to_candidate(asset: dict, term: str, park_code: str | None = None) -> NPSCandidate:
+    """`park_code`, when given, is the NPS unit code the search was
+    actually scoped to (e.g. search_park_scenic's `Units:<code>` filter).
+    An asset can legitimately belong to several NPSUnits at once --
+    found live 2026-09-01 searching Grand Teton: a shared historical
+    asset was cross-tagged under Devils Tower, Grand Canyon, Grand
+    Teton, and the Museum Management Program all at once, and
+    units[0] was Devils Tower, not the park actually searched for.
+    park_code lets the matching NPSUnits entry win instead of always
+    trusting the list's first element; falls back to units[0] when
+    park_code is None (generic keyword search, no single target park)
+    or doesn't match any listed unit."""
     ci = asset.get("ConstraintsInformation") or {}
     # Deliberately Title only, not AltText/Description/Keywords -- found live
     # in the 2026-08-30 validation checkpoint that Description/Keywords can
@@ -157,6 +180,12 @@ def asset_to_candidate(asset: dict, term: str) -> NPSCandidate:
     )
     aid = str(asset.get("AssetID"))
     units = asset.get("NPSUnits") or []
+    park_name = ""
+    if units:
+        matched = (
+            next((u for u in units if u.get("Code") == park_code), None) if park_code else None
+        )
+        park_name = (matched or units[0])["Name"]
     photographer = _s(asset.get("PhotoCredit")) or _s(asset.get("Copyright")) or None
     return NPSCandidate(
         id=aid,
@@ -165,7 +194,7 @@ def asset_to_candidate(asset: dict, term: str) -> NPSCandidate:
         title=(_s(asset.get("Title")) or _s(asset.get("AltText"))).strip(),
         photographer=photographer,
         date=(asset.get("ImageCreateDate") or {}).get("Date") or asset.get("ImageCreateDateTime"),
-        park=units[0]["Name"] if units else "",
+        park=park_name,
         license=f"{ci.get('Constraint', '')}/{ci.get('GrantingRights', '')}".strip("/"),
         caption_text=caption_text,
         exif_datetime_raw=exif_raw,
@@ -236,6 +265,85 @@ def search_candidates(
                     by_id[cand.id] = cand
 
     return list(by_id.values())
+
+
+# A safety ceiling, not a practical target -- fetching search-result pages
+# is cheap (HTTP only, no model calls), so there's no real reason to
+# truncate a park's candidate pool. Found live 2026-09-01: Kenai Fjords
+# alone has 15,242 Categories:Scenic images (31 pages at 500/page); a
+# small default cap here would silently bias which subset of a large
+# park's photos are ever even seen, on top of NPS's own (non-random)
+# default result ordering. 200 pages = 100,000 candidates is far above
+# any single park's real count, just a backstop against a runaway fetch.
+DEFAULT_MAX_PAGES_PER_PARK = 200
+
+
+def _probe_park_scenic(park_code: str) -> dict | None:
+    qs = urllib.parse.urlencode(
+        [
+            ("filter", f"Units:{park_code}"),
+            ("filter", "Categories:Scenic"),
+            ("filter", "ResourceTypes:Image"),
+            ("view", "grid"),
+            ("sort", "default"),
+        ]
+    )
+    return extract_payload(_http_get(f"{BASE}/SearchResults?{qs}"))
+
+
+def search_park_scenic(
+    park_code: str,
+    max_pages: int = DEFAULT_MAX_PAGES_PER_PARK,
+    workers: int = 6,
+) -> list[NPSCandidate]:
+    """Searches NPGallery's own `Categories:Scenic` tag scoped to one park
+    (`Units:<code>`), NPS's own curation rather than a guessed keyword --
+    see the module docstring. `park_code` is the 4-letter NPS unit code
+    (e.g. "ACAD"); resolve one via fetch_unit_codes()."""
+    first = _probe_park_scenic(park_code)
+    if not first:
+        return []
+
+    by_id: dict[str, NPSCandidate] = {}
+    search_id = first.get("SearchID")
+    page_size = first.get("PageSize") or 500
+    result_count = first.get("ResultCount") or 0
+    total_pages = min(max_pages, -(-result_count // page_size) or 1)  # ceil div
+
+    page_payloads = [(search_id, 1, first)]
+    with ThreadPoolExecutor(workers) as ex:
+        futs = {ex.submit(_fetch_page, search_id, p): p for p in range(2, total_pages + 1)}
+        for fut in as_completed(futs):
+            sid, page, payload = fut.result()
+            if payload:
+                page_payloads.append((sid, page, payload))
+
+    term = f"scenic:{park_code}"
+    for _sid, _page, payload in page_payloads:
+        for row in payload.get("Results") or []:
+            cand = asset_to_candidate(row.get("Asset") or {}, term, park_code=park_code)
+            by_id.setdefault(cand.id, cand)
+
+    return list(by_id.values())
+
+
+def fetch_unit_codes() -> dict[str, str]:
+    """Returns {display_name: unit_code} for every NPS unit (683+ as of
+    2026-09-01), resolved from the "Units" filter facet that any
+    SearchResults response includes regardless of what filters were
+    applied -- no separate API/key needed, one HTTP request."""
+    qs = urllib.parse.urlencode({"filter": "ResourceTypes:Image", "view": "grid"})
+    payload = extract_payload(_http_get(f"{BASE}/SearchResults?{qs}"))
+    if not payload:
+        return {}
+    units_facet = next((f for f in payload.get("Filters") or [] if f.get("Term") == "Units"), None)
+    if not units_facet:
+        return {}
+    return {
+        item["DisplayName"]: item["Attribute"]
+        for item in units_facet.get("Items", [])
+        if item.get("DisplayName") and item.get("Attribute")
+    }
 
 
 def download_image(candidate: NPSCandidate, dest_dir: Path) -> Path:

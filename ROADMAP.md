@@ -51,26 +51,19 @@ decided.
   histogram/k-means color-quantization is good at. Likely a better fit
   for deterministic than `color_mode` was, but prototype and check
   against real examples before committing, same lesson as always.
-- **NPS's own curated per-park photo galleries, not just keyword
-  search.** Investigating why Acadia's results felt thin compared to
-  its actual scenery (2026-09-01), Josh found NPS publishes curated
-  photo galleries per park outside the generic search-results flow --
-  e.g. https://www.nps.gov/acad/learn/photosmultimedia/photogallery.htm
-  linking to https://www.nps.gov/media/photo/gallery.htm?pg=3539176&id=F810EE82-155D-451F-67D336A09FC76A3F,
-  a gallery of individual items like
-  https://www.nps.gov/media/photo/gallery-item.htm?pg=3539176&id=f810f106-155d-451f-67af-71bee230cbe6&gid=F810EE82-155D-451F-67D336A09FC76A3F.
-  The item IDs are the same UUID format `nps_client.py` already uses
-  (`npgallery.nps.gov/GetAsset/<id>/...`), and the asset itself is
-  reachable at `nps.gov/npgallery/GetAsset/<id>/proxy/hires` -- a
-  different derivative path than the `/Original` one currently used,
-  worth checking for differences. So this isn't a new institution/API
-  to onboard (unlike Library of Congress etc. below) -- it's the same
-  underlying NPGallery asset store, reached via park-curated gallery
-  pages (`gid`/`pg` params) instead of blind keyword search, and it
-  plausibly surfaces park staff's own picks rather than whatever a
-  scenic-keyword text search happens to match. Worth a scraper pass
-  once someone maps the gallery-listing endpoint's actual shape (the
-  two URLs above are the only samples on hand so far).
+- ~~NPS's own curated per-park photo galleries, not just keyword
+  search~~ -- **superseded 2026-09-01**: the underlying gap (Acadia's
+  results feeling thin) is fixed more foundationally by
+  `nps_client.search_park_scenic()` -- see `DECISIONS.md`. The
+  hand-curated per-park gallery pages
+  (`nps.gov/<code>/learn/photosmultimedia/photogallery.htm`, hardcoded
+  `albumIDs` fetched via `nps.gov/npgallery/api/album/metadata`) are
+  still a real, further-curated layer on top of `Categories:Scenic` --
+  NPS park staff's own picks, a subset worth surfacing distinctly (a
+  possible future "staff picks" filter/badge) -- but not the primary
+  fix anymore. Revisit once search_park_scenic() has been run against
+  the current 9 parks and there's a sense of whether Categories:Scenic
+  alone is enough.
 
 ## Later sources (build order step 6)
 

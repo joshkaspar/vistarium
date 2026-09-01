@@ -6,6 +6,7 @@ from vistarium.nps_client import NPSCandidate
 from vistarium.pipeline import (
     _filter_by_park,
     _load_checkpoint,
+    _sample_candidates,
     _search_with_cache,
     _write_checkpoint_line,
     run,
@@ -130,3 +131,28 @@ def test_run_survives_unexpected_error_building_one_record(tmp_path: Path):
     entries = [json.loads(line) for line in checkpoint_lines]
     assert entries == [{"id": "bad-1", "outcome": "processing_error"}]
     assert json.loads((workdir / "catalog.json").read_text()) == []
+
+
+def test_sample_candidates_returns_all_when_pool_smaller_than_limit():
+    candidates = [NPSCandidate(id=str(i)) for i in range(5)]
+    result = _sample_candidates(candidates, already_processed=set(), limit=10)
+    assert {c.id for c in result} == {str(i) for i in range(5)}
+
+
+def test_sample_candidates_excludes_already_processed():
+    candidates = [NPSCandidate(id=str(i)) for i in range(5)]
+    result = _sample_candidates(candidates, already_processed={"0", "1"}, limit=10)
+    assert {c.id for c in result} == {"2", "3", "4"}
+
+
+def test_sample_candidates_is_not_a_positional_slice():
+    # Real regression motivation (2026-09-01): NPS's own default result
+    # order isn't random, and a park's candidate pool can be huge (15,242
+    # for Kenai Fjords via Categories:Scenic) -- a plain [:limit] slice
+    # would silently bias every run toward whatever NPS sorts first.
+    candidates = [NPSCandidate(id=str(i)) for i in range(1000)]
+    result = _sample_candidates(candidates, already_processed=set(), limit=50)
+    assert len(result) == 50
+    # Overwhelmingly unlikely to be the first 50 IDs by chance if this is
+    # a real random sample rather than a positional slice.
+    assert {c.id for c in result} != {str(i) for i in range(50)}
