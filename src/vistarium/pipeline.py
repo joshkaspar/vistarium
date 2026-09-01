@@ -20,7 +20,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from PIL import Image
 
-from vistarium import crop, exif_util, nps_client, schema_validate
+from vistarium import album_triage, crop, curate, exif_util, nps_client, schema_validate
 from vistarium.dedup import Deduplicator
 from vistarium.model_client import ModelJudgmentError, judge_image
 
@@ -131,6 +131,11 @@ def _search_with_cache(
     refresh: bool,
     park_code: str | None = None,
     album_ids: list[str] | None = None,
+    curate_park_code: str | None = None,
+    threshold: float | None = None,
+    floor: int = 10,
+    keywords_path: Path = album_triage.DEFAULT_KEYWORDS_PATH,
+    workdir: Path | None = None,
 ) -> list[nps_client.NPSCandidate]:
     """NPS search takes real time (a park's Categories:Scenic search alone
     can be several requests) -- most of a short run's time budget if it
@@ -138,22 +143,31 @@ def _search_with_cache(
     refresh=True (--refresh-search) to force a re-scan (e.g. to pick up
     newly-added NPS assets).
 
-    Precedence, highest first: album_ids (--album-id, repeatable) fetches
-    one or more hand-curated albums via nps_client.search_album() -- the
-    highest-payoff strategy (park staff's own picks, not a keyword or
-    category guess; there's no reliable way to automatically tell a
-    landscape-worthy album from an administrative one, so a human picks
-    IDs from nps_client.list_park_albums() first). Falls back to
-    park_code (--park-code), nps_client.search_park_scenic()'s
-    Categories:Scenic tag scoped to a park -- a good smoke-test/volume
-    strategy, weaker than curated albums but far better than guessed
-    keywords. Falls back to terms (DEFAULT_TERMS) last. See
-    nps_client.py's module docstring and DECISIONS.md, 2026-09-01."""
+    Precedence, highest first: curate_park_code (--curate-park-code) runs
+    the full curate.select_candidates_for_park() pipeline -- album-keyword
+    triage, thumbnail fetch, aesthetic pre-scoring, threshold-with-floor
+    selection -- the strategy for scraping at real NPGallery scale (a
+    single Categories:Scenic search can return hundreds of thousands of
+    candidates NPS-wide; see DECISIONS.md, 2026-09-01). Falls back to
+    album_ids (--album-id, repeatable): one or more hand-curated albums
+    via nps_client.search_album(), fetched in full with no pre-filtering
+    -- appropriate for a small, already-vetted album list, not real
+    scale. Falls back to park_code (--park-code),
+    nps_client.search_park_scenic()'s Categories:Scenic tag scoped to a
+    park -- a smoke-test/volume strategy, weaker than curation but far
+    better than guessed keywords. Falls back to terms (DEFAULT_TERMS)
+    last. See nps_client.py's module docstring."""
     if cache_path.exists() and not refresh:
         raw = json.loads(cache_path.read_text())
         return [nps_client.NPSCandidate(**c) for c in raw]
 
-    if album_ids:
+    if curate_park_code:
+        assert threshold is not None, "--threshold is required with --curate-park-code"
+        assert workdir is not None
+        candidates = curate.select_candidates_for_park(
+            curate_park_code, workdir, threshold, floor, keywords_path
+        )
+    elif album_ids:
         by_id: dict[str, nps_client.NPSCandidate] = {}
         for album_id in album_ids:
             for cand in nps_client.search_album(album_id, park_code=park_code):
@@ -208,6 +222,10 @@ def run(
     park: str | None = None,
     park_code: str | None = None,
     album_ids: list[str] | None = None,
+    curate_park_code: str | None = None,
+    threshold: float | None = None,
+    floor: int = 10,
+    keywords_path: Path = album_triage.DEFAULT_KEYWORDS_PATH,
 ) -> None:
     images_dir = workdir / "images"
     checkpoint_path = workdir / "checkpoint.jsonl"
@@ -220,7 +238,16 @@ def run(
 
     log.info("searching NPS (cached unless --refresh-search)...")
     candidates = _search_with_cache(
-        candidates_cache_path, terms, refresh_search, park_code, album_ids
+        candidates_cache_path,
+        terms,
+        refresh_search,
+        park_code,
+        album_ids,
+        curate_park_code,
+        threshold,
+        floor,
+        keywords_path,
+        workdir,
     )
     log.info("found %d unique candidates", len(candidates))
     if park:
@@ -346,13 +373,43 @@ def main(argv: list[str] | None = None) -> int:
         dest="album_ids",
         help=(
             "NPGallery album id (repeatable) -- fetches a hand-curated album's "
-            "full contents (see nps_client.search_album/list_park_albums). "
-            "The highest-payoff strategy: park staff's own picks, not a "
-            "keyword or category guess. Overrides --park-code and --term."
+            "full contents (see nps_client.search_album/list_park_albums), with "
+            "no pre-filtering. Fine for a small, already-vetted list; use "
+            "--curate-park-code instead at real scale. Overrides --park-code "
+            "and --term."
         ),
+    )
+    parser.add_argument(
+        "--curate-park-code",
+        help=(
+            "4-letter NPS unit code -- runs the full curated-scale pipeline "
+            "(album-keyword triage, thumbnail fetch, aesthetic pre-scoring, "
+            "threshold-with-floor selection; see curate.py). Requires "
+            "--threshold. Overrides --album-id, --park-code, and --term."
+        ),
+    )
+    parser.add_argument(
+        "--threshold",
+        type=float,
+        help="minimum aesthetic_score to keep a candidate; required with --curate-park-code",
+    )
+    parser.add_argument(
+        "--floor",
+        type=int,
+        default=10,
+        help="min candidates to keep per park even below --threshold (default 10)",
+    )
+    parser.add_argument(
+        "--keywords",
+        type=Path,
+        default=album_triage.DEFAULT_KEYWORDS_PATH,
+        help="path to the album include/exclude keyword config (default album_keywords.json)",
     )
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args(argv)
+
+    if args.curate_park_code and args.threshold is None:
+        parser.error("--threshold is required with --curate-park-code")
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -369,6 +426,10 @@ def main(argv: list[str] | None = None) -> int:
         park=args.park,
         park_code=args.park_code,
         album_ids=args.album_ids,
+        curate_park_code=args.curate_park_code,
+        threshold=args.threshold,
+        floor=args.floor,
+        keywords_path=args.keywords,
     )
     return 0
 

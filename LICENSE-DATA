@@ -1,27 +1,30 @@
-Vistarium's own metadata -- schema.json and the classification fields it
-defines (time_of_day, primary_subject, tags, and the rest of the model-
-judgment and deterministic fields Claude Code and the local model add on
-top of each source's catalog record) -- is dedicated to the public domain
-under CC0 1.0 Universal.
+Vistarium's own catalog -- each curated, scored, and classified record
+(schema.json's shape: the deterministic fields Claude Code fills in
+plus the model-judgment and aesthetic-scoring fields added on top of
+each source's raw catalog entry) -- is licensed under Creative Commons
+Attribution 4.0 International (CC BY 4.0).
 
-To the extent possible under law, the author(s) of Vistarium have waived
-all copyright and related or neighboring rights to this metadata. You can
-copy, modify, distribute, and use it, even for commercial purposes, all
-without asking permission.
+You are free to share and adapt this metadata, including for commercial
+purposes, as long as you give appropriate credit, provide a link to the
+license, and indicate if changes were made.
 
-Full legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
 
-This dedication applies only to Vistarium's own structured metadata. It
-does NOT apply to:
+This is a whole-record license, not a field-by-field one: individual
+descriptive fields (a `time_of_day` value, a `tags` array) carry little
+or no independent copyright on their own, but the compiled, curated,
+scored catalog record -- the selection and arrangement of which images
+are worth including and how they're described -- is Vistarium's actual
+creative contribution, and that's the unit this license covers. It does
+NOT split out or exempt individual fields sourced unedited from a
+source institution's API (title, photographer, date, park, license,
+source_url, image_url) -- those are part of the record CC BY covers,
+not carved out of it.
 
-- the images themselves, whose rights status is recorded per-item in
-  their own metadata and is not something this project holds or can
-  grant (see TERMS_OF_USE.md); or
-- catalog fields pulled unedited from a source institution's own API
-  (title, photographer, date, park, license, source_url, image_url --
-  see README.md's "Data" section for the deterministic/model split),
-  which are facts about the source record, not this project's own
-  creative contribution.
+This license applies only to Vistarium's own catalog data. It does NOT
+apply to the images themselves, whose rights status is recorded
+per-item in their own metadata and is not something this project holds
+or can grant -- see TERMS_OF_USE.md.
 
 Vistarium's code is separately licensed under the MIT License -- see
 LICENSE.

@@ -26,17 +26,19 @@ import json
 from pathlib import Path
 
 MODEL_ID = "shunk031/aesthetics-predictor-v2-sac-logos-ava1-l14-linearMSE"
+AESTHETIC_METHOD = "aesthetics_predictor_v2_l14_linearMSE"
 BATCH_SIZE = 16
 
 _predictor = None
 _processor = None
+_device = None
 
 
 def _load_model():
-    global _predictor, _processor
+    global _predictor, _processor, _device
     if _predictor is None:
         try:
-            import torch  # noqa: F401
+            import torch
             from aesthetics_predictor import AestheticsPredictorV2Linear
             from transformers import CLIPProcessor
         except ImportError as e:
@@ -44,10 +46,15 @@ def _load_model():
                 "aesthetic scoring needs the 'aesthetic' extra -- "
                 "install with `uv sync --extra aesthetic`"
             ) from e
-        _predictor = AestheticsPredictorV2Linear.from_pretrained(MODEL_ID)
+        # GPU when available (this runs on wopr for real volume -- CPU is
+        # fine for the dev-VM/CI path and small pilots, but the curated-
+        # scale pipeline needs GPU throughput; see DECISIONS.md, 2026-09-01,
+        # benchmark). Falls back to CPU transparently everywhere else.
+        _device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        _predictor = AestheticsPredictorV2Linear.from_pretrained(MODEL_ID).to(_device)
         _processor = CLIPProcessor.from_pretrained(MODEL_ID)
         _predictor.eval()
-    return _predictor, _processor
+    return _predictor, _processor, _device
 
 
 def score_batch(image_paths: list[Path]) -> list[float]:
@@ -56,9 +63,9 @@ def score_batch(image_paths: list[Path]) -> list[float]:
     import torch
     from PIL import Image
 
-    predictor, processor = _load_model()
+    predictor, processor, device = _load_model()
     images = [Image.open(p).convert("RGB") for p in image_paths]
-    inputs = processor(images=images, return_tensors="pt")
+    inputs = processor(images=images, return_tensors="pt").to(device)
     with torch.no_grad():
         outputs = predictor(**inputs)
     scores = outputs.logits.squeeze(-1).tolist()
@@ -93,7 +100,7 @@ def backfill(catalog_path: Path, images_dir: Path, checkpoint_path: Path) -> int
     for r in catalog:
         if r["id"] in scores:
             r["aesthetic_score"] = scores[r["id"]]
-            r["aesthetic_method"] = "laion_predictor_v2"
+            r["aesthetic_method"] = AESTHETIC_METHOD
     catalog_path.write_text(json.dumps(catalog, indent=2))
 
     if checkpoint_path.exists():

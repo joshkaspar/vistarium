@@ -620,3 +620,51 @@ Decision: exclude records whose title contains "360" from the published site (bu
 Alternatives-considered: add a model field for panorama/projection type (another grammar change + backfill, same day as two others); attempt actual equirectangular-to-rectilinear reprojection (real engineering effort for a handful of images); leave them in and accept the distortion
 Rationale: purely deterministic, zero model cost, and the title convention has been 100% reliable on every case found so far -- no need for a model judgment call or new field when a cheap, accurate signal already exists in data already being scraped
 Outcome: resolved -- regression test added (test_is_360_panorama_detects_nps_titling_conventions, test_build_site_excludes_360_panoramas)
+
+## 2026-09-01 -- Curated-scale pipeline: threshold-with-floor selection, album keyword triage, CC BY metadata
+[agent-drafted, Josh-approved]
+
+Context: discovering NPGallery's search/album APIs this session revealed
+real scale -- Categories:Scenic alone returns 308,802 images site-wide,
+and Acadia's albums alone number 211. Processing all of that through the
+per-image VLM judgment call, the project's working model until now, was
+designed for hundreds of candidates, not hundreds of thousands, and most
+of that volume isn't wallpaper-worthy regardless. Josh's response: make
+Vistarium a curated selection gated by aesthetic score before the VLM
+ever runs, not an exhaustive catalog.
+
+Decision: reorder the pipeline for future scraping -- album-keyword triage (metadata only, no image bytes) -> thumbnail fetch (ProxyLoRes, ~78KB vs. Original's 1-2MB+) -> aesthetic pre-scoring (batched, GPU) -> threshold-with-floor selection (keep score >= threshold per park, but top up to a minimum floor -- e.g. 10 -- per park so no park is excluded outright for being less photogenic on average) -> only survivors get full-res download + VLM judgment (unchanged)
+Alternatives-considered: fixed N-per-park instead of threshold-with-floor (doesn't adapt as corpus/threshold understanding evolves); score at full resolution instead of thumbnails (unnecessary bandwidth -- the aesthetics predictor's CLIP backbone doesn't need full-res input); drop parks that don't clear threshold entirely (rejected -- the floor exists specifically so no park gets zero-ed out just for having a lower average score)
+Rationale: this is genuinely a different pipeline shape than "search returns a few hundred candidates, judge them all" -- pre-filtering on a cheap batched signal before the expensive per-image VLM call is the only way this scales to real NPGallery volume
+Outcome: resolved. New modules: album_triage.py (classify_album() -- exclude/include/ambiguous from a versioned album_keywords.json; ambiguous falls through rather than being dropped, since there's no reliable way to automate telling a landscape-worthy album from an administrative one by title alone -- Acadia's 211 albums split roughly evenly), curate.py (select_by_threshold_with_floor(), select_candidates_for_park() orchestrating the full chain). nps_client.py gains download_thumbnail() (confirmed live: GetAsset/<id>/proxy/lores serves the ProxyLoRes derivative already advertised in album API responses) and a shared request throttle (see below). aesthetic_score.py gains CUDA auto-detection (falls back to CPU transparently) and a renamed aesthetic_method value (aesthetics_predictor_v2_l14_linearMSE, more specific than the prior laion_predictor_v2 -- both stay valid in schema.json's enum, existing records untouched). pipeline.py wires it in via --curate-park-code/--threshold/--floor/--keywords, additive to the existing --album-id/--park-code/--term strategies, none of which were removed. threshold has no hardcoded default anywhere it's used -- Josh was explicit this is a moving target pending real score-distribution data, not something to guess at.
+
+Existing 1235-record corpus (scraped before this pipeline existed) is
+left as-is -- this changes how future scraping works, not a retroactive
+re-filter of what's already published.
+
+Request throttling: added mid-implementation after Josh found NPS's
+*other* public API (developer.nps.gov, API-key gated) documents 1000
+requests/hour as its default rate limit. npgallery.nps.gov (what this
+project actually talks to) has no published limit of its own, but that's
+the closest signal available for what NPS considers reasonable automated
+access -- used as the anchor. Every NPGallery request (search, album
+listing, full-res download, thumbnail fetch alike) now funnels through
+one throttled choke point (nps_client._http_request(), ~3600 req/hour
+ceiling, thread-safe across ThreadPoolExecutor workers) rather than
+firing as fast as concurrency allowed.
+
+## 2026-09-01 -- Metadata license: CC0 -> CC BY 4.0, whole-record not per-field
+[agent-drafted, Josh-approved]
+
+Context: building the curated-scale pipeline above surfaced a second
+question -- a curated, aesthetically-scored, triaged selection is real
+editorial/compilation work, which changes what license fits Vistarium's
+own catalog data. The CC0 public-domain dedication (in place since
+2026-08-31) understates that; LICENSE-DATA also carved out "catalog
+fields pulled unedited from a source institution's own API" from the
+dedication, a field-by-field split Josh wants removed.
+
+Decision: LICENSE-DATA and README.md's "License & Rights" section now license CC BY 4.0, applied to each catalog record as a compiled whole -- no field-by-field split between sourced vs. Vistarium-generated fields
+Alternatives-considered: keep CC0 but drop only the per-field carve-out; keep the field-level split but change CC0 to CC BY; a separate license per field category
+Rationale: individual descriptive fields (time_of_day, tags) carry thin-to-no independent copyright on their own -- the actual unit of authorship is the compiled, curated, scored index itself (which images were selected, how they're described), which is what compilation copyright protects and what CC BY should therefore cover as a whole, not piecemeal
+Outcome: resolved. Images remain entirely outside both licenses, unchanged -- that split (images vs. metadata) is a real difference in asset class and ownership, not the kind of per-field split being removed here.

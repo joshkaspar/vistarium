@@ -111,7 +111,7 @@
     },
     "aesthetic_method": {
       "type": "string",
-      "enum": ["laion_predictor_v2", "manual_review", "pending"],
+      "enum": ["laion_predictor_v2", "aesthetics_predictor_v2_l14_linearMSE", "manual_review", "pending"],
       "description": "aesthetic-model -- which method produced aesthetic_score (or that none has run yet). 'manual_review' is reserved for a future human-override workflow, not currently used."
     }
   }

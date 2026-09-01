@@ -2,6 +2,7 @@
 like the real `var search = {...}` blob nps_client.py extracts from HTML,
 not a live fixture, since the real site has no stable public sample data."""
 
+import time
 from unittest.mock import patch
 
 from vistarium.nps_client import (
@@ -223,3 +224,47 @@ def test_search_album_parses_direct_json_response():
 def test_search_album_returns_empty_on_bad_json():
     with patch("vistarium.nps_client._http_get", return_value="not json"):
         assert search_album("alb-1") == []
+
+
+def test_download_thumbnail_hits_proxy_lores_url(tmp_path):
+    from vistarium.nps_client import NPSCandidate, download_thumbnail
+
+    candidate = NPSCandidate(id="abc-123")
+    fake_response = type("R", (), {"content": b"fake-jpeg-bytes"})()
+    with patch("vistarium.nps_client._http_request", return_value=fake_response) as mock_req:
+        path = download_thumbnail(candidate, tmp_path)
+
+    mock_req.assert_called_once_with("https://npgallery.nps.gov/GetAsset/abc-123/proxy/lores")
+    assert path == tmp_path / "abc-123.jpg"
+    assert path.read_bytes() == b"fake-jpeg-bytes"
+
+
+def test_download_thumbnail_skips_already_downloaded(tmp_path):
+    from vistarium.nps_client import NPSCandidate, download_thumbnail
+
+    candidate = NPSCandidate(id="abc-123")
+    existing = tmp_path / "abc-123.jpg"
+    existing.write_bytes(b"already here")
+
+    with patch("vistarium.nps_client._http_request") as mock_req:
+        path = download_thumbnail(candidate, tmp_path)
+
+    mock_req.assert_not_called()
+    assert path == existing
+    assert path.read_bytes() == b"already here"
+
+
+def test_throttle_enforces_minimum_interval():
+    import vistarium.nps_client as nps_client_module
+
+    # Patch to a small interval so the test stays fast -- the real
+    # MIN_REQUEST_INTERVAL_S (matched to NPS's published 1000 req/hour
+    # limit, see the constant's own comment) would make this test take
+    # 3.6s for no added coverage; the logic being tested is the same.
+    with patch.object(nps_client_module, "MIN_REQUEST_INTERVAL_S", 0.05):
+        nps_client_module._last_request_at = 0.0
+        start = time.monotonic()
+        nps_client_module._throttle()
+        nps_client_module._throttle()
+        elapsed = time.monotonic() - start
+    assert elapsed >= 0.05

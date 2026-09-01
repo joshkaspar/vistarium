@@ -128,6 +128,49 @@ candidates are drawn by random sample from the pool, not NPS's own
 (non-random) default result order. See `DECISIONS.md` for the full
 investigation.
 
+## Curated selection, not an exhaustive catalog
+
+NPGallery's real scale is far bigger than "a few hundred candidates per
+park" -- `Categories:Scenic` alone returns 308,802 images site-wide, and
+a single park's albums can number in the hundreds. Processing all of
+that through the per-image judgment model was never the plan, and most
+of that volume isn't wallpaper-worthy regardless. `curate.py` runs a
+cheaper pre-filter before any of it reaches the model:
+
+1. **Album keyword triage** (`album_triage.py`, `album_keywords.json`)
+   -- title/description only, no image bytes fetched. There's no
+   reliable way to *automate* telling a scenic album from an
+   administrative one (parking-lot documentation and a mountain-summit
+   collection can have similarly plain titles), so this is a
+   human-curated keyword list, not a learned classifier -- exclude
+   terms win over include terms, and anything ambiguous falls through
+   to the next stage rather than being silently dropped.
+2. **Thumbnail fetch** -- NPGallery's `ProxyLoRes` derivative (~78KB)
+   instead of the full-resolution original (1-2MB+); the aesthetic
+   model doesn't need full resolution to score composition.
+3. **Aesthetic pre-scoring** -- the same predictor described above,
+   batched, on thumbnails.
+4. **Threshold-with-floor selection** -- keep everything scoring above
+   a threshold, but guarantee a minimum count per park (the floor) even
+   if it doesn't clear that bar, so no park gets excluded outright just
+   for averaging lower than others. Neither the threshold nor the floor
+   is hardcoded anywhere -- both are real judgment calls that depend on
+   the actual score distribution once there's enough data to see it,
+   not something to guess at in code.
+
+Only survivors of all four stages ever get a full-resolution download
+and a real VLM judgment call -- unchanged from before.
+
+Every NPGallery request (search, album listing, thumbnails, full-res
+downloads alike) is throttled through one shared rate limiter,
+`nps_client._http_request()`. NPGallery itself publishes no rate limit,
+but NPS's other public API (`developer.nps.gov`) documents 1000
+requests/hour as its default, and NPGallery doesn't return the
+`X-RateLimit-*` headers that would let a caller observe its real quota
+in-flight -- so that number is matched exactly as a conservative
+anchor, not padded, since a wrong guess here can't be self-corrected
+from response headers.
+
 ## Sort by Aesthetic Rating (AI)
 
 The site defaults to sorting by a predicted-aesthetic score instead of
@@ -157,10 +200,10 @@ assume one license covers all of it:
 
 - **This repo's code** (`src/vistarium/`, tests, tooling) is
   [MIT-licensed](./LICENSE) -- yours to reuse freely.
-- **Vistarium's own metadata** (`schema.json` and the classification
-  fields it defines -- `time_of_day`, `primary_subject`, `tags`, and the
-  rest) is [CC0](./LICENSE-DATA) -- public domain, no attribution
-  required.
+- **Vistarium's own catalog** (`schema.json`'s shape -- each curated,
+  scored, classified record as a whole, not split field-by-field) is
+  [CC BY 4.0](./LICENSE-DATA) -- free to reuse, including commercially,
+  with attribution.
 - **The images themselves are not covered by either license.** Each
   image's rights status is recorded per-item in its own metadata
   (`license`, `license_confidence`, `license_evidence`), reflecting what
@@ -221,18 +264,21 @@ is what GitHub Pages serves.
 
 - `schema.json` -- versioned source of truth for the catalog record shape. Changes here are decision commits (see `AGENT_DECISION_POLICY.md`).
 - `src/vistarium/nps_client.py` -- NPS Gallery search + download (deterministic).
+- `src/vistarium/album_triage.py` -- keyword-based include/exclude/ambiguous classification of NPGallery albums (`album_keywords.json`), before any image bytes are fetched.
+- `src/vistarium/curate.py` -- the curated-scale selection pipeline: album triage -> thumbnail fetch -> aesthetic pre-scoring -> threshold-with-floor selection. See "Curated selection, not an exhaustive catalog" below.
 - `src/vistarium/dedup.py` -- exact-content dedup (deterministic).
 - `src/vistarium/exif_util.py` -- caption/EXIF-based time-of-day evidence (deterministic; preferred over the model's visual guess when available).
 - `src/vistarium/crop.py` -- crop-box math from `crop_anchor` (deterministic).
 - `src/vistarium/model_client.py` -- the one call site for the local judgment model, grammar-constrained.
 - `src/vistarium/schema_validate.py` -- validates records against `schema.json`.
 - `src/vistarium/pipeline.py` -- orchestrates the above; CLI entry point.
-- `src/vistarium/aesthetic_score.py` -- LAION aesthetics predictor scoring, its own optional pipeline stage (needs the `aesthetic` extra).
+- `src/vistarium/aesthetic_score.py` -- aesthetics-predictor scoring (GPU when available), its own optional pipeline stage (needs the `aesthetic` extra) -- both the pre-filter `curate.py` uses and the post-hoc `vistarium-score-aesthetics` backfill.
 - `src/vistarium/build_site.py` -- renders `docs/` (WebP thumbnails + `data.json`) from `data/catalog.json`, filtered to `primary_subject: landscape`.
+- `album_keywords.json` -- versioned include/exclude keyword config for `album_triage.py`.
 - `docs/` -- the static site itself (GitHub Pages, vanilla HTML/CSS/JS, no build step).
 - `tests/` -- real coverage for every deterministic component above.
 - `TERMS_OF_USE.md` -- the full rights statement (see "License & Rights" above).
-- `LICENSE` / `LICENSE-DATA` -- MIT (code) and CC0 (Vistarium's own metadata), respectively.
+- `LICENSE` / `LICENSE-DATA` -- MIT (code) and CC BY 4.0 (Vistarium's own catalog), respectively.
 - `DECISIONS.md` / `ROADMAP.md` / `AGENT_DECISION_POLICY.md` -- decision log, future work, and the commit discipline behind both.
 
 ## Status

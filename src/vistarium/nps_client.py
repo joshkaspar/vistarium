@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import json
 import re
+import threading
 import time
 import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -40,6 +41,32 @@ USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) vistarium/0.1 (contact: joshuakasp
 MAX_PAGES_PER_TERM = 4  # 48 results/page server default -> 192/term cap
 REQUEST_TIMEOUT_S = 90
 MAX_RETRIES = 3
+
+# Throttles every NPGallery request through the single _http_request choke
+# point, not just thumbnail fetching -- the album/thumbnail discovery path
+# (curate.py) can generate thousands of requests for one park, versus the
+# handful a single keyword/album search used to make. npgallery.nps.gov (the
+# DAM/asset-serving host this module talks to) has no published rate limit
+# of its own and -- confirmed live 2026-09-01 -- doesn't return the
+# X-RateLimit-* headers NPS's *other* public API (developer.nps.gov,
+# API-key gated) documents, so there's no way to observe our real quota on
+# this host in-flight. That API's default (1000 requests/hour) is still
+# the closest signal available for what NPS considers reasonable automated
+# access; matched exactly here rather than padded, since a wrong guess
+# can't be self-corrected from response headers the way it normally would.
+MIN_REQUEST_INTERVAL_S = 3.6  # 1000 req/hour ceiling, across all callers/threads
+_rate_lock = threading.Lock()
+_last_request_at = 0.0
+
+
+def _throttle() -> None:
+    global _last_request_at
+    with _rate_lock:
+        wait = _last_request_at + MIN_REQUEST_INTERVAL_S - time.monotonic()
+        if wait > 0:
+            time.sleep(wait)
+        _last_request_at = time.monotonic()
+
 
 DEFAULT_TERMS = [
     "sunset",
@@ -102,19 +129,29 @@ def _s(v) -> str:
     return str(v)
 
 
-def _http_get(url: str) -> str:
+def _http_request(url: str) -> requests.Response:
+    """The one place every NPGallery request actually goes out -- throttled
+    (see MIN_REQUEST_INTERVAL_S) and retried. Used for HTML/JSON pages
+    (_http_get) and raw image bytes (download_image/download_thumbnail)
+    alike, so the throttle can't be bypassed by a call site that fetches
+    bytes directly instead of going through _http_get."""
     last_exc: Exception | None = None
     for attempt in range(MAX_RETRIES):
+        _throttle()
         try:
             r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT_S)
             r.raise_for_status()
-            return r.text
+            return r
         except requests.RequestException as e:
             last_exc = e
             if attempt < MAX_RETRIES - 1:
                 time.sleep(3 * (attempt + 1))
     assert last_exc is not None
     raise last_exc
+
+
+def _http_get(url: str) -> str:
+    return _http_request(url).text
 
 
 def extract_payload(html: str) -> dict | None:
@@ -436,20 +473,22 @@ def download_image(candidate: NPSCandidate, dest_dir: Path) -> Path:
     dest_path = dest_dir / f"{candidate.id}.jpg"
     if dest_path.exists():
         return dest_path
-    last_exc: Exception | None = None
-    for attempt in range(MAX_RETRIES):
-        try:
-            r = requests.get(
-                candidate.image_url,
-                headers={"User-Agent": USER_AGENT},
-                timeout=REQUEST_TIMEOUT_S,
-            )
-            r.raise_for_status()
-            dest_path.write_bytes(r.content)
-            return dest_path
-        except requests.RequestException as e:
-            last_exc = e
-            if attempt < MAX_RETRIES - 1:
-                time.sleep(3 * (attempt + 1))
-    assert last_exc is not None
-    raise last_exc
+    dest_path.write_bytes(_http_request(candidate.image_url).content)
+    return dest_path
+
+
+def download_thumbnail(candidate: NPSCandidate, dest_dir: Path) -> Path:
+    """Download the cheap `ProxyLoRes` derivative (~500x375, ~78KB vs.
+    Original's ~1-2MB+) to dest_dir, named by asset ID -- for aesthetic
+    pre-filtering at scale (curate.py), where fetching full-res for every
+    candidate in a large pool before scoring would be needless bandwidth
+    for images most of which won't survive the threshold. Confirmed live
+    2026-09-01: GetAsset/<id>/proxy/lores serves exactly the ProxyLoRes
+    kind the album API's FileInfo already advertises."""
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    dest_path = dest_dir / f"{candidate.id}.jpg"
+    if dest_path.exists():
+        return dest_path
+    url = f"{BASE}/GetAsset/{candidate.id}/proxy/lores"
+    dest_path.write_bytes(_http_request(url).content)
+    return dest_path
