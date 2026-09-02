@@ -18,6 +18,7 @@ def _record(rid, subject="landscape", anchor="center"):
         "license": "Public domain/Full",
         "thumbnail_crop_16x9": {"x": 0, "y": 0, "w": 100, "h": 56},
         "color_mode": "color",
+        "dominant_color": "green",
         "is_photograph": True,
         "time_of_day": "morning",
         "time_of_day_evidence": "exif_timestamp",

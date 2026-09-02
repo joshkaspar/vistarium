@@ -11,6 +11,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "cherry blossoms",
       "tidal basin",
@@ -35,6 +36,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "cherry_blossom",
       "tidal_basin",
@@ -59,6 +61,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "canyon",
@@ -83,6 +86,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "wildfire",
       "silhouette",
@@ -108,6 +112,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "sunset",
       "mountains",
@@ -132,6 +137,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "night sky",
       "moon",
@@ -157,6 +163,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "wilderness",
       "trees",
@@ -182,6 +189,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "field",
       "grasses",
@@ -206,6 +214,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "grassland",
       "trees",
@@ -230,6 +239,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "meadow",
       "wildflowers",
@@ -254,6 +264,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "meadow",
       "grass",
@@ -279,6 +290,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "garden",
       "path",
@@ -303,6 +315,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "grassland",
       "sky",
@@ -328,6 +341,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "mountains",
@@ -352,6 +366,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "lake",
       "mountains",
@@ -376,6 +391,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "boat",
       "ocean",
@@ -400,6 +416,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountain",
       "glacier",
@@ -424,6 +441,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "hillside",
@@ -449,6 +467,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "ice",
@@ -473,6 +492,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "fjord",
@@ -497,6 +517,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "glacier",
       "mountain",
@@ -522,6 +543,7 @@
     "time_of_day": "morning",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "glacier",
       "ice",
@@ -546,6 +568,7 @@
     "time_of_day": "morning",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "glacier",
       "mountain",
@@ -571,6 +594,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "ice",
@@ -595,6 +619,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "snow",
@@ -620,6 +645,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountains",
       "river",
@@ -645,6 +671,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "glacier",
@@ -670,6 +697,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "hikers",
@@ -694,6 +722,7 @@
     "time_of_day": "evening",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "climbing",
@@ -718,6 +747,7 @@
     "time_of_day": "evening",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "ice",
@@ -742,6 +772,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "glacier",
       "mountain",
@@ -766,6 +797,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coast",
       "cliffs",
@@ -790,6 +822,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "misty lake",
       "mountain",
@@ -814,6 +847,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "fog",
@@ -838,6 +872,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "fog",
       "mountain",
@@ -862,6 +897,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "fjord",
       "cliff",
@@ -887,6 +923,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "mountains",
@@ -912,6 +949,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "sunset",
       "mountains",
@@ -936,6 +974,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "waterfall",
       "forest",
@@ -960,6 +999,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -984,6 +1024,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "island",
       "mountains",
@@ -1009,6 +1050,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "lake",
@@ -1033,6 +1075,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "lake",
@@ -1057,6 +1100,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastal",
       "mountains",
@@ -1082,6 +1126,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "lake",
@@ -1106,6 +1151,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "meadow",
@@ -1131,6 +1177,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "snow",
@@ -1155,6 +1202,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "meadow",
@@ -1180,6 +1228,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "mountain",
@@ -1204,6 +1253,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "river",
@@ -1228,6 +1278,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountains",
       "meadow",
@@ -1252,6 +1303,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "glacier",
@@ -1276,6 +1328,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "snow",
@@ -1301,6 +1354,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "mountains",
@@ -1325,6 +1379,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "glacier",
@@ -1349,6 +1404,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "mountains",
       "lake",
@@ -1373,6 +1429,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "lake",
@@ -1398,6 +1455,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "water",
@@ -1422,6 +1480,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "snow",
@@ -1446,6 +1505,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "rocky-island",
       "coniferous-trees",
@@ -1470,6 +1530,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "lake",
@@ -1494,6 +1555,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "wetland",
       "marsh",
@@ -1519,6 +1581,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountains",
       "lake",
@@ -1544,6 +1607,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "mountains",
@@ -1569,6 +1633,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "black sand",
       "beach",
@@ -1594,6 +1659,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "wildflower",
       "mountain",
@@ -1618,6 +1684,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "river",
@@ -1643,6 +1710,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "glacier",
       "mountain",
@@ -1668,6 +1736,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "glacier",
@@ -1692,6 +1761,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "snow",
       "rock",
@@ -1716,6 +1786,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "mountain",
       "snow",
@@ -1740,6 +1811,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "glacier",
       "ice",
@@ -1765,6 +1837,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "ice",
@@ -1790,6 +1863,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "ice",
@@ -1815,6 +1889,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "glacier",
       "mountains",
@@ -1840,6 +1915,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "mountains",
@@ -1865,6 +1941,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "mountain",
@@ -1890,6 +1967,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "mountain",
@@ -1914,6 +1992,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "lake",
@@ -1939,6 +2018,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "glacier",
@@ -1963,6 +2043,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "mountains",
@@ -1987,6 +2068,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "glacier",
@@ -2011,6 +2093,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "river",
@@ -2036,6 +2119,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "glacier",
       "mountain",
@@ -2060,6 +2144,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "glacier",
       "mud",
@@ -2084,6 +2169,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "mountain",
@@ -2109,6 +2195,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "river",
@@ -2134,6 +2221,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "mountains",
@@ -2159,6 +2247,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "mountain",
@@ -2183,6 +2272,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "ice",
@@ -2207,6 +2297,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "ice",
@@ -2232,6 +2323,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "ice",
       "blue",
@@ -2257,6 +2349,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "ice",
@@ -2282,6 +2375,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountain",
@@ -2306,6 +2400,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "snow",
@@ -2331,6 +2426,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "snowy mountains",
@@ -2355,6 +2451,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "mountains",
@@ -2379,6 +2476,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "glacier",
@@ -2403,6 +2501,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountain",
@@ -2428,6 +2527,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountain",
@@ -2452,6 +2552,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "alpine",
       "snow",
@@ -2476,6 +2577,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "mountains",
@@ -2500,6 +2602,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "mountains",
@@ -2524,6 +2627,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "mountains",
@@ -2549,6 +2653,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountains",
@@ -2573,6 +2678,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "snow",
@@ -2597,6 +2703,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snowy mountains",
       "glacier",
@@ -2622,6 +2729,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountains",
@@ -2647,6 +2755,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "ice",
@@ -2672,6 +2781,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "mountain",
@@ -2697,6 +2807,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "icebergs",
@@ -2722,6 +2833,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "alaska",
@@ -2746,6 +2858,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "fjord",
@@ -2770,6 +2883,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "waterfall",
@@ -2795,6 +2909,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "mountain",
@@ -2820,6 +2935,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "ice",
@@ -2844,6 +2960,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "ice",
@@ -2869,6 +2986,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "mountains",
@@ -2893,6 +3011,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "glacier",
       "flag",
@@ -2917,6 +3036,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "mountain",
@@ -2941,6 +3061,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountain",
       "glacier",
@@ -2966,6 +3087,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "snow",
@@ -2989,6 +3111,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "snow",
@@ -3013,6 +3136,7 @@
     "time_of_day": "evening",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountain",
@@ -3037,6 +3161,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "wildflowers",
       "glacier",
@@ -3061,6 +3186,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountains",
@@ -3086,6 +3212,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "water",
@@ -3110,6 +3237,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "fjord",
       "snow-capped mountains",
@@ -3135,6 +3263,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "sea",
@@ -3160,6 +3289,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastal",
       "fjord",
@@ -3184,6 +3314,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "mist",
@@ -3209,6 +3340,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "cliff",
@@ -3234,6 +3366,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "ocean",
       "sailboat",
@@ -3258,6 +3391,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trees",
@@ -3282,6 +3416,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "red",
     "tags": [
       "mountain",
       "peak",
@@ -3307,6 +3442,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountains",
       "snow",
@@ -3331,6 +3467,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "rock",
@@ -3355,6 +3492,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "snowy mountains",
       "alpine",
@@ -3379,6 +3517,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "wetland",
       "reflection",
@@ -3403,6 +3542,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "yosemite",
       "granite",
@@ -3428,6 +3568,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "mountain",
@@ -3452,6 +3593,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "mountain",
@@ -3477,6 +3619,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "black and white",
       "mountain",
@@ -3502,6 +3645,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "forest",
@@ -3527,6 +3671,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "mountains",
@@ -3551,6 +3696,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "mountains",
@@ -3575,6 +3721,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "mountain",
@@ -3599,6 +3746,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "pine forest",
@@ -3623,6 +3771,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "rocky",
@@ -3647,6 +3796,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "black-and-white",
       "forest",
@@ -3672,6 +3822,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "meadow",
@@ -3697,6 +3848,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "mountains",
@@ -3722,6 +3874,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "ridge",
@@ -3746,6 +3899,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "mountains",
@@ -3771,6 +3925,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "forest",
@@ -3795,6 +3950,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "mountain",
@@ -3820,6 +3976,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "yosemite",
@@ -3844,6 +4001,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "forest",
@@ -3868,6 +4026,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "forest",
@@ -3893,6 +4052,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "mountains",
@@ -3917,6 +4077,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "mountains",
@@ -3941,6 +4102,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "mountain",
@@ -3966,6 +4128,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "tree",
@@ -3991,6 +4154,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "forest",
@@ -4015,6 +4179,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "black_and_white",
       "mountain",
@@ -4040,6 +4205,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "smith_peak",
@@ -4065,6 +4231,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "forest",
@@ -4089,6 +4256,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "forest",
@@ -4114,6 +4282,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "forest",
@@ -4138,6 +4307,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "panorama",
@@ -4162,6 +4332,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "granite",
       "yosemite",
@@ -4186,6 +4357,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "mountains",
       "forest",
@@ -4211,6 +4383,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "yosemite",
       "mountain",
@@ -4236,6 +4409,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "panorama",
       "yosemite",
@@ -4261,6 +4435,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "aerial",
@@ -4287,6 +4462,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "panorama",
       "mountains",
@@ -4311,6 +4487,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "river",
@@ -4335,6 +4512,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "canyon",
       "rock",
@@ -4359,6 +4537,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "river",
@@ -4383,6 +4562,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "sediment",
@@ -4407,6 +4587,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "canyon",
       "rainbow",
@@ -4431,6 +4612,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "rainbow",
       "grand-canyon",
@@ -4455,6 +4637,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "canyon",
       "rainbow",
@@ -4480,6 +4663,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "rainbow",
       "grand canyon",
@@ -4504,6 +4688,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "rainbow",
@@ -4528,6 +4713,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "grand canyon",
       "canyon",
@@ -4553,6 +4739,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "grand_canyon",
       "picnic_table",
@@ -4578,6 +4765,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "canyon",
       "desert",
@@ -4602,6 +4790,7 @@
     "time_of_day": "evening",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "picnic",
       "trees",
@@ -4626,6 +4815,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "canyon",
       "clouds",
@@ -4650,6 +4840,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "granite",
@@ -4674,6 +4865,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "grand_canyon",
       "lookout_tower",
@@ -4699,6 +4891,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "snow",
@@ -4723,6 +4916,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "rainbow",
@@ -4747,6 +4941,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "grand canyon",
       "rainbow",
@@ -4772,6 +4967,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "grand canyon",
       "panorama",
@@ -4796,6 +4992,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "rocks",
@@ -4821,6 +5018,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "grand canyon",
@@ -4845,6 +5043,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "canyon",
       "grand-canyon",
@@ -4869,6 +5068,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "plateau",
@@ -4894,6 +5094,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "clouds",
@@ -4918,6 +5119,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "canyon",
       "rock",
@@ -4942,6 +5144,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "cliff",
@@ -4967,6 +5170,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "grand_canyon",
       "snow",
@@ -4992,6 +5196,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "roundabout",
       "intersection",
@@ -5016,6 +5221,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "canyon",
       "cliff",
@@ -5040,6 +5246,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "grand canyon",
       "canyon",
@@ -5064,6 +5271,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "canyon",
       "granite",
@@ -5087,6 +5295,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "canyon",
       "cliff",
@@ -5111,6 +5320,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "grand canyon",
       "tourists",
@@ -5136,6 +5346,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "canyon",
       "viewpoint",
@@ -5160,6 +5371,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "grand_canyon",
       "viewpoint",
@@ -5184,6 +5396,7 @@
     "time_of_day": "morning",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "grand canyon",
       "railing",
@@ -5209,6 +5422,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "grand_canyon",
       "viewpoint",
@@ -5234,6 +5448,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "canyon",
       "viewpoint",
@@ -5258,6 +5473,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "grand canyon",
       "viewpoint",
@@ -5282,6 +5498,7 @@
     "time_of_day": "evening",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "grand canyon",
       "viewpoint",
@@ -5306,6 +5523,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "canyon",
       "grand-canyon",
@@ -5330,6 +5548,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "aerial",
       "parking",
@@ -5355,6 +5574,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "aerial",
       "canyon",
@@ -5379,6 +5599,7 @@
     "time_of_day": "morning",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "grand canyon",
       "snow",
@@ -5404,6 +5625,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "grand_canyon",
       "cliff",
@@ -5428,6 +5650,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "grand_canyon",
       "canyon",
@@ -5452,6 +5675,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "canyon",
       "cliffs",
@@ -5477,6 +5701,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "canyon",
       "grand canyon",
@@ -5502,6 +5727,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "milky way",
@@ -5526,6 +5752,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night_sky",
       "milky_way",
@@ -5551,6 +5778,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "milky way",
       "stars",
@@ -5575,6 +5803,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snowy mountain",
       "conifer",
@@ -5599,6 +5828,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -5624,6 +5854,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -5648,6 +5879,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "waterfall",
       "canyon",
@@ -5672,6 +5904,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "waterfall",
       "canyon",
@@ -5696,6 +5929,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "waterfall",
       "cliff",
@@ -5720,6 +5954,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountain",
       "snow",
@@ -5745,6 +5980,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "river",
@@ -5769,6 +6005,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "aspen",
@@ -5794,6 +6031,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "geyser",
       "steam",
@@ -5819,6 +6057,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "geothermal",
       "geyser",
@@ -5844,6 +6083,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "geyser",
       "snow",
@@ -5868,6 +6108,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "clouds",
@@ -5893,6 +6134,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountains",
       "wildflowers",
@@ -5917,6 +6159,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snowy",
       "pine",
@@ -5941,6 +6184,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "steam",
@@ -5966,6 +6210,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "mountain",
       "snow",
@@ -5990,6 +6235,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snowy",
       "mountain",
@@ -6014,6 +6260,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "trail",
@@ -6038,6 +6285,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "winter",
@@ -6063,6 +6311,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snowy",
       "landscape",
@@ -6087,6 +6336,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "fog",
@@ -6111,6 +6361,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "landscape",
       "mountain",
@@ -6136,6 +6387,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountains",
@@ -6161,6 +6413,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snowy landscape",
       "winter",
@@ -6186,6 +6439,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "cattle herd",
       "pine forest",
@@ -6211,6 +6465,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "steam",
@@ -6236,6 +6491,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "steam",
@@ -6261,6 +6517,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snowmobile",
       "snowy_road",
@@ -6286,6 +6543,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snowy",
       "coniferous",
@@ -6311,6 +6569,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountains",
@@ -6336,6 +6595,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "snowy forest",
       "lake reflection",
@@ -6361,6 +6621,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -6385,6 +6646,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountain",
       "full moon",
@@ -6409,6 +6671,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "mountains",
       "snow",
@@ -6434,6 +6697,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "glacier",
       "snow",
@@ -6459,6 +6723,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "snowy mountains",
       "glacier",
@@ -6483,6 +6748,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountain",
@@ -6508,6 +6774,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "ice",
@@ -6533,6 +6800,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "snow",
@@ -6557,6 +6825,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "glacier",
       "snow-capped mountains",
@@ -6581,6 +6850,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountain",
       "lake",
@@ -6606,6 +6876,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "snow",
       "lake",
@@ -6631,6 +6902,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountains",
@@ -6656,6 +6928,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "lake",
       "mountain",
@@ -6680,6 +6953,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "snow",
       "lake",
@@ -6705,6 +6979,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "river",
       "rocks",
@@ -6730,6 +7005,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountains",
       "river",
@@ -6754,6 +7030,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "river",
       "waterfall",
@@ -6778,6 +7055,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountains",
       "snow",
@@ -6802,6 +7080,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "mountains",
@@ -6826,6 +7105,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountains",
       "snow",
@@ -6851,6 +7131,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountain",
       "snow-capped",
@@ -6876,6 +7157,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountain",
       "snow",
@@ -6901,6 +7183,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "mountains",
       "snow",
@@ -6925,6 +7208,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "lake",
       "sunset",
@@ -6950,6 +7234,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "mountain",
@@ -6974,6 +7259,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "snow",
@@ -6999,6 +7285,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "snowy mountains",
       "moon",
@@ -7023,6 +7310,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "mountain",
       "highway",
@@ -7046,6 +7334,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -7070,6 +7359,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "islands",
       "coast",
@@ -7094,6 +7384,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "river",
       "red_rock",
@@ -7119,6 +7410,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "river",
       "canyon",
@@ -7143,6 +7435,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "hoodoos",
       "canyon",
@@ -7167,6 +7460,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "gray",
     "tags": [
       "hoodoos",
       "bryce_canyon",
@@ -7191,6 +7485,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trail",
@@ -7215,6 +7510,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "mountain",
       "snow",
@@ -7240,6 +7536,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "canyon",
       "lodge",
@@ -7264,6 +7561,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "river",
       "meadow",
@@ -7288,6 +7586,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "boardwalk",
       "wetland",
@@ -7313,6 +7612,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "campsite",
       "benches",
@@ -7337,6 +7637,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "river",
       "mountain",
@@ -7362,6 +7663,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "stone_path",
       "grass",
@@ -7386,6 +7688,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "meadow",
       "forest",
@@ -7410,6 +7713,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "trail",
       "flagstone",
@@ -7434,6 +7738,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "meadow",
       "forest",
@@ -7458,6 +7763,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "campsite",
       "benches",
@@ -7483,6 +7789,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "boardwalk",
       "grass",
@@ -7508,6 +7815,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "river",
       "mountains",
@@ -7533,6 +7841,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "river",
       "forest",
@@ -7557,6 +7866,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "aspen",
       "fence",
@@ -7582,6 +7892,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "path",
       "fence",
@@ -7606,6 +7917,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "aspen",
       "fence",
@@ -7630,6 +7942,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "horses",
       "fence",
@@ -7654,6 +7967,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "paved_path",
       "parking_lot",
@@ -7678,6 +7992,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "parking lot",
       "trail",
@@ -7703,6 +8018,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "burned field",
       "smoke",
@@ -7727,6 +8043,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "fire",
       "grassland",
@@ -7751,6 +8068,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "controlled burn",
       "wildfire",
@@ -7776,6 +8094,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "wildfire",
       "flames",
@@ -7801,6 +8120,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "wildfire",
       "smoke",
@@ -7826,6 +8146,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "tree",
       "forest",
@@ -7850,6 +8171,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "panorama",
       "coastline",
@@ -7874,6 +8196,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "rocks",
@@ -7898,6 +8221,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "road",
@@ -7922,6 +8246,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastline",
       "marsh",
@@ -7946,6 +8271,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "rocks",
@@ -7970,6 +8296,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "lake",
@@ -7994,6 +8321,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastal",
       "trees",
@@ -8018,6 +8346,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "forest",
@@ -8042,6 +8371,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "trees",
@@ -8066,6 +8396,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "rocky",
@@ -8090,6 +8421,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "wetland",
       "marsh",
@@ -8114,6 +8446,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "fire",
       "wildfire",
@@ -8139,6 +8472,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "trees",
       "blooms",
@@ -8164,6 +8498,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "trail",
       "forest",
@@ -8189,6 +8524,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "trees",
       "grass",
@@ -8214,6 +8550,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "mountain",
@@ -8239,6 +8576,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "meadow",
       "evergreens",
@@ -8264,6 +8602,7 @@
     "time_of_day": "night",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "road",
       "forest",
@@ -8288,6 +8627,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "garden",
       "flowerbed",
@@ -8312,6 +8652,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "road",
       "trees",
@@ -8336,6 +8677,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "pine trees",
@@ -8360,6 +8702,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "river",
       "panorama",
@@ -8384,6 +8727,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trees",
@@ -8409,6 +8753,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "coastal",
@@ -8433,6 +8778,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "parking_lot",
       "trees",
@@ -8457,6 +8803,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "panorama",
       "viewpoint",
@@ -8482,6 +8829,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "boulders",
@@ -8507,6 +8855,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "panorama",
       "viewpoint",
@@ -8532,6 +8881,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "landscape",
       "water",
@@ -8556,6 +8906,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "boulders",
       "panorama",
@@ -8581,6 +8932,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "forest",
@@ -8606,6 +8958,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "pine_trees",
@@ -8630,6 +8983,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "forest",
@@ -8654,6 +9008,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "panorama",
       "lake",
@@ -8679,6 +9034,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "meadow",
@@ -8704,6 +9060,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "landscape",
@@ -8729,6 +9086,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "forest",
@@ -8754,6 +9112,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "panorama",
       "lake",
@@ -8779,6 +9138,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "meadow",
@@ -8804,6 +9164,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "parking_lot",
       "minivan",
@@ -8829,6 +9190,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trees",
@@ -8853,6 +9215,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "stone wall",
@@ -8877,6 +9240,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastal",
       "pine",
@@ -8901,6 +9265,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "trees",
@@ -8925,6 +9290,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "road",
@@ -8949,6 +9315,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panoramic",
       "forest",
@@ -8973,6 +9340,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "foggy",
       "lake",
@@ -8997,6 +9365,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "forest",
@@ -9021,6 +9390,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "panorama",
       "road",
@@ -9046,6 +9416,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "forest",
@@ -9070,6 +9441,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "fence",
@@ -9095,6 +9467,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "sea",
       "coastline",
@@ -9120,6 +9493,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "forest",
@@ -9145,6 +9519,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panoramic",
       "hot-spring",
@@ -9170,6 +9545,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "road",
@@ -9194,6 +9570,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal road",
       "stone barriers",
@@ -9219,6 +9596,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "trees",
       "forest",
@@ -9244,6 +9622,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "window view",
       "grass lawn",
@@ -9269,6 +9648,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lawn",
       "cabin",
@@ -9294,6 +9674,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "mountains",
@@ -9318,6 +9699,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "tree",
       "lake",
@@ -9342,6 +9724,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -9366,6 +9749,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "stone",
       "path",
@@ -9390,6 +9774,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "forest",
@@ -9415,6 +9800,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -9439,6 +9825,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -9463,6 +9850,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountain",
@@ -9488,6 +9876,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountain",
@@ -9513,6 +9902,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -9537,6 +9927,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "canoes",
@@ -9562,6 +9953,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "mountains",
@@ -9586,6 +9978,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "paved_path",
       "large_trees",
@@ -9611,6 +10004,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "mountain",
@@ -9635,6 +10029,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "mountains",
@@ -9659,6 +10054,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -9684,6 +10080,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "river",
       "forest",
@@ -9709,6 +10106,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "fire pit",
@@ -9734,6 +10132,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "forked road",
@@ -9758,6 +10157,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "ferns",
@@ -9782,6 +10182,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "moss",
@@ -9806,6 +10207,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trail",
@@ -9830,6 +10232,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "picnic_table",
@@ -9854,6 +10257,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trail",
@@ -9878,6 +10282,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "river",
       "mountains",
@@ -9902,6 +10307,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trail",
@@ -9926,6 +10332,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "parking lot",
       "forest",
@@ -9950,6 +10357,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mossy trees",
       "forest",
@@ -9975,6 +10383,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trail",
@@ -9999,6 +10408,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest road",
       "paved",
@@ -10023,6 +10433,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "birch",
@@ -10048,6 +10459,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "slope",
       "erosion",
@@ -10073,6 +10485,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "stars",
@@ -10097,6 +10510,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "milky way",
       "sunset",
@@ -10121,6 +10535,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastline",
       "driftwood",
@@ -10146,6 +10561,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coast",
       "rocks",
@@ -10170,6 +10586,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "rocks",
@@ -10194,6 +10611,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "shoreline",
@@ -10219,6 +10637,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night",
       "lake",
@@ -10243,6 +10662,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "sunset",
       "landscape",
@@ -10267,6 +10687,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "milky way",
@@ -10291,6 +10712,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "milky way",
       "night sky",
@@ -10315,6 +10737,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "milky way",
       "night sky",
@@ -10339,6 +10762,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "starry sky",
       "night landscape",
@@ -10364,6 +10788,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "night sky",
       "stars",
@@ -10388,6 +10813,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "stars",
@@ -10413,6 +10839,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "milky way",
       "night sky",
@@ -10438,6 +10865,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "comet",
@@ -10462,6 +10890,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "milky way",
@@ -10486,6 +10915,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "monochrome",
+    "dominant_color": "black",
     "tags": [
       "night",
       "stars",
@@ -10509,6 +10939,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "milky way",
       "night sky",
@@ -10534,6 +10965,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "stars",
@@ -10558,6 +10990,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "stars",
@@ -10582,6 +11015,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "milky way",
       "night sky",
@@ -10607,6 +11041,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night",
       "sky",
@@ -10631,6 +11066,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night",
       "stars",
@@ -10656,6 +11092,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night-sky",
       "stars",
@@ -10679,6 +11116,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "milky way",
@@ -10703,6 +11141,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "moon",
       "night sky",
@@ -10727,6 +11166,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "stars",
@@ -10751,6 +11191,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "night sky",
       "stars",
@@ -10775,6 +11216,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "night sky",
       "stars",
@@ -10798,6 +11240,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "sunset",
       "ocean",
@@ -10822,6 +11265,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "galaxy",
       "stars",
@@ -10845,6 +11289,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "starry sky",
       "milky way",
@@ -10869,6 +11314,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "sunset",
       "ocean",
@@ -10893,6 +11339,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "black",
     "tags": [
       "milky way",
       "night sky",
@@ -10917,6 +11364,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "snow",
       "trees",
@@ -10942,6 +11390,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "snow",
       "lake",
@@ -10966,6 +11415,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "waves",
       "coast",
@@ -10991,6 +11441,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "winter",
       "frozen",
@@ -11016,6 +11467,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "beach",
       "coastline",
@@ -11040,6 +11492,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "birch",
@@ -11064,6 +11517,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "autumn",
       "leaves",
@@ -11088,6 +11542,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rock",
       "outcrop",
@@ -11112,6 +11567,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "lake",
       "autumn",
@@ -11137,6 +11593,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountain",
@@ -11162,6 +11619,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "rocks",
@@ -11187,6 +11645,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "autumn",
       "coastal",
@@ -11211,6 +11670,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "foggy",
       "lake",
@@ -11235,6 +11695,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "yellow",
     "tags": [
       "forest",
       "autumn",
@@ -11259,6 +11720,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "wildflowers",
       "lupine",
@@ -11283,6 +11745,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "waterfall",
       "forest",
@@ -11307,6 +11770,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "river",
       "snow",
@@ -11331,6 +11795,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "autumn foliage",
       "birch",
@@ -11354,6 +11819,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "winter",
       "frozen_lake",
@@ -11378,6 +11844,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "autumn",
       "lake",
@@ -11402,6 +11869,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "wetland",
       "river",
@@ -11427,6 +11895,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "snow",
       "beach",
@@ -11452,6 +11921,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "wildflowers",
       "fireweed",
@@ -11477,6 +11947,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "misty",
       "wetland",
@@ -11501,6 +11972,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "islands",
@@ -11525,6 +11997,7 @@
     "time_of_day": "evening",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "sunset",
       "mountain",
@@ -11549,6 +12022,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -11573,6 +12047,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -11597,6 +12072,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountain",
@@ -11621,6 +12097,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -11646,6 +12123,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "kayak",
@@ -11669,6 +12147,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "coast",
@@ -11693,6 +12172,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "coastline",
@@ -11717,6 +12197,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "coast",
@@ -11741,6 +12222,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "ocean",
@@ -11765,6 +12247,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "ocean",
@@ -11790,6 +12273,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastline",
       "beach",
@@ -11815,6 +12299,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "landscape",
       "pond",
@@ -11840,6 +12325,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "sand",
       "forest",
@@ -11864,6 +12350,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "coast",
@@ -11888,6 +12375,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "sandcastle",
@@ -11912,6 +12400,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "rock_formation",
       "forest",
@@ -11937,6 +12426,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "ocean",
@@ -11962,6 +12452,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "landscape",
       "forest",
@@ -11987,6 +12478,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "trail",
       "forest",
@@ -12012,6 +12504,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "landscape",
       "overcast",
@@ -12036,6 +12529,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastal",
       "ocean",
@@ -12061,6 +12555,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "rocky_shore",
@@ -12086,6 +12581,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coast",
       "rocks",
@@ -12110,6 +12606,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coast",
       "ocean",
@@ -12134,6 +12631,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "creek",
@@ -12158,6 +12656,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "waterfall",
       "rock",
@@ -12182,6 +12681,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "fog",
@@ -12207,6 +12707,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "mist",
@@ -12232,6 +12733,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "mist",
@@ -12256,6 +12758,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "mist",
@@ -12281,6 +12784,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "bridge",
@@ -12305,6 +12809,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trail",
@@ -12329,6 +12834,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "stream",
       "rocks",
@@ -12354,6 +12860,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "river",
@@ -12378,6 +12885,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "conifers",
@@ -12402,6 +12910,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "mist",
@@ -12426,6 +12935,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "fog",
       "lake",
@@ -12451,6 +12961,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "overcast",
@@ -12475,6 +12986,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "spruce tree",
@@ -12500,6 +13012,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coast",
       "rocky_shore",
@@ -12525,6 +13038,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "pebbles",
@@ -12549,6 +13063,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "pebble beach",
       "coastal",
@@ -12574,6 +13089,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "pebble beach",
@@ -12598,6 +13114,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "rocks",
@@ -12622,6 +13139,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "rocky",
@@ -12646,6 +13164,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "waves",
@@ -12670,6 +13189,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocky",
       "coastline",
@@ -12694,6 +13214,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocky",
       "shoreline",
@@ -12718,6 +13239,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocky",
       "shoreline",
@@ -12742,6 +13264,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "rocks",
@@ -12766,6 +13289,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "rocky",
@@ -12790,6 +13314,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocks",
       "shoreline",
@@ -12815,6 +13340,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coast",
       "rocks",
@@ -12839,6 +13365,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "boulders",
@@ -12863,6 +13390,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "rocky",
@@ -12887,6 +13415,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "rocks",
@@ -12911,6 +13440,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "rocks",
@@ -12935,6 +13465,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "rocks",
@@ -12959,6 +13490,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "rocks",
@@ -12983,6 +13515,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "gull",
       "ocean",
@@ -13007,6 +13540,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "shoreline",
       "cloudy",
@@ -13031,6 +13565,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "rocks",
@@ -13055,6 +13590,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "iris",
       "rock",
@@ -13080,6 +13616,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rock",
       "iris",
@@ -13104,6 +13641,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "rocks",
@@ -13129,6 +13667,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "rocks",
@@ -13153,6 +13692,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "coastal",
@@ -13177,6 +13717,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocks",
       "shore",
@@ -13201,6 +13742,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "rocks",
@@ -13225,6 +13767,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "shoreline",
@@ -13250,6 +13793,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "overcast",
@@ -13275,6 +13819,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastal",
       "pine",
@@ -13299,6 +13844,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "coastal",
@@ -13323,6 +13869,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -13348,6 +13895,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "sea",
       "island",
@@ -13373,6 +13921,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "harbor",
       "boat",
@@ -13398,6 +13947,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "rocks",
@@ -13422,6 +13972,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "rocks",
@@ -13446,6 +13997,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "forest",
@@ -13471,6 +14023,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "autumn",
@@ -13495,6 +14048,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "autumn",
       "forest",
@@ -13519,6 +14073,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "trail",
       "forest",
@@ -13544,6 +14099,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trail",
@@ -13569,6 +14125,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "autumn",
       "lake",
@@ -13593,6 +14150,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "autumn",
       "lake",
@@ -13617,6 +14175,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "autumn",
       "forest",
@@ -13642,6 +14201,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "autumn",
@@ -13666,6 +14226,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "autumn",
       "forest",
@@ -13690,6 +14251,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountain",
@@ -13714,6 +14276,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "forest",
@@ -13739,6 +14302,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "sunset",
@@ -13764,6 +14328,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "lake",
       "autumn",
@@ -13788,6 +14353,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "autumn",
@@ -13813,6 +14379,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "autumn",
@@ -13837,6 +14404,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "autumn",
@@ -13861,6 +14429,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "autumn",
       "forest",
@@ -13885,6 +14454,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "landscape",
       "autumn",
@@ -13909,6 +14479,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "panorama",
       "mountain",
@@ -13933,6 +14504,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "summit",
@@ -13958,6 +14530,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "cliff",
@@ -13982,6 +14555,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "autumn",
@@ -14007,6 +14581,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "panorama",
@@ -14032,6 +14607,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "autumn",
       "forest",
@@ -14056,6 +14632,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "autumn",
@@ -14080,6 +14657,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "lake",
       "autumn",
@@ -14104,6 +14682,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "lake",
@@ -14129,6 +14708,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "forest",
@@ -14153,6 +14733,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "landscape",
       "forest",
@@ -14178,6 +14759,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastline",
       "forest",
@@ -14202,6 +14784,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "ocean",
@@ -14226,6 +14809,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastline",
       "rock",
@@ -14249,6 +14833,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "autumn",
@@ -14274,6 +14859,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coast",
       "autumn",
@@ -14299,6 +14885,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coast",
       "rocks",
@@ -14323,6 +14910,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "coastline",
       "autumn",
@@ -14348,6 +14936,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coast",
       "autumn",
@@ -14372,6 +14961,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "landscape",
       "cairn",
@@ -14397,6 +14987,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "coastline",
       "autumn",
@@ -14422,6 +15013,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastline",
       "ocean",
@@ -14446,6 +15038,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "autumn",
@@ -14471,6 +15064,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "panorama",
       "autumn",
@@ -14496,6 +15090,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coast",
       "rocks",
@@ -14520,6 +15115,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocky_shoreline",
       "coastal",
@@ -14544,6 +15140,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastline",
       "rocks",
@@ -14568,6 +15165,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "rocky",
       "shoreline",
@@ -14593,6 +15191,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "rocky",
       "coastline",
@@ -14617,6 +15216,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "rocky",
       "coastline",
@@ -14641,6 +15241,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocky outcrop",
       "autumn foliage",
@@ -14666,6 +15267,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "sea",
       "rocks",
@@ -14690,6 +15292,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastline",
       "rocky_shore",
@@ -14714,6 +15317,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "lake",
@@ -14738,6 +15342,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "cliff",
@@ -14763,6 +15368,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastline",
       "lake",
@@ -14788,6 +15394,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "red",
     "tags": [
       "autumn",
       "foliage",
@@ -14812,6 +15419,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -14836,6 +15444,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "trees",
@@ -14861,6 +15470,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "trees",
@@ -14885,6 +15495,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "forest",
@@ -14909,6 +15520,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -14933,6 +15545,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -14958,6 +15571,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountain",
@@ -14982,6 +15596,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "landscape",
       "pond",
@@ -15006,6 +15621,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -15030,6 +15646,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "mountain",
@@ -15055,6 +15672,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "forest",
@@ -15079,6 +15697,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -15104,6 +15723,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "rocky",
@@ -15128,6 +15748,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "wetland",
       "reflection",
@@ -15152,6 +15773,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "water",
       "dusk",
@@ -15177,6 +15799,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "purple",
     "tags": [
       "sunset",
       "sky",
@@ -15201,6 +15824,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "sunset",
       "ocean",
@@ -15226,6 +15850,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "wetland",
@@ -15250,6 +15875,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "island",
@@ -15274,6 +15900,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "rock_wall",
       "grass",
@@ -15299,6 +15926,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastline",
       "hiking",
@@ -15323,6 +15951,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coast",
       "grass",
@@ -15347,6 +15976,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastal",
       "rocky",
@@ -15372,6 +16002,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "granite",
       "mountain",
@@ -15397,6 +16028,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "sunrise",
       "mist",
@@ -15421,6 +16053,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "rocky outcrop",
       "lake",
@@ -15445,6 +16078,7 @@
     "time_of_day": "evening",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "sunset",
       "mountain",
@@ -15470,6 +16104,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "islands",
@@ -15495,6 +16130,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "rocky outcrop",
       "lakeside view",
@@ -15519,6 +16155,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "coastal",
       "town",
@@ -15544,6 +16181,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "panorama",
       "rock",
@@ -15569,6 +16207,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "rock",
       "formation",
@@ -15593,6 +16232,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "waterfall",
       "rocks",
@@ -15617,6 +16257,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "waterfall",
       "rock",
@@ -15641,6 +16282,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coast",
       "cliff",
@@ -15666,6 +16308,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "sunset",
@@ -15690,6 +16333,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountains",
       "lake",
@@ -15715,6 +16359,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coast",
       "cliff",
@@ -15739,6 +16384,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "gravel",
       "path",
@@ -15763,6 +16409,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "sunset",
@@ -15787,6 +16434,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastline",
       "sea",
@@ -15811,6 +16459,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "coastal",
       "rocky",
@@ -15835,6 +16484,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "sunset",
       "ocean",
@@ -15859,6 +16509,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "cliffs",
@@ -15883,6 +16534,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "ocean",
       "rocks",
@@ -15908,6 +16560,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "coast",
       "rocks",
@@ -15932,6 +16585,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "viewpoint",
@@ -15957,6 +16611,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "trail signs",
       "mountain view",
@@ -15981,6 +16636,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "sunset",
       "mountains",
@@ -16005,6 +16661,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "waterfall",
       "creek",
@@ -16029,6 +16686,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "rocks",
@@ -16053,6 +16711,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastline",
       "rocks",
@@ -16077,6 +16736,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastline",
       "rocky",
@@ -16101,6 +16761,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "foggy",
@@ -16125,6 +16786,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "storm",
       "waves",
@@ -16150,6 +16812,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "road",
@@ -16175,6 +16838,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "road",
       "forest",
@@ -16199,6 +16863,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "road",
       "cones",
@@ -16223,6 +16888,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "riverbank",
       "rocks",
@@ -16248,6 +16914,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "road",
@@ -16272,6 +16939,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocks",
       "trail",
@@ -16296,6 +16964,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocky",
       "path",
@@ -16321,6 +16990,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "rocky",
@@ -16345,6 +17015,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "road",
@@ -16370,6 +17041,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "trail",
       "lakeside",
@@ -16394,6 +17066,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "trail",
@@ -16418,6 +17091,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocks",
       "forest",
@@ -16442,6 +17116,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "trail",
       "coastal",
@@ -16467,6 +17142,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "erosion",
       "exposed roots",
@@ -16492,6 +17168,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "river",
       "ice",
@@ -16516,6 +17193,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "river",
       "debris",
@@ -16540,6 +17218,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "flooded road",
       "water",
@@ -16565,6 +17244,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "mountains",
@@ -16589,6 +17269,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "debris",
       "road",
@@ -16613,6 +17294,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "road",
@@ -16637,6 +17319,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "gravel",
       "fence",
@@ -16661,6 +17344,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal road",
       "fallen tree",
@@ -16685,6 +17369,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "uprooted_tree",
       "fallen_log",
@@ -16710,6 +17395,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal road",
       "rocky shoreline",
@@ -16734,6 +17420,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal road",
       "boulders",
@@ -16758,6 +17445,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "shore",
       "overcast",
@@ -16783,6 +17471,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "pavement",
       "forest",
@@ -16807,6 +17496,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal",
       "interpretive sign",
@@ -16831,6 +17521,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocky",
       "coastal",
@@ -16856,6 +17547,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "coastal road",
       "asphalt",
@@ -16881,6 +17573,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "ocean",
       "storm",
@@ -16905,6 +17598,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "frozen lake",
       "winter",
@@ -16929,6 +17623,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "forest",
       "trail",
@@ -16954,6 +17649,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "stone steps",
@@ -16978,6 +17674,7 @@
     "time_of_day": "morning",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "beach",
       "waves",
@@ -17002,6 +17699,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coastal",
       "shipwreck",
@@ -17026,6 +17724,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lighthouse",
       "rocky",
@@ -17050,6 +17749,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "lake",
       "rocky",
@@ -17074,6 +17774,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "pebble beach",
       "coastal",
@@ -17099,6 +17800,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "blue",
     "tags": [
       "rock",
       "coast",
@@ -17123,6 +17825,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "boulders",
@@ -17147,6 +17850,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coast",
       "rocks",
@@ -17172,6 +17876,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "mountain",
       "forest",
@@ -17196,6 +17901,7 @@
     "time_of_day": "morning",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "rock",
       "cave",
@@ -17221,6 +17927,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "coast",
       "rocks",
@@ -17245,6 +17952,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "coastal",
       "rocky",
@@ -17270,6 +17978,7 @@
     "time_of_day": "evening",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "landscape",
       "coastline",
@@ -17294,6 +18003,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "trail",
@@ -17318,6 +18028,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "wooden_bridge",
@@ -17343,6 +18054,7 @@
     "time_of_day": "night",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "trail",
@@ -17367,6 +18079,7 @@
     "time_of_day": "night",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "lake",
       "trail",
@@ -17392,6 +18105,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "hiking-trail",
       "forest",
@@ -17415,6 +18129,7 @@
     "time_of_day": "night",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocks",
       "shoreline",
@@ -17440,6 +18155,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "lake",
       "rocks",
@@ -17464,6 +18180,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "rocks",
@@ -17488,6 +18205,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "trail",
       "forest",
@@ -17512,6 +18230,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocks",
       "birch",
@@ -17536,6 +18255,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocky",
       "trail",
@@ -17560,6 +18280,7 @@
     "time_of_day": "night",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "rocks",
       "boulders",
@@ -17584,6 +18305,7 @@
     "time_of_day": "night",
     "people_prominence": "background",
     "color_mode": "color",
+    "dominant_color": "green",
     "tags": [
       "forest",
       "trail",
@@ -17608,6 +18330,7 @@
     "time_of_day": "evening",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "cave",
       "stalactites",
@@ -17632,6 +18355,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "cave",
       "stalagmites",
@@ -17656,6 +18380,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "cave",
       "cavern",
@@ -17680,6 +18405,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "white",
     "tags": [
       "cave",
       "stalactites",
@@ -17704,6 +18430,7 @@
     "time_of_day": "night",
     "people_prominence": "foreground_focal",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "cave",
       "spelunking",
@@ -17728,6 +18455,7 @@
     "time_of_day": "night",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "cave",
       "stalactite",
@@ -17752,6 +18480,7 @@
     "time_of_day": "afternoon",
     "people_prominence": "none",
     "color_mode": "color",
+    "dominant_color": "orange",
     "tags": [
       "cave",
       "stalactites",
@@ -17775,6 +18504,7 @@
     "time_of_day": "morning",
     "people_prominence": "midground",
     "color_mode": "color",
+    "dominant_color": "gray",
     "tags": [
       "cave",
       "stalactite",

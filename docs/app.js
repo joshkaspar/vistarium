@@ -11,6 +11,7 @@
   const timeSelect = document.getElementById("filter-time");
   const peopleSelect = document.getElementById("filter-people");
   const colorSelect = document.getElementById("filter-color");
+  const dominantColorSelect = document.getElementById("filter-dominant-color");
   const tagInput = document.getElementById("filter-tag");
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
@@ -48,6 +49,7 @@
     if (timeSelect.value && record.time_of_day !== timeSelect.value) return false;
     if (peopleSelect.value && record.people_prominence !== peopleSelect.value) return false;
     if (colorSelect.value && record.color_mode !== colorSelect.value) return false;
+    if (dominantColorSelect.value && record.dominant_color !== dominantColorSelect.value) return false;
     const tagQuery = tagInput.value.trim().toLowerCase();
     if (tagQuery && !record.tags.some((t) => t.toLowerCase().includes(tagQuery))) return false;
     return true;
@@ -125,7 +127,7 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  [sortSelect, parkSelect, timeSelect, peopleSelect, colorSelect].forEach((el) =>
+  [sortSelect, parkSelect, timeSelect, peopleSelect, colorSelect, dominantColorSelect].forEach((el) =>
     el.addEventListener("change", render)
   );
   tagInput.addEventListener("input", render);

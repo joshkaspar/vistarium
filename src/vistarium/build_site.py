@@ -105,6 +105,7 @@ def build_site(
                 "time_of_day": record["time_of_day"],
                 "people_prominence": record["people_prominence"],
                 "color_mode": record["color_mode"],
+                "dominant_color": record["dominant_color"],
                 "tags": record["tags"],
                 "thumb": f"{thumbs_dirname}/{thumb_name}",
                 "aspect": aspect,
