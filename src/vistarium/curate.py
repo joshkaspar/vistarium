@@ -74,7 +74,16 @@ def select_by_threshold_with_floor(
         selected.extend(pairs[:floor])
 
     selected.sort(key=lambda p: p[1], reverse=True)
-    return [c for c, _s in selected]
+    # Carry the score onto the returned candidate itself (not just used
+    # to decide selection) so pipeline.build_record() can write it into
+    # the final catalog record -- see DECISIONS.md, 2026-09-02, for the
+    # bug this fixes (curated-scrape records were landing with no
+    # aesthetic_score at all, since NPSCandidate never carried one
+    # downstream of this function).
+    return [
+        dataclasses.replace(c, aesthetic_score=s, aesthetic_method=aesthetic_score.AESTHETIC_METHOD)
+        for c, s in selected
+    ]
 
 
 def _write_scored_manifest(

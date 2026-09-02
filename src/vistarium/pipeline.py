@@ -99,6 +99,13 @@ def build_record(candidate: nps_client.NPSCandidate, image_path: Path) -> dict |
         "thumbnail_crop_16x9": thumbnail_crop,
         **model_fields,
     }
+    # Only the curated path (curate.select_by_threshold_with_floor) sets
+    # these on the candidate -- every other search path leaves them None,
+    # same as before this field existed (aesthetic_score stays absent
+    # from the record rather than landing as an explicit null).
+    if candidate.aesthetic_score is not None:
+        record["aesthetic_score"] = candidate.aesthetic_score
+        record["aesthetic_method"] = candidate.aesthetic_method
     return record
 
 

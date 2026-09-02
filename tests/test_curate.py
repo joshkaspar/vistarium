@@ -19,6 +19,18 @@ def test_threshold_only_keeps_everything_above_it():
     assert {c.id for c in selected} == {"a", "b"}
 
 
+def test_selected_candidates_carry_their_score_forward():
+    # Regression test for a real bug (see DECISIONS.md, 2026-09-02):
+    # NPSCandidate never carried its score past selection, so every
+    # curated-scrape catalog record landed with no aesthetic_score at
+    # all -- only the score used to *decide* inclusion, not the score
+    # attached to what got returned.
+    scored = [(_cand("a", "Park A"), 6.0)]
+    selected = select_by_threshold_with_floor(scored, threshold=5.0, floor=1)
+    assert selected[0].aesthetic_score == 6.0
+    assert selected[0].aesthetic_method is not None
+
+
 def test_floor_tops_up_when_threshold_leaves_too_few():
     # Only "a" clears the 6.5 threshold, but floor=3 requires topping up
     # with the next-highest scorers regardless of threshold.
@@ -92,6 +104,11 @@ def test_select_candidates_for_park_wires_triage_thumbnail_score_select(tmp_path
     # Only the surviving (non-excluded) album's contents were fetched.
     mock_search_album.assert_called_once_with("alb-good", park_code="TEST")
     assert [c.id for c in result] == ["keep-1"]
+    # The selected candidate carries its score forward -- without this,
+    # pipeline.build_record() has no way to write aesthetic_score into
+    # the final catalog record (see DECISIONS.md, 2026-09-02).
+    assert result[0].aesthetic_score == 7.0
+    assert result[0].aesthetic_method is not None
 
     # Below-threshold candidates don't make the selection, but every
     # scored candidate -- including "drop-1" -- still lands in the
@@ -125,5 +142,6 @@ def test_write_scored_manifest_round_trips_candidate_fields(tmp_path):
             "exif_datetime_raw": "",
             "search_terms": [],
             "aesthetic_score": 6.5,
+            "aesthetic_method": None,
         }
     ]

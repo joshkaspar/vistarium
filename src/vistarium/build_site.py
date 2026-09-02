@@ -6,7 +6,11 @@ Nothing here calls the model or the network -- pure deterministic
 post-processing of an already-built catalog, same as crop.py.
 
 Only primary_subject == "landscape" records are published -- see
-DECISIONS.md, 2026-08-30, "site-inclusion policy".
+DECISIONS.md, 2026-08-30, "site-inclusion policy" -- and, as of
+2026-09-02, only ones scoring >= PUBLISH_MIN_AESTHETIC_SCORE. Both are
+display gates, not deletions: everything stays in data/catalog.json
+regardless, and a record reappears here automatically once it clears
+whatever the current bar is.
 """
 
 from __future__ import annotations
@@ -22,6 +26,14 @@ from vistarium.crop import crop_9x16, crop_16x9
 
 THUMB_WIDTH = 1200
 WEBP_QUALITY = 82
+# Display-only gate, not a deletion -- records scoring below this stay in
+# data/catalog.json untouched and will reappear here automatically if the
+# threshold is lowered later or the record gets rescored. Matches the
+# curated scrape's own selection threshold (see
+# scripts/run_curated_scrape_remote.py); records without a score at all
+# (e.g. any bug that skips scoring) are treated as not meeting it, since
+# there's nothing to verify against. See DECISIONS.md, 2026-09-02.
+PUBLISH_MIN_AESTHETIC_SCORE = 5.4
 
 
 def _date_sortable(date_str: str | None) -> str | None:
@@ -81,7 +93,10 @@ def build_site(
     landscape = [
         r
         for r in catalog
-        if r.get("primary_subject") == "landscape" and not _is_360_panorama(r.get("title", ""))
+        if r.get("primary_subject") == "landscape"
+        and not _is_360_panorama(r.get("title", ""))
+        and r.get("aesthetic_score") is not None
+        and r["aesthetic_score"] >= PUBLISH_MIN_AESTHETIC_SCORE
     ]
 
     thumbs_dir = out_dir / thumbs_dirname

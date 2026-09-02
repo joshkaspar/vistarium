@@ -30,6 +30,8 @@ def _record(rid, subject="landscape", anchor="center"):
         "crop_anchor": anchor,
         "frame_type": "full_bleed",
         "tags": ["test"],
+        "aesthetic_score": 6.0,  # comfortably clears PUBLISH_MIN_AESTHETIC_SCORE by default
+        "aesthetic_method": "aesthetics_predictor_v2_l14_linearMSE",
     }
 
 
@@ -106,8 +108,13 @@ def test_build_site_includes_aesthetic_score_and_date_sortable(tmp_path):
     assert data[0]["date_sortable"] == "2024-01-01"
 
 
-def test_build_site_null_aesthetic_score_when_not_yet_scored(tmp_path):
-    catalog = [_record("land-1", "landscape")]  # no aesthetic_score key at all
+def test_build_site_excludes_records_with_no_aesthetic_score(tmp_path):
+    # Display-only gate, not a deletion (see PUBLISH_MIN_AESTHETIC_SCORE's
+    # docstring) -- a record with no score at all can't be verified
+    # against the threshold, so it's treated as not meeting it.
+    catalog = [_record("land-1", "landscape")]
+    del catalog[0]["aesthetic_score"]
+    del catalog[0]["aesthetic_method"]
     catalog_path = tmp_path / "catalog.json"
     catalog_path.write_text(json.dumps(catalog))
 
@@ -116,10 +123,29 @@ def test_build_site_null_aesthetic_score_when_not_yet_scored(tmp_path):
     Image.new("RGB", (400, 300), "red").save(images_dir / "land-1.jpg")
 
     out_dir = tmp_path / "docs"
-    build_site(catalog_path, images_dir, out_dir)
+    count = build_site(catalog_path, images_dir, out_dir)
 
+    assert count == 0
+    assert json.loads((out_dir / "data.json").read_text()) == []
+
+
+def test_build_site_excludes_records_below_the_aesthetic_threshold(tmp_path):
+    catalog = [_record("good-1", "landscape"), _record("bad-1", "landscape")]
+    catalog[1]["aesthetic_score"] = 5.39  # just under PUBLISH_MIN_AESTHETIC_SCORE
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "good-1.jpg")
+    Image.new("RGB", (400, 300), "blue").save(images_dir / "bad-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(catalog_path, images_dir, out_dir)
+
+    assert count == 1
     data = json.loads((out_dir / "data.json").read_text())
-    assert data[0]["aesthetic_score"] is None
+    assert data[0]["id"] == "good-1"
 
 
 def test_build_site_skips_records_missing_local_image(tmp_path):

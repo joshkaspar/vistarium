@@ -119,6 +119,12 @@ class NPSCandidate:
     caption_text: str = ""
     exif_datetime_raw: str = ""
     search_terms: list[str] = field(default_factory=list)
+    # Set by curate.select_by_threshold_with_floor() for the curated
+    # path only -- carries the thumbnail-based score through to
+    # pipeline.build_record() so it lands in the final catalog record.
+    # None for every other search path, which never scores candidates.
+    aesthetic_score: float | None = None
+    aesthetic_method: str | None = None
 
 
 def _s(v) -> str:

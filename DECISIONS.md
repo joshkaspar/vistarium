@@ -887,3 +887,52 @@ results were never cached, only the resulting thumbnail files),
 though re-scoring itself would be free (thumbnails already local) --
 not done here since it wasn't asked for, flagged as a follow-up if
 wanted.
+
+## 2026-09-02: aesthetic_score wasn't reaching curated-scrape catalog records; site now gates on it
+
+Found while implementing Josh's request to filter the site down to
+records currently meeting the aesthetic cutoff without deleting
+anything: checked the live site's actual score distribution first and
+found 790 of 1,512 published records had no aesthetic_score at all.
+Traced to wopr's real catalog: 1,461 of 2,696 records were missing
+it -- every single record produced by the curated scrape since it
+started, with zero exceptions.
+
+Root cause: `curate.select_by_threshold_with_floor()` used a
+candidate's score to *decide* selection, then returned the bare
+`NPSCandidate` -- which had no field to carry a score on in the first
+place. `pipeline.build_record()` builds the catalog record purely
+from `NPSCandidate` fields + the VLM's judgment fields; the score was
+never in either, so it was silently absent from every curated-scrape
+record. The 1,235 pre-curated-pipeline records all have scores because
+they went through a separate one-time `aesthetic_score.backfill()`
+pass, unrelated to this code path -- that's what masked the bug this
+long. Also unrelated: `aesthetic_score` was never added to
+`schema.json`'s `required` list (unlike `dominant_color`), so
+`schema_validate.validate_record()` had nothing to catch this either.
+
+Fix:
+- `NPSCandidate` gained `aesthetic_score` / `aesthetic_method` fields
+  (default `None` -- only the curated path ever sets them).
+- `select_by_threshold_with_floor()` now returns candidates via
+  `dataclasses.replace(c, aesthetic_score=s, aesthetic_method=...)`
+  instead of the bare originals.
+- `build_record()` writes `aesthetic_score`/`aesthetic_method` into the
+  record when the candidate carries one (uncurated search paths --
+  `--term`, `--park-code`, `--album-id` -- still produce records with
+  neither key, same as always).
+- `build_site.py` gained `PUBLISH_MIN_AESTHETIC_SCORE = 5.4` (matching
+  the scrape's own threshold) as a *display* gate: `build_site()`
+  drops any record with no score or a score below it from
+  `docs/data.json`, but nothing is removed from `data/catalog.json` --
+  a record reappears automatically once it's rescored or the threshold
+  changes. This was Josh's actual ask ("filter out any images... don't
+  delete them, just don't show them right now").
+
+Deploy: fixed code synced to wopr and the scrape process restarted
+(picks up cleanly -- 15 already-done parks skipped, Denali reselected
+from cached thumbnails, no data loss). Existing catalog records
+missing a score need a one-time `aesthetic_score.backfill()` pass
+against their already-downloaded full-res originals to catch up
+(re-scores from `data/images/*.jpg`, not the original thumbnail used
+for selection -- expected to be very close but not bit-identical).
