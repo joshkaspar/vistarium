@@ -36,11 +36,23 @@
       if (b.aesthetic_score == null) return -1;
       return b.aesthetic_score - a.aesthetic_score;
     },
-    date: (a, b) => {
+    date_desc: (a, b) => {
       if (a.date_sortable == null) return b.date_sortable == null ? 0 : 1;
       if (b.date_sortable == null) return -1;
       return b.date_sortable < a.date_sortable ? -1 : b.date_sortable > a.date_sortable ? 1 : 0;
     },
+    date_asc: (a, b) => {
+      if (a.date_sortable == null) return b.date_sortable == null ? 0 : 1;
+      if (b.date_sortable == null) return -1;
+      return a.date_sortable < b.date_sortable ? -1 : a.date_sortable > b.date_sortable ? 1 : 0;
+    },
+    // Catalog order (and so data.json's order, and _addedOrder below) is
+    // first-seen order in checkpoint.jsonl -- pipeline.py's outcomes dict
+    // keeps a record's original position even when a later run overwrites
+    // its entry. A temporary sort for watching the curated scrape land
+    // (2026-09-02) -- Josh expects to drop this once that run finishes.
+    added_desc: (a, b) => b._addedOrder - a._addedOrder,
+    added_asc: (a, b) => a._addedOrder - b._addedOrder,
   };
 
   function matches(record) {
@@ -153,7 +165,10 @@
   fetch("data.json")
     .then((r) => r.json())
     .then((data) => {
-      records = data;
+      // data.json's own array order is catalog order == first-added
+      // order (see the added_desc/added_asc comment above) -- capture it
+      // before anything sorts or filters the array.
+      records = data.map((r, i) => ({ ...r, _addedOrder: i }));
       populateParks();
       render();
     })
