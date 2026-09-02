@@ -39,6 +39,27 @@ BATCH_SIZE = 64
 _predictor = None
 _processor = None
 _device = None
+_forced_device: str | None = None
+
+
+def set_device(device: str) -> None:
+    """Force "cuda" or "cpu" regardless of availability, overriding the
+    auto-detect in _load_model(). Must be called before the first
+    score_batch()/score_all() call -- the model's resident device is
+    fixed at first load (the lazy-singleton caching below), same as
+    _load_model()'s existing behavior.
+
+    Used by the pipelined curated-scrape driver to force CPU here even
+    though wopr has a GPU: that GPU is already resident with the VLM
+    tagging model (llama-swap/qwen, ~26.5GB of 32GB used) which the
+    pipelined driver runs concurrently with this scorer -- a second
+    CUDA context contending for the remaining headroom risked eviction/
+    reload thrashing far more costly than CPU's slower raw throughput.
+    CPU keeps pace fine here regardless (~1 img/s vs. the NPS throttle's
+    ~0.28 img/s), so it costs nothing when overlapped with fetching --
+    see DECISIONS.md, 2026-09-02."""
+    global _forced_device
+    _forced_device = device
 
 
 def _load_model():
@@ -57,7 +78,11 @@ def _load_model():
         # fine for the dev-VM/CI path and small pilots, but the curated-
         # scale pipeline needs GPU throughput; see DECISIONS.md, 2026-09-01,
         # benchmark). Falls back to CPU transparently everywhere else.
-        _device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        # set_device() above overrides this entirely when set.
+        if _forced_device is not None:
+            _device = torch.device(_forced_device)
+        else:
+            _device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         _predictor = AestheticsPredictorV2Linear.from_pretrained(MODEL_ID).to(_device)
         _processor = CLIPProcessor.from_pretrained(MODEL_ID)
         _predictor.eval()

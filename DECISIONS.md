@@ -751,3 +751,52 @@ wopr -- their results are not retroactively reclassified. Re-running
 them under the new list was considered and rejected: it would waste
 already-spent NPS throttle time and already-scored/tagged work for a
 purely incremental precision gain, not a correctness bug.
+
+## 2026-09-02: producer/consumer pipeline for the curated scrape (CPU scoring, GPU-exclusive tagging)
+
+Context: the curated scrape ran strictly sequentially per park --
+album triage, thumbnail fetch, aesthetic score, select, then full-res
+download + VLM tag, one park fully finishing before the next one's
+crawl began. GPU (wopr's qwen VLM, via llama-swap) sat idle for the
+vast majority of each park's wall-clock time (~88 min of thumbnail
+fetching for Acadia, vs. ~17s of GPU scoring and ~31 min of GPU
+tagging). Back-of-envelope estimate: overlapping GPU tag time for
+park N with network/CPU work for park N+1 onward would save roughly
+28 hours off the remaining ~95-hour run (~29%) -- see conversation,
+2026-09-02. Josh: "Yes, I think it's worth it, let's do it."
+
+Considered running aesthetic scoring on GPU concurrently with VLM
+tagging (both are GPU work, seemingly the obvious pairing) but
+rejected: wopr's GPU already has ~26.5GB of 32GB resident to the qwen
+VLM model via llama-swap, leaving only ~6GB headroom. That's enough
+for CLIP *at rest* (confirmed in the earlier GPU-scoring benchmark),
+but running a second CUDA context alongside Qwen *actively serving
+tag requests* risked eviction/reload thrashing (llama-swap's whole
+job is swapping models in and out of VRAM on demand) -- a cost that
+could easily exceed whatever concurrency would have saved.
+
+Decision: force aesthetic scoring to CPU instead
+(`aesthetic_score.set_device("cpu")`), keeping wopr's GPU exclusively
+dedicated to VLM tagging. This costs nothing once pipelined: CPU
+scoring runs at ~1 img/s, well ahead of the NPS throttle's ~0.28
+img/s thumbnail-arrival rate, so it never becomes the bottleneck.
+
+Implementation: `scripts/run_curated_scrape_remote.py` rewritten as a
+producer/consumer pair on a shared `queue.Queue`, not per-park
+sequential calls to `pipeline.run()`. Producer thread: album triage +
+thumbnail fetch + CPU aesthetic scoring + threshold-with-floor
+selection, park by park, pushing each park's selected candidates
+(plus a `_PARK_DONE` sentinel) onto the queue as soon as that park's
+selection is final. Consumer (main thread): pulls off the queue and
+does full-res download + VLM tag, decoupled from which park the
+producer is currently working on -- reuses `pipeline.build_record()`,
+`_load_checkpoint()`, `_write_checkpoint_line()` directly rather than
+duplicating that logic. A park is marked done in
+`curated_scrape_progress.json` only when the consumer finishes
+tagging everything queued for it (not when the producer finishes
+selecting), preserving the existing resume semantics.
+
+`nps_client`'s request throttle (`_rate_lock`, a `threading.Lock`)
+was already thread-safe -- both the producer's thumbnail/album
+requests and the consumer's full-res downloads correctly serialize
+through it without additional locking.

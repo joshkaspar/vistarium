@@ -123,6 +123,7 @@ def test_load_model_uses_cuda_when_available():
     aesthetic_score_module._predictor = None
     aesthetic_score_module._processor = None
     aesthetic_score_module._device = None
+    aesthetic_score_module._forced_device = None
 
     fake_modules, fake_model = _install_fake_torch_stack(cuda_available=True)
     with patch.dict(sys.modules, fake_modules):
@@ -138,6 +139,7 @@ def test_load_model_falls_back_to_cpu():
     aesthetic_score_module._predictor = None
     aesthetic_score_module._processor = None
     aesthetic_score_module._device = None
+    aesthetic_score_module._forced_device = None
 
     fake_modules, fake_model = _install_fake_torch_stack(cuda_available=False)
     with patch.dict(sys.modules, fake_modules):
@@ -145,3 +147,21 @@ def test_load_model_falls_back_to_cpu():
 
     assert device == "device:cpu"
     fake_model.to.assert_called_once_with("device:cpu")
+
+
+def test_set_device_overrides_cuda_availability():
+    import vistarium.aesthetic_score as aesthetic_score_module
+
+    aesthetic_score_module._predictor = None
+    aesthetic_score_module._processor = None
+    aesthetic_score_module._device = None
+    aesthetic_score_module.set_device("cpu")
+    try:
+        fake_modules, fake_model = _install_fake_torch_stack(cuda_available=True)
+        with patch.dict(sys.modules, fake_modules):
+            _predictor, _processor, device = aesthetic_score_module._load_model()
+
+        assert device == "device:cpu"
+        fake_model.to.assert_called_once_with("device:cpu")
+    finally:
+        aesthetic_score_module._forced_device = None
