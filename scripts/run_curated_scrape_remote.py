@@ -1,11 +1,16 @@
-"""Drives the curated-scale pipeline (see curate.py, DECISIONS.md
+"""Runs the curated-scale pipeline (see curate.py, DECISIONS.md
 2026-09-01) across every official U.S. National Park, one park at a
-time, rebuilding and publishing the site after each park finishes.
+time. Meant to run on wopr (GPU host with torch installed -- the dev
+VM has ~1GB free disk and can't hold torch, see pyproject.toml's
+`aesthetic` extra comment), against wopr's own rsynced copy of the
+repo, so it does no git operations itself. sync_and_publish.py (run
+from the actual git checkout) periodically pulls data/catalog.json
+and data/images back and publishes the site.
 
 Not part of the installed package -- a long-running (multi-day, NPS
-throttle-bound) driver script, run directly:
+throttle-bound) driver script:
 
-    uv run python scripts/run_curated_scrape.py
+    ~/aesthetic-pilot/.venv/bin/python scripts/run_curated_scrape_remote.py
 
 Safe to interrupt and re-run: pipeline.run() checkpoints per-candidate
 to data/checkpoint.jsonl, and this script tracks which parks have
@@ -17,11 +22,12 @@ from __future__ import annotations
 
 import json
 import logging
-import subprocess
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+
+from dotenv import load_dotenv  # noqa: E402
 
 from vistarium import pipeline  # noqa: E402
 
@@ -46,39 +52,8 @@ def _mark_done(code: str, done: set[str]) -> None:
     PROGRESS_PATH.write_text(json.dumps(sorted(done), indent=2))
 
 
-def _rebuild_and_publish(code: str, name: str) -> None:
-    """Rebuilds docs/ from the latest catalog and commits+pushes it --
-    Josh asked to "update the site periodically as the images roll
-    in" (2026-09-01), and each finished park is a natural checkpoint.
-    Only docs/ is tracked in git (data/ is gitignored -- runtime
-    output, not source, see .gitignore)."""
-    subprocess.run(["uv", "run", "vistarium-build-site"], cwd=REPO_ROOT, check=True)
-
-    status = subprocess.run(
-        ["git", "status", "--porcelain", "docs/"], cwd=REPO_ROOT, capture_output=True, text=True
-    )
-    if not status.stdout.strip():
-        log.info("%s: site unchanged, nothing to commit", code)
-        return
-
-    subprocess.run(["git", "add", "docs/"], cwd=REPO_ROOT, check=True)
-    subprocess.run(
-        [
-            "git",
-            "commit",
-            "-m",
-            f"Curated scrape: add {name} (threshold={THRESHOLD}, floor={FLOOR})\n\n"
-            "Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>\n"
-            "Claude-Session: https://claude.ai/code/session_016JiigLaJ6DbBxYZv3sWgcN",
-        ],
-        cwd=REPO_ROOT,
-        check=True,
-    )
-    subprocess.run(["git", "push"], cwd=REPO_ROOT, check=True)
-    log.info("%s: site rebuilt, committed, and pushed", code)
-
-
 def main() -> int:
+    load_dotenv(REPO_ROOT / ".env")  # WOPR_BASE_URL -- pipeline.run() needs this for judge_image()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
     parks = json.loads(PARKS_PATH.read_text())
@@ -106,11 +81,6 @@ def main() -> int:
         except Exception:
             log.exception("%s (%s): pipeline run failed, skipping to next park", code, name)
             continue
-
-        try:
-            _rebuild_and_publish(code, name)
-        except subprocess.CalledProcessError:
-            log.exception("%s (%s): site rebuild/publish failed, continuing anyway", code, name)
 
         _mark_done(code, done)
 

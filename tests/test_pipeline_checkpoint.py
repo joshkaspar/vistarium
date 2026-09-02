@@ -133,6 +133,43 @@ def test_run_survives_unexpected_error_building_one_record(tmp_path: Path):
     assert json.loads((workdir / "catalog.json").read_text()) == []
 
 
+def test_run_resumes_candidate_whose_image_survived_a_prior_crash(tmp_path: Path):
+    # A run that crashes after download_image() but before the checkpoint
+    # line is written (e.g. judge_image() raising, see DECISIONS.md
+    # 2026-09-02) leaves an orphan file in images_dir. On resume,
+    # Deduplicator pre-seeds every file already in images_dir -- including
+    # this candidate's own file -- so download_image() (idempotent, returns
+    # the existing path) must not have its own pre-seeded entry mistaken
+    # for a real duplicate and silently dropped forever.
+    workdir = tmp_path / "data"
+    images_dir = workdir / "images"
+    images_dir.mkdir(parents=True)
+    image_path = images_dir / "orphan-1.jpg"
+    image_path.write_bytes(b"fake jpeg bytes")
+
+    candidate = NPSCandidate(id="orphan-1", park="Zion National Park", title="Orphan")
+    fake_record = {"id": "orphan-1", "is_photograph": True}
+
+    with (
+        patch("vistarium.pipeline._search_with_cache", return_value=[candidate]),
+        patch("vistarium.pipeline.nps_client.download_image", return_value=image_path),
+        patch("vistarium.pipeline.build_record", return_value=fake_record),
+        patch("vistarium.pipeline.schema_validate.validate_record"),
+    ):
+        run(
+            limit=10,
+            workdir=workdir,
+            out_path=workdir / "catalog.json",
+            excluded_out_path=workdir / "excluded_non_photo.json",
+            terms=None,
+        )
+
+    checkpoint_lines = (workdir / "checkpoint.jsonl").read_text().splitlines()
+    entries = [json.loads(line) for line in checkpoint_lines]
+    assert entries == [{"id": "orphan-1", "outcome": "catalog", "record": fake_record}]
+    assert json.loads((workdir / "catalog.json").read_text()) == [fake_record]
+
+
 def test_sample_candidates_returns_all_when_pool_smaller_than_limit():
     candidates = [NPSCandidate(id=str(i)) for i in range(5)]
     result = _sample_candidates(candidates, already_processed=set(), limit=10)

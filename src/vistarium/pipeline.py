@@ -289,7 +289,13 @@ def run(
             continue
 
         dup_of = dedup.is_duplicate(image_path)
-        if dup_of is not None:
+        if dup_of is not None and dup_of != image_path:
+            # dup_of == image_path means this candidate's own file was
+            # pre-seeded from a prior run that crashed after download but
+            # before its checkpoint line was written (e.g. a judge_image
+            # failure -- see DECISIONS.md, 2026-09-02) -- not a real
+            # duplicate, just this candidate meeting its own pre-seeded
+            # entry for the first time.
             log.info("  duplicate of %s, skipping", dup_of.name)
             _write_checkpoint_line(checkpoint_path, {"id": candidate.id, "outcome": "duplicate"})
             continue
