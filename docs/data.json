@@ -25089,5 +25089,55 @@
     "aspect": "16/9",
     "aesthetic_score": 5.402,
     "date_sortable": null
+  },
+  {
+    "id": "060337bd-8666-458c-88b6-5f0b4351511c",
+    "title": "The Grand Staircase Shrouded in Early Morning Fog",
+    "photographer": "NPS Photo/SueFord",
+    "date": "03/12/2020",
+    "park": "Gateway Arch National Park",
+    "license": "Public domain/Full",
+    "license_confidence": "confirmed",
+    "source_url": "https://npgallery.nps.gov/AssetDetail/060337bd-8666-458c-88b6-5f0b4351511c",
+    "time_of_day": "morning",
+    "people_prominence": "none",
+    "color_mode": "color",
+    "dominant_color": "blue",
+    "tags": [
+      "mist",
+      "lights",
+      "trees",
+      "structure",
+      "floodlights"
+    ],
+    "thumb": "thumbs/060337bd-8666-458c-88b6-5f0b4351511c.webp",
+    "aspect": "16/9",
+    "aesthetic_score": 5.739,
+    "date_sortable": "2020-03-12"
+  },
+  {
+    "id": "69369481-155d-4519-3e32-71bd73e47ff6",
+    "title": "Three Forks",
+    "photographer": null,
+    "date": null,
+    "park": "Gateway Arch National Park",
+    "license": "Public domain/Full",
+    "license_confidence": "confirmed",
+    "source_url": "https://npgallery.nps.gov/AssetDetail/69369481-155d-4519-3e32-71bd73e47ff6",
+    "time_of_day": "afternoon",
+    "people_prominence": "none",
+    "color_mode": "color",
+    "dominant_color": "green",
+    "tags": [
+      "river",
+      "wetland",
+      "mountains",
+      "snow_capped",
+      "grassy_islands"
+    ],
+    "thumb": "thumbs/69369481-155d-4519-3e32-71bd73e47ff6.webp",
+    "aspect": "9/16",
+    "aesthetic_score": 5.433,
+    "date_sortable": null
   }
 ]
