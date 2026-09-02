@@ -800,3 +800,57 @@ selecting), preserving the existing resume semantics.
 was already thread-safe -- both the producer's thumbnail/album
 requests and the consumer's full-res downloads correctly serialize
 through it without additional locking.
+
+## 2026-09-02: wopr disk filled by a stuck logrotate deadlock (llama-swap.log)
+
+Context: wopr's root disk hit 100% full mid-scrape (Denali, park
+16/61), causing intermittent thumbnail-fetch failures and a failed
+site-build cycle. Not caused by vistarium's own data (`data/images`
+23GB + `data/thumbs_cache` 957MB, nowhere near the disk's 455GB) --
+`/home/josh/logs/llama-swap.log` (llama-swap's own request log, ~155GB
+and actively growing) was the actual cause. Likely driven by our own
+VLM tagging load (thousands of requests/day hitting llama-swap) hitting
+a log that was never rotating.
+
+Root cause, not just "the log grew too big": an existing logrotate
+config (`/etc/logrotate.d/llama-swap`, `maxsize 500M`, `copytruncate`,
+`weekly`) had been silently deadlocked since 2026-08-30.
+`copytruncate` copies the log to a `.1` file before truncating the
+original -- that copy needs free disk space equal to the log's current
+size. The very first rotation attempt (Aug 30) already failed with
+"No space left on device" while making that copy; when the copy step
+fails, logrotate correctly refuses to truncate the original (would
+lose data with no successful backup), so the file was never reset and
+kept growing -- meaning every subsequent day's attempt needed even
+more headroom than the last, permanently. The daily
+`journalctl -u logrotate.service` history showed later runs exiting
+"successfully," which was misleading -- other logrotate.d stanzas
+processed fine each day while this one stanza kept silently failing to
+even attempt rotation (its size never dropped). Also relevant: the
+system logrotate.timer only fires once daily, so even a healthy
+`maxsize` trigger has up to 24 hours to blow past the threshold under
+heavy load before the next check.
+
+Fix:
+- Immediately truncated `llama-swap.log` directly (`sudo truncate -s 0`
+  -- safe on an actively-open file, doesn't require llama-swap to
+  restart or reopen its handle) to free the 155GB right away, since
+  copytruncate itself had no room to run.
+- Lowered `/etc/logrotate.d/llama-swap`'s `maxsize` from 500M to 100M
+  and switched `weekly` -> `daily` (daily is now just the fallback
+  baseline; maxsize is what actually matters under load).
+- Added a dedicated systemd timer (`llama-swap-logrotate.timer` +
+  `.service`, `/etc/systemd/system/`) running only this one
+  logrotate.d stanza every 15 minutes, independent of the system's
+  once-daily `logrotate.timer` -- keeps the log too small for a
+  copytruncate deadlock to ever recur, and doesn't touch the cadence
+  of any other logrotate.d config on the box.
+Outcome: resolved and verified -- `logrotate --debug` confirms the
+100M threshold is recognized, the new timer's service exits 0, wopr's
+scrape resumed thumbnail fetching within seconds of the truncate (its
+existing per-candidate try/except already handled the failures
+gracefully, no restart needed), and the next sync_and_publish.py cycle
+published successfully. This is infrastructure outside the vistarium
+project itself (wopr is Josh's own GPU box, shared with other
+services) -- flagged before acting, truncated and reconfigured with
+his explicit go-ahead, not unilaterally.
