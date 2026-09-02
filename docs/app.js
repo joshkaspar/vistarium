@@ -11,7 +11,6 @@
   const timeSelect = document.getElementById("filter-time");
   const peopleSelect = document.getElementById("filter-people");
   const colorSelect = document.getElementById("filter-color");
-  const dominantColorSelect = document.getElementById("filter-dominant-color");
   const tagInput = document.getElementById("filter-tag");
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
@@ -48,8 +47,15 @@
     if (parkSelect.value && record.park !== parkSelect.value) return false;
     if (timeSelect.value && record.time_of_day !== timeSelect.value) return false;
     if (peopleSelect.value && record.people_prominence !== peopleSelect.value) return false;
-    if (colorSelect.value && record.color_mode !== colorSelect.value) return false;
-    if (dominantColorSelect.value && record.dominant_color !== dominantColorSelect.value) return false;
+    // "Black & white" is a color_mode value; everything else in this one
+    // combined dropdown is a dominant_color hue -- kept as a single
+    // filter since two separately-labeled "color" dropdowns confused
+    // more than they helped (see DECISIONS.md, 2026-09-02).
+    if (colorSelect.value === "monochrome") {
+      if (record.color_mode !== "monochrome") return false;
+    } else if (colorSelect.value && record.dominant_color !== colorSelect.value) {
+      return false;
+    }
     const tagQuery = tagInput.value.trim().toLowerCase();
     if (tagQuery && !record.tags.some((t) => t.toLowerCase().includes(tagQuery))) return false;
     return true;
@@ -127,7 +133,7 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  [sortSelect, parkSelect, timeSelect, peopleSelect, colorSelect, dominantColorSelect].forEach((el) =>
+  [sortSelect, parkSelect, timeSelect, peopleSelect, colorSelect].forEach((el) =>
     el.addEventListener("change", render)
   );
   tagInput.addEventListener("input", render);
