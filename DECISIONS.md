@@ -692,3 +692,62 @@ batch): 7.68s, one-time.
 
 Decision: set aesthetic_score.py's default BATCH_SIZE to 64 (best throughput observed; diminishing but still real returns past 32)
 Outcome: resolved. At ~85 img/s, GPU-batched scoring makes even huge candidate pools cheap in absolute terms -- Kenai Fjords' full 15,242-image Categories:Scenic pool would score in ~3 minutes, versus ~4 hours at the CPU pilot's ~1 img/s. But this surfaces a different, previously-invisible bottleneck: nps_client's request throttle (1000 req/hour, one request per thumbnail fetched) means fetching that same 15,242-thumbnail pool alone would take ~15 hours, regardless of how fast scoring is. Scoring throughput is no longer the constraint on how much of NPGallery this project can practically curate -- bandwidth/throttle is. Worth weighing directly when picking how many parks/candidates to curate next, not something to revisit later as a surprise.
+
+## 2026-09-02: dev VM disk-space incident; site build moved to wopr
+
+Context: `scripts/sync_and_publish.py` (the periodic loop publishing the
+curated scrape's results) was rsyncing wopr's `data/images` (all
+full-res originals, growing continuously as the 61-park scrape ran)
+to the local dev VM before running `vistarium-build-site` locally.
+The dev VM only had ~1GB free to begin with (already tight from the
+`aesthetic` extra's install failure earlier this session -- see the
+GPU-benchmark entry above). Acadia alone added ~17GB of full-res
+images; the dev VM disk hit 100% mid-rsync at 2026-09-02 00:45, and
+every sync cycle failed silently after that (`No space left on
+device`) until caught by manual inspection ~2 hours later. The scrape
+on wopr was unaffected (its own disk has 167GB free) -- only the
+local publish side broke.
+
+Decision: the dev VM never needs full-res images at all.
+`build_site.py` now runs entirely on wopr (via ssh, wopr's
+aesthetic-pilot venv) against wopr's own `data/catalog.json` +
+`data/images`; only its small output -- `docs/data.json` and
+`docs/thumbs/*.webp` -- gets rsynced back. `docs/index.html`,
+`app.js`, and `style.css` (the actual hand-authored site source)
+live in the local git checkout as always and get pushed *to* wopr
+once so its build has a current copy to render against.
+Outcome: resolved. Local `data/images` (17GB, redundant with wopr's
+copy) deleted to recover disk space; verified end-to-end (752 records
+built on wopr, only `docs/` synced locally, committed and pushed)
+before restarting the loop.
+
+## 2026-09-02: album_keywords.json exclude-list expansion (round 2)
+
+Context: Josh reviewed the full 3,314-album triage list (published as
+an artifact) and proposed ~30 new exclude terms across arts/
+competitions, events/programs, infrastructure/maintenance,
+administrative/staff/documentation, and fauna/wildlife categories.
+
+Checked each proposed term against all 2,990 not-currently-excluded
+albums before adding (title + description substring match, matching
+`classify_album`'s actual matching behavior) to catch false positives.
+Found two: bare `"sign"` matches `"design"` ("Design renderings of
+future Chisos Mountains Lodge building"); bare `"sar"` (for "search
+and rescue") matches `"anniversary"` ("175th Anniversary
+Celebration"). Fixed by using `" sign"` (leading space -- catches
+"Sign"/"Signs" after a space or start of string, not "design") and
+dropping the bare `"sar"` abbreviation entirely (redundant with the
+already-safe full-phrase `"search and rescue"`). Every other proposed
+term checked clean against the full corpus.
+
+Effect measured against the full 3,314-album snapshot: exclude count
+324 -> 893 albums, keeping 13,282 additional images out of the
+thumbnail-fetch/scoring pipeline entirely.
+
+Scope note: this only affects parks the curated scrape hasn't reached
+yet. Acadia (park 1) and Arches (park 2, in-flight) already ran their
+album triage under the old keyword list before this update landed on
+wopr -- their results are not retroactively reclassified. Re-running
+them under the new list was considered and rejected: it would waste
+already-spent NPS throttle time and already-scored/tagged work for a
+purely incremental precision gain, not a correctness bug.

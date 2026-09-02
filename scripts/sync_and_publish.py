@@ -1,18 +1,26 @@
-"""Periodically pulls the curated-scrape results back from wopr
-(run_curated_scrape_remote.py runs there -- see that file's docstring
-for why) and publishes the site, so the live site keeps growing
-throughout the multi-day run instead of waiting for it to finish.
-Josh asked for this explicitly: "update the site periodically as the
-images roll in" (2026-09-01).
+"""Periodically builds the site on wopr (run_curated_scrape_remote.py
+runs there -- see that file's docstring for why) and pulls back just
+the compact result, so the live site keeps growing throughout the
+multi-day run instead of waiting for it to finish. Josh asked for this
+explicitly: "update the site periodically as the images roll in"
+(2026-09-01).
+
+Deliberately does NOT rsync data/images (the full-res originals, ~15KB
+each up to a few MB, tens of thousands of them) to the dev VM -- that
+filled the dev VM's disk to 100% and broke every sync cycle for hours
+before anyone noticed (see DECISIONS.md, 2026-09-02). The dev VM never
+needs full-res images: docs/index.html, app.js, and style.css (the
+site's real source) live here and get pushed *to* wopr once up front;
+build_site.py itself runs entirely on wopr against wopr's own
+data/catalog.json + data/images, and only its output --
+docs/data.json and docs/thumbs/*.webp, both small -- comes back.
 
 Not part of the installed package. Run from the actual git checkout:
 
     uv run python scripts/sync_and_publish.py
 
 Loops until interrupted (Ctrl-C) or until wopr's progress file shows
-every park done. Each cycle: rsync data/catalog.json and data/images
-from wopr, rebuild docs/ from the merged local corpus + newly-synced
-images, and commit+push docs/ if anything actually changed.
+every park done.
 """
 
 from __future__ import annotations
@@ -24,23 +32,45 @@ import time
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-WOPR_REPO = "wopr:~/vistarium-repo/"
+WOPR_HOST = "wopr"
+WOPR_REPO_PATH = "/home/josh/vistarium-repo"
+WOPR_PYTHON = "/home/josh/aesthetic-pilot/.venv/bin/python"
 POLL_INTERVAL_S = 1800  # 30 min -- frequent enough to feel "periodic," cheap between cycles
 
 log = logging.getLogger("vistarium.sync_and_publish")
 
 
-def _sync_from_wopr() -> None:
+def _build_on_wopr() -> None:
     subprocess.run(
-        ["rsync", "-a", f"{WOPR_REPO}data/catalog.json", str(REPO_ROOT / "data" / "catalog.json")],
+        [
+            "ssh",
+            WOPR_HOST,
+            f"cd {WOPR_REPO_PATH} && {WOPR_PYTHON} -c "
+            "\"import sys; sys.path.insert(0, 'src'); "
+            "from vistarium.build_site import build_site; "
+            "from pathlib import Path; "
+            "n = build_site(Path('data/catalog.json'), Path('data/images'), Path('docs')); "
+            "print(f'wopr: wrote {n} records')\"",
+        ],
         check=True,
     )
     subprocess.run(
-        ["rsync", "-a", f"{WOPR_REPO}data/excluded_non_photo.json", str(REPO_ROOT / "data")],
-        check=False,  # may not exist yet on the very first cycle
+        [
+            "rsync",
+            "-a",
+            f"{WOPR_HOST}:{WOPR_REPO_PATH}/docs/data.json",
+            str(REPO_ROOT / "docs" / "data.json"),
+        ],
+        check=True,
     )
     subprocess.run(
-        ["rsync", "-a", f"{WOPR_REPO}data/images/", str(REPO_ROOT / "data" / "images") + "/"],
+        [
+            "rsync",
+            "-a",
+            "--delete",
+            f"{WOPR_HOST}:{WOPR_REPO_PATH}/docs/thumbs/",
+            str(REPO_ROOT / "docs" / "thumbs") + "/",
+        ],
         check=True,
     )
 
@@ -64,10 +94,10 @@ def _remote_progress() -> tuple[int, int]:
     return int(done), int(total)
 
 
-def _rebuild_and_publish() -> bool:
-    """Returns True if the site actually changed (and was committed+pushed)."""
-    subprocess.run(["uv", "run", "vistarium-build-site"], cwd=REPO_ROOT, check=True)
-
+def _commit_and_push() -> bool:
+    """Returns True if the site actually changed (and was committed+pushed).
+    Building already happened on wopr (_build_on_wopr) -- this only
+    commits whatever landed in docs/ from that rsync."""
     status = subprocess.run(
         ["git", "status", "--porcelain", "docs/"], cwd=REPO_ROOT, capture_output=True, text=True
     )
@@ -96,15 +126,15 @@ def main() -> int:
 
     while True:
         try:
-            _sync_from_wopr()
+            _build_on_wopr()
         except subprocess.CalledProcessError:
-            log.exception("rsync from wopr failed, will retry next cycle")
+            log.exception("build/sync from wopr failed, will retry next cycle")
         else:
             try:
-                published = _rebuild_and_publish()
+                published = _commit_and_push()
                 log.info("site %s", "published" if published else "unchanged, skipped commit")
             except subprocess.CalledProcessError:
-                log.exception("site build/publish failed, will retry next cycle")
+                log.exception("commit/push failed, will retry next cycle")
 
         done, total = _remote_progress()
         log.info("wopr progress: %d/%d parks done", done, total)
