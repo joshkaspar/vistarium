@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import subprocess
 import sys
 import time
@@ -100,19 +101,39 @@ def _remote_done_codes() -> list[str]:
     return json.loads(result.stdout)
 
 
-def _write_status_md(done_codes: list[str]) -> None:
+def _remote_in_progress_code() -> str | None:
+    """The park code from the producer's most recent "selecting
+    candidates" log line, or None if it can't be determined.
+
+    Originally this was inferred as "the first park in
+    national_parks.json order that isn't done yet" -- but that breaks
+    permanently once any single park fails outright (see DECISIONS.md,
+    2026-09-02: Denali hit a corrupted thumbnail that crashed its whole
+    scoring batch, producer.py's except-and-skip moved on without ever
+    marking it done, and every status check afterward kept reporting
+    Denali as "in progress" while parks that had actually finished --
+    Glacier, Glacier Bay -- showed as not even started). Reading the
+    log directly is ground truth regardless of completion order."""
+    result = subprocess.run(
+        [
+            "ssh",
+            WOPR_HOST,
+            f"grep 'selecting candidates' {WOPR_REPO_PATH}/curated_scrape.log | tail -1",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    match = re.search(r"producer \[\d+/\d+\] (\w+)", result.stdout)
+    return match.group(1) if match else None
+
+
+def _write_status_md(done_codes: list[str], in_progress: str | None) -> None:
     """Renders STATUS.md from national_parks.json (park order/names,
-    already local) + done_codes (from wopr) + docs/data.json's own
-    record count (already local, just synced). Regenerated every cycle
-    -- see sync_and_publish.py's module docstring for why."""
+    already local) + done_codes/in_progress (from wopr) + docs/data.json's
+    own record count (already local, just synced). Regenerated every
+    cycle -- see sync_and_publish.py's module docstring for why."""
     parks = json.loads(PARKS_PATH.read_text())
     done = set(done_codes)
-    # Parks are queued to (and completed by) the consumer in
-    # national_parks.json's fixed order (see run_curated_scrape_remote.py),
-    # so the first not-yet-done park in that order is the one currently
-    # being worked -- an approximation (the producer may already be
-    # further ahead in the queue) but a reasonable one for a status page.
-    in_progress = next((code for code in parks if code not in done), None)
 
     try:
         record_count = len(json.loads((REPO_ROOT / "docs" / "data.json").read_text()))
@@ -189,7 +210,7 @@ def main() -> int:
             log.exception("build/sync from wopr failed, will retry next cycle")
         else:
             try:
-                _write_status_md(done_codes)
+                _write_status_md(done_codes, _remote_in_progress_code())
                 published = _commit_and_push()
                 log.info("site %s", "published" if published else "unchanged, skipped commit")
             except subprocess.CalledProcessError:

@@ -936,3 +936,47 @@ missing a score need a one-time `aesthetic_score.backfill()` pass
 against their already-downloaded full-res originals to catch up
 (re-scores from `data/images/*.jpg`, not the original thumbnail used
 for selection -- expected to be very close but not bit-identical).
+
+## 2026-09-02: Denali failure traced to a corrupted thumbnail; two real bugs fixed
+
+Context: Josh noticed STATUS.md showing Denali as "in progress" while
+Glacier and Glacier Bay (actually done/in-progress) showed as not
+started. Traced to two compounding bugs, not one.
+
+Bug 1 (the actual scrape failure): a thumbnail
+(`2a73d13c-d0c5-4172-b894-099556d2a984.jpg`) was left truncated
+mid-write by the wopr disk-full incident earlier the same day.
+`download_thumbnail()`'s idempotent "skip if file exists" check meant
+it was never re-fetched. `aesthetic_score.score_batch()` called
+`Image.open()` unguarded inside a list comprehension building the
+whole batch -- one corrupt file raised `UnidentifiedImageError` and
+aborted scoring for Denali's entire 4,454-candidate pool, every single
+time it was attempted (confirmed via the traceback in
+curated_scrape.log: `producer: DENA (Denali) selection failed,
+skipping park`). Found and deleted 285 similarly-corrupted thumbnails
+across the whole cache (all under 1KB, all from the same incident
+window) -- any of the still-pending parks could have hit the same
+failure on a different file.
+
+Fix: `score_batch()` now opens each image individually inside a
+try/except, returning `None` for any that fail (logged as a warning)
+instead of raising -- `list[float]` became `list[float | None]`,
+aligned 1:1 with input paths same as before. `score_all()` already
+naturally skips `None` entries. A bad image now costs one candidate,
+not an entire park.
+
+Bug 2 (the status-page symptom): `_write_status_md()`'s "in progress"
+indicator assumed parks complete in `national_parks.json`'s fixed
+order -- "the first not-done park in list order" -- which is exactly
+wrong once any park fails outright and gets skipped rather than
+completed (Denali, from Bug 1): every status check from then on
+showed the abandoned park as perpetually "in progress" while parks
+that had genuinely finished or were genuinely in progress after it
+showed as not-started. Fixed by reading `curated_scrape.log`'s most
+recent "selecting candidates" line directly (ground truth for what
+the producer is actually doing right now) instead of inferring from
+completion order.
+
+Outcome: both fixes deployed and smoke-tested against the live wopr
+log before rollout. Denali will be retried cleanly on the current
+run's next pass now that its corrupted thumbnail is gone.

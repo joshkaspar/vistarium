@@ -3,6 +3,8 @@ import sys
 import types
 from unittest.mock import MagicMock, patch
 
+from PIL import Image
+
 from vistarium.aesthetic_score import AESTHETIC_METHOD, backfill
 
 
@@ -147,6 +149,36 @@ def test_load_model_falls_back_to_cpu():
 
     assert device == "device:cpu"
     fake_model.to.assert_called_once_with("device:cpu")
+
+
+def test_score_batch_skips_unreadable_image_instead_of_aborting_batch(tmp_path):
+    # Regression test for a real incident (see DECISIONS.md, 2026-09-02):
+    # a thumbnail truncated mid-write by an unrelated disk-full event
+    # crashed Image.open() inside score_batch()'s list comprehension,
+    # aborting scoring for an entire park's ~4,500 other candidates.
+    import vistarium.aesthetic_score as aesthetic_score_module
+
+    aesthetic_score_module._predictor = None
+    aesthetic_score_module._processor = None
+    aesthetic_score_module._device = None
+    aesthetic_score_module._forced_device = None
+
+    good_path = tmp_path / "good.jpg"
+    Image.new("RGB", (10, 10), "blue").save(good_path)
+    bad_path = tmp_path / "bad.jpg"
+    bad_path.write_bytes(b"not a real jpeg")
+
+    fake_modules, fake_model = _install_fake_torch_stack(cuda_available=False)
+    fake_processor = MagicMock()
+    fake_processor.return_value.to.return_value = {}
+    fake_modules["transformers"].CLIPProcessor.from_pretrained.return_value = fake_processor
+    fake_model.return_value.logits.squeeze.return_value.tolist.return_value = [5.5]
+
+    with patch.dict(sys.modules, fake_modules):
+        scores = aesthetic_score_module.score_batch([good_path, bad_path])
+
+    assert scores[0] == 5.5
+    assert scores[1] is None
 
 
 def test_set_device_overrides_cuda_availability():

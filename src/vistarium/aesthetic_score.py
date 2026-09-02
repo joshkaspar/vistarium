@@ -23,7 +23,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 from pathlib import Path
+
+log = logging.getLogger("vistarium.aesthetic_score")
 
 MODEL_ID = "shunk031/aesthetics-predictor-v2-sac-logos-ava1-l14-linearMSE"
 AESTHETIC_METHOD = "aesthetics_predictor_v2_l14_linearMSE"
@@ -89,30 +92,54 @@ def _load_model():
     return _predictor, _processor, _device
 
 
-def score_batch(image_paths: list[Path]) -> list[float]:
+def score_batch(image_paths: list[Path]) -> list[float | None]:
     """Scores a batch of local images (any size batch -- callers should
-    chunk to BATCH_SIZE for the throughput this was validated at)."""
+    chunk to BATCH_SIZE for the throughput this was validated at).
+    Aligned 1:1 with `image_paths`; a path whose image can't be opened
+    (found live 2026-09-02: a thumbnail truncated mid-write by an
+    unrelated disk-full incident, but any corrupt/partial file could do
+    this) gets `None` instead of aborting the *entire* batch -- a single
+    bad image used to take down scoring for a whole park's worth of
+    candidates, since PIL.Image.open() was called unguarded inside the
+    batch list comprehension. See DECISIONS.md, 2026-09-02."""
     import torch
-    from PIL import Image
+    from PIL import Image, UnidentifiedImageError
 
     predictor, processor, device = _load_model()
-    images = [Image.open(p).convert("RGB") for p in image_paths]
+    images: list = []
+    good_indices: list[int] = []
+    for i, p in enumerate(image_paths):
+        try:
+            images.append(Image.open(p).convert("RGB"))
+            good_indices.append(i)
+        except (UnidentifiedImageError, OSError) as e:
+            log.warning("skipping unreadable image %s: %s", p, e)
+
+    results: list[float | None] = [None] * len(image_paths)
+    if not images:
+        return results
+
     inputs = processor(images=images, return_tensors="pt").to(device)
     with torch.no_grad():
         outputs = predictor(**inputs)
     scores = outputs.logits.squeeze(-1).tolist()
     if isinstance(scores, float):
         scores = [scores]
-    return [round(s, 3) for s in scores]
+    for idx, score in zip(good_indices, scores, strict=True):
+        results[idx] = round(score, 3)
+    return results
 
 
 def score_all(image_paths: list[Path], batch_size: int = BATCH_SIZE) -> dict[str, float]:
-    """Scores every path, batched, keyed by stem (the catalog id)."""
+    """Scores every path, batched, keyed by stem (the catalog id).
+    Unreadable images are silently absent from the result (logged as a
+    warning in score_batch) rather than aborting the whole call."""
     results: dict[str, float] = {}
     for i in range(0, len(image_paths), batch_size):
         batch = image_paths[i : i + batch_size]
         for path, score in zip(batch, score_batch(batch), strict=True):
-            results[path.stem] = score
+            if score is not None:
+                results[path.stem] = score
     return results
 
 
