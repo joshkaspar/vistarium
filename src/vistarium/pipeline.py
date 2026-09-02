@@ -196,18 +196,26 @@ def _sample_candidates(
     candidates: list[nps_client.NPSCandidate],
     already_processed: set[str],
     limit: int,
+    preserve_order: bool = False,
 ) -> list[nps_client.NPSCandidate]:
-    """Randomly samples up to `limit` not-yet-processed candidates.
+    """Selects up to `limit` not-yet-processed candidates.
 
-    Deliberately not a positional [:limit] slice -- NPS's own default
-    result ordering is not random, and a park's real candidate pool can
-    be huge (15,242 for Kenai Fjords alone via Categories:Scenic, see
-    DECISIONS.md 2026-09-01), so taking the first N would silently bias
-    every run toward whatever NPS happens to sort first rather than a
-    representative slice of the park's actual photography."""
+    Randomly samples by default -- NPS's own default result ordering is
+    not random, and a park's real candidate pool can be huge (15,242
+    for Kenai Fjords alone via Categories:Scenic, see DECISIONS.md
+    2026-09-01), so taking the first N would silently bias every run
+    toward whatever NPS happens to sort first rather than a
+    representative slice of the park's actual photography.
+
+    `preserve_order=True` (used for the curated path) instead takes a
+    positional prefix. There the input order is curate.py's
+    score-descending sort, which is meaningful and deliberate -- Josh
+    wants VLM tagging to hit the best-scoring candidates first, so
+    shuffling it would defeat the point (see DECISIONS.md,
+    2026-09-01)."""
     unprocessed = [c for c in candidates if c.id not in already_processed]
-    if len(unprocessed) <= limit:
-        return unprocessed
+    if len(unprocessed) <= limit or preserve_order:
+        return unprocessed[:limit]
     return random.sample(unprocessed, limit)
 
 
@@ -253,8 +261,14 @@ def run(
     if park:
         candidates = _filter_by_park(candidates, park)
         log.info("filtered to %d candidates matching park %r", len(candidates), park)
-    new_candidates = _sample_candidates(candidates, already_processed, limit)
-    log.info("processing %d new candidates this run (random sample)", len(new_candidates))
+    new_candidates = _sample_candidates(
+        candidates, already_processed, limit, preserve_order=bool(curate_park_code)
+    )
+    log.info(
+        "processing %d new candidates this run (%s)",
+        len(new_candidates),
+        "score order" if curate_park_code else "random sample",
+    )
 
     dedup = Deduplicator()
     # Pre-seed dedup with already-downloaded images so a resumed run still

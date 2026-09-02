@@ -32,23 +32,30 @@ def select_by_threshold_with_floor(
     fewer than `floor` candidates for that park, top up with its
     highest-scoring remainder until the floor is met (or its pool runs
     out). No park is excluded outright just for being less
-    photogenic on average than others -- see DECISIONS.md, 2026-09-01."""
+    photogenic on average than others -- see DECISIONS.md, 2026-09-01.
+
+    The returned list is sorted by score descending across all parks
+    (not grouped by park) so downstream consumers -- namely
+    pipeline.py's VLM tagging loop -- process the best-scoring
+    candidates first, per Josh's "score them, then tag in score order"
+    instruction."""
     by_park: dict[str, list[tuple[nps_client.NPSCandidate, float]]] = {}
     for candidate, score in scored:
         by_park.setdefault(candidate.park, []).append((candidate, score))
 
-    selected: list[nps_client.NPSCandidate] = []
+    selected: list[tuple[nps_client.NPSCandidate, float]] = []
     for _park, pairs in by_park.items():
         pairs.sort(key=lambda p: p[1], reverse=True)
-        above = [c for c, s in pairs if s >= threshold]
+        above = [(c, s) for c, s in pairs if s >= threshold]
         if len(above) >= floor:
             selected.extend(above)
             continue
         # Top up with the next-highest remaining, in score order, until
         # floor is met or the park's pool is exhausted.
-        selected.extend(c for c, _s in pairs[:floor])
+        selected.extend(pairs[:floor])
 
-    return selected
+    selected.sort(key=lambda p: p[1], reverse=True)
+    return [c for c, _s in selected]
 
 
 def select_candidates_for_park(
