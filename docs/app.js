@@ -47,12 +47,18 @@
     if (parkSelect.value && record.park !== parkSelect.value) return false;
     if (timeSelect.value && record.time_of_day !== timeSelect.value) return false;
     if (peopleSelect.value && record.people_prominence !== peopleSelect.value) return false;
-    // "Black & white" is a color_mode value; everything else in this one
-    // combined dropdown is a dominant_color hue -- kept as a single
-    // filter since two separately-labeled "color" dropdowns confused
-    // more than they helped (see DECISIONS.md, 2026-09-02).
+    // "color" and "monochrome" are color_mode values; every other option
+    // in this one combined dropdown is a dominant_color hue -- kept as a
+    // single filter since two separately-labeled "color" dropdowns
+    // confused more than they helped (see DECISIONS.md, 2026-09-02).
+    // "color" (exclude black & white) had to stay explicit -- selecting
+    // a hue isn't a substitute, since a handful of monochrome photos are
+    // still tagged with a non-gray dominant_color (a tinted archival
+    // scan, or a model misjudgment) and would otherwise leak through.
     if (colorSelect.value === "monochrome") {
       if (record.color_mode !== "monochrome") return false;
+    } else if (colorSelect.value === "color") {
+      if (record.color_mode !== "color") return false;
     } else if (colorSelect.value && record.dominant_color !== colorSelect.value) {
       return false;
     }
