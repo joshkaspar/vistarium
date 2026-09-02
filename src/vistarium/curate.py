@@ -11,10 +11,29 @@ thumbnails are ~78KB each instead of a full-res original's 1-2MB+, and
 aesthetic scoring is a single batched model call, not per-image VLM
 judgment. Only survivors ever reach pipeline.py's existing full-res
 download + judge_image() loop, which is otherwise unchanged.
+
+Every scored candidate for a park -- not just the ones that clear the
+threshold -- is also written to a durable per-park manifest
+(`<workdir>/scored_candidates/<PARK_CODE>.json`). Below-threshold
+candidates are computed and then discarded from the selection path, but
+their thumbnails are already downloaded and cached regardless -- without
+this manifest, the scores themselves (title, park, aesthetic_score) would
+be lost, and reconstructing them later would mean nothing worse than
+re-scoring already-cached thumbnails, but reconstructing *which*
+candidates existed at all would mean re-hitting NPS's album API. Josh
+wants this data kept for three reasons: adjusting the aesthetic
+threshold after the fact without rescanning, corpus-wide stats, and
+reuse by a separate wildlife-photo pipeline off the same scan (see
+project-kickoff.md's `primary_subject` taxonomy -- wildlife shots
+scoring low on landscape-aesthetic terms are exactly the ones this
+pipeline currently never even VLM-tags to find out). See DECISIONS.md,
+2026-09-02.
 """
 
 from __future__ import annotations
 
+import dataclasses
+import json
 import logging
 from pathlib import Path
 
@@ -56,6 +75,20 @@ def select_by_threshold_with_floor(
 
     selected.sort(key=lambda p: p[1], reverse=True)
     return [c for c, _s in selected]
+
+
+def _write_scored_manifest(
+    park_code: str, workdir: Path, scored: list[tuple[nps_client.NPSCandidate, float]]
+) -> Path:
+    """Every scored candidate for this park, selected or not -- see the
+    module docstring for why. Overwrites; select_candidates_for_park()
+    only runs once per park within a given scrape."""
+    manifest_dir = workdir / "scored_candidates"
+    manifest_dir.mkdir(parents=True, exist_ok=True)
+    manifest_path = manifest_dir / f"{park_code}.json"
+    entries = [{**dataclasses.asdict(c), "aesthetic_score": s} for c, s in scored]
+    manifest_path.write_text(json.dumps(entries, indent=2))
+    return manifest_path
 
 
 def select_candidates_for_park(
@@ -106,6 +139,9 @@ def select_candidates_for_park(
     scores = aesthetic_score.score_all(paths)
     scored = [(c, scores[c.id]) for c in candidates if c.id in scores]
     log.info("%s: %d thumbnails scored", park_code, len(scored))
+
+    manifest_path = _write_scored_manifest(park_code, workdir, scored)
+    log.info("%s: wrote %d scored candidates to %s", park_code, len(scored), manifest_path)
 
     selected = select_by_threshold_with_floor(scored, threshold, floor)
     log.info(

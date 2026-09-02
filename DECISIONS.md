@@ -854,3 +854,36 @@ published successfully. This is infrastructure outside the vistarium
 project itself (wopr is Josh's own GPU box, shared with other
 services) -- flagged before acting, truncated and reconfigured with
 his explicit go-ahead, not unilaterally.
+
+## 2026-09-02: persist every scored candidate, not just the selected ones
+
+Context: `curate.select_candidates_for_park()` computed an aesthetic
+score for every candidate in a park's pool, but only ever returned
+(and therefore only ever persisted, via checkpoint.jsonl/catalog.json)
+the ones that cleared threshold-with-floor selection. Below-threshold
+scores were computed once for the selection decision and then
+discarded -- thumbnails stay cached (`data/thumbs_cache/`, never
+deleted), but the score itself, and which candidate it belonged to,
+was gone.
+
+Josh: keep this data, for three reasons -- adjusting the aesthetic
+threshold after the fact without rescanning NPS, corpus-wide stats,
+and reuse by a separate wildlife-photo pipeline off the same scan
+(project-kickoff.md's schema already has `primary_subject: wildlife`
+as a category; a landscape-low-scoring image can still be a great
+wildlife shot, and the current pipeline never even VLM-tags it to
+find out, since VLM tagging is gated behind landscape-aesthetic
+selection).
+
+Decision: `select_candidates_for_park()` now writes every scored
+candidate (full NPSCandidate fields + aesthetic_score, selected or
+not) to `<workdir>/scored_candidates/<PARK_CODE>.json` before
+selection happens. Gitignored (`data/`), local-only, same as
+thumbs_cache. Only affects parks scored after this deploys -- Acadia
+through Denali (the parks already processed by the time this landed)
+don't have a manifest. Backfilling them would mean re-hitting NPS's
+album API to reconstruct each candidate's metadata (search_album()
+results were never cached, only the resulting thumbnail files),
+though re-scoring itself would be free (thumbnails already local) --
+not done here since it wasn't asked for, flagged as a follow-up if
+wanted.

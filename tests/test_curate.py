@@ -1,7 +1,11 @@
 import json
 from unittest.mock import patch
 
-from vistarium.curate import select_by_threshold_with_floor, select_candidates_for_park
+from vistarium.curate import (
+    _write_scored_manifest,
+    select_by_threshold_with_floor,
+    select_candidates_for_park,
+)
 from vistarium.nps_client import AlbumInfo, NPSCandidate
 
 
@@ -55,7 +59,10 @@ def test_select_candidates_for_park_wires_triage_thumbnail_score_select(tmp_path
         AlbumInfo(id="alb-good", title="Cadillac Mountain", description="", asset_count=2),
         AlbumInfo(id="alb-bad", title="Access: Parking Lot", description="", asset_count=2),
     ]
-    good_candidates = [NPSCandidate(id="keep-1", park="Test Park")]
+    good_candidates = [
+        NPSCandidate(id="keep-1", park="Test Park"),
+        NPSCandidate(id="drop-1", park="Test Park"),
+    ]
 
     def fake_download_thumbnail(candidate, dest_dir):
         dest_dir.mkdir(parents=True, exist_ok=True)
@@ -72,7 +79,10 @@ def test_select_candidates_for_park_wires_triage_thumbnail_score_select(tmp_path
         patch(
             "vistarium.curate.nps_client.download_thumbnail", side_effect=fake_download_thumbnail
         ),
-        patch("vistarium.curate.aesthetic_score.score_all", return_value={"keep-1": 7.0}),
+        patch(
+            "vistarium.curate.aesthetic_score.score_all",
+            return_value={"keep-1": 7.0, "drop-1": 2.0},
+        ),
     ):
         mock_search_album.return_value = good_candidates
         result = select_candidates_for_park(
@@ -82,3 +92,38 @@ def test_select_candidates_for_park_wires_triage_thumbnail_score_select(tmp_path
     # Only the surviving (non-excluded) album's contents were fetched.
     mock_search_album.assert_called_once_with("alb-good", park_code="TEST")
     assert [c.id for c in result] == ["keep-1"]
+
+    # Below-threshold candidates don't make the selection, but every
+    # scored candidate -- including "drop-1" -- still lands in the
+    # durable manifest, since Josh wants this reusable later (threshold
+    # changes, stats, a separate wildlife-photo pipeline off the same
+    # scan) without needing to rescan NPS.
+    manifest = json.loads((tmp_path / "scored_candidates" / "TEST.json").read_text())
+    assert {(e["id"], e["aesthetic_score"]) for e in manifest} == {
+        ("keep-1", 7.0),
+        ("drop-1", 2.0),
+    }
+
+
+def test_write_scored_manifest_round_trips_candidate_fields(tmp_path):
+    candidate = NPSCandidate(id="a", park="Test Park", title="A View", image_url="http://x/a.jpg")
+    path = _write_scored_manifest("TEST", tmp_path, [(candidate, 6.5)])
+
+    entries = json.loads(path.read_text())
+    assert entries == [
+        {
+            "id": "a",
+            "source": "nps",
+            "source_url": "",
+            "image_url": "http://x/a.jpg",
+            "title": "A View",
+            "photographer": None,
+            "date": None,
+            "park": "Test Park",
+            "license": "",
+            "caption_text": "",
+            "exif_datetime_raw": "",
+            "search_terms": [],
+            "aesthetic_score": 6.5,
+        }
+    ]
