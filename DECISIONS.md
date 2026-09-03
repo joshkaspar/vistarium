@@ -1062,3 +1062,21 @@ so far: 4 catalog entries confirmed as true near-duplicate bursts
 different-content pair (bus road) -- all found by Josh's manual scan
 of just the Denali set, all still unfixed pending the eventual dedup
 pass.
+
+Update, same day: a fifth, larger cluster -- 7 records, all dated
+08/23/2017, all one ranger-led hike on Thorofare Ridge/Eielson Alpine
+Trail: `119766ef...` (portrait crop, hikers descending), `a6b2cfb0...`
+and `04af4095...` (byte-identical *thumbnails*, from two different
+near-identical full-res source files -- same signature as the marmot
+pair: group stopped, ranger gesturing), `416fd47c...` (same valley, no
+hikers), `eb0a562f...` and `5acde91f...` (another byte-identical-
+thumbnail pair, group descending), and `f7292bb8...` (near-identical
+framing to that last pair, not byte-identical). One photo shoot
+produced 7 separate published catalog entries.
+
+This tips the scale on the earlier "log it, don't fix mid-scrape"
+call -- 5 clusters found in a single manual scan of one park, the
+last one alone accounting for 7 entries, is no longer an isolated-
+edge-case rate. Flagged to Josh directly; his call on whether to keep
+logging until his scan finishes or start the dedup pass now. Not
+started as of this entry.
