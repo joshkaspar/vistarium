@@ -101,37 +101,73 @@ def _remote_done_codes() -> list[str]:
     return json.loads(result.stdout)
 
 
-def _remote_in_progress_code() -> str | None:
-    """The park code from the producer's most recent "selecting
-    candidates" log line, or None if it can't be determined.
+def _remote_producer_consumer_status() -> tuple[str | None, str | None]:
+    """(producer_code, consumer_code): the park the producer is
+    currently selecting (album triage -> thumbnail fetch -> aesthetic
+    scoring), and the park the consumer is currently tagging (full-res
+    download -> VLM judgment) -- these are almost always two different
+    parks, since the producer races ahead of the consumer's slower,
+    GPU-bound queue (see DECISIONS.md, 2026-09-02, the pipelined
+    architecture entry -- Denali's 2,118-candidate tagging queue took
+    hours to drain while the producer worked through five more parks
+    in the meantime).
 
-    Originally this was inferred as "the first park in
-    national_parks.json order that isn't done yet" -- but that breaks
-    permanently once any single park fails outright (see DECISIONS.md,
-    2026-09-02: Denali hit a corrupted thumbnail that crashed its whole
-    scoring batch, producer.py's except-and-skip moved on without ever
-    marking it done, and every status check afterward kept reporting
-    Denali as "in progress" while parks that had actually finished --
-    Glacier, Glacier Bay -- showed as not even started). Reading the
-    log directly is ground truth regardless of completion order."""
+    producer_code comes from the producer's most recent "selecting
+    candidates" log line -- ground truth regardless of completion
+    order (see the note further down about why that matters).
+
+    consumer_code is derived, not logged directly: the consumer drains
+    its queue strictly FIFO, so "the park it's currently tagging" is
+    the oldest park that's been queued (a "producer: <CODE> queued N
+    new candidates" line exists) but has no matching "consumer: <CODE>
+    tagging complete" line yet.
+
+    Either can be None if not yet determinable (e.g. right after a
+    restart, before any log lines exist).
+
+    This whole approach -- reading the log directly -- replaced an
+    earlier version that inferred "in progress" as "the first park in
+    national_parks.json order that isn't done yet." That breaks
+    permanently once any single park fails outright: Denali hit a
+    corrupted thumbnail that crashed its whole scoring batch (since
+    fixed), producer()'s except-and-skip moved on without ever marking
+    it done, and every status check afterward kept reporting Denali as
+    "in progress" while parks that had actually finished -- Glacier,
+    Glacier Bay -- showed as not even started."""
     result = subprocess.run(
         [
             "ssh",
             WOPR_HOST,
-            f"grep 'selecting candidates' {WOPR_REPO_PATH}/curated_scrape.log | tail -1",
+            "grep -E 'selecting candidates|queued [0-9]+ new candidates|tagging complete' "
+            f"{WOPR_REPO_PATH}/curated_scrape.log",
         ],
         capture_output=True,
         text=True,
     )
-    match = re.search(r"producer \[\d+/\d+\] (\w+)", result.stdout)
-    return match.group(1) if match else None
+
+    producer_code: str | None = None
+    queued_order: list[str] = []
+    completed: set[str] = set()
+    for line in result.stdout.splitlines():
+        if m := re.search(r"producer \[\d+/\d+\] (\w+) .*: selecting candidates", line):
+            producer_code = m.group(1)
+        elif m := re.search(r"producer: (\w+) queued \d+ new candidates", line):
+            queued_order.append(m.group(1))
+        elif m := re.search(r"consumer: (\w+) tagging complete", line):
+            completed.add(m.group(1))
+
+    consumer_code = next((code for code in queued_order if code not in completed), None)
+    return producer_code, consumer_code
 
 
-def _write_status_md(done_codes: list[str], in_progress: str | None) -> None:
+def _write_status_md(
+    done_codes: list[str], producer_code: str | None, consumer_code: str | None
+) -> None:
     """Renders STATUS.md from national_parks.json (park order/names,
-    already local) + done_codes/in_progress (from wopr) + docs/data.json's
-    own record count (already local, just synced). Regenerated every
-    cycle -- see sync_and_publish.py's module docstring for why."""
+    already local) + done_codes/producer_code/consumer_code (from
+    wopr) + docs/data.json's own record count (already local, just
+    synced). Regenerated every cycle -- see sync_and_publish.py's
+    module docstring for why."""
     parks = json.loads(PARKS_PATH.read_text())
     done = set(done_codes)
 
@@ -152,7 +188,10 @@ def _write_status_md(done_codes: list[str], in_progress: str | None) -> None:
         f"{record_count:,} photos published so far.**",
         "",
         "See [DECISIONS.md](DECISIONS.md) for how curation works (album triage, "
-        "aesthetic-score threshold, VLM tagging).",
+        "aesthetic-score threshold, VLM tagging). \N{LEFT-POINTING MAGNIFYING GLASS} = "
+        "selecting candidates (album triage, thumbnail fetch, aesthetic scoring); "
+        "\N{LABEL} = tagging (full-res download, VLM judgment) -- these are usually "
+        "two different parks, since selecting runs ahead of the slower tagging queue.",
         "",
         "## Parks",
         "",
@@ -160,8 +199,10 @@ def _write_status_md(done_codes: list[str], in_progress: str | None) -> None:
     for code, name in parks.items():
         if code in done:
             lines.append(f"- [x] {name}")
-        elif code == in_progress:
-            lines.append(f"- \N{ALARM CLOCK} {name} (in progress)")
+        elif code == consumer_code:
+            lines.append(f"- \N{LABEL}\N{VARIATION SELECTOR-16} {name} (tagging)")
+        elif code == producer_code:
+            lines.append(f"- \N{LEFT-POINTING MAGNIFYING GLASS} {name} (selecting)")
         else:
             lines.append(f"- [ ] {name}")
     lines.append("")
@@ -210,7 +251,8 @@ def main() -> int:
             log.exception("build/sync from wopr failed, will retry next cycle")
         else:
             try:
-                _write_status_md(done_codes, _remote_in_progress_code())
+                producer_code, consumer_code = _remote_producer_consumer_status()
+                _write_status_md(done_codes, producer_code, consumer_code)
                 published = _commit_and_push()
                 log.info("site %s", "published" if published else "unchanged, skipped commit")
             except subprocess.CalledProcessError:
