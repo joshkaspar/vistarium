@@ -980,3 +980,15 @@ completion order.
 Outcome: both fixes deployed and smoke-tested against the live wopr
 log before rollout. Denali will be retried cleanly on the current
 run's next pass now that its corrupted thumbnail is gone.
+
+## 2026-09-02: expose image_url (the direct full-res link) in docs/data.json
+
+`data/catalog.json` has always carried `image_url` (the direct
+download link to the full-res original, e.g. `.../GetAsset/<id>/
+Original`) on every record, but `build_site.py`'s exported
+`docs/data.json` -- the metadata anyone actually reads, whether
+browsing the site or scripting against it -- only ever included
+`source_url` (the NPGallery *page* for that asset, not a direct image
+link). Josh: "I don't have to find them after the fact if I want to
+use them in scripts." Fixed: `build_site()` now includes `image_url`
+in every published record.

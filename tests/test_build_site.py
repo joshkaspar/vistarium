@@ -89,6 +89,26 @@ def test_date_sortable_none_for_unparseable_date():
     assert _date_sortable("not a date") is None
 
 
+def test_build_site_includes_image_url(tmp_path):
+    # docs/data.json is what scripts/other tools actually read -- the
+    # full-res original's direct URL was sitting in data/catalog.json
+    # all along but never exposed here, forcing anyone scripting
+    # against the site to click through source_url by hand to find it.
+    catalog = [_record("land-1", "landscape")]
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "land-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    build_site(catalog_path, images_dir, out_dir)
+
+    data = json.loads((out_dir / "data.json").read_text())
+    assert data[0]["image_url"] == "https://example.org/land-1/orig"
+
+
 def test_build_site_includes_aesthetic_score_and_date_sortable(tmp_path):
     catalog = [_record("land-1", "landscape")]
     catalog[0]["aesthetic_score"] = 5.42

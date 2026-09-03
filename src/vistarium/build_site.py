@@ -117,6 +117,7 @@ def build_site(
                 "license": record["license"],
                 "license_confidence": record["license_confidence"],
                 "source_url": record["source_url"],
+                "image_url": record["image_url"],
                 "time_of_day": record["time_of_day"],
                 "people_prominence": record["people_prominence"],
                 "color_mode": record["color_mode"],
