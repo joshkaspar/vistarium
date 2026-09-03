@@ -992,3 +992,25 @@ browsing the site or scripting against it -- only ever included
 link). Josh: "I don't have to find them after the fact if I want to
 use them in scripts." Fixed: `build_site()` now includes `image_url`
 in every published record.
+
+## 2026-09-03: known gap -- exact-hash dedup misses reprocessed re-uploads
+
+Josh spotted a real duplicate live on the site: two Denali records
+(`7cf4ae2b...` "Scenic View" and `2bfd2a25...` "Who Goes There?") are
+the same marmot-in-valley photo, uploaded to NPGallery twice with
+different processing (different sharpening/color grading -- different
+file hash, different size, same shot). Both cleared the aesthetic
+threshold and both got tagged `landscape`, so both published.
+
+The pipeline's only dedup is exact byte-hash matching (the source of
+every "duplicate of X, skipping" log line seen throughout this scrape)
+-- it only catches byte-identical files. A photo re-exported with
+different settings and uploaded under a second ID evades it entirely,
+and there's no reason to think this pair is unique; any similarly
+reprocessed re-upload across any park would slip through the same way.
+
+Decision: don't touch the running 61-park scrape to fix this now --
+noted here as a known limitation instead. Options for later (not
+decided): perceptual hashing (pHash/dHash) to catch near-duplicates,
+or a one-off manual sweep after the full run completes. Flagged as a
+follow-up, not fixed.
