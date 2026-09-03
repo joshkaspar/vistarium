@@ -1031,3 +1031,22 @@ Recorded here rather than acted on now, same reasoning as above (CPU-
 only work like pHash is cheap and could run once the producer finishes
 all 61 parks' selection and its CPU frees up, without competing with
 the GPU-bound tagging consumer -- discussed but not started).
+
+Update, same day: a third find widens the problem past pixel-level
+duplication. `7b2b2a67...` and `8a459367...` are the same Denali park
+road switchback, same camera vantage point, but genuinely different
+photos -- a different tour bus (green vs. cream), different position on
+the road, different pass/day. Josh's read: "even if they aren't the
+same, it's not worth keeping all of them" -- redundant *composition*,
+not redundant pixels.
+
+This case wouldn't be caught by pixel-hash or perceptual-hash dedup
+(pHash/dHash) at all -- the actual pixel content differs too much.
+Catching it needs similarity at the composition/embedding level
+instead, e.g. cosine distance between CLIP embeddings -- notably, the
+aesthetic scorer's CLIP backbone already computes an embedding per
+image as a side effect of scoring, so this could reuse work already
+being done rather than requiring a second pass. Still not building
+this now; recorded as a second, distinct technique the eventual
+near-duplicate pass needs to cover, alongside pixel/perceptual hashing
+for true bursts.
