@@ -1050,3 +1050,15 @@ being done rather than requiring a second pass. Still not building
 this now; recorded as a second, distinct technique the eventual
 near-duplicate pass needs to cover, alongside pixel/perceptual hashing
 for true bursts.
+
+Update, same day: a fourth pair, `e1209ce2...` and `7c1dff32...`, back
+in the pixel-burst category -- same Denali aurora shot (identical
+mountain silhouette, tree line, star field, green-band shape),
+almost certainly adjacent timelapse frames. Same signature as the
+marmot and Wonder Lake pairs above (pHash/dHash territory), not the
+embedding-similarity category the bus-road pair needs. Running total
+so far: 4 catalog entries confirmed as true near-duplicate bursts
+(marmot pair, Wonder Lake x4, aurora pair) plus 1 same-vantage-point/
+different-content pair (bus road) -- all found by Josh's manual scan
+of just the Denali set, all still unfixed pending the eventual dedup
+pass.
