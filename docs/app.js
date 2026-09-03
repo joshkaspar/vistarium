@@ -11,6 +11,7 @@
   const timeSelect = document.getElementById("filter-time");
   const peopleSelect = document.getElementById("filter-people");
   const colorSelect = document.getElementById("filter-color");
+  const orientationSelect = document.getElementById("filter-orientation");
   const tagInput = document.getElementById("filter-tag");
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
@@ -72,6 +73,9 @@
     } else if (colorSelect.value === "color") {
       if (record.color_mode !== "color") return false;
     } else if (colorSelect.value && record.dominant_color !== colorSelect.value) {
+      return false;
+    }
+    if (orientationSelect.value && (record.aspect || "16/9") !== orientationSelect.value) {
       return false;
     }
     const tagQuery = tagInput.value.trim().toLowerCase();
@@ -151,8 +155,8 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  [sortSelect, parkSelect, timeSelect, peopleSelect, colorSelect].forEach((el) =>
-    el.addEventListener("change", render)
+  [sortSelect, parkSelect, timeSelect, peopleSelect, colorSelect, orientationSelect].forEach(
+    (el) => el.addEventListener("change", render)
   );
   tagInput.addEventListener("input", render);
 
