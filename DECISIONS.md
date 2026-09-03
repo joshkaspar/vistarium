@@ -1014,3 +1014,20 @@ noted here as a known limitation instead. Options for later (not
 decided): perceptual hashing (pHash/dHash) to catch near-duplicates,
 or a one-off manual sweep after the full run completes. Flagged as a
 follow-up, not fixed.
+
+Update, same day: Josh found a second, larger cluster while manually
+scanning Denali -- `82332331...`, `e885fa3a...`, `25e8aed3...`,
+`e4782404...` are four frames of the same Wonder Lake/Denali sunset
+burst (same framing, clouds/light shifting between frames), all four
+published. He also flagged `2b8a099d...` from the same shoot as
+*not* a duplicate -- confirmed visually: same session, but a distinctly
+tighter crop on the mountain, a genuinely different composition.
+
+This pair -- 4 near-identical frames vs. 1 real near-neighbor that
+should stay -- is a ready-made calibration set for whatever perceptual-
+hash approach eventually gets built: the burst should cluster at a very
+small hash distance, `2b8a099d...` should land clearly further out.
+Recorded here rather than acted on now, same reasoning as above (CPU-
+only work like pHash is cheap and could run once the producer finishes
+all 61 parks' selection and its CPU frees up, without competing with
+the GPU-bound tagging consumer -- discussed but not started).
