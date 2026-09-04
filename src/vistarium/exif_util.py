@@ -11,6 +11,7 @@ applied specifically to time_of_day.
 from __future__ import annotations
 
 import re
+from datetime import datetime
 from pathlib import Path
 
 from PIL import ExifTags, Image
@@ -81,6 +82,20 @@ def _parse_hour(value) -> int | None:
     return int(m.group(2)) if m else None
 
 
+_FULL_DATETIME_RE = re.compile(r"(\d{4}):(\d{2}):(\d{2})\s+(\d{2}):(\d{2}):(\d{2})")
+
+
+def _parse_datetime(value) -> datetime | None:
+    m = _FULL_DATETIME_RE.search(str(value or ""))
+    if not m:
+        return None
+    year, month, day, hour, minute, second = (int(g) for g in m.groups())
+    try:
+        return datetime(year, month, day, hour, minute, second)
+    except ValueError:
+        return None
+
+
 def exif_capture_hour(path: Path) -> int | None:
     """Read the capture hour (0-23) from an image file's real EXIF data, or
     None if no usable timestamp tag is present.
@@ -130,3 +145,36 @@ def exif_capture_hour(path: Path) -> int | None:
         return None
 
     return _parse_hour(exif.get(306))  # IFD0 DateTime -- last resort only
+
+
+def exif_capture_datetime(path: Path) -> datetime | None:
+    """Same evidence priority and sentinel-rejection as exif_capture_hour(),
+    but returns the full minute-precision timestamp instead of just an
+    hour bucket -- needed for burst-detection (same park, captured within
+    minutes of each other), where hour-granularity is too coarse."""
+    try:
+        with Image.open(path) as img:
+            exif = img.getexif()
+            if not exif:
+                return None
+            sub_ifd = exif.get_ifd(ExifTags.IFD.Exif)
+    except Exception:
+        return None
+
+    sentinel_seen = False
+    for tag_name in ("DateTimeOriginal", "DateTimeDigitized"):
+        tag_id = next((k for k, v in ExifTags.TAGS.items() if v == tag_name), None)
+        raw = sub_ifd.get(tag_id) if tag_id is not None else None
+        if raw is None:
+            continue
+        if _date_part(raw) in _SENTINEL_DATES:
+            sentinel_seen = True
+            continue
+        dt = _parse_datetime(raw)
+        if dt is not None:
+            return dt
+
+    if sentinel_seen:
+        return None
+
+    return _parse_datetime(exif.get(306))  # IFD0 DateTime -- last resort only

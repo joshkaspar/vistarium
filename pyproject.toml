@@ -22,6 +22,12 @@ aesthetic = [
     "transformers>=4.57.0",
     "torch>=2.13.0",
 ]
+# Local-only duplicate-review tooling (scripts/find_duplicates.py,
+# scripts/dedup_review_server.py) -- never runs on wopr or ships to
+# the public site, so kept separate from the core dependency set.
+dedup = [
+    "flask>=3.1.0",
+]
 
 [project.urls]
 Issues = "https://github.com/joshkaspar/vistarium/issues"
@@ -53,6 +59,9 @@ select = ["E", "F", "I", "UP", "B"]
 # literals by nature -- wrapping them would make the actual grammar
 # harder to read, not easier.
 "src/vistarium/model_client.py" = ["E501"]
+# Inline HTML/CSS/JS template string for the local-only review UI --
+# same reasoning as model_client.py above.
+"scripts/dedup_review_server.py" = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

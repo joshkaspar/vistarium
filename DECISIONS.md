@@ -1120,3 +1120,45 @@ atomic (write to a temp file, then `os.replace()`), which would close
 the read-race window regardless of whether that's the exact mechanism
 here. Noted as a real, if rare, gap the scrape isn't fully hardened
 against.
+
+## 2026-09-04: local-only duplicate review tool -- perceptual hashing tried and shelved, EXIF timestamp clustering used instead
+
+Context: continuing to manually browse Denali (see the 2026-09-03
+dedup-cluster entries above), Josh wanted a proper tool instead of
+one-off findings -- clusters presented visually, an automatic-but-
+reversible first pass for exact duplicates, and everything else left
+to human judgment via a temporary local server, never the public site.
+
+**Perceptual hashing (phash/ahash/dhash/whash), tried first and
+rejected.** Tested against the known calibration set from the prior
+DECISIONS.md entries (the 4-photo Wonder Lake sunset burst, the aurora
+pair, and the confirmed-non-duplicate `2b8a099d...`): no algorithm
+cleanly separated true duplicates from genuinely different shots. The
+aurora pair -- visually near-identical -- scored 20-44 bits apart (of
+64) on every algorithm, almost certainly because the moving aurora and
+shifting stars dominate the hash and swamp the stable mountain-
+silhouette signal that actually indicates "same shot." Average-hash
+did reasonably on the Wonder Lake burst (2-11 bits) but put the known
+non-duplicate at a comparably close distance (6 bits) to a real
+member, so no fixed threshold would have worked reliably.
+
+**EXIF timestamp clustering, used instead.** Josh's own suggestion:
+group by park + capture time within a few minutes, using real EXIF
+(rejecting the same clock-never-set sentinel dates `exif_util.py`
+already guards against for `time_of_day`), rather than a visual
+comparison at all. Required extending `exif_util.py` with
+`exif_capture_datetime()` (same SubIFD-first, sentinel-rejecting
+priority as the existing `exif_capture_hour()`, but minute-precision
+instead of just an hour bucket). Tested against the same calibration
+set: correctly clustered the Wonder Lake burst (including
+`2b8a099d...`, appropriately not auto-hidden -- same session, still a
+real judgment call), correctly caught the aurora pair pHash had
+completely missed, and correctly grouped the whole 8-photo Thorofare
+Ridge ranger-hike cluster. Full corpus (4,299 published records):
+17 exact-duplicate clusters, 408 timestamp clusters at a 15-minute
+gap threshold.
+
+Decision: `scripts/find_duplicates.py` runs two clustering passes -- exact md5 match on thumbnails (auto-hides every member but the highest-`aesthetic_score` one, zero ambiguity) and EXIF-timestamp-within-15min-per-park (surfaced for manual review only, never auto-hidden, since "same session" still contains real, distinct photos as often as true duplicates). `scripts/dedup_review_server.py` is a local-only Flask app (binds to 127.0.0.1, never deployed) showing clusters as thumbnail grids with click-to-toggle keep/hide, persisting to `hidden_ids.json`
+Alternatives-considered: visual near-duplicate detection via phash/ahash/dhash/whash (rejected -- doesn't separate the known test cases); CLIP-embedding similarity (not attempted -- needs the heavy torch/transformers stack this dev VM doesn't have installed; still a candidate for a future pass, e.g. for same-vantage-different-subject cases like the Denali tour-bus pair, which neither hashing nor timestamp clustering would catch since they're likely taken well apart in time)
+Rationale: EXIF timestamps are a hard fact when present (unlike a pixel-similarity heuristic that has to somehow ignore scene motion), and burst/reprocessed-reupload duplicates are almost always captured minutes apart by the same photographer -- this reuses evidence the pipeline already extracts for a different purpose (`time_of_day`) rather than inventing a new, unreliable signal
+Outcome: resolved for now. `hidden_ids.json` lives at the repo root (not under the gitignored `/data/`) since it's a real, hand-curated decision file, not regeneratable scrape output -- same treatment as `album_keywords.json`/`schema.json`. `build_site.py` does not yet read/respect it (open follow-up, not done this session) -- also open: `hidden_ids.json` needs to reach wopr somehow for that exclusion to take effect there, since `build_site()` runs on wopr over SSH.
