@@ -71,12 +71,23 @@ decided.
 
 ## Deferred, not needed yet
 
-- **Perceptual/near-duplicate detection.** `dedup.py` is exact-content
-  (sha256) only -- won't catch a re-crop, re-compression, or
-  watermarked re-upload of the same photo. Not built because there's no
-  evidence yet it's a real problem at NPS-only volume; revisit if the
-  validation checkpoint or later-volume runs show near-dupes slipping
-  through.
+- **Integrate duplicate detection into the pipeline itself, not just a
+  post-hoc local tool.** `scripts/find_duplicates.py` +
+  `dedup_review_server.py` (added 2026-09-04, see `DECISIONS.md`) run
+  as a one-off pass against whatever's already published -- fine for
+  cleaning up the current NPS-only corpus, but each new source added
+  (Library of Congress, Smithsonian, etc.) will just accumulate its own
+  fresh batch of duplicates the same way NPS did, needing another manual
+  sweep. Once more sources land, this needs to become a real pipeline
+  stage (run during/after tagging, before a record ever gets published,
+  not after), not a periodic manual cleanup. Also revisit the visual
+  side: exact-hash + EXIF-timestamp clustering is what's built now
+  (perceptual hashing was tried and shelved -- didn't reliably separate
+  known test cases, see `DECISIONS.md`), but CLIP-embedding similarity
+  is still an open candidate for catching same-vantage-different-subject
+  cases (e.g. the Denali tour-bus pair) that neither current method
+  catches, and other sources may not have reliable EXIF timestamps the
+  way NPS's professional photography does.
 - **9-way / rule-of-thirds crop_anchor.** Tested and rejected 2026-08-29
   -- see `DECISIONS.md`. Could be revisited with a reworded prompt that
   explicitly excludes brightness/glare as a signal, but not worth doing
