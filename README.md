@@ -64,7 +64,7 @@ Plus a `thumbnail_crop_16x9` crop box, computed deterministically, and an option
 
 ## Sorting
 
-The site defaults to sorting by a predicted aesthetic score ("Aesthetic Rating (AI)"), with Newest, Park, and Random as alternatives. The raw score itself isn't shown per photo — only used to order results.
+The site defaults to sorting by a predicted aesthetic score ("Aesthetic Rating (AI)"), with Date take and Date added as alternatives. The raw score itself isn't shown per photo — only used to order results.
 
 ## License & Rights
 
