@@ -1080,3 +1080,43 @@ last one alone accounting for 7 entries, is no longer an isolated-
 edge-case rate. Flagged to Josh directly; his call on whether to keep
 logging until his scan finishes or start the dedup pass now. Not
 started as of this entry.
+
+## 2026-09-03: sync loop crashed once with KeyError on license_confidence -- suspected write race, unresolved
+
+Two consecutive publish cycles failed in a row: at 20:40, `git push`
+was rejected because Josh had pushed a README commit directly (a real
+divergence, not a bug -- fixed with a plain merge, no conflicts, files
+didn't overlap). At 21:11, the next cycle's `build_site()` call itself
+crashed with `KeyError: 'license_confidence'` on some catalog record --
+a real code-level failure, not a per-image warning, and it meant the
+site didn't publish for over 30 minutes (`sync_and_publish.py` retries
+next cycle, so nothing was lost, but it went unpublished until caught
+here by a routine health check).
+
+Investigated: re-checking `data/catalog.json` immediately after found
+zero records missing `license_confidence` -- whatever record triggered
+it is no longer in that state. `license_confidence` is a pure
+model-judged field (`pipeline.build_record()` merges it in via
+`**model_fields` from `judge_image()`'s grammar-constrained output,
+which always includes it on success), so no code path was found that
+would legitimately omit it from a record that gets written at all.
+
+Leading theory, not confirmed: `pipeline.py`'s `out_path.write_text
+(json.dumps(records, indent=2))` rewrites the *entire* `catalog.json`
+file non-atomically (no write-to-temp-then-rename) every time a record
+is appended, while the scraper process that does this is running
+concurrently with `build_site.py`'s own read of the same file (over
+SSH, on the same host, no file lock between them). A read landing
+mid-write could plausibly produce a malformed record. Doesn't fully
+fit the evidence, though -- a truncated read would more typically
+raise a JSON decode error than parse cleanly with one specific key
+missing from one specific object; this is flagged as the most likely
+explanation, not a confirmed root cause.
+
+Not fixed -- one-off so far (single occurrence in days of continuous
+operation), self-resolved by the next successful build. If it recurs,
+the fix is almost certainly making `pipeline.py`'s catalog writes
+atomic (write to a temp file, then `os.replace()`), which would close
+the read-race window regardless of whether that's the exact mechanism
+here. Noted as a real, if rare, gap the scrape isn't fully hardened
+against.
