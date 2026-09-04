@@ -71,6 +71,24 @@ decided.
 
 ## Deferred, not needed yet
 
+- **Producer should stream-queue candidates within a park, not just
+  between parks.** `run_curated_scrape_remote.py`'s producer/consumer
+  split (see `DECISIONS.md`, 2026-09-02) was built to stop the GPU
+  sitting idle between parks, but a park's candidates still only reach
+  the consumer's queue once that whole park's album triage + throttled
+  thumbnail fetch + scoring pass is entirely finished. Exposed live by
+  Yellowstone (park 59/61, 5,055 candidates -- the largest pool of the
+  61-park run): the consumer drained the prior park's queue and sat
+  idle for well over an hour waiting on Yellowstone's fetch phase alone,
+  the exact failure mode the producer/consumer redesign was meant to
+  prevent, just triggered by pool-size variance rather than strict
+  per-park sequencing. Fix: have the producer push scored candidates
+  onto the queue in batches (every N candidates, or every M minutes)
+  as they're scored, instead of one bulk push at the end of a park's
+  selection -- lets the consumer start on an oversized park's earliest
+  results immediately rather than waiting on the whole pool. Not fixed
+  mid-run -- this scrape is in its final stretch, not worth touching a
+  running pipeline for; worth building into the next iteration.
 - **Integrate duplicate detection into the pipeline itself, not just a
   post-hoc local tool.** `scripts/find_duplicates.py` +
   `dedup_review_server.py` (added 2026-09-04, see `DECISIONS.md`) run
