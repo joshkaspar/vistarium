@@ -3,7 +3,6 @@ import json
 from PIL import Image
 
 from vistarium.build_site import (
-    STRUCTURE_ALLOWED_PARKS,
     _date_sortable,
     _is_360_panorama,
     build_site,
@@ -266,32 +265,18 @@ def test_build_site_excludes_360_panoramas(tmp_path):
     assert data[0]["id"] == "normal-1"
 
 
-def test_build_site_includes_structure_for_allowlisted_parks(tmp_path):
-    park = next(iter(STRUCTURE_ALLOWED_PARKS))
+def test_build_site_excludes_structure_uniformly(tmp_path):
+    # Reverted 2026-09-05: a per-park structure allowlist was tried and
+    # then rolled back -- primary_subject == "landscape" is the only
+    # inclusion rule now, no per-park exceptions. See DECISIONS.md.
     catalog = [_record("arch-1", "structure")]
-    catalog[0]["park"] = park
+    catalog[0]["park"] = "Gateway Arch National Park"
     catalog_path = tmp_path / "catalog.json"
     catalog_path.write_text(json.dumps(catalog))
 
     images_dir = tmp_path / "images"
     images_dir.mkdir()
     Image.new("RGB", (400, 300), "red").save(images_dir / "arch-1.jpg")
-
-    out_dir = tmp_path / "docs"
-    count = build_site(catalog_path, images_dir, out_dir)
-
-    assert count == 1
-
-
-def test_build_site_excludes_structure_for_other_parks(tmp_path):
-    catalog = [_record("shed-1", "structure")]
-    catalog[0]["park"] = "Some Other National Park"
-    catalog_path = tmp_path / "catalog.json"
-    catalog_path.write_text(json.dumps(catalog))
-
-    images_dir = tmp_path / "images"
-    images_dir.mkdir()
-    Image.new("RGB", (400, 300), "red").save(images_dir / "shed-1.jpg")
 
     out_dir = tmp_path / "docs"
     count = build_site(catalog_path, images_dir, out_dir)

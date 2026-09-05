@@ -61,6 +61,21 @@ decided.
 
 ## Curated-scrape follow-ups (post 61-park run, 2026-09-05)
 
+- **Add `structure_present`/`structure_prominence` to the inference
+  grammar and site filter.** Prompted by the `STRUCTURE_ALLOWED_PARKS`
+  experiment (see item below and `DECISIONS.md`) being tried and then
+  reverted -- a handful of
+  `structure` shots (the Gateway Arch itself, Cliff Palace, Fort
+  Jefferson) really were striking, individually, but smuggling them in
+  under a per-park `primary_subject` exception was the wrong mechanism:
+  it doesn't scale, and it undermines trusting the classification
+  uniformly. A dedicated field lets a genuinely great structure photo
+  be surfaced deliberately (its own filter/badge) without changing what
+  counts as `landscape` or adding more per-park carve-outs. Josh does
+  not want a full re-scan of the existing corpus to backfill this --
+  he plans to do a manual visual pass himself at some point instead, so
+  this is schema/filter work now, backfill later, on his own time.
+
 - ~~Find the right floor per park, not one flat number for all 61~~ --
   **investigated and largely resolved 2026-09-05**, see `DECISIONS.md`.
   The real problem wasn't the floor number itself -- it was that
@@ -73,10 +88,13 @@ decided.
   cases) is genuine subject-matter mismatch -- these parks' defining
   feature is a cave/fort/cliff-dwelling `structure`, not an outdoor
   landscape vista -- not a floor-mechanics bug. Explicit stopping
-  condition: if a park is still under 10 after the full four-step
-  remediation (measure, relax cutoff, reconsider `structure`
-  inclusion per-park, re-check small parks' excluded albums), it stays
-  that way.
+  condition: if a park is still under 10 after measuring, relaxing the
+  cutoff, and re-checking small parks' excluded albums, it stays that
+  way. (A fourth step, a per-park `structure` inclusion carve-out, was
+  tried and then reverted the same day -- see `DECISIONS.md` and the
+  `structure_present`/`structure_prominence` item above -- so genuine
+  subject-mismatch parks now simply stay thin rather than getting a
+  subject-matter exception.)
 - **Ongoing monitoring: detect new files and albums NPS adds after the
   initial scrape.** The 61-park run treated each park as a one-time
   pass -- once selected/tagged, nothing re-checks whether NPS has since
@@ -88,6 +106,19 @@ decided.
   reprocessing everything from scratch -- scope (how often, whether
   it's a cron-style job or a manual periodic run, how it interacts
   with the dedup-review workflow) not yet decided.
+- **`build_site.py` is slow at current corpus size (~5,600+ published
+  records) -- worth profiling and speeding up.** Observed 2026-09-05:
+  a full rebuild (structure-allowlist reversal, no other changes) ran
+  ~30 minutes on wopr, CPU pegged at 100% the whole time, for what's
+  conceptually a filter + per-record thumbnail render. Likely
+  candidate: `_thumbnail()` re-decodes and re-crops a full-resolution
+  original (some multi-hundred-megapixel scans, per the
+  `DecompressionBombWarning`s seen live) for every published record on
+  every rebuild, even when that record's crop/aesthetic data hasn't
+  changed since the last build. Worth investigating incremental/cached
+  thumbnail generation (skip re-render if the source file and crop
+  params are unchanged) before the corpus grows further with more
+  sources (LOC, Smithsonian, etc. below).
 
 ## Later sources (build order step 6)
 

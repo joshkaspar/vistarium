@@ -48,26 +48,20 @@ PUBLISH_MIN_AESTHETIC_SCORE = 5.4
 THIN_PARK_FLOOR = 10
 THIN_PARK_RELAXED_SCORE = 5.2
 
-# Structure was tabled as a site-wide inclusion in the original 2026-08-30
-# site-inclusion decision -- no reliable signal exists for "interesting
-# structure" vs. "boring structure" in general. But for a handful of
-# genuinely-thin parks (2026-09-05 remediation, see DECISIONS.md) whose
-# defining feature literally IS a structure, allowing it is the correct
-# call, not a workaround -- confirmed by hand-viewing each park's actual
-# top-scoring structure candidates before adding it here, not assumed:
-# Gateway Arch (the arch itself), Mesa Verde (Cliff Palace and other cliff
-# dwellings), Dry Tortugas (Fort Jefferson), Virgin Islands (colonial
-# ruins). Explicitly NOT extended to every thin park -- Great Basin's
-# structure candidates turned out to be research-equipment photos, not
-# scenic content, when checked the same way, and cave parks' "detail"
-# candidates were an unreliable mix (a striking cave-formation shot next
-# to an unrelated surface wildflower macro) -- neither earned inclusion.
-STRUCTURE_ALLOWED_PARKS = {
-    "Gateway Arch National Park",
-    "Mesa Verde National Park",
-    "Dry Tortugas National Park",
-    "Virgin Islands National Park",
-}
+# Reverted 2026-09-05: a brief per-park structure allowlist was tried
+# for genuinely-thin parks (Gateway Arch, Mesa Verde, Dry Tortugas,
+# Virgin Islands) as part of the same remediation that added
+# THIN_PARK_RELAXED_SCORE above. Josh's call after seeing it live: these
+# were beautiful photos but didn't fit the site's stated goal ("open-
+# access landscape photography") or its visual consistency, and
+# hand-picking per-park exceptions when a park runs short undermines
+# trusting primary_subject's classification uniformly. Structure is back
+# to being excluded everywhere, no exceptions -- a thin park now only
+# gets the relaxed-score/more-albums treatment below, never a subject
+# carve-out. See DECISIONS.md, 2026-09-05 (reversal entry). The better
+# fix for "this structure shot is actually great" is a
+# structure_present/structure_prominence field on the record itself
+# (roadmap), not a site-filter exception.
 
 
 def _date_sortable(date_str: str | None) -> str | None:
@@ -127,12 +121,7 @@ def build_site(
     eligible = [
         r
         for r in catalog
-        if (
-            r.get("primary_subject") == "landscape"
-            or (
-                r.get("primary_subject") == "structure" and r.get("park") in STRUCTURE_ALLOWED_PARKS
-            )
-        )
+        if r.get("primary_subject") == "landscape"
         and not _is_360_panorama(r.get("title", ""))
         and r.get("aesthetic_score") is not None
     ]
