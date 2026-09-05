@@ -61,19 +61,22 @@ decided.
 
 ## Curated-scrape follow-ups (post 61-park run, 2026-09-05)
 
-- **Find the right floor per park, not one flat number for all 61.**
-  `select_by_threshold_with_floor()` (see `DECISIONS.md`, 2026-09-01)
-  uses a single floor (10) applied uniformly regardless of a park's
-  actual candidate pool size or score distribution -- picked as a
-  reasonable starting default, never revisited against real
-  per-park data now that the full run has real score distributions to
-  look at. A park with a huge, strong pool (Yellowstone: 5,055
-  candidates, 1,441 cleared threshold on their own) and a park with a
-  small, weak one both got the same floor. Worth analyzing the
-  now-complete run's `data/scored_candidates/<PARK>.json` files to see
-  whether a fixed floor is actually the right shape at all, versus
-  e.g. a floor as a percentage of pool size, or park-specific
-  overrides for known-thin parks.
+- ~~Find the right floor per park, not one flat number for all 61~~ --
+  **investigated and largely resolved 2026-09-05**, see `DECISIONS.md`.
+  The real problem wasn't the floor number itself -- it was that
+  floor-topped-up candidates (deliberately included below the 5.4
+  threshold to satisfy the floor) got silently stripped back out by
+  `build_site.py`'s publish-time cutoff, which didn't know about the
+  floor exception. Fixed with a per-park relaxed cutoff (5.2) applied
+  only to parks still under floor after the standard cut. Remaining
+  thinness after that (Wind Cave, Dry Tortugas, Mesa Verde-shaped
+  cases) is genuine subject-matter mismatch -- these parks' defining
+  feature is a cave/fort/cliff-dwelling `structure`, not an outdoor
+  landscape vista -- not a floor-mechanics bug. Explicit stopping
+  condition: if a park is still under 10 after the full four-step
+  remediation (measure, relax cutoff, reconsider `structure`
+  inclusion per-park, re-check small parks' excluded albums), it stays
+  that way.
 - **Ongoing monitoring: detect new files and albums NPS adds after the
   initial scrape.** The 61-park run treated each park as a one-time
   pass -- once selected/tagged, nothing re-checks whether NPS has since

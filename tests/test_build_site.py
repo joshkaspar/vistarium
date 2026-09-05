@@ -2,7 +2,12 @@ import json
 
 from PIL import Image
 
-from vistarium.build_site import _date_sortable, _is_360_panorama, build_site
+from vistarium.build_site import (
+    STRUCTURE_ALLOWED_PARKS,
+    _date_sortable,
+    _is_360_panorama,
+    build_site,
+)
 
 
 def _record(rid, subject="landscape", anchor="center"):
@@ -150,22 +155,69 @@ def test_build_site_excludes_records_with_no_aesthetic_score(tmp_path):
 
 
 def test_build_site_excludes_records_below_the_aesthetic_threshold(tmp_path):
-    catalog = [_record("good-1", "landscape"), _record("bad-1", "landscape")]
-    catalog[1]["aesthetic_score"] = 5.39  # just under PUBLISH_MIN_AESTHETIC_SCORE
+    # A park with 10+ records already clearing 5.4 is not "thin" -- the
+    # relaxed thin-park cutoff never kicks in, so a below-threshold record
+    # stays excluded exactly as before.
+    catalog = [_record(f"good-{i}", "landscape") for i in range(10)]
+    catalog.append(_record("bad-1", "landscape"))
+    catalog[-1]["aesthetic_score"] = 5.39  # just under PUBLISH_MIN_AESTHETIC_SCORE
     catalog_path = tmp_path / "catalog.json"
     catalog_path.write_text(json.dumps(catalog))
 
     images_dir = tmp_path / "images"
     images_dir.mkdir()
-    Image.new("RGB", (400, 300), "red").save(images_dir / "good-1.jpg")
-    Image.new("RGB", (400, 300), "blue").save(images_dir / "bad-1.jpg")
+    for r in catalog:
+        Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(catalog_path, images_dir, out_dir)
+
+    assert count == 10
+    ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
+    assert "bad-1" not in ids
+
+
+def test_build_site_relaxes_cutoff_for_a_park_under_the_floor(tmp_path):
+    # A thin park (fewer than THIN_PARK_FLOOR records at >=5.4) gets its
+    # cutoff relaxed to THIN_PARK_RELAXED_SCORE (5.2) -- this is the
+    # floor-guarantee-reaching-publish fix, see DECISIONS.md 2026-09-05.
+    catalog = [_record("good-1", "landscape"), _record("rescued-1", "landscape")]
+    catalog[1]["aesthetic_score"] = 5.25  # below 5.4, above the 5.2 relaxed cutoff
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    for r in catalog:
+        Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(catalog_path, images_dir, out_dir)
+
+    assert count == 2
+    ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
+    assert ids == {"good-1", "rescued-1"}
+
+
+def test_build_site_still_excludes_below_relaxed_cutoff_even_for_thin_park(tmp_path):
+    # A park under the floor still doesn't rescue a record scoring below
+    # even the relaxed 5.2 cutoff -- genuinely thin stays thin.
+    catalog = [_record("good-1", "landscape"), _record("too-low-1", "landscape")]
+    catalog[1]["aesthetic_score"] = 5.1
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    for r in catalog:
+        Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
 
     out_dir = tmp_path / "docs"
     count = build_site(catalog_path, images_dir, out_dir)
 
     assert count == 1
-    data = json.loads((out_dir / "data.json").read_text())
-    assert data[0]["id"] == "good-1"
+    ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
+    assert ids == {"good-1"}
 
 
 def test_build_site_skips_records_missing_local_image(tmp_path):
@@ -212,3 +264,36 @@ def test_build_site_excludes_360_panoramas(tmp_path):
     assert count == 1
     data = json.loads((out_dir / "data.json").read_text())
     assert data[0]["id"] == "normal-1"
+
+
+def test_build_site_includes_structure_for_allowlisted_parks(tmp_path):
+    park = next(iter(STRUCTURE_ALLOWED_PARKS))
+    catalog = [_record("arch-1", "structure")]
+    catalog[0]["park"] = park
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "arch-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(catalog_path, images_dir, out_dir)
+
+    assert count == 1
+
+
+def test_build_site_excludes_structure_for_other_parks(tmp_path):
+    catalog = [_record("shed-1", "structure")]
+    catalog[0]["park"] = "Some Other National Park"
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "shed-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(catalog_path, images_dir, out_dir)
+
+    assert count == 0

@@ -35,6 +35,40 @@ WEBP_QUALITY = 82
 # there's nothing to verify against. See DECISIONS.md, 2026-09-02.
 PUBLISH_MIN_AESTHETIC_SCORE = 5.4
 
+# select_by_threshold_with_floor() deliberately tops a park up to
+# THIN_PARK_FLOOR candidates even below PUBLISH_MIN_AESTHETIC_SCORE, but
+# that guarantee was never reaching the site -- this filter reapplied the
+# same 5.4 cut with no memory of which candidates were floor-exceptions,
+# silently stripping them back out. Fix: per park, if the standard cut
+# leaves it under floor, relax that park's cut to THIN_PARK_RELAXED_SCORE
+# instead -- only for that park, only if it's still short. A park still
+# under floor even at the relaxed score is genuinely thin (usually a
+# subject-matter mismatch, e.g. a cave or fort park under a landscape-only
+# policy) and is left as-is, not forced further. See DECISIONS.md, 2026-09-05.
+THIN_PARK_FLOOR = 10
+THIN_PARK_RELAXED_SCORE = 5.2
+
+# Structure was tabled as a site-wide inclusion in the original 2026-08-30
+# site-inclusion decision -- no reliable signal exists for "interesting
+# structure" vs. "boring structure" in general. But for a handful of
+# genuinely-thin parks (2026-09-05 remediation, see DECISIONS.md) whose
+# defining feature literally IS a structure, allowing it is the correct
+# call, not a workaround -- confirmed by hand-viewing each park's actual
+# top-scoring structure candidates before adding it here, not assumed:
+# Gateway Arch (the arch itself), Mesa Verde (Cliff Palace and other cliff
+# dwellings), Dry Tortugas (Fort Jefferson), Virgin Islands (colonial
+# ruins). Explicitly NOT extended to every thin park -- Great Basin's
+# structure candidates turned out to be research-equipment photos, not
+# scenic content, when checked the same way, and cave parks' "detail"
+# candidates were an unreliable mix (a striking cave-formation shot next
+# to an unrelated surface wildflower macro) -- neither earned inclusion.
+STRUCTURE_ALLOWED_PARKS = {
+    "Gateway Arch National Park",
+    "Mesa Verde National Park",
+    "Dry Tortugas National Park",
+    "Virgin Islands National Park",
+}
+
 
 def _date_sortable(date_str: str | None) -> str | None:
     """Normalizes the deterministic MM/DD/YYYY date field (from NPS source
@@ -90,14 +124,33 @@ def build_site(
     catalog_path: Path, images_dir: Path, out_dir: Path, thumbs_dirname: str = "thumbs"
 ) -> int:
     catalog = json.loads(catalog_path.read_text())
-    landscape = [
+    eligible = [
         r
         for r in catalog
-        if r.get("primary_subject") == "landscape"
+        if (
+            r.get("primary_subject") == "landscape"
+            or (
+                r.get("primary_subject") == "structure" and r.get("park") in STRUCTURE_ALLOWED_PARKS
+            )
+        )
         and not _is_360_panorama(r.get("title", ""))
         and r.get("aesthetic_score") is not None
-        and r["aesthetic_score"] >= PUBLISH_MIN_AESTHETIC_SCORE
     ]
+    landscape = [r for r in eligible if r["aesthetic_score"] >= PUBLISH_MIN_AESTHETIC_SCORE]
+
+    by_park: dict[str, int] = {}
+    for r in landscape:
+        by_park[r["park"]] = by_park.get(r["park"], 0) + 1
+    thin_parks = {park for park, count in by_park.items() if count < THIN_PARK_FLOOR}
+    if thin_parks:
+        published_ids = {r["id"] for r in landscape}
+        landscape += [
+            r
+            for r in eligible
+            if r["park"] in thin_parks
+            and r["id"] not in published_ids
+            and r["aesthetic_score"] >= THIN_PARK_RELAXED_SCORE
+        ]
 
     thumbs_dir = out_dir / thumbs_dirname
     index: list[dict] = []

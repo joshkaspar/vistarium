@@ -1162,3 +1162,46 @@ Decision: `scripts/find_duplicates.py` runs two clustering passes -- exact md5 m
 Alternatives-considered: visual near-duplicate detection via phash/ahash/dhash/whash (rejected -- doesn't separate the known test cases); CLIP-embedding similarity (not attempted -- needs the heavy torch/transformers stack this dev VM doesn't have installed; still a candidate for a future pass, e.g. for same-vantage-different-subject cases like the Denali tour-bus pair, which neither hashing nor timestamp clustering would catch since they're likely taken well apart in time)
 Rationale: EXIF timestamps are a hard fact when present (unlike a pixel-similarity heuristic that has to somehow ignore scene motion), and burst/reprocessed-reupload duplicates are almost always captured minutes apart by the same photographer -- this reuses evidence the pipeline already extracts for a different purpose (`time_of_day`) rather than inventing a new, unreliable signal
 Outcome: resolved for now. `hidden_ids.json` lives at the repo root (not under the gitignored `/data/`) since it's a real, hand-curated decision file, not regeneratable scrape output -- same treatment as `album_keywords.json`/`schema.json`. `build_site.py` does not yet read/respect it (open follow-up, not done this session) -- also open: `hidden_ids.json` needs to reach wopr somehow for that exclusion to take effect there, since `build_site()` runs on wopr over SSH.
+
+## 2026-09-05: underrepresented-park plan -- floor/publish mismatch found and fixed, remaining thinness is genuine
+
+Context: with the 61-park scrape finished, Josh asked for real per-park
+published counts and noticed several parks published far below
+`select_by_threshold_with_floor()`'s floor=10 guarantee. Investigated
+before touching anything, since "some parks are just thin" and "the
+floor isn't reaching the site" are different problems needing
+different fixes.
+
+**Root cause A -- floor guarantee never reached the site (a real bug).**
+`curate.py`'s floor logic deliberately tops a park up to 10 candidates
+with its next-best scorers *even below the 5.40 threshold* -- that's
+the whole point of a floor. But `build_site.py`'s
+`PUBLISH_MIN_AESTHETIC_SCORE` (5.4) applies the same cutoff at publish
+time with no memory of which candidates were floor-exceptions.
+Confirmed live on Badlands: of 13 candidates classified `landscape`,
+6 scored 5.19-5.38 -- selected only to satisfy the floor, then
+silently stripped back out at publish. The site never saw the floor
+Josh had already decided he wanted.
+
+**Root cause B -- some parks are genuinely thin under a landscape-only
+site (not a bug).** Checked subject-mix directly: Wind Cave (8/80
+`landscape`, rest `detail`/`wildlife`/`human_activity` -- it's a cave,
+most of its NPS photography is underground rock formations, not
+outdoor vistas), Dry Tortugas (2/19 -- mostly the fort itself,
+`structure`, plus wildlife), Mesa Verde (5/13 -- mostly the cliff
+dwellings, `structure`). These parks' defining feature isn't a
+landscape vista at all; a strictly landscape-only policy will always
+be thin here regardless of floor/threshold mechanics.
+
+Decision: four-part remediation, in order, each step only applied where the prior step left a park still under 10 published:
+1. Full 61-park measurement pass (selected count vs. published count vs. `primary_subject` mix) to find every affected park, not just the ones spot-checked in conversation.
+2. Fix root cause A: at publish time, per park, if the standard >=5.4 cut leaves a park under floor (10), relax that park's cutoff to 5.2 (not lower, and not applied to parks already at/above floor) -- publish-time-only logic in `build_site.py`, no change to `curate.py`/selection, no new persisted field.
+3. Re-measure. For parks still under 10, this is root cause B territory -- decide per park whether `structure` should be included (Mesa Verde/Dry Tortugas/Wind Cave-shaped cases, where it's the park's actual defining feature) rather than changing the site-inclusion policy globally.
+4. For parks still under 10 with only a handful of albums total, manually re-check the albums `album_triage.classify_album()` excluded -- a blunt keyword match can throw out an album that has one genuinely scenic photo alongside mostly administrative content; not worth doing for a 40-album park, cheap for a 5-album one.
+Explicit stopping condition (Josh): if a park is still under 10 after all four steps, it stays that way -- no further threshold relaxation, no forcing candidates that don't exist.
+Alternatives-considered: persist a floor-inclusion flag on selection and thread it through to publish-time exemption (more mechanically correct but needs a schema/pipeline change for a problem publish-time-only logic already solves); remove `PUBLISH_MIN_AESTHETIC_SCORE` entirely (loses the floor concept's intent of "still a cut, just a lower one for thin parks"); globally allow `structure` (rejected in the original 2026-08-30 site-inclusion decision for lack of a good-vs-boring-structure signal, and still true today -- scoping it to specific named parks avoids that unsolved general problem)
+Outcome: resolved. `build_site.py` gained `THIN_PARK_FLOOR`/`THIN_PARK_RELAXED_SCORE` (per-park relaxed cutoff) and `STRUCTURE_ALLOWED_PARKS` (Gateway Arch, Mesa Verde, Dry Tortugas, Virgin Islands -- each spot-checked by hand-viewing actual top-scoring `structure` candidates before allowlisting; Great Basin's were research-equipment photos and cave parks' `detail` candidates were an unreliable mix, neither earned inclusion). `scripts/_add_album_to_park.py` (new, one-off) added Carlsbad Caverns' "Historic Photograph Collection" album (314 candidates, wrongly excluded by an incidental "staff" keyword match) at the relaxed 5.2 threshold -- 55 records added (12 `landscape`, 7 `structure`, 17 `human_activity`, 18 `vehicle`, 1 `document`), confirming real scenic content had been sitting there since the original scrape.
+
+Final published counts, 10 originally-thin parks (before -> after): Biscayne 1->2, Dry Tortugas 1->6, Congaree 2->4, Gateway Arch 2->102, Mesa Verde 5->12, Virgin Islands 5->9, Badlands 7->12, Carlsbad Caverns 8->15, Wind Cave 8->8, Great Basin 9->9. 4 of 10 (Gateway Arch, Mesa Verde, Badlands, Carlsbad Caverns) now clear floor=10. The remaining 6 stay below floor per the explicit stopping condition -- Biscayne/Wind Cave/Great Basin are genuine subject-mismatch cases already investigated and rejected for further inclusion; Dry Tortugas/Congaree/Virgin Islands improved but didn't fully clear 10 and weren't chased further.
+
+Bug found and fixed mid-execution: the first run of `_add_album_to_park.py` added zero records -- every one of the 55 threshold-clearing candidates failed with "WOPR_BASE_URL is not set", because the script called `pipeline.build_record()` (which needs the VLM endpoint) without ever calling `load_dotenv()` first, unlike `pipeline.py`/`run_curated_scrape_remote.py`, which both do this explicitly at startup. The 314-candidate throttled thumbnail fetch had already completed and was cached, so nothing was lost -- fixed by adding the missing `load_dotenv(.env)` call, removing the 55 resulting `processing_error` checkpoint lines (so they'd retry instead of being treated as already-attempted), and re-running.
