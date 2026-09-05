@@ -59,6 +59,33 @@ decided.
   the current 9 parks and there's a sense of whether Categories:Scenic
   alone is enough.
 
+## Curated-scrape follow-ups (post 61-park run, 2026-09-05)
+
+- **Find the right floor per park, not one flat number for all 61.**
+  `select_by_threshold_with_floor()` (see `DECISIONS.md`, 2026-09-01)
+  uses a single floor (10) applied uniformly regardless of a park's
+  actual candidate pool size or score distribution -- picked as a
+  reasonable starting default, never revisited against real
+  per-park data now that the full run has real score distributions to
+  look at. A park with a huge, strong pool (Yellowstone: 5,055
+  candidates, 1,441 cleared threshold on their own) and a park with a
+  small, weak one both got the same floor. Worth analyzing the
+  now-complete run's `data/scored_candidates/<PARK>.json` files to see
+  whether a fixed floor is actually the right shape at all, versus
+  e.g. a floor as a percentage of pool size, or park-specific
+  overrides for known-thin parks.
+- **Ongoing monitoring: detect new files and albums NPS adds after the
+  initial scrape.** The 61-park run treated each park as a one-time
+  pass -- once selected/tagged, nothing re-checks whether NPS has since
+  added new photos to existing albums or published new albums
+  entirely. Real content will keep accumulating (NPS park staff upload
+  regularly), and right now there's no mechanism to notice. Needs some
+  kind of periodic re-crawl that diffs against what's already in
+  `data/catalog.json`/`checkpoint.jsonl` (by candidate id) rather than
+  reprocessing everything from scratch -- scope (how often, whether
+  it's a cron-style job or a manual periodic run, how it interacts
+  with the dedup-review workflow) not yet decided.
+
 ## Later sources (build order step 6)
 
 - Library of Congress, Smithsonian, Met, AIC, NYPL -- each needs its own
