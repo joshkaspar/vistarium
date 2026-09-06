@@ -47,7 +47,7 @@
     "license_confidence": {
       "type": "string",
       "enum": ["confirmed", "flagged_for_review"],
-      "description": "model -- must generalize past NPS's clean public-domain case once LOC/Smithsonian/Met/AIC/NYPL are added, since those mix true public domain with donor-restricted or rights-reserved items inside 'open access' collections. Anything not clearly and confidently public domain gets flagged_for_review, never silently decided by the model or the pipeline."
+      "description": "model -- must generalize past NPS's clean public-domain case once LOC/Smithsonian/Met/AIC/NYPL are added, since those mix true public domain with donor-restricted or rights-reserved items inside 'open access' collections. Anything not clearly and confidently public domain gets flagged_for_review, never silently decided by the model or the pipeline. Narrowed 2026-09-06 (see DECISIONS.md) to flag ONLY a visible copyright mark/watermark/credit line printed on the photo itself -- an earlier, broader prompt also flagged on people present, brand logos/trademarks, and generic 'identifiable person' concerns, which duplicated and contradicted policy already owned elsewhere (people_prominence, minor_face_present) and produced real false positives (a silhouetted figure under Delicate Arch, a tent's brand logo). As of 2026-09-06, build_site.py also excludes flagged_for_review records from publishing until a human moves them to confirmed or to hidden_ids.json -- previously nothing gated on this field at all."
     },
     "license_evidence": {
       "type": "string",
@@ -66,6 +66,14 @@
       "type": "string",
       "enum": ["none", "background", "midground", "foreground_focal"],
       "description": "model -- site-filtering metadata, not an accept/reject gate."
+    },
+    "minor_face_present": {
+      "type": "boolean",
+      "description": "model -- unlike people_present/people_prominence (filter metadata, people included by default), this IS a hard accept/reject gate: true means build_site.py excludes the record immediately, no pending-review step, no window where it could be live (see DECISIONS.md, 2026-09-06). Deliberately narrow: only a clearly visible, recognizable face reasonably believed to belong to a minor triggers it -- a distant/silhouetted figure with no discernible face does not, regardless of apparent size or context. Optimized for recall over precision (a false positive costs one image from a large pool; a false negative is unacceptable), but scoped to visible faces specifically so it doesn't degenerate into flagging every small figure in a landscape shot the way an earlier, over-broad license_confidence prompt did (see license_confidence's history). Added 2026-09-06, future scrapes only, not backfilled onto the existing corpus -- same treatment as content_visible."
+    },
+    "minor_face_evidence": {
+      "type": "string",
+      "description": "model -- one short sentence: what was seen, or 'no visible minor face' if minor_face_present is false. Same evidence-alongside-verdict pattern as license_confidence/license_evidence."
     },
     "crop_anchor": {
       "type": "string",

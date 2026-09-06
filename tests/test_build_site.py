@@ -345,6 +345,114 @@ def test_build_site_treats_missing_content_visible_as_true(tmp_path):
     assert count == 1
 
 
+def test_build_site_excludes_flagged_for_review(tmp_path):
+    # Added 2026-09-06 (see DECISIONS.md) -- previously nothing gated on
+    # license_confidence at all, letting unreviewed flags go live.
+    catalog = [_record("confirmed-1", "landscape"), _record("flagged-1", "landscape")]
+    catalog[1]["license_confidence"] = "flagged_for_review"
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    for r in catalog:
+        Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+        confirmed_ids_path=tmp_path / "confirmed_ids.json",
+    )
+
+    assert count == 1
+    ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
+    assert ids == {"confirmed-1"}
+
+
+def test_build_site_includes_flagged_for_review_when_in_confirmed_ids(tmp_path):
+    # confirmed_ids.json overrides a flagged_for_review record into
+    # publishing -- license_review_server.py's "Confirm" action, for
+    # records already reviewed and judged fine despite the model's flag.
+    catalog = [_record("flagged-but-confirmed-1", "landscape")]
+    catalog[0]["license_confidence"] = "flagged_for_review"
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "flagged-but-confirmed-1.jpg")
+
+    confirmed_ids_path = tmp_path / "confirmed_ids.json"
+    confirmed_ids_path.write_text(json.dumps(["flagged-but-confirmed-1"]))
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+        confirmed_ids_path=confirmed_ids_path,
+    )
+
+    assert count == 1
+
+
+def test_build_site_excludes_minor_face_present(tmp_path):
+    # Hard exclude, no pending-review step -- see schema.json's
+    # minor_face_present docstring and DECISIONS.md, 2026-09-06.
+    catalog = [_record("adult-1", "landscape"), _record("minor-1", "landscape")]
+    catalog[1]["minor_face_present"] = True
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    for r in catalog:
+        Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
+
+    assert count == 1
+    ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
+    assert ids == {"adult-1"}
+
+
+def test_build_site_treats_missing_minor_face_present_as_false(tmp_path):
+    # Not backfilled onto the existing corpus -- same treatment as
+    # content_visible.
+    catalog = [_record("old-record-1", "landscape")]
+    assert "minor_face_present" not in catalog[0]
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "old-record-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
+
+    assert count == 1
+
+
 def test_build_site_treats_missing_hidden_ids_file_as_nothing_hidden(tmp_path):
     catalog = [_record("land-1", "landscape")]
     catalog_path = tmp_path / "catalog.json"

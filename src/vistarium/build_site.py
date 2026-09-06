@@ -19,8 +19,23 @@ is "Public domain" -- see that function's docstring and DECISIONS.md).
 This licensing gate was briefly replaced with a site-side filter
 earlier the same day, then reverted back to a hard exclusion later
 that same day per Josh's explicit call -- see DECISIONS.md for both
-entries. All gates are display gates, not deletions: everything stays
-in data/catalog.json regardless, and a record reappears here
+entries. Also as of 2026-09-06: only records with license_confidence
+== "confirmed", or whose id is in confirmed_ids.json, publish --
+"flagged_for_review" is otherwise held off the site entirely until a
+human moves it to hidden_ids.json (exclude) or confirmed_ids.json
+(include despite the flag) via license_review_server.py's Confirm/Hide
+actions (previously nothing gated on this at all, letting 359
+unreviewed flagged records go live). confirmed_ids.json exists because
+license_confidence itself lives in data/catalog.json on wopr, not
+something this repo's tooling can edit in place from a local review
+session -- same override-file pattern as hidden_ids.json, opposite
+polarity. And minor_face_present == true is excluded
+unconditionally, with no pending-review step -- see that field's
+schema.json docstring; this is the one gate here that is NOT "just a
+display gate, reappears once un-hidden" in spirit, even though
+mechanically it's still just a filter over data/catalog.json. All
+other gates are ordinary display gates, not deletions: everything
+stays in data/catalog.json regardless, and a record reappears here
 automatically once it clears whatever the current bar is / is
 un-hidden.
 """
@@ -145,15 +160,15 @@ def _is_360_panorama(title: str) -> bool:
     return "360" in title
 
 
-def _load_hidden_ids(hidden_ids_path: Path) -> set[str]:
-    """`hidden_ids_path` is `dedup_review_server.py`'s manual hide-list --
-    a real curation decision (dupe/near-dupe review), not regeneratable
-    scrape output, so it lives at the repo root like `album_keywords.json`.
-    Missing file means nothing's been hidden yet, not an error (a fresh
-    checkout, or wopr before the file's been synced there)."""
-    if not hidden_ids_path.exists():
+def _load_id_set(path: Path) -> set[str]:
+    """Shared loader for the small, hand-curated id-list override files at
+    the repo root (hidden_ids.json, confirmed_ids.json) -- real curation
+    decisions, not regeneratable scrape output. Missing file means no
+    decisions recorded yet, not an error (a fresh checkout, or wopr
+    before the file's been synced there)."""
+    if not path.exists():
         return set()
-    return set(json.loads(hidden_ids_path.read_text()))
+    return set(json.loads(path.read_text()))
 
 
 def build_site(
@@ -163,9 +178,11 @@ def build_site(
     thumbs_dirname: str = "thumbs",
     hidden_ids_path: Path = Path("hidden_ids.json"),
     min_long_edge: int = MIN_WALLPAPER_LONG_EDGE,
+    confirmed_ids_path: Path = Path("confirmed_ids.json"),
 ) -> int:
     catalog = json.loads(catalog_path.read_text())
-    hidden_ids = _load_hidden_ids(hidden_ids_path)
+    hidden_ids = _load_id_set(hidden_ids_path)
+    confirmed_ids = _load_id_set(confirmed_ids_path)
     eligible = [
         r
         for r in catalog
@@ -175,6 +192,8 @@ def build_site(
         and r["id"] not in hidden_ids
         and r.get("content_visible", True)
         and is_open_license(r.get("license", ""))
+        and (r.get("license_confidence") == "confirmed" or r["id"] in confirmed_ids)
+        and not r.get("minor_face_present", False)
     ]
     landscape = [r for r in eligible if r["aesthetic_score"] >= PUBLISH_MIN_AESTHETIC_SCORE]
 
@@ -237,6 +256,7 @@ def main() -> None:
     parser.add_argument("--out", type=Path, default=Path("docs"))
     parser.add_argument("--hidden-ids", type=Path, default=Path("hidden_ids.json"))
     parser.add_argument("--min-long-edge", type=int, default=MIN_WALLPAPER_LONG_EDGE)
+    parser.add_argument("--confirmed-ids", type=Path, default=Path("confirmed_ids.json"))
     args = parser.parse_args()
 
     count = build_site(
@@ -245,6 +265,7 @@ def main() -> None:
         args.out,
         hidden_ids_path=args.hidden_ids,
         min_long_edge=args.min_long_edge,
+        confirmed_ids_path=args.confirmed_ids,
     )
     print(f"wrote {count} records to {args.out / 'data.json'}")
     print(f"wrote thumbnails to {args.out / 'thumbs'}")

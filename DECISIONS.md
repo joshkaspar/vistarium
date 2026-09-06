@@ -1282,3 +1282,54 @@ Decision: `build_site.py`'s `eligible` filter has `is_open_license(r.get("licens
 Note this is a *third* reversal of the same axis in one day (923-per-record-review -> deterministic rule as a publish gate -> site filter -> back to publish gate) -- each step was a real, reasoned decision at the time, not churn for its own sake, but it's worth being honest that this landed back where the first same-day entry left it. The underlying rule itself (`nps_client.is_open_license()`, "Public domain" prefix only) never changed across any of these -- only what happens once a record fails it did.
 
 Outcome: resolved, this time treated as the stable end state unless raised again. 2 tests in `test_build_site.py` reverted to exclusion-assertions, the pipeline license-skip test restored. Rebuilt and republished (see the following rebuild's numbers for the final count).
+
+## 2026-09-06 (same day, fourth entry): license_review_server.py narrowed to flagged_for_review; "approve" was a no-op
+
+Context: after adding the 359 `license_confidence == "flagged_for_review"` records to `license_review_server.py`'s candidate pool, Josh asked what a click there should actually do, since the pool now mixed several genuinely different situations. Checking the code surfaced a real bug: clicking "approved" wrote to `license_approved_ids.json`, a file nothing reads anymore -- that mechanism was deleted in the license-reverted-to-hard-exclusion entry above, so every prior click in this tool (before this fix) had zero effect on the published site.
+
+Breakdown of what was actually in the 1,259-record candidate pool, and whether each still needs a decision:
+1. License prefix "Restrictions apply..." (~531) -- hard-excluded, permanently, no override mechanism exists anymore (this is the point of the previous entry). Nothing to decide.
+2. License "Public domain" with GrantingRights Partial/Unknown (~392) -- already correctly published; the 2026-09-06 investigation settled that GrantingRights isn't a real rights signal, so `is_open_license()` deliberately ignores it. Nothing to decide.
+3. `license_confidence == "flagged_for_review"` on a record whose license passes `is_open_license()` (368 in the current corpus) -- the only real open question left: is the model's stated visual concern (watermark, embedded copyright notice, identifiable person) something to act on?
+
+Decision: narrow `license_review_server.py` to serve only category 3. Every card shown is already live on the site, so the click semantics flip from the old tool's polarity: default state is "kept" (published, matches reality, no file write needed), and a click means "this flagged concern is real" -- writes the id straight into `hidden_ids.json`, the same file `dedup_review_server.py` uses and the one `build_site.py` actually reads. Click again to un-hide. No new state file, no separate "approved" concept -- reuses the one hiding mechanism that already works.
+
+Alternatives-considered: a three-state model (unreviewed / kept / hidden) to track review progress explicitly -- rejected as unnecessary complexity for now; "not in hidden_ids.json" already means "kept," and Josh didn't ask for progress-tracking, just a working action. Keep categories 1/2 visible as read-only reference -- rejected in favor of dropping them entirely, since they add scroll/noise for zero remaining decisions.
+
+Outcome: resolved. `license_approved_ids.json` deleted (unused). `api_decide` now writes to `hidden_ids.json` exactly like `dedup_review_server.py`'s endpoint of the same shape. Restarted; 368 flagged-and-published records shown.
+
+## 2026-09-06 (same day, fifth entry): narrowed license_confidence prompt, new minor_face_present hard-exclude field, flagged_for_review publish gate
+
+Context: Josh's own review of `license_confidence`/`license_evidence` output found the model flagging things with no copyright relevance at all -- recognizable people, an NPS logo on a sign, a brand logo on tent fabric -- and separately, a human reviewer had found and manually hidden an image of two minors (approx. 12-14) early in the scrape, which needed to become an automated, standing check rather than something caught only by chance.
+
+**Verification pass first** (per instructions, before any implementation): two items believed already-implemented turned out not to match their description.
+- Album-triage "photo contest"/"repeat photography" exclusion is real, but only checks the *album's* title/description -- there's no per-item check against an asset's own title/Keywords, so a case like Comerci's (no matching album name, only a `Keywords` hit) still isn't caught. Confirmed a real gap; Josh deferred fixing it (out of scope for this pass).
+- The resolution-availability check does not compare `File Size (bytes)` metadata against actual download size as originally specified -- it uses `FileInfo.Original.Width`/`Height` from the album search API instead (a deliberate 2026-09-06 design choice, see that entry), which is strictly more precise and costs zero extra requests. Josh confirmed: keep the existing mechanism, don't add the byte-comparison as well.
+- Confirmed clean: `copyright_note`→`license_evidence` wiring works as specified; no rejected heuristic (GrantingRights, credit-line format, album trust) is used anywhere as a PD signal; `3ef54278-2415-4751-922c-47b88025b6db` (the Comerci watermark case) is in `hidden_ids.json`.
+
+**1. `license_confidence` prompt narrowed.** Now asks only "does this image contain a visible copyright mark, watermark, or credit line printed on the photo itself," with an explicit instruction not to flag on people, brand logos, or signage/trademarks -- those are handled elsewhere (`people_prominence`) or aren't real copyright signals in this context at all. Validated against the 3 known false-positive cases from the old prompt (a ranger silhouette at Acadia, a silhouetted figure at Delicate Arch, a tent's brand logo) -- all 3 now come back `confirmed`, no regression.
+
+**2. New `minor_face_present`/`minor_face_evidence` model fields -- hard exclude, not review-and-publish.** Deliberately the opposite polarity from `license_confidence`: a license flag holds a record pending human review; a minor-face flag excludes it from `build_site.py` immediately and unconditionally, no window where it could go live. Standing policy restated for clarity: people in images are included by default (`people_prominence` is a filter axis, not a reject gate) -- minors with a visible, recognizable face are the one deliberate exception. Optimized for recall over precision (a false positive costs one image from a large pool; a false negative is unacceptable) but scoped narrowly to an actually-visible face specifically, to avoid the failure mode the old broad `license_confidence` prompt already demonstrated (flagging a small silhouetted figure under Delicate Arch with no visible face at all) -- applied to minors, that same over-broad framing would gut a huge share of ordinary landscape shots with any small figure in them, for no real child-safety benefit. `TERMS_OF_USE.md` gained a plain statement of this exact policy (visible-face minors excluded; small/distant/no-visible-face figures are not).
+
+Validation before rollout, per Josh's explicit requirement -- **not run across the dataset, tested against a 10-image human-picked set first**, results reported plainly without editorializing on correctness:
+
+| id | minor_face_present | minor_face_evidence |
+|---|---|---|
+| 07c6877d... | false | no visible minor face |
+| 1cd4a3e1... | false | no visible minor face |
+| fdc0fcd3... | **true** | "A young child with light hair is clearly visible from the side in the foreground, face discernible and likely a minor." |
+| 4348fb56... | false | no visible minor face |
+| 796752b1... | false | no visible minor face |
+| 632aa70a... | false | no visible minor face |
+| 9f98c9b1... | false | no visible minor face |
+| 4363a003... | false | no visible minor face |
+| 944e07d7... | false | no visible minor face |
+| 81abe315... | false | no visible minor face |
+
+1 of 10 flagged, all 10 had `people_present: true` (so the model isn't just echoing that flag), and the one flag came with specific, checkable reasoning rather than a generic hit. Not independently judged for correctness here -- that's the point of running it as a held-out human review step before trusting it at scale.
+
+**3. New publish gate: `license_confidence == "confirmed"` required.** Previously nothing gated on this field at all -- 359 of 3,901 published records (9%) were live with an unreviewed flag. Same gate also excludes `minor_face_present == true`. **Real consequence found while implementing this, surfaced before any rebuild**: of the 359 currently-published flagged records, only 8 are in `hidden_ids.json` (Josh's own review decisions so far) -- the other 351 have been implicitly kept published by *not* being hidden, but nothing has ever set their `license_confidence` to `"confirmed"`, and no tool exists to do that. Once this gate ships and a rebuild runs, all 351 will disappear from the site regardless of whether Josh already reviewed and approved them -- there is currently no path back except manually editing `data/catalog.json` or building a "mark confirmed" action into `license_review_server.py`. Flagged for Josh's decision, not resolved unilaterally here.
+
+**Resolved:** Josh chose to add a `confirmed_ids.json` override file (same pattern as `hidden_ids.json`, opposite polarity -- an allowlist, not a denylist) and a matching "Confirm" action in `license_review_server.py`, then bulk-confirm the 351 as a one-time migration of the pre-gate status quo. `build_site.py`'s gate became `license_confidence == "confirmed" or id in confirmed_ids`. The review tool now tracks three real states per flagged record -- unreviewed and hidden currently produce the same publish outcome (not published) but mean different things (an open question vs. a reviewed rejection); confirmed is the only state that overrides the flag. Going forward, a *newly* flagged record starts unreviewed, not auto-confirmed -- only this specific backlog got grandfathered in, as an explicit one-time call, not a standing default.
+
+Outcome: resolved and deployed. Prompt narrowing and `minor_face_present` are implemented and validated on the held-out set; not yet run across the dataset (future scrapes only, no backfill, same as `content_visible`). Publish gate, `confirmed_ids.json` mechanism, and the bulk-confirm migration are all implemented, tested (5 new tests in `test_build_site.py` total), and deployed to wopr. `license_review_server.py` restarted with the three-state Confirm/Hide UI -- 351 confirmed, 9 unreviewed (found since the 359 count was taken), 8 hidden.

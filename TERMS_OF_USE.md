@@ -1,6 +1,6 @@
 # Vistarium — Terms of Use & Rights Statement
 
-*Last updated: 2026-08-30*
+*Last updated: 2026-09-06*
 
 Vistarium is a free, noncommercial project that curates and links to open-access and public-domain landscape photography from government and museum archives. Please read this page before downloading or reusing any material found here.
 
@@ -21,6 +21,8 @@ Images sourced from the National Park Service are, in general, works of the U.S.
 These rights vary significantly by U.S. state, and in many circumstances — ordinary people photographed incidentally while engaged in everyday activity in public places like national parks — they are unlikely to be implicated, particularly for noncommercial, editorial, or documentary use. But the analysis can change depending on how identifiable a person is, how prominently they're featured, and especially how the image is subsequently used (for example, commercial use, such as in advertising or on merchandise, carries meaningfully more risk than personal or editorial use).
 
 **We do not evaluate this for every image, and we do not obtain model releases.** If you plan to use an image in a way that could implicate someone's likeness — particularly commercially — that determination, and any permissions it requires, is your responsibility.
+
+**One specific exception: images with a clearly visible face reasonably believed to belong to a minor are excluded from this site.** This applies only where an actual face is visible and identifiable — a child or teenager appearing as a small or distant figure in a landscape scene, with no visible face, is not automatically excluded and is treated the same as any other person in the frame (see above). This isn't stated here because the underlying photographs are legally suspect — they generally aren't — but because it's a policy visitors should be able to see plainly rather than have to infer.
 
 ## 4. No warranty
 

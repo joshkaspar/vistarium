@@ -119,6 +119,38 @@ decided.
   thumbnail generation (skip re-render if the source file and crop
   params are unchanged) before the corpus grows further with more
   sources (LOC, Smithsonian, etc. below).
+- **Watch for annotated/overlay graphics -- a real photo doctored with
+  administrative markup, not a natural scene.** Found live 2026-09-06
+  reviewing `flagged_for_review` records: Grand Teton's "Kelly Parcel"
+  land-acquisition series had 2 of 6 aerial photos with a bold red
+  property-boundary line drawn over an otherwise genuine landscape shot
+  (`28eb013c...`, `17ec2488...`, both hidden). Distinct from the blank/
+  degraded-scan problem (`content_visible`) and from repeat-photography
+  composites below -- this is a real, undoctored-looking photo with a
+  deliberate graphic overlay added for a specific administrative
+  purpose. Only caught by eye so far (2/6 in one small series); not
+  worth an automated check yet at this sample size, but worth watching
+  for more examples before deciding whether one's justified.
+- **Repeat-photography/before-after composites aren't fully caught by
+  any single photographer-field text signal -- three different
+  credit-field patterns found so far, all for the same underlying
+  two-panel composite genre.** The Denali exclusion (194 hidden,
+  2026-09-06) relies on `"Rephoto photographer"` appearing in the
+  `photographer` field, but two more examples found by eye the same day
+  use entirely different phrasing: `2a972528...` (Kenai Fjords, "Exit
+  Glacier," burned-in "May 12"/"September 23" date labels) is credited
+  just `"NPS photographs."`, and `ce7d2fed...` (Wrangell-St. Elias,
+  "McCarthy Road past and present") is credited
+  `"Past - Bleakley Collection / Present - Mike Townsend"`. No single
+  keyword covers all three, and each was only caught visually, not by
+  any existing filter. A same-park or same-title deterministic check
+  won't generalize either (these are all different titles/parks). The
+  two-panel visual composite pattern itself (a hard horizontal or
+  vertical dividing line roughly bisecting the frame, often with
+  burned-in date/caption text near the seam) is the one thing all
+  confirmed examples share -- worth exploring as a deterministic or
+  model-judged check (a `is_composite`-style field, similar to
+  `content_visible`) if more examples keep turning up. Not yet scoped.
 
 ## Later sources (build order step 6)
 
