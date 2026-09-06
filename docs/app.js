@@ -13,6 +13,7 @@
   const colorSelect = document.getElementById("filter-color");
   const orientationSelect = document.getElementById("filter-orientation");
   const tagInput = document.getElementById("filter-tag");
+  const licenseSelect = document.getElementById("filter-license");
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   const lightboxInfo = document.getElementById("lightbox-info");
@@ -80,6 +81,11 @@
     }
     const tagQuery = tagInput.value.trim().toLowerCase();
     if (tagQuery && !record.tags.some((t) => t.toLowerCase().includes(tagQuery))) return false;
+    // Defaults to "Public domain" (see index.html's selected option) --
+    // license_category is a display filter, not a publish gate (see
+    // build_site.py, DECISIONS.md 2026-09-06): restricted-license photos
+    // are in data.json too, just hidden from the default view.
+    if (licenseSelect.value && record.license_category !== licenseSelect.value) return false;
     return true;
   }
 
@@ -155,9 +161,15 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  [sortSelect, parkSelect, timeSelect, peopleSelect, colorSelect, orientationSelect].forEach(
-    (el) => el.addEventListener("change", render)
-  );
+  [
+    sortSelect,
+    parkSelect,
+    timeSelect,
+    peopleSelect,
+    colorSelect,
+    orientationSelect,
+    licenseSelect,
+  ].forEach((el) => el.addEventListener("change", render));
   tagInput.addEventListener("input", render);
 
   let resizeTimer = null;

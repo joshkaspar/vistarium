@@ -114,6 +114,17 @@ class NPSCandidate:
     date: str | None = None
     park: str = ""
     license: str = ""
+    # Verbatim ConstraintsInformation.Explanation or a non-boilerplate
+    # Copyright string -- see COPYRIGHT_BOILERPLATE and asset_to_candidate().
+    # Deliberately NOT folded into `photographer`/`license` -- see
+    # DECISIONS.md, 2026-09-06 (license/rights parsing investigation).
+    copyright_note: str | None = None
+    # From the album search API's FileInfo.Original (see download_thumbnail's
+    # docstring -- FileInfo isn't present on every search endpoint). None
+    # when the endpoint that produced this candidate doesn't expose it;
+    # callers fall back to a post-download pixel check in that case.
+    original_width: int | None = None
+    original_height: int | None = None
     # Not part of schema.json -- raw inputs the pipeline uses to derive
     # deterministic time_of_day evidence before ever calling the model.
     caption_text: str = ""
@@ -125,6 +136,51 @@ class NPSCandidate:
     # None for every other search path, which never scores candidates.
     aesthetic_score: float | None = None
     aesthetic_method: str | None = None
+
+
+# NPGallery's sitewide generic disclaimer text, found verbatim on assets
+# across every Constraints Information verdict (including a plainly
+# copyrighted Charley Harper artwork) -- its presence carries no per-item
+# rights signal at all. Confirmed 2026-09-06 against real Copyright field
+# values scraped from ~1000 assets; three distinct sitewide variants seen
+# so far, matched exactly (not a prefix/substring match -- a real,
+# item-specific Copyright string could legitimately start similarly).
+# See DECISIONS.md.
+COPYRIGHT_BOILERPLATE = frozenset(
+    {
+        "Permission must be secured from the individual copyright owners to "
+        "reproduce any copyrighted materials contained within this website.",
+        "Permission must be secured from the individual copyright owners to "
+        "reproduce any copyrighted materials contained within this website. "
+        "Digital assets without any copyright restrictions are public domain.",
+        "This digital asset is provided for 'fair use' purposes. The National "
+        "Park Service is not necessarily the holder of the original copyright "
+        "and is not legally liable for infringement when materials are "
+        "wrongfully used.",
+    }
+)
+
+
+def is_open_license(license_str: str) -> bool:
+    """The single rule the 2026-09-06 investigation settled on, after
+    testing and rejecting several plausible-looking shortcuts (credit-line
+    format, Granting Rights level, album-level trust -- see DECISIONS.md):
+    `license` (built as f"{Constraint}/{GrantingRights}" below) is open
+    access iff its Constraint prefix is "Public domain", regardless of
+    GrantingRights (Full/Partial/Minimum/Unknown all seen paired with
+    genuinely open items -- GrantingRights tracks something else, not
+    reuse rights). Anything starting "Restrictions apply..." is excluded,
+    whether or not it carries the "(Copyrighted material)" qualifier --
+    a bare "Restrictions apply on use and/or reproduction" with no further
+    explanation anywhere on the item's page was confirmed live (Acadia's
+    Gleason glass-plate donor collection) to still mean excluded, just
+    with the reason unrecorded rather than absent.
+
+    Uses startswith(), not an exact-match table or a split on "/" --
+    "Restrictions apply on use and/or reproduction" contains its own "/"
+    (from "and/or"), which would make a naive license.split("/")[0]
+    silently wrong."""
+    return license_str.startswith("Public domain")
 
 
 def _s(v) -> str:
@@ -229,7 +285,25 @@ def asset_to_candidate(asset: dict, term: str, park_code: str | None = None) -> 
             next((u for u in units if u.get("Code") == park_code), None) if park_code else None
         )
         park_name = (matched or units[0])["Name"]
-    photographer = _s(asset.get("PhotoCredit")) or _s(asset.get("Copyright")) or None
+    # PhotoCredit only -- never Copyright. Copyright is often sitewide
+    # legal boilerplate ("Permission must be secured from the individual
+    # copyright owners..."), not a name; that text was previously leaking
+    # into `photographer` display whenever PhotoCredit was empty (found
+    # live 2026-09-05 on "Tower Peak," "Mirror image landscape," others).
+    # See DECISIONS.md, 2026-09-06.
+    photographer = _s(asset.get("PhotoCredit")) or None
+    raw_copyright = _s(asset.get("Copyright")).strip()
+    explanation = _s(ci.get("Explanation")).strip()
+    # Explanation (when NPS records one) is the more specific of the two --
+    # it's what actually appears inside Constraints Information on the
+    # asset page, e.g. the Tim Hauf "IN COPYRIGHT ... no public
+    # distribution" text. Falls back to Copyright when there's no
+    # Explanation, skipping it entirely if it's just the sitewide
+    # boilerplate (no per-item signal either way).
+    copyright_note = explanation or (
+        raw_copyright if raw_copyright and raw_copyright not in COPYRIGHT_BOILERPLATE else None
+    )
+    original_file = (asset.get("FileInfo") or {}).get("Original") or {}
     return NPSCandidate(
         id=aid,
         source_url=f"{BASE}/AssetDetail/{aid}",
@@ -239,6 +313,9 @@ def asset_to_candidate(asset: dict, term: str, park_code: str | None = None) -> 
         date=(asset.get("ImageCreateDate") or {}).get("Date") or asset.get("ImageCreateDateTime"),
         park=park_name,
         license=f"{ci.get('Constraint', '')}/{ci.get('GrantingRights', '')}".strip("/"),
+        copyright_note=copyright_note or None,
+        original_width=original_file.get("Width"),
+        original_height=original_file.get("Height"),
         caption_text=caption_text,
         exif_datetime_raw=exif_raw,
         search_terms=[term],

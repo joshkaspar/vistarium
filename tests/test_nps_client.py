@@ -9,6 +9,7 @@ from vistarium.nps_client import (
     asset_to_candidate,
     extract_payload,
     fetch_unit_codes,
+    is_open_license,
     list_park_albums,
     search_album,
     search_park_scenic,
@@ -102,6 +103,260 @@ def test_asset_to_candidate_falls_back_to_first_unit_without_park_code():
 def test_asset_to_candidate_falls_back_when_park_code_not_listed():
     cand = asset_to_candidate(MULTI_UNIT_ASSET, term="scenic:ZION", park_code="ZION")
     assert cand.park == "Devils Tower National Monument"
+
+
+# Real Constraints Information / Copyright field values, fetched live
+# 2026-09-06 from the actual assets named in each comment (see
+# DECISIONS.md, "NPGallery license/rights parsing investigation") --
+# not synthetic guesses. Each covers a distinct real-world branch found
+# during that investigation.
+
+
+def test_is_open_license_matches_on_constraint_prefix_only():
+    # AssetDetail/e9c4033a-d67b-414a-a4d8-4cc4929d66d8 (Schoodic Point)
+    assert is_open_license("Public domain/Unknown") is True
+    # bulk of the published catalog
+    assert is_open_license("Public domain/Full") is True
+    # AssetDetail/849b0c0d-ffac-4374-a6b0-692965ed17c0 (Sunrise from Mt
+    # Fremont Lookout) -- GrantingRights level is not a rights signal,
+    # only Constraints Information's prefix is
+    assert is_open_license("Public domain/Partial") is True
+    # AssetDetail/cef6db08-e20b-4354-b269-104f80976769 (Bay View from Old
+    # Farm porch) -- bare "Restrictions apply", still excluded
+    assert is_open_license("Restrictions apply on use and/or reproduction/Unknown") is False
+    # AssetDetail/7057d5ec-eb29-4466-be2b-21cfd8500c6b (Milky Way Arching
+    # to Pectol's Pyramid) -- Full Granting Rights does NOT make this open
+    assert (
+        is_open_license("Restrictions apply on use and/or reproduction (Copyrighted material)/Full")
+        is False
+    )
+    assert (
+        is_open_license(
+            "Restrictions apply on use and/or reproduction (Copyrighted material)/Partial"
+        )
+        is False
+    )
+
+
+def test_is_open_license_not_confused_by_and_or_slash():
+    # "Restrictions apply on use and/or reproduction" contains its own "/"
+    # -- a naive license.split("/")[0] would silently break on this.
+    assert is_open_license("Restrictions apply on use and/or reproduction/Full") is False
+
+
+SCHOODIC_POINT_ASSET = {
+    # AssetDetail/e9c4033a-d67b-414a-a4d8-4cc4929d66d8
+    "AssetID": "e9c4033a-d67b-414a-a4d8-4cc4929d66d8",
+    "Title": "Schoodic Point, Acadia National Park, 2014.",
+    "ConstraintsInformation": {"Constraint": "Public domain", "GrantingRights": "Unknown"},
+    "Copyright": (
+        "Permission must be secured from the individual copyright owners to reproduce "
+        "any copyrighted materials contained within this website."
+    ),
+    "NPSUnits": [{"Name": "Acadia National Park", "Code": "ACAD"}],
+}
+
+MILKY_WAY_ASSET = {
+    # AssetDetail/7057d5ec-eb29-4466-be2b-21cfd8500c6b
+    "AssetID": "7057d5ec-eb29-4466-be2b-21cfd8500c6b",
+    "Title": "Milky Way Arching to Pectol's Pyramid",
+    "ConstraintsInformation": {
+        "Constraint": "Restrictions apply on use and/or reproduction (Copyrighted material)",
+        "GrantingRights": "Full",
+    },
+    "Copyright": "Copyright Â© 2018 by Zoltan G. Levay",
+    "PhotoCredit": "Zoltan G. Levay",
+    "NPSUnits": [{"Name": "Capitol Reef National Park", "Code": "CARE"}],
+}
+
+BAY_VIEW_ASSET = {
+    # AssetDetail/cef6db08-e20b-4354-b269-104f80976769 -- bare
+    # "Restrictions apply", donor glass-plate collection, no stated reason
+    # anywhere on the page.
+    "AssetID": "cef6db08-e20b-4354-b269-104f80976769",
+    "Title": "Bay View from Old Farm porch",
+    "ConstraintsInformation": {
+        "Constraint": "Restrictions apply on use and/or reproduction",
+        "GrantingRights": "Unknown",
+    },
+    "Copyright": (
+        "Permission must be secured from the individual copyright owners to reproduce "
+        "any copyrighted materials contained within this website."
+    ),
+    "NPSUnits": [{"Name": "Acadia National Park", "Code": "ACAD"}],
+}
+
+SAVAGE_RIVER_ASSET = {
+    # AssetDetail/68ffd9be-8fb3-4f57-9eb6-da033a771735 -- also bare
+    # "Restrictions apply", but Copyright fully explains the terms. Proves
+    # a bare prefix means "not (Copyrighted material)," not "no reason
+    # given" in general.
+    "AssetID": "68ffd9be-8fb3-4f57-9eb6-da033a771735",
+    "Title": "Changing treelines at Savage River: 1926-2016",
+    "ConstraintsInformation": {
+        "Constraint": "Restrictions apply on use and/or reproduction",
+        "GrantingRights": "Unknown",
+    },
+    "Copyright": (
+        "Photos and photo pairs are pre-approved for educational use ONLY. To use them "
+        "in educational products, credit them the same way as they are credited on the "
+        "website, Photo Credit: Original photographer: Joseph S. Dixon (Museum of "
+        "Vertebrate Zoology at University of California, Berkeley); Rephoto photographer: "
+        "Jedediah Brodie. For any other use beyond education, contact Denali National "
+        "Park and Preserve for additional copyright information on specific images of "
+        "interest."
+    ),
+    "PhotoCredit": (
+        "Original photographer: Joseph S. Dixon (Museum of Vertebrate Zoology at "
+        "University of California, Berkeley); Rephoto photographer: Jedediah Brodie"
+    ),
+    "NPSUnits": [{"Name": "Denali National Park and Preserve", "Code": "DENA"}],
+}
+
+FLOWERING_COREOPSIS_ASSET = {
+    # AssetDetail/edc77846-155d-4519-3e48-2c47ff34557f -- Explanation
+    # takes precedence over Copyright; also the "Public Can View" access
+    # constraint (not modeled here, see DECISIONS.md) coexists with a hard
+    # reuse restriction, so it isn't a usable rights signal either.
+    "AssetID": "edc77846-155d-4519-3e48-2c47ff34557f",
+    "Title": "Flowering Coreopsis",
+    "ConstraintsInformation": {
+        "Constraint": "Public domain",
+        "GrantingRights": "Partial",
+        "Explanation": (
+            "IN COPYRIGHT. This Item is protected by copyright and/or related rights. "
+            "Copyright: Hauf, Tim. Image for internal NPS use only. No distribution of "
+            "copyrighted material to the public is allowed."
+        ),
+    },
+    "Copyright": "©Tim Hauf, timhaufphotography.com",
+    "NPSUnits": [{"Name": "Virgin Islands National Park", "Code": "VIIS"}],
+}
+
+PHOTO_CONTEST_ASSET = {
+    # AssetDetail/538804bf-97df-4b46-9367-fece71b274e2 -- from a "2023
+    # Winter Photo Contest Finalist" album; Copyright is a bare company
+    # name, not sitewide boilerplate, and must be captured verbatim.
+    "AssetID": "538804bf-97df-4b46-9367-fece71b274e2",
+    "Title": "Photo courtesy of James Marvin Phelps",
+    "ConstraintsInformation": {
+        "Constraint": "Restrictions apply on use and/or reproduction (Copyrighted material)",
+        "GrantingRights": "Full",
+    },
+    "Copyright": "JMP Photography LLC",
+    "PhotoCredit": "James Marvin Phelps",
+    "NPSUnits": [{"Name": "Bryce Canyon National Park", "Code": "BRCA"}],
+}
+
+NPS_CREDIT_BUT_COPYRIGHTED_ASSET = {
+    # Confirmed 2026-09-06: an "NPS Photo/[Name]"-formatted credit is not
+    # a reliable public-domain proxy -- this exact credit format sits on a
+    # Restrictions-apply/Copyrighted asset at Denali, despite matching a
+    # confirmed-PD "NPS/Neal Herbert" credit at Yellowstone letter-for-
+    # letter in style.
+    "AssetID": "c20ecd16-9a41-4bb3-9893-0427002f12e0",
+    "Title": "Backpacking",
+    "ConstraintsInformation": {
+        "Constraint": "Restrictions apply on use and/or reproduction (Copyrighted material)",
+        "GrantingRights": "Full",
+    },
+    "PhotoCredit": "NPS Photo/Emily Mesner",
+    "NPSUnits": [{"Name": "Denali National Park and Preserve", "Code": "DENA"}],
+}
+
+RESOLUTION_CAPPED_ASSET = {
+    # AssetDetail/849b0c0d-ffac-4374-a6b0-692965ed17c0 (Sunrise from Mt
+    # Fremont Lookout) -- FileInfo shape confirmed live against a real
+    # album-API response (search_album, not the generic keyword search,
+    # which doesn't expose FileInfo at all). Public domain, but the
+    # available Original is only 500x375 -- open license, unusable
+    # resolution; a separate concern from licensing entirely.
+    "AssetID": "849b0c0d-ffac-4374-a6b0-692965ed17c0",
+    "Title": "Sunrise from Mt Fremont Lookout",
+    "ConstraintsInformation": {"Constraint": "Public domain", "GrantingRights": "Partial"},
+    "PhotoCredit": "Brittany Burnett Photo",
+    "NPSUnits": [{"Name": "Mount Rainier National Park", "Code": "MORA"}],
+    "FileInfo": {
+        "Original": {
+            "Kind": "Original",
+            "FileType": "jpg",
+            "Size": 92262,
+            "Width": 500,
+            "Height": 375,
+        }
+    },
+}
+
+
+def test_copyright_boilerplate_yields_no_copyright_note():
+    cand = asset_to_candidate(SCHOODIC_POINT_ASSET, term="schoodic")
+    assert cand.copyright_note is None
+    assert is_open_license(cand.license) is True
+
+
+def test_copyright_non_boilerplate_captured_verbatim():
+    cand = asset_to_candidate(MILKY_WAY_ASSET, term="milky way")
+    assert cand.copyright_note == "Copyright Â© 2018 by Zoltan G. Levay"
+    assert is_open_license(cand.license) is False
+
+
+def test_bare_restrictions_with_boilerplate_copyright_has_no_note():
+    # Reason genuinely unstated anywhere on the page -- don't fabricate one.
+    cand = asset_to_candidate(BAY_VIEW_ASSET, term="bay view")
+    assert cand.copyright_note is None
+    assert is_open_license(cand.license) is False
+
+
+def test_bare_restrictions_with_explanatory_copyright_is_captured():
+    # Bare "Restrictions apply" prefix does NOT mean "no reason given" in
+    # general -- only that it's not the "(Copyrighted material)" variant.
+    cand = asset_to_candidate(SAVAGE_RIVER_ASSET, term="savage river")
+    assert cand.copyright_note is not None
+    assert "educational use ONLY" in cand.copyright_note
+    assert is_open_license(cand.license) is False
+
+
+def test_explanation_field_takes_precedence_over_copyright():
+    cand = asset_to_candidate(FLOWERING_COREOPSIS_ASSET, term="coreopsis")
+    assert cand.copyright_note is not None
+    assert "no public distribution" not in cand.copyright_note  # sanity: not paraphrased
+    assert "No distribution of copyrighted material to the public is allowed" in cand.copyright_note
+    # Public domain constraint despite the override -- Partial Granting
+    # Rights alone would wrongly look "safe" without the Explanation text.
+    assert is_open_license(cand.license) is True
+
+
+def test_bare_company_name_copyright_not_mistaken_for_boilerplate():
+    cand = asset_to_candidate(PHOTO_CONTEST_ASSET, term="phelps")
+    assert cand.copyright_note == "JMP Photography LLC"
+    assert is_open_license(cand.license) is False
+
+
+def test_photographer_never_derived_from_copyright_field():
+    # Real bug fixed 2026-09-06: photographer used to fall back to
+    # Copyright when PhotoCredit was empty, leaking sitewide legal
+    # boilerplate into the displayed photographer name.
+    cand = asset_to_candidate(SCHOODIC_POINT_ASSET, term="schoodic")
+    assert cand.photographer is None
+
+
+def test_nps_style_credit_is_not_a_public_domain_proxy():
+    cand = asset_to_candidate(NPS_CREDIT_BUT_COPYRIGHTED_ASSET, term="backpacking")
+    assert cand.photographer == "NPS Photo/Emily Mesner"
+    assert is_open_license(cand.license) is False
+
+
+def test_original_dimensions_captured_when_file_info_present():
+    cand = asset_to_candidate(RESOLUTION_CAPPED_ASSET, term="fremont")
+    assert cand.original_width == 500
+    assert cand.original_height == 375
+    assert is_open_license(cand.license) is True  # license is fine, resolution isn't
+
+
+def test_original_dimensions_none_when_file_info_absent():
+    cand = asset_to_candidate(SCHOODIC_POINT_ASSET, term="schoodic")
+    assert cand.original_width is None
+    assert cand.original_height is None
 
 
 def _html(payload_json: str) -> str:

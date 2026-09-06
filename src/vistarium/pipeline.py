@@ -21,6 +21,7 @@ from dotenv import load_dotenv
 from PIL import Image
 
 from vistarium import album_triage, crop, curate, exif_util, nps_client, schema_validate
+from vistarium.build_site import MIN_WALLPAPER_LONG_EDGE
 from vistarium.dedup import Deduplicator
 from vistarium.model_client import ModelJudgmentError, judge_image
 
@@ -106,6 +107,18 @@ def build_record(candidate: nps_client.NPSCandidate, image_path: Path) -> dict |
     if candidate.aesthetic_score is not None:
         record["aesthetic_score"] = candidate.aesthetic_score
         record["aesthetic_method"] = candidate.aesthetic_method
+    # Appended after **model_fields is spread above, not set earlier in
+    # the dict literal -- schema.json's license_evidence is a required
+    # model_fields key, so anything assigned before the spread would be
+    # silently clobbered by it. candidate.copyright_note is NPS's own
+    # deterministic rights text (verbatim Explanation, or a non-
+    # boilerplate Copyright string); appending preserves both the
+    # model's visual read and NPS's own stated reason for anyone
+    # reviewing a flagged record later. See DECISIONS.md, 2026-09-06.
+    if candidate.copyright_note:
+        record["license_evidence"] = (
+            f"{record['license_evidence']} | NPS: {candidate.copyright_note}"
+        )
     return record
 
 
@@ -286,6 +299,30 @@ def run(
 
     for i, candidate in enumerate(new_candidates, 1):
         log.info("[%d/%d] %s: %s", i, len(new_candidates), candidate.id, candidate.title[:60])
+
+        # No license-based skip here -- as of 2026-09-06, license is a
+        # client-side site filter (docs/app.js), not a scrape/publish
+        # exclusion; a "Restrictions apply..." candidate is cataloged the
+        # same as any other, just tagged restricted at publish time
+        # (build_site.py's license_category). See DECISIONS.md.
+        if (
+            candidate.original_width is not None
+            and candidate.original_height is not None
+            and max(candidate.original_width, candidate.original_height) < MIN_WALLPAPER_LONG_EDGE
+        ):
+            # Known from the album API's FileInfo (search_album only --
+            # see NPSCandidate.original_width's docstring) before ever
+            # downloading. Same threshold/reasoning as the post-download
+            # check below.
+            log.info(
+                "  %dx%d original (FileInfo), below %dpx minimum, skipping",
+                candidate.original_width,
+                candidate.original_height,
+                MIN_WALLPAPER_LONG_EDGE,
+            )
+            _write_checkpoint_line(checkpoint_path, {"id": candidate.id, "outcome": "too_small"})
+            continue
+
         try:
             image_path = nps_client.download_image(candidate, images_dir)
         except Exception as e:
@@ -294,6 +331,31 @@ def run(
                 checkpoint_path, {"id": candidate.id, "outcome": "download_failed"}
             )
             continue
+
+        if candidate.original_width is None:
+            # Fallback for search paths that don't expose FileInfo (see
+            # above) -- found live 2026-09-05 (edc77846..., a 499x400
+            # "Original" that had otherwise passed every gate). Checked
+            # before the VLM call so an undersized original doesn't cost
+            # a judge_image() round trip it can never actually be
+            # published after. See build_site.py's MIN_WALLPAPER_LONG_EDGE
+            # and DECISIONS.md, 2026-09-05.
+            try:
+                with Image.open(image_path) as im:
+                    long_edge = max(im.width, im.height)
+            except Exception as e:
+                log.warning("could not read dimensions for %s: %s", candidate.id, e)
+                long_edge = None
+            if long_edge is not None and long_edge < MIN_WALLPAPER_LONG_EDGE:
+                log.info(
+                    "  %dpx long edge, below %dpx minimum, skipping",
+                    long_edge,
+                    MIN_WALLPAPER_LONG_EDGE,
+                )
+                _write_checkpoint_line(
+                    checkpoint_path, {"id": candidate.id, "outcome": "too_small"}
+                )
+                continue
 
         dup_of = dedup.is_duplicate(image_path)
         if dup_of is not None and dup_of != image_path:

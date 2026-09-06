@@ -62,6 +62,7 @@ select = ["E", "F", "I", "UP", "B"]
 # Inline HTML/CSS/JS template string for the local-only review UI --
 # same reasoning as model_client.py above.
 "scripts/dedup_review_server.py" = ["E501"]
+"scripts/license_review_server.py" = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

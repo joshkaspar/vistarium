@@ -6,7 +6,11 @@ Shows each cluster's member photos side by side; the suggested keeper
 starts hidden. Click a thumbnail to toggle keep/hide -- saves to
 hidden_ids.json immediately, nothing is ever deleted.
 
-Never deployed, never touches docs/ or wopr -- binds to localhost only.
+Never deployed, never touches docs/ or wopr. Binds to 0.0.0.0 (LAN-
+reachable, no auth) so it can be reached from another device on the
+same network -- not exposed to the internet, but anyone on the LAN
+can hit it while it's running. Switch back to host="127.0.0.1" below
+when done reviewing if that's a concern.
 
 Usage: uv run --extra dedup python scripts/dedup_review_server.py
 """
@@ -148,4 +152,4 @@ def api_toggle():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5151, debug=False)
+    app.run(host="0.0.0.0", port=5151, debug=False)

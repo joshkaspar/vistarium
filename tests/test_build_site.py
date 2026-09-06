@@ -50,7 +50,13 @@ def test_build_site_filters_to_landscape_and_writes_thumbs(tmp_path):
     Image.new("RGB", (400, 300), "blue").save(images_dir / "wild-1.jpg")
 
     out_dir = tmp_path / "docs"
-    count = build_site(catalog_path, images_dir, out_dir)
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     assert count == 1
     data = json.loads((out_dir / "data.json").read_text())
@@ -71,7 +77,13 @@ def test_build_site_uses_portrait_thumbnail_for_portrait_originals(tmp_path):
     Image.new("RGB", (300, 400), "green").save(images_dir / "port-1.jpg")
 
     out_dir = tmp_path / "docs"
-    build_site(catalog_path, images_dir, out_dir)
+    build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     data = {r["id"]: r for r in json.loads((out_dir / "data.json").read_text())}
     assert data["land-1"]["aspect"] == "16/9"
@@ -107,7 +119,13 @@ def test_build_site_includes_image_url(tmp_path):
     Image.new("RGB", (400, 300), "red").save(images_dir / "land-1.jpg")
 
     out_dir = tmp_path / "docs"
-    build_site(catalog_path, images_dir, out_dir)
+    build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     data = json.loads((out_dir / "data.json").read_text())
     assert data[0]["image_url"] == "https://example.org/land-1/orig"
@@ -125,7 +143,13 @@ def test_build_site_includes_aesthetic_score_and_date_sortable(tmp_path):
     Image.new("RGB", (400, 300), "red").save(images_dir / "land-1.jpg")
 
     out_dir = tmp_path / "docs"
-    build_site(catalog_path, images_dir, out_dir)
+    build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     data = json.loads((out_dir / "data.json").read_text())
     assert data[0]["aesthetic_score"] == 5.42
@@ -147,7 +171,13 @@ def test_build_site_excludes_records_with_no_aesthetic_score(tmp_path):
     Image.new("RGB", (400, 300), "red").save(images_dir / "land-1.jpg")
 
     out_dir = tmp_path / "docs"
-    count = build_site(catalog_path, images_dir, out_dir)
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     assert count == 0
     assert json.loads((out_dir / "data.json").read_text()) == []
@@ -169,7 +199,13 @@ def test_build_site_excludes_records_below_the_aesthetic_threshold(tmp_path):
         Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
 
     out_dir = tmp_path / "docs"
-    count = build_site(catalog_path, images_dir, out_dir)
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     assert count == 10
     ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
@@ -191,7 +227,13 @@ def test_build_site_relaxes_cutoff_for_a_park_under_the_floor(tmp_path):
         Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
 
     out_dir = tmp_path / "docs"
-    count = build_site(catalog_path, images_dir, out_dir)
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     assert count == 2
     ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
@@ -212,11 +254,64 @@ def test_build_site_still_excludes_below_relaxed_cutoff_even_for_thin_park(tmp_p
         Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
 
     out_dir = tmp_path / "docs"
-    count = build_site(catalog_path, images_dir, out_dir)
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     assert count == 1
     ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
     assert ids == {"good-1"}
+
+
+def test_build_site_excludes_ids_in_hidden_ids_file(tmp_path):
+    # dedup_review_server.py's manual hide-list -- a record marked hidden
+    # stays out of the published site even though it otherwise qualifies,
+    # same display-gate-not-deletion treatment as every other filter here.
+    catalog = [_record("keep-1", "landscape"), _record("hide-1", "landscape")]
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    for r in catalog:
+        Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
+
+    hidden_ids_path = tmp_path / "hidden_ids.json"
+    hidden_ids_path.write_text(json.dumps(["hide-1"]))
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path, images_dir, out_dir, hidden_ids_path=hidden_ids_path, min_long_edge=1
+    )
+
+    assert count == 1
+    ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
+    assert ids == {"keep-1"}
+
+
+def test_build_site_treats_missing_hidden_ids_file_as_nothing_hidden(tmp_path):
+    catalog = [_record("land-1", "landscape")]
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "land-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "does-not-exist.json",
+        min_long_edge=1,
+    )
+
+    assert count == 1
 
 
 def test_build_site_skips_records_missing_local_image(tmp_path):
@@ -228,10 +323,63 @@ def test_build_site_skips_records_missing_local_image(tmp_path):
     images_dir.mkdir()
 
     out_dir = tmp_path / "docs"
-    count = build_site(catalog_path, images_dir, out_dir)
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     assert count == 0
     assert json.loads((out_dir / "data.json").read_text()) == []
+
+
+def test_build_site_excludes_undersized_originals(tmp_path):
+    # A source original whose long edge is below min_long_edge isn't
+    # wallpaper-sized -- found live 2026-09-05 (a 499x400 "Original" that
+    # had passed every other gate). Excluded here rather than upscaled.
+    catalog = [_record("tiny-1", "landscape")]
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (499, 400), "red").save(images_dir / "tiny-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1920,
+    )
+
+    assert count == 0
+    assert json.loads((out_dir / "data.json").read_text()) == []
+    assert not (out_dir / "thumbs" / "tiny-1.webp").exists()
+
+
+def test_build_site_includes_originals_at_or_above_min_long_edge(tmp_path):
+    catalog = [_record("big-1", "landscape")]
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (1920, 1080), "red").save(images_dir / "big-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1920,
+    )
+
+    assert count == 1
 
 
 def test_is_360_panorama_detects_nps_titling_conventions():
@@ -258,11 +406,77 @@ def test_build_site_excludes_360_panoramas(tmp_path):
     Image.new("RGB", (400, 300), "blue").save(images_dir / "pano-1.jpg")
 
     out_dir = tmp_path / "docs"
-    count = build_site(catalog_path, images_dir, out_dir)
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     assert count == 1
     data = json.loads((out_dir / "data.json").read_text())
     assert data[0]["id"] == "normal-1"
+
+
+def test_build_site_tags_public_domain_regardless_of_granting_rights(tmp_path):
+    # 2026-09-06 investigation settled this: only the Constraints
+    # Information *prefix* ("Public domain" vs. "Restrictions apply...")
+    # is a real rights signal -- GrantingRights level (Full/Partial/
+    # Unknown/Minimum) isn't. See nps_client.is_open_license() and
+    # DECISIONS.md.
+    catalog = [_record(f"pd-{g}", "landscape") for g in ("Full", "Partial", "Unknown")]
+    for r, g in zip(catalog, ("Full", "Partial", "Unknown"), strict=True):
+        r["license"] = f"Public domain/{g}"
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    for r in catalog:
+        Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
+
+    assert count == 3
+    data = json.loads((out_dir / "data.json").read_text())
+    assert all(r["license_category"] == "public_domain" for r in data)
+
+
+def test_build_site_publishes_restricted_licenses_tagged_not_excluded(tmp_path):
+    # 2026-09-06: license is a client-side filter (docs/app.js,
+    # defaulting to "Public domain"), not a publish/exclude gate --
+    # briefly was one, reverted same day. See DECISIONS.md.
+    catalog = [_record("copyrighted-1", "landscape")]
+    catalog[0]["license"] = (
+        "Restrictions apply on use and/or reproduction (Copyrighted material)/Full"
+    )
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "copyrighted-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
+
+    assert count == 1
+    data = json.loads((out_dir / "data.json").read_text())
+    assert data[0]["license_category"] == "restricted"
 
 
 def test_build_site_excludes_structure_uniformly(tmp_path):
@@ -279,6 +493,12 @@ def test_build_site_excludes_structure_uniformly(tmp_path):
     Image.new("RGB", (400, 300), "red").save(images_dir / "arch-1.jpg")
 
     out_dir = tmp_path / "docs"
-    count = build_site(catalog_path, images_dir, out_dir)
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
 
     assert count == 0

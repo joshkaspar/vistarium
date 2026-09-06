@@ -7,10 +7,20 @@ post-processing of an already-built catalog, same as crop.py.
 
 Only primary_subject == "landscape" records are published -- see
 DECISIONS.md, 2026-08-30, "site-inclusion policy" -- and, as of
-2026-09-02, only ones scoring >= PUBLISH_MIN_AESTHETIC_SCORE. Both are
-display gates, not deletions: everything stays in data/catalog.json
-regardless, and a record reappears here automatically once it clears
-whatever the current bar is.
+2026-09-02, only ones scoring >= PUBLISH_MIN_AESTHETIC_SCORE, and, as of
+2026-09-05, only ones not listed in hidden_ids.json (manual dedup-review
+hides, see dedup_review_server.py). All gates are display gates, not
+deletions: everything stays in data/catalog.json regardless, and a
+record reappears here automatically once it clears whatever the
+current bar is / is un-hidden.
+
+License is not a publish/exclude gate (it was, briefly, on 2026-09-06 --
+see DECISIONS.md for why that was reverted the same day): every eligible
+record publishes regardless of license, tagged with a deterministic
+`license_category` ("public_domain" or "restricted", from
+nps_client.is_open_license()) that the site's own client-side filter
+uses, defaulting to "Public domain" -- see docs/app.js. Nothing is
+hidden from the underlying data, just from the default view.
 """
 
 from __future__ import annotations
@@ -23,9 +33,21 @@ from pathlib import Path
 from PIL import Image
 
 from vistarium.crop import crop_9x16, crop_16x9
+from vistarium.nps_client import is_open_license
 
 THUMB_WIDTH = 1200
 WEBP_QUALITY = 82
+# A source original whose long edge is below this isn't wallpaper-sized --
+# found live 2026-09-05 (edc77846..., "Flowering Coreopsis": 499x400
+# actual Original, nowhere near desktop-wallpaper resolution) despite
+# passing every other gate. 1920 is the common Full HD long edge -- below
+# it, both our own thumbnail render (which would have to upscale) and a
+# user's full-resolution download via image_url/source_url are too small
+# to be useful as a wallpaper. Same display-gate-not-deletion treatment:
+# nothing is deleted from data/catalog.json, and pipeline.py separately
+# gates this at scrape time (before the VLM ever sees it) going forward --
+# see DECISIONS.md, 2026-09-05.
+MIN_WALLPAPER_LONG_EDGE = 1920
 # Display-only gate, not a deletion -- records scoring below this stay in
 # data/catalog.json untouched and will reappear here automatically if the
 # threshold is lowered later or the record gets rescored. Matches the
@@ -78,14 +100,21 @@ def _date_sortable(date_str: str | None) -> str | None:
         return None
 
 
-def _thumbnail(src_path: Path, dest_path: Path, anchor: str) -> str:
+def _thumbnail(
+    src_path: Path, dest_path: Path, anchor: str, min_long_edge: int = MIN_WALLPAPER_LONG_EDGE
+) -> str | None:
     """Renders the thumbnail and returns its aspect ratio as "16/9" or
     "9/16" -- portrait originals get a portrait thumbnail instead of a
     forced 16:9 crop, which can throw away most of the frame (see
     DECISIONS.md, 2026-08-31). The caller needs the ratio to size the
-    gallery tile correctly."""
+    gallery tile correctly.
+
+    Returns None (and writes nothing) if the source's long edge is below
+    min_long_edge -- see MIN_WALLPAPER_LONG_EDGE's docstring."""
     with Image.open(src_path) as im:
         im = im.convert("RGB")
+        if max(im.width, im.height) < min_long_edge:
+            return None
         portrait = im.height > im.width
         if portrait:
             box = crop_9x16(im.width, im.height, anchor)
@@ -114,16 +143,34 @@ def _is_360_panorama(title: str) -> bool:
     return "360" in title
 
 
+def _load_hidden_ids(hidden_ids_path: Path) -> set[str]:
+    """`hidden_ids_path` is `dedup_review_server.py`'s manual hide-list --
+    a real curation decision (dupe/near-dupe review), not regeneratable
+    scrape output, so it lives at the repo root like `album_keywords.json`.
+    Missing file means nothing's been hidden yet, not an error (a fresh
+    checkout, or wopr before the file's been synced there)."""
+    if not hidden_ids_path.exists():
+        return set()
+    return set(json.loads(hidden_ids_path.read_text()))
+
+
 def build_site(
-    catalog_path: Path, images_dir: Path, out_dir: Path, thumbs_dirname: str = "thumbs"
+    catalog_path: Path,
+    images_dir: Path,
+    out_dir: Path,
+    thumbs_dirname: str = "thumbs",
+    hidden_ids_path: Path = Path("hidden_ids.json"),
+    min_long_edge: int = MIN_WALLPAPER_LONG_EDGE,
 ) -> int:
     catalog = json.loads(catalog_path.read_text())
+    hidden_ids = _load_hidden_ids(hidden_ids_path)
     eligible = [
         r
         for r in catalog
         if r.get("primary_subject") == "landscape"
         and not _is_360_panorama(r.get("title", ""))
         and r.get("aesthetic_score") is not None
+        and r["id"] not in hidden_ids
     ]
     landscape = [r for r in eligible if r["aesthetic_score"] >= PUBLISH_MIN_AESTHETIC_SCORE]
 
@@ -148,7 +195,9 @@ def build_site(
         if not src_path.exists():
             continue
         thumb_name = f"{record['id']}.webp"
-        aspect = _thumbnail(src_path, thumbs_dir / thumb_name, record["crop_anchor"])
+        aspect = _thumbnail(src_path, thumbs_dir / thumb_name, record["crop_anchor"], min_long_edge)
+        if aspect is None:
+            continue
         index.append(
             {
                 "id": record["id"],
@@ -157,6 +206,9 @@ def build_site(
                 "date": record["date"],
                 "park": record["park"],
                 "license": record["license"],
+                "license_category": (
+                    "public_domain" if is_open_license(record["license"]) else "restricted"
+                ),
                 "license_confidence": record["license_confidence"],
                 "source_url": record["source_url"],
                 "image_url": record["image_url"],
@@ -182,9 +234,17 @@ def main() -> None:
     parser.add_argument("--catalog", type=Path, default=Path("data/catalog.json"))
     parser.add_argument("--images", type=Path, default=Path("data/images"))
     parser.add_argument("--out", type=Path, default=Path("docs"))
+    parser.add_argument("--hidden-ids", type=Path, default=Path("hidden_ids.json"))
+    parser.add_argument("--min-long-edge", type=int, default=MIN_WALLPAPER_LONG_EDGE)
     args = parser.parse_args()
 
-    count = build_site(args.catalog, args.images, args.out)
+    count = build_site(
+        args.catalog,
+        args.images,
+        args.out,
+        hidden_ids_path=args.hidden_ids,
+        min_long_edge=args.min_long_edge,
+    )
     print(f"wrote {count} records to {args.out / 'data.json'}")
     print(f"wrote thumbnails to {args.out / 'thumbs'}")
 
