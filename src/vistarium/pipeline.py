@@ -300,11 +300,19 @@ def run(
     for i, candidate in enumerate(new_candidates, 1):
         log.info("[%d/%d] %s: %s", i, len(new_candidates), candidate.id, candidate.title[:60])
 
-        # No license-based skip here -- as of 2026-09-06, license is a
-        # client-side site filter (docs/app.js), not a scrape/publish
-        # exclusion; a "Restrictions apply..." candidate is cataloged the
-        # same as any other, just tagged restricted at publish time
-        # (build_site.py's license_category). See DECISIONS.md.
+        if not nps_client.is_open_license(candidate.license):
+            # Checked before download/VLM -- a Constraints Information
+            # prefix of "Restrictions apply..." can never publish (see
+            # is_open_license's docstring and DECISIONS.md, 2026-09-06 --
+            # this was briefly a site-side filter instead, reverted back
+            # to a hard exclusion the same day), so there's no reason to
+            # spend bandwidth or a judge_image() call on it.
+            log.info("  license %r excluded, skipping", candidate.license)
+            _write_checkpoint_line(
+                checkpoint_path, {"id": candidate.id, "outcome": "license_excluded"}
+            )
+            continue
+
         if (
             candidate.original_width is not None
             and candidate.original_height is not None

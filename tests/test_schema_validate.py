@@ -37,6 +37,19 @@ def test_valid_record_passes():
     assert is_valid(VALID_RECORD)
 
 
+def test_valid_record_without_content_visible_still_passes():
+    # Deliberately not required/backfilled -- see schema.json and
+    # DECISIONS.md, 2026-09-06. The existing corpus has no such field.
+    assert "content_visible" not in VALID_RECORD
+    assert is_valid(VALID_RECORD)
+
+
+def test_valid_record_with_content_visible_passes():
+    record = copy.deepcopy(VALID_RECORD)
+    record["content_visible"] = False
+    assert is_valid(record)
+
+
 def test_missing_required_field_fails():
     record = copy.deepcopy(VALID_RECORD)
     del record["is_photograph"]

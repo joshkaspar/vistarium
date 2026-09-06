@@ -9,18 +9,20 @@ Only primary_subject == "landscape" records are published -- see
 DECISIONS.md, 2026-08-30, "site-inclusion policy" -- and, as of
 2026-09-02, only ones scoring >= PUBLISH_MIN_AESTHETIC_SCORE, and, as of
 2026-09-05, only ones not listed in hidden_ids.json (manual dedup-review
-hides, see dedup_review_server.py). All gates are display gates, not
-deletions: everything stays in data/catalog.json regardless, and a
-record reappears here automatically once it clears whatever the
-current bar is / is un-hidden.
-
-License is not a publish/exclude gate (it was, briefly, on 2026-09-06 --
-see DECISIONS.md for why that was reverted the same day): every eligible
-record publishes regardless of license, tagged with a deterministic
-`license_category` ("public_domain" or "restricted", from
-nps_client.is_open_license()) that the site's own client-side filter
-uses, defaulting to "Public domain" -- see docs/app.js. Nothing is
-hidden from the underlying data, just from the default view.
+hides, see dedup_review_server.py), and, as of 2026-09-06, only ones
+with content_visible != false (model field -- blank/washed-out/
+degraded scans, see schema.json; missing on old records defaults to
+true, since this is a future-scrapes-only gate, not backfilled onto
+the existing corpus), and, also as of 2026-09-06, only ones
+nps_client.is_open_license() accepts (Constraints Information's prefix
+is "Public domain" -- see that function's docstring and DECISIONS.md).
+This licensing gate was briefly replaced with a site-side filter
+earlier the same day, then reverted back to a hard exclusion later
+that same day per Josh's explicit call -- see DECISIONS.md for both
+entries. All gates are display gates, not deletions: everything stays
+in data/catalog.json regardless, and a record reappears here
+automatically once it clears whatever the current bar is / is
+un-hidden.
 """
 
 from __future__ import annotations
@@ -171,6 +173,8 @@ def build_site(
         and not _is_360_panorama(r.get("title", ""))
         and r.get("aesthetic_score") is not None
         and r["id"] not in hidden_ids
+        and r.get("content_visible", True)
+        and is_open_license(r.get("license", ""))
     ]
     landscape = [r for r in eligible if r["aesthetic_score"] >= PUBLISH_MIN_AESTHETIC_SCORE]
 
@@ -206,9 +210,6 @@ def build_site(
                 "date": record["date"],
                 "park": record["park"],
                 "license": record["license"],
-                "license_category": (
-                    "public_domain" if is_open_license(record["license"]) else "restricted"
-                ),
                 "license_confidence": record["license_confidence"],
                 "source_url": record["source_url"],
                 "image_url": record["image_url"],

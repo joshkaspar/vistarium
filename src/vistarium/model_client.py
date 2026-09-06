@@ -41,7 +41,7 @@ REQUEST_TIMEOUT_S = 180
 MAX_RETRIES = 2
 
 JSON_GRAMMAR = r"""
-root ::= "{" ws "\"is_photograph\"" ws ":" ws boolean ws "," ws "\"time_of_day\"" ws ":" ws tod ws "," ws "\"time_of_day_evidence\"" ws ":" ws todevidence ws "," ws "\"license_confidence\"" ws ":" ws licenseconfidence ws "," ws "\"license_evidence\"" ws ":" ws string ws "," ws "\"primary_subject\"" ws ":" ws primarysubject ws "," ws "\"people_present\"" ws ":" ws boolean ws "," ws "\"people_prominence\"" ws ":" ws peopleprominence ws "," ws "\"crop_anchor\"" ws ":" ws cropanchor ws "," ws "\"frame_type\"" ws ":" ws frametype ws "," ws "\"color_mode\"" ws ":" ws colormode ws "," ws "\"dominant_color\"" ws ":" ws dominantcolor ws "," ws "\"tags\"" ws ":" ws tags ws "}"
+root ::= "{" ws "\"is_photograph\"" ws ":" ws boolean ws "," ws "\"content_visible\"" ws ":" ws boolean ws "," ws "\"time_of_day\"" ws ":" ws tod ws "," ws "\"time_of_day_evidence\"" ws ":" ws todevidence ws "," ws "\"license_confidence\"" ws ":" ws licenseconfidence ws "," ws "\"license_evidence\"" ws ":" ws string ws "," ws "\"primary_subject\"" ws ":" ws primarysubject ws "," ws "\"people_present\"" ws ":" ws boolean ws "," ws "\"people_prominence\"" ws ":" ws peopleprominence ws "," ws "\"crop_anchor\"" ws ":" ws cropanchor ws "," ws "\"frame_type\"" ws ":" ws frametype ws "," ws "\"color_mode\"" ws ":" ws colormode ws "," ws "\"dominant_color\"" ws ":" ws dominantcolor ws "," ws "\"tags\"" ws ":" ws tags ws "}"
 tod ::= "\"morning\"" | "\"afternoon\"" | "\"evening\"" | "\"night\""
 todevidence ::= "\"caption\"" | "\"exif_timestamp\"" | "\"visual_inference\""
 licenseconfidence ::= "\"confirmed\"" | "\"flagged_for_review\""
@@ -60,6 +60,7 @@ ws ::= [ \t\n]*
 PROMPT = """Look at this photograph and produce a JSON object with exactly these fields:
 
 - is_photograph: true/false -- false if this is a painting, illustration, engraving, sketch, map, or other non-photographic image
+- content_visible: true/false -- false if the frame is blank, washed-out/overexposed, or too degraded to make out any real content (e.g. a badly faded archival scan that's almost entirely white, or a damaged/artifacted negative). This is different from is_photograph: a severely overexposed scan is still a real photograph, it's just unusable -- judge whether there's anything actually visible in it, not whether it's a photograph.
 - time_of_day: morning | afternoon | evening | night (judge from the light in the image itself, not any filename or caption you might infer)
 - time_of_day_evidence: caption | exif_timestamp | visual_inference -- use "visual_inference" since you only have the pixels, not real EXIF/caption data
 - license_confidence: confirmed | flagged_for_review -- flag if the image itself shows something that complicates its stated public-domain/open status (visible watermark, third-party logo, recognizable identifiable person in a way that suggests a rights concern, embedded copyright notice, or is not a photograph at all)

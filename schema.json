@@ -30,6 +30,10 @@
       "type": "boolean",
       "description": "model -- false for paintings, illustrations, engravings, sketches, maps, or other non-photographic images. Gates trust in every other model field: if false, time_of_day/primary_subject/crop_anchor are not meaningful and the record should be excluded from the photograph catalog (kept for audit, not shown on the site)."
     },
+    "content_visible": {
+      "type": "boolean",
+      "description": "model -- false if the frame is blank, washed-out/overexposed, or too degraded to make out any real content, as distinct from is_photograph (a badly faded scan is still a real photograph, just unusable). Added 2026-09-06 (see DECISIONS.md) after several published records turned out to be essentially blank white archival scans that scored just above the aesthetic threshold -- the aesthetic model didn't register how blank they were, and nothing else caught it. A publish-time gate for build_site.py, same tier as is_photograph. Deliberately not required and not backfilled onto the existing corpus (build_site.py treats a missing value as true) -- this only protects future scrapes; the existing corpus is handled with manual spot-checks instead (see hidden_ids.json), the same treatment planned for the not-yet-built structure_present/structure_prominence fields in ROADMAP.md."
+    },
     "time_of_day": {
       "type": "string",
       "enum": ["morning", "afternoon", "evening", "night"],

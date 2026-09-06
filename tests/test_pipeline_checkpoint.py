@@ -242,11 +242,13 @@ def test_run_skips_undersized_originals_via_file_info_before_download(tmp_path: 
     assert entries == [{"id": "tiny-2", "outcome": "too_small"}]
 
 
-def test_run_does_not_skip_restricted_license_candidates(tmp_path: Path):
-    # 2026-09-06: license is a client-side site filter (docs/app.js), not
-    # a scrape-time exclusion -- reverted the same-day "license_excluded"
-    # pre-download skip once the site started publishing restricted-
-    # license records too (tagged, not hidden). See DECISIONS.md.
+def test_run_skips_non_open_license_before_download(tmp_path: Path):
+    # A Constraints Information prefix of "Restrictions apply..." can
+    # never publish (see nps_client.is_open_license) -- skip before
+    # spending bandwidth or a judge_image() call on it. Was briefly
+    # relaxed to a site-side filter on 2026-09-06, reverted back to this
+    # hard exclusion the same day per Josh's explicit call. See
+    # DECISIONS.md.
     workdir = tmp_path / "data"
     candidate = NPSCandidate(
         id="copyrighted-1",
@@ -254,15 +256,11 @@ def test_run_does_not_skip_restricted_license_candidates(tmp_path: Path):
         title="Copyrighted",
         license="Restrictions apply on use and/or reproduction (Copyrighted material)/Full",
     )
-    fake_image = tmp_path / "copyrighted-1.jpg"
-    Image.new("RGB", (1920, 1080), "red").save(fake_image)
-    fake_record = {"id": "copyrighted-1", "is_photograph": True}
 
     with (
         patch("vistarium.pipeline._search_with_cache", return_value=[candidate]),
-        patch("vistarium.pipeline.nps_client.download_image", return_value=fake_image),
-        patch("vistarium.pipeline.build_record", return_value=fake_record),
-        patch("vistarium.pipeline.schema_validate.validate_record"),
+        patch("vistarium.pipeline.nps_client.download_image") as mock_download,
+        patch("vistarium.pipeline.build_record") as mock_build_record,
     ):
         run(
             limit=10,
@@ -272,9 +270,11 @@ def test_run_does_not_skip_restricted_license_candidates(tmp_path: Path):
             terms=None,
         )
 
+    mock_download.assert_not_called()
+    mock_build_record.assert_not_called()
     checkpoint_lines = (workdir / "checkpoint.jsonl").read_text().splitlines()
     entries = [json.loads(line) for line in checkpoint_lines]
-    assert entries == [{"id": "copyrighted-1", "outcome": "catalog", "record": fake_record}]
+    assert entries == [{"id": "copyrighted-1", "outcome": "license_excluded"}]
 
 
 def test_sample_candidates_returns_all_when_pool_smaller_than_limit():

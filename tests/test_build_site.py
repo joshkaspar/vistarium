@@ -293,6 +293,58 @@ def test_build_site_excludes_ids_in_hidden_ids_file(tmp_path):
     assert ids == {"keep-1"}
 
 
+def test_build_site_excludes_content_visible_false(tmp_path):
+    # Model field, added 2026-09-06 (see schema.json/DECISIONS.md) for
+    # blank/washed-out/degraded scans the aesthetic score doesn't catch.
+    catalog = [_record("visible-1", "landscape"), _record("blank-1", "landscape")]
+    catalog[1]["content_visible"] = False
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    for r in catalog:
+        Image.new("RGB", (400, 300), "red").save(images_dir / f"{r['id']}.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
+
+    assert count == 1
+    ids = {r["id"] for r in json.loads((out_dir / "data.json").read_text())}
+    assert ids == {"visible-1"}
+
+
+def test_build_site_treats_missing_content_visible_as_true(tmp_path):
+    # Not backfilled onto the existing corpus -- a record with no
+    # content_visible key at all (every record scraped before 2026-09-06)
+    # must still publish normally.
+    catalog = [_record("old-record-1", "landscape")]
+    assert "content_visible" not in catalog[0]
+    catalog_path = tmp_path / "catalog.json"
+    catalog_path.write_text(json.dumps(catalog))
+
+    images_dir = tmp_path / "images"
+    images_dir.mkdir()
+    Image.new("RGB", (400, 300), "red").save(images_dir / "old-record-1.jpg")
+
+    out_dir = tmp_path / "docs"
+    count = build_site(
+        catalog_path,
+        images_dir,
+        out_dir,
+        hidden_ids_path=tmp_path / "hidden_ids.json",
+        min_long_edge=1,
+    )
+
+    assert count == 1
+
+
 def test_build_site_treats_missing_hidden_ids_file_as_nothing_hidden(tmp_path):
     catalog = [_record("land-1", "landscape")]
     catalog_path = tmp_path / "catalog.json"
@@ -419,7 +471,7 @@ def test_build_site_excludes_360_panoramas(tmp_path):
     assert data[0]["id"] == "normal-1"
 
 
-def test_build_site_tags_public_domain_regardless_of_granting_rights(tmp_path):
+def test_build_site_includes_public_domain_regardless_of_granting_rights(tmp_path):
     # 2026-09-06 investigation settled this: only the Constraints
     # Information *prefix* ("Public domain" vs. "Restrictions apply...")
     # is a real rights signal -- GrantingRights level (Full/Partial/
@@ -446,14 +498,12 @@ def test_build_site_tags_public_domain_regardless_of_granting_rights(tmp_path):
     )
 
     assert count == 3
-    data = json.loads((out_dir / "data.json").read_text())
-    assert all(r["license_category"] == "public_domain" for r in data)
 
 
-def test_build_site_publishes_restricted_licenses_tagged_not_excluded(tmp_path):
-    # 2026-09-06: license is a client-side filter (docs/app.js,
-    # defaulting to "Public domain"), not a publish/exclude gate --
-    # briefly was one, reverted same day. See DECISIONS.md.
+def test_build_site_excludes_restrictions_apply_regardless_of_granting_rights(tmp_path):
+    # License is a hard publish gate again -- briefly relaxed to a
+    # site-side filter on 2026-09-06, reverted back the same day per
+    # Josh's explicit call. See DECISIONS.md.
     catalog = [_record("copyrighted-1", "landscape")]
     catalog[0]["license"] = (
         "Restrictions apply on use and/or reproduction (Copyrighted material)/Full"
@@ -474,9 +524,7 @@ def test_build_site_publishes_restricted_licenses_tagged_not_excluded(tmp_path):
         min_long_edge=1,
     )
 
-    assert count == 1
-    data = json.loads((out_dir / "data.json").read_text())
-    assert data[0]["license_category"] == "restricted"
+    assert count == 0
 
 
 def test_build_site_excludes_structure_uniformly(tmp_path):
