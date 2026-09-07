@@ -63,6 +63,7 @@ select = ["E", "F", "I", "UP", "B"]
 # same reasoning as model_client.py above.
 "scripts/dedup_review_server.py" = ["E501"]
 "scripts/license_review_server.py" = ["E501"]
+"scripts/fire_review_server.py" = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
