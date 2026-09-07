@@ -55,7 +55,7 @@ PAGE = """
   .cluster-header { font-size: 13px; color: #999; margin-bottom: 10px; }
   .members { display: flex; gap: 12px; flex-wrap: wrap; }
   .member { width: 220px; cursor: pointer; border: 3px solid transparent; border-radius: 6px; overflow: hidden; }
-  .member img { display: block; width: 100%; max-height: 320px; object-fit: contain; background: #000; }
+  .member img { display: block; width: 100%; height: 320px; object-fit: contain; background: #000; }
   .member .label { padding: 6px 8px; font-size: 12px; }
   .member.kept { border-color: #4caf50; }
   .member.hidden { border-color: #333; opacity: 0.45; }

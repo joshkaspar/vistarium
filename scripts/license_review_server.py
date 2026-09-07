@@ -105,7 +105,7 @@ PAGE = """
   .group-header { font-size: 20px; font-weight: 600; color: #ffb74d; margin-bottom: 16px; }
   .members { display: flex; gap: 18px; flex-wrap: wrap; }
   .member { width: 380px; border: 4px solid transparent; border-radius: 8px; overflow: hidden; background: #1d1d1d; }
-  .member img { display: block; width: 100%; max-height: 500px; object-fit: contain; background: #000; }
+  .member img { display: block; width: 100%; height: 500px; object-fit: contain; background: #000; }
   .member .label { padding: 12px 14px; font-size: 15px; line-height: 1.5; }
   .member.confirmed { border-color: #4caf50; }
   .member.hidden-choice { border-color: #e57373; opacity: 0.65; }
