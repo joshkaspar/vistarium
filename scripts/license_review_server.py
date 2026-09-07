@@ -47,6 +47,16 @@ Never deployed, never touches docs/ or wopr. Binds to 0.0.0.0 (LAN-
 reachable, no auth) -- switch back to host="127.0.0.1" below when done
 reviewing if that's a concern.
 
+Thumbnails render with object-fit: contain, not cover -- found live
+2026-09-07: a promotional graphic (Shenandoah's "Sunset," a real photo
+with a John Muir quote banner burned in at top and a caption bar at
+bottom) had already been swept into the confirmed_ids.json bulk
+migration because a reviewer never saw the banner/caption -- cover
+inside a fixed-height box was cropping exactly the top/bottom strip
+where overlay text and watermarks tend to live, especially on portrait
+images. A review tool whose whole purpose is spotting exactly this
+kind of defect can't be the thing hiding it. See DECISIONS.md.
+
 Usage: uv run --extra dedup python scripts/license_review_server.py
 """
 
@@ -95,7 +105,7 @@ PAGE = """
   .group-header { font-size: 20px; font-weight: 600; color: #ffb74d; margin-bottom: 16px; }
   .members { display: flex; gap: 18px; flex-wrap: wrap; }
   .member { width: 380px; border: 4px solid transparent; border-radius: 8px; overflow: hidden; background: #1d1d1d; }
-  .member img { display: block; width: 100%; height: 260px; object-fit: cover; }
+  .member img { display: block; width: 100%; max-height: 500px; object-fit: contain; background: #000; }
   .member .label { padding: 12px 14px; font-size: 15px; line-height: 1.5; }
   .member.confirmed { border-color: #4caf50; }
   .member.hidden-choice { border-color: #e57373; opacity: 0.65; }

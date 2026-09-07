@@ -120,17 +120,57 @@ decided.
   params are unchanged) before the corpus grows further with more
   sources (LOC, Smithsonian, etc. below).
 - **Watch for annotated/overlay graphics -- a real photo doctored with
-  administrative markup, not a natural scene.** Found live 2026-09-06
-  reviewing `flagged_for_review` records: Grand Teton's "Kelly Parcel"
-  land-acquisition series had 2 of 6 aerial photos with a bold red
-  property-boundary line drawn over an otherwise genuine landscape shot
-  (`28eb013c...`, `17ec2488...`, both hidden). Distinct from the blank/
-  degraded-scan problem (`content_visible`) and from repeat-photography
-  composites below -- this is a real, undoctored-looking photo with a
-  deliberate graphic overlay added for a specific administrative
-  purpose. Only caught by eye so far (2/6 in one small series); not
-  worth an automated check yet at this sample size, but worth watching
-  for more examples before deciding whether one's justified.
+  markup or promotional text, not a natural scene.** Two variants found
+  so far, same underlying pattern (a genuine photo with something added
+  on top, as distinct from the blank/degraded-scan problem covered by
+  `content_visible`):
+  - Administrative overlays: Grand Teton's "Kelly Parcel" land-
+    acquisition series had 2 of 6 aerial photos with a bold red
+    property-boundary line drawn over an otherwise genuine landscape
+    shot (`28eb013c...`, `17ec2488...`, both hidden; found 2026-09-06).
+  - Promotional/marketing graphics: a confirmed "Find Your Park" NPS
+    marketing series at Shenandoah -- a real photo with a quote banner
+    (John Muir, FDR) burned in at top and a "Find your park in
+    Shenandoah National Park." caption bar at the bottom, one instance
+    with the full 2016 NPS Centennial / "FIND YOUR PARK" logo lockup.
+    4 confirmed and hidden 2026-09-07: `e86f3f13...` ("Sunset"),
+    `e8823679...` ("Re-creation"), `e886b816...` ("Mountains"),
+    `e873a926...` ("Skyline Drive") -- all portrait (9/16), all
+    `flagged_for_review`, all credited generically to "NPS" or nothing.
+    A same-park sweep of every other Shenandoah `flagged_for_review`
+    record turned up no more (5 others checked were genuine photos
+    flagged only for a person in frame). Worth the same sweep in other
+    parks with a lot of flagged records if more of this series turn up.
+    Notably `e86f3f13...` had also been swept into the 351-record
+    `confirmed_ids.json` bulk migration (2026-09-06) without anyone
+    having actually looked at it -- a reminder that bulk-migrating "not
+    explicitly hidden" into "confirmed" only reflects the old status
+    quo, not a real review, and the rest of that 351 may still contain
+    other unreviewed problems like this one.
+  - Interpretive/wayside exhibit panels: `9116671b-afc5-4cc7-beca-394b7461ee4d`
+    (Acadia, "215 Sounds of the Sea") is a full wayside-sign design --
+    title, body paragraph, an illustrated cave diagram, a "Safety Tips"
+    box -- composited over a real wave-crash photo background. Heavier
+    than a quote banner, closer to a museum placard graphic. Notably
+    this one was NOT `flagged_for_review` at all (`license_confidence:
+    confirmed`) -- it's a `primary_subject` misclassification, not a
+    license-flag miss: schema.json's own "document" category is
+    explicitly defined for "a photographed newspaper page, museum
+    placard, interpretive sign, map, or screenshot," which is exactly
+    what this is, but the model classified it as `landscape` instead,
+    probably because the dominant visual content (the wave photo) reads
+    as scenic despite the heavy text/graphic overlay covering much of
+    the frame. Hidden 2026-09-07; no sibling instances found by a
+    numbered-title sweep, but that was a narrow check (only 21 site-wide
+    records match a leading-number title pattern, and only this one was
+    actually a wayside-panel design) -- a real primary_subject miscall
+    like this could exist elsewhere without the same title tell.
+  Only caught by eye so far (a handful of examples across three
+  different overlay styles); not worth an automated check yet at this
+  sample size, but worth watching for more before deciding whether
+  one's justified -- and worth planning an actual pass through the 351
+  bulk-confirmed records at some point, since that migration was
+  explicitly a status-quo carry-forward, not a review.
 - **Repeat-photography/before-after composites aren't fully caught by
   any single photographer-field text signal -- three different
   credit-field patterns found so far, all for the same underlying

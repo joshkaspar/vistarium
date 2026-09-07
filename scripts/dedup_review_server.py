@@ -12,6 +12,12 @@ same network -- not exposed to the internet, but anyone on the LAN
 can hit it while it's running. Switch back to host="127.0.0.1" below
 when done reviewing if that's a concern.
 
+Thumbnails render with object-fit: contain, not cover -- found live
+2026-09-07 in license_review_server.py (same underlying issue, same
+fix applied here for consistency): cover inside a fixed-height box
+crops the top/bottom off portrait images, which is exactly where
+overlay text/watermarks tend to sit. See DECISIONS.md.
+
 Usage: uv run --extra dedup python scripts/dedup_review_server.py
 """
 
@@ -49,7 +55,7 @@ PAGE = """
   .cluster-header { font-size: 13px; color: #999; margin-bottom: 10px; }
   .members { display: flex; gap: 12px; flex-wrap: wrap; }
   .member { width: 220px; cursor: pointer; border: 3px solid transparent; border-radius: 6px; overflow: hidden; }
-  .member img { display: block; width: 100%; height: 140px; object-fit: cover; }
+  .member img { display: block; width: 100%; max-height: 320px; object-fit: contain; background: #000; }
   .member .label { padding: 6px 8px; font-size: 12px; }
   .member.kept { border-color: #4caf50; }
   .member.hidden { border-color: #333; opacity: 0.45; }
