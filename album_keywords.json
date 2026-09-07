@@ -1,5 +1,5 @@
 {
-  "_comment": "Versioned config for album_triage.classify_album() -- see DECISIONS.md, 2026-09-01/02. Matched case-insensitively as substrings against an album's title + description. exclude wins over include when both match. ' sign' (leading space) not 'sign' -- bare 'sign' matches 'design'; 'search and rescue' kept full-phrase rather than adding a bare 'sar' abbreviation, which matches 'anniversary'. Both checked live against the full 3,314-album corpus before adding, 2026-09-02. 'photo contest'/'photography contest'/'photo challenge' added 2026-09-06 (license/rights investigation, see DECISIONS.md) -- contest entrants keep their own copyright, confirmed a systematically non-open-access pattern, not caught by per-item Constraints Information checking alone since album-level triage is free and per-item checking still costs a download+parse.",
+  "_comment": "Versioned config for album_triage.classify_album() -- see DECISIONS.md, 2026-09-01/02. Matched case-insensitively as substrings against an album's title + description. exclude wins over include when both match. ' sign' (leading space) not 'sign' -- bare 'sign' matches 'design'; 'search and rescue' kept full-phrase rather than adding a bare 'sar' abbreviation, which matches 'anniversary'. Both checked live against the full 3,314-album corpus before adding, 2026-09-02. 'photo contest'/'photography contest'/'photo challenge' were added 2026-09-06 and REMOVED the next day (see DECISIONS.md) -- a real counter-example ('Lower Hamilton Lake', SEKI, a 2016 Facebook Photo Contest Winners entry with a clean bare 'Public domain' Constraints Information) showed 'photo contest' correlates with copyright but doesn't determine it, same failure shape as the credit-line/GrantingRights/album-trust heuristics already rejected elsewhere in this project. Per-item Constraints Information parsing and the license_confidence watermark check already handle both real risks (a genuinely PD contest entry, and a mislabeled one) correctly on their own -- do not re-add a category-level contest exclusion.",
   "exclude": [
     "access:",
     "parking",
@@ -51,9 +51,6 @@
     "monitoring",
     "repeat photography",
     "repeat photo",
-    "photo contest",
-    "photography contest",
-    "photo challenge",
     " sign",
     "animals",
     "birds",
