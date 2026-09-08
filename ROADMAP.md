@@ -242,9 +242,13 @@ decided.
 - **Possibility, not decided: a cheap VLM (e.g. Haiku) to propose the
   keep/hide call within each `find_duplicates.py` timestamp cluster.**
   Raised 2026-09-08 after Josh noted the manual duplicate-cluster review
-  (367 clusters) is slow going, in part because it keeps surfacing
-  unrelated defects (overlay graphics, mis-clustered composites) that a
-  narrow automated classifier wouldn't catch on its own. The "which of
+  (367 clusters, completed by hand the same day -- see `DECISIONS.md`)
+  was slow going, in part because it kept surfacing unrelated defects
+  (overlay graphics, mis-clustered composites) that a narrow automated
+  classifier wouldn't catch on its own. Now that this specific backlog
+  is cleared, the case for building this is really about the *next*
+  batch (new sources, future re-runs of `find_duplicates.py`), not an
+  active bottleneck. The "which of
   these near-identical shots is the same scene, and which is the
   strongest one" judgment itself is a much narrower, more tractable call
   than fire_smoke_category's compositional-dominance test -- a good
