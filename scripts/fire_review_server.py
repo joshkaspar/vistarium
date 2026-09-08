@@ -20,13 +20,22 @@ name) -- it's NPS's generic catch-all tag, not something
 album_keywords.json ever gets a chance to filter on.
 
 Decisions here write to data/fire_review_decisions.json (id -> "keep" |
-"hide"), NOT directly to hidden_ids.json -- deliberately kept separate
-so the decisions can be correlated against tags/fields afterward to
-look for an actual deterministic rule (e.g. "hose"/"firefighter"/
-"engine" in tags, or a people_prominence threshold), before deciding
-whether one holds up. Once/if a rule is found (or the reviewed set is
-just migrated as-is), "hide" decisions get folded into hidden_ids.json
-separately -- this tool does not touch the live site by itself.
+"hide"), NOT directly to hidden_ids.json -- this tool does not touch
+the live site by itself.
+
+As of 2026-09-08: pre-seeded from a real model pass. model_client.py
+gained fire_smoke_category (an enum, not a boolean, so the specific
+reason stays inspectable -- see schema.json/DECISIONS.md), validated
+against 11 hand-labeled examples (10/11 correct on the actual keep/
+reject decision) before being run across all 207 of these candidates.
+Every card's initial Keep/Hide state matches the model's call
+(reject-shaped categories -- response_documentation,
+volcanic_destruction, burn_aftermath_dominant -- default to Hide,
+everything else to Keep), shown alongside the model's own category and
+one-sentence evidence so a human can confirm or override each one.
+Clicking Keep/Hide overwrites that seed for that record; nothing here
+is a passive display, every card's current state is what will
+actually get used once reviewed.
 
 Thumbnails render with object-fit: contain (see DECISIONS.md,
 2026-09-07) -- full frame always visible, never cropped by the tool.
@@ -91,6 +100,9 @@ PAGE = """
   .field .v { color: #eee; white-space: pre-line; }
   .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
   .tag { background: #333; color: #ddd; font-size: 12px; padding: 2px 8px; border-radius: 10px; }
+  .model-category { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 10px; margin-top: 8px; }
+  .model-category.reject { background: #4a2020; color: #ff8a80; }
+  .model-category.keep { background: #1f3a24; color: #81c784; }
 </style>
 </head>
 <body>
@@ -108,6 +120,8 @@ function statusText(state) {
   return 'Undecided';
 }
 
+const REJECT_CATEGORIES = new Set(['response_documentation', 'volcanic_destruction', 'burn_aftermath_dominant']);
+
 async function load() {
   const res = await fetch('/api/records');
   const data = await res.json();
@@ -115,7 +129,7 @@ async function load() {
   const counts = {keep: 0, hide: 0, undecided: 0};
   for (const r of data.records) counts[r.state]++;
   document.getElementById('summary').textContent =
-    `${data.records.length} fire/smoke-tagged records -- ${counts.keep} keep, ${counts.hide} hide, ${counts.undecided} undecided. Decisions save to data/fire_review_decisions.json, not hidden_ids.json.`;
+    `${data.records.length} fire/smoke-tagged records -- ${counts.keep} keep, ${counts.hide} hide, ${counts.undecided} undecided (pre-seeded from the model's fire_smoke_category call; click Keep/Hide to override). Decisions save to data/fire_review_decisions.json, not hidden_ids.json.`;
   const groups = [];
   let current = null;
   for (const r of data.records) {
@@ -140,6 +154,8 @@ async function load() {
                 <button class="keep-btn ${m.state === 'keep' ? 'active' : ''}" data-action="keep">Keep</button>
                 <button class="hide-btn ${m.state === 'hide' ? 'active' : ''}" data-action="hide">Hide</button>
               </div>
+              <span class="model-category ${m.model_category && REJECT_CATEGORIES.has(m.model_category) ? 'reject' : 'keep'}">${m.model_category ?? 'not classified'}</span>
+              ${field('Model evidence', m.model_evidence)}
               ${field('Tags', '')}
               <div class="tags">${m.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
               ${field('People prominence', m.people_prominence)}
@@ -187,7 +203,7 @@ def index():
 def api_records():
     records = json.loads(CANDIDATES_PATH.read_text()) if CANDIDATES_PATH.exists() else []
     decisions = _load_decisions()
-    records = sorted(records, key=lambda r: r["park"])
+    records = sorted(records, key=lambda r: (r["park"], r.get("model_category") or ""))
     out = [
         {
             "id": r["id"],
@@ -198,6 +214,8 @@ def api_records():
             "people_prominence": r.get("people_prominence"),
             "photographer": r.get("photographer"),
             "aesthetic_score": r.get("aesthetic_score"),
+            "model_category": r.get("model_category"),
+            "model_evidence": r.get("model_evidence"),
             "state": decisions.get(r["id"], "undecided"),
         }
         for r in records

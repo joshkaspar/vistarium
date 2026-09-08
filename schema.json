@@ -58,6 +58,15 @@
       "enum": ["landscape", "wildlife", "structure", "vehicle", "human_activity", "document", "detail"],
       "description": "model -- site-filtering metadata, not an accept/reject gate. 'document' added 2026-08-30 (see DECISIONS.md) for genuine photographs whose subject is a document/informational object rather than a scene -- a photographed newspaper page, museum placard, interpretive sign, map, or screenshot. Distinct from is_photograph=false, which is for non-photographic media (paintings, scans, graphics) regardless of subject matter; 'document' is for real photographs of document-like things. 'detail' added 2026-08-31 (see DECISIONS.md) for a close-up/macro shot of a small piece of the natural or built environment -- moss on bark, animal scat, gravel, bark texture, a single leaf or pinecone -- where the frame has no scenic composition, as distinct from 'landscape' (a scene/vista) or 'wildlife' (an animal)."
     },
+    "fire_smoke_category": {
+      "type": "string",
+      "enum": ["not_fire", "response_documentation", "volcanic_phenomenon", "volcanic_destruction", "smoky_landscape", "burn_aftermath_resilience", "burn_aftermath_dominant"],
+      "description": "model -- a hard publish exclusion for the documentation-shaped values (response_documentation, volcanic_destruction, burn_aftermath_dominant), no pending-review step, same treatment as minor_face_present. Added 2026-09-07 (see DECISIONS.md) after a policy pass through real fire/smoke/volcanic examples found the core test: is fire/smoke the documented EVENT the photo exists to record, or incidental atmosphere within an otherwise landscape-forward composition? An enum, not a boolean, so the specific reason a record was excluded (or which subcategory of 'keep' it fell into) stays inspectable later without re-viewing the image. Deliberately not required and not backfilled onto the existing corpus -- future scrapes only, same treatment as content_visible/minor_face_present; the existing fire/smoke-tagged backlog is being triaged separately via scripts/fire_review_server.py."
+    },
+    "fire_smoke_evidence": {
+      "type": "string",
+      "description": "model -- one short sentence: what was seen and why that fire_smoke_category was chosen, or 'no fire/smoke/volcanic content' if not_fire."
+    },
     "people_present": {
       "type": "boolean",
       "description": "model -- site-filtering metadata, not an accept/reject gate. Do not reject images outright based on people being present."
