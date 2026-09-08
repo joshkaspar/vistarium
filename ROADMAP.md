@@ -239,6 +239,23 @@ decided.
   cases (e.g. the Denali tour-bus pair) that neither current method
   catches, and other sources may not have reliable EXIF timestamps the
   way NPS's professional photography does.
+- **Possibility, not decided: a cheap VLM (e.g. Haiku) to propose the
+  keep/hide call within each `find_duplicates.py` timestamp cluster.**
+  Raised 2026-09-08 after Josh noted the manual duplicate-cluster review
+  (367 clusters) is slow going, in part because it keeps surfacing
+  unrelated defects (overlay graphics, mis-clustered composites) that a
+  narrow automated classifier wouldn't catch on its own. The "which of
+  these near-identical shots is the same scene, and which is the
+  strongest one" judgment itself is a much narrower, more tractable call
+  than fire_smoke_category's compositional-dominance test -- a good
+  candidate for the same validate-before-rollout pattern (hand-label a
+  handful of clusters, check practical accuracy, then run at scale) --
+  but the output should still land in `dedup_review_server.py` for a
+  human confirm pass, not auto-apply, specifically to preserve the
+  free side-benefit of a human actually looking at every image in the
+  cluster. Explicitly not started: Josh flagged that adding a second
+  model into the pipeline changes the project's scope and wants to
+  think it over first.
 - **9-way / rule-of-thirds crop_anchor.** Tested and rejected 2026-08-29
   -- see `DECISIONS.md`. Could be revisited with a reworded prompt that
   explicitly excludes brightness/glare as a signal, but not worth doing

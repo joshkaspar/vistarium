@@ -1078,33 +1078,6 @@
     "date_sortable": "2014-07-26"
   },
   {
-    "id": "2ef91b9f-ad6d-4c60-9a57-d2386724aeb7",
-    "title": "YELLO_LakeNight_NPS_Herbert",
-    "photographer": "Neal Herbert / NPS",
-    "date": "07/25/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/2ef91b9f-ad6d-4c60-9a57-d2386724aeb7",
-    "image_url": "https://npgallery.nps.gov/GetAsset/2ef91b9f-ad6d-4c60-9a57-d2386724aeb7/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "black",
-    "tags": [
-      "night_sky",
-      "milky_way",
-      "stars",
-      "wetland",
-      "reflection",
-      "silhouette"
-    ],
-    "thumb": "thumbs/2ef91b9f-ad6d-4c60-9a57-d2386724aeb7.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.225,
-    "date_sortable": "2014-07-25"
-  },
-  {
     "id": "a336c6e0-445b-4155-aa25-f0472b53adcf",
     "title": "Silhouetted Stargazer_NealHerbert_NPS",
     "photographer": "Neal Herbert / NPS",
@@ -7210,32 +7183,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.414,
     "date_sortable": null
-  },
-  {
-    "id": "d3702c4c-1dd8-b71b-0b40-a2c1c60fb98c",
-    "title": "Milky Way over the Garden of Eden",
-    "photographer": "NPS/Chris Wonderly",
-    "date": "09/10/2015",
-    "park": "Arches National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/d3702c4c-1dd8-b71b-0b40-a2c1c60fb98c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/d3702c4c-1dd8-b71b-0b40-a2c1c60fb98c/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "black",
-    "tags": [
-      "night sky",
-      "stars",
-      "silhouette",
-      "rock formations",
-      "desert"
-    ],
-    "thumb": "thumbs/d3702c4c-1dd8-b71b-0b40-a2c1c60fb98c.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.563,
-    "date_sortable": "2015-09-10"
   },
   {
     "id": "27de9875-155d-451f-67c5-d8ee02b62c2b",
@@ -34073,32 +34020,6 @@
     "date_sortable": null
   },
   {
-    "id": "3030e38f-1dd8-b71c-0700-b3adf235736f",
-    "title": "Hiker and glacier",
-    "photographer": null,
-    "date": null,
-    "park": "Glacier Bay National Park and Preserve",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/3030e38f-1dd8-b71c-0700-b3adf235736f",
-    "image_url": "https://npgallery.nps.gov/GetAsset/3030e38f-1dd8-b71c-0700-b3adf235736f/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "glacier",
-      "mountain",
-      "ice",
-      "snow",
-      "sky"
-    ],
-    "thumb": "thumbs/3030e38f-1dd8-b71c-0700-b3adf235736f.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.739,
-    "date_sortable": null
-  },
-  {
     "id": "301e817c-1dd8-b71c-071f-ea4682b7b997",
     "title": "Hikers on glacier",
     "photographer": null,
@@ -38824,33 +38745,6 @@
     "date_sortable": null
   },
   {
-    "id": "878706a9-3540-435b-9bf8-3ec775c307c5",
-    "title": "View from Permitted Site",
-    "photographer": "NPS/CDubin",
-    "date": "03/16/2024",
-    "park": "Grand Canyon National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/878706a9-3540-435b-9bf8-3ec775c307c5",
-    "image_url": "https://npgallery.nps.gov/GetAsset/878706a9-3540-435b-9bf8-3ec775c307c5/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "canyon",
-      "trees",
-      "river",
-      "snow",
-      "clouds",
-      "rocks"
-    ],
-    "thumb": "thumbs/878706a9-3540-435b-9bf8-3ec775c307c5.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.626,
-    "date_sortable": "2024-03-16"
-  },
-  {
     "id": "f7dcc92a-155d-451f-6710-e93d60a99568",
     "title": "17254",
     "photographer": null,
@@ -39268,32 +39162,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.509,
     "date_sortable": null
-  },
-  {
-    "id": "34f16b10-4949-4d45-a890-346f83fa599e",
-    "title": "Moran Point",
-    "photographer": "NPS",
-    "date": "07/07/2023",
-    "park": "Grand Canyon National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/34f16b10-4949-4d45-a890-346f83fa599e",
-    "image_url": "https://npgallery.nps.gov/GetAsset/34f16b10-4949-4d45-a890-346f83fa599e/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "grand canyon",
-      "canyon",
-      "desert",
-      "rock formations",
-      "vista"
-    ],
-    "thumb": "thumbs/34f16b10-4949-4d45-a890-346f83fa599e.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.504,
-    "date_sortable": "2023-07-07"
   },
   {
     "id": "a77a5443-16c1-416b-865b-745d1fbaf6fe",
@@ -74572,32 +74440,6 @@
     "date_sortable": "2021-06-01"
   },
   {
-    "id": "fdb61f37-f973-4efe-b2ba-18aa9957dba8",
-    "title": "SEQU_210603_SAT_#002_Four Sequoias.jpg",
-    "photographer": "NPS",
-    "date": "06/03/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/fdb61f37-f973-4efe-b2ba-18aa9957dba8",
-    "image_url": "https://npgallery.nps.gov/GetAsset/fdb61f37-f973-4efe-b2ba-18aa9957dba8/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "giant sequoia",
-      "forest",
-      "tree trunks",
-      "national park",
-      "woodland"
-    ],
-    "thumb": "thumbs/fdb61f37-f973-4efe-b2ba-18aa9957dba8.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.842,
-    "date_sortable": "2021-06-03"
-  },
-  {
     "id": "b7735c6d-65b9-4ee3-8456-99c9922cedbe",
     "title": "Sequoias 1st Place_SEKI_12022022_I-TingChiang_Grant Grove after snow storm.JPG",
     "photographer": "I-Ting Chiang",
@@ -75302,31 +75144,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.648,
     "date_sortable": "2021-08-26"
-  },
-  {
-    "id": "dbe6efe1-69d2-4f94-8d44-e3ad61978743",
-    "title": "Giant Sequoia Trees after High Severity Fire",
-    "photographer": "Joe Suarez, National Park Service",
-    "date": "10/17/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/dbe6efe1-69d2-4f94-8d44-e3ad61978743",
-    "image_url": "https://npgallery.nps.gov/GetAsset/dbe6efe1-69d2-4f94-8d44-e3ad61978743/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "trees",
-      "forest",
-      "sky",
-      "trunks"
-    ],
-    "thumb": "thumbs/dbe6efe1-69d2-4f94-8d44-e3ad61978743.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.643,
-    "date_sortable": "2021-10-17"
   },
   {
     "id": "0e941a0b-8023-439b-86a1-262901f7d527",
@@ -81394,32 +81211,6 @@
     "date_sortable": "2017-07-10"
   },
   {
-    "id": "70f9ab45-66e3-441f-92a8-6fff0719c1fc",
-    "title": "Sunset001",
-    "photographer": "Lauren Reid / NPS Photo",
-    "date": "07/10/2017",
-    "park": "Wind Cave National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/70f9ab45-66e3-441f-92a8-6fff0719c1fc",
-    "image_url": "https://npgallery.nps.gov/GetAsset/70f9ab45-66e3-441f-92a8-6fff0719c1fc/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "landscape",
-      "field",
-      "road",
-      "sunset",
-      "clouds"
-    ],
-    "thumb": "thumbs/70f9ab45-66e3-441f-92a8-6fff0719c1fc.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.664,
-    "date_sortable": "2017-07-10"
-  },
-  {
     "id": "b7f62fa2-41f3-4c0a-83fd-4bbed0aed332",
     "title": "Snowy Plain001",
     "photographer": "Kim Acker / NPS Photo",
@@ -82316,32 +82107,6 @@
     "date_sortable": null
   },
   {
-    "id": "3da87ec6-1dd8-b71c-079e-733bbd8e6e64",
-    "title": "Wolverine Mountain",
-    "photographer": null,
-    "date": null,
-    "park": "Wrangell-St. Elias National Park and Preserve",
-    "license": "Public domain/Unknown",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/3da87ec6-1dd8-b71c-079e-733bbd8e6e64",
-    "image_url": "https://npgallery.nps.gov/GetAsset/3da87ec6-1dd8-b71c-079e-733bbd8e6e64/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "mountain",
-      "snow",
-      "clouds",
-      "slope",
-      "moody"
-    ],
-    "thumb": "thumbs/3da87ec6-1dd8-b71c-079e-733bbd8e6e64.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.777,
-    "date_sortable": null
-  },
-  {
     "id": "060d8a39-1dd8-b71c-0746-c380da8851d5",
     "title": "Mount Blackburn & Kennicott Glacier",
     "photographer": "Mount Blackburn & Kennicott Glacier",
@@ -83186,32 +82951,6 @@
     "date_sortable": null
   },
   {
-    "id": "7def1656-1dd8-b71c-076f-39acb9b7879d",
-    "title": "St. Elias Mountains- Aerial",
-    "photographer": null,
-    "date": null,
-    "park": "Wrangell-St. Elias National Park and Preserve",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/7def1656-1dd8-b71c-076f-39acb9b7879d",
-    "image_url": "https://npgallery.nps.gov/GetAsset/7def1656-1dd8-b71c-076f-39acb9b7879d/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "mountain",
-      "snow",
-      "glacier",
-      "aerial",
-      "lake"
-    ],
-    "thumb": "thumbs/7def1656-1dd8-b71c-076f-39acb9b7879d.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.538,
-    "date_sortable": null
-  },
-  {
     "id": "7c7bc0ee-1dd8-b71c-071c-8313af869982",
     "title": "Goat Trail- Glacier and Lake",
     "photographer": null,
@@ -83946,59 +83685,6 @@
     "date_sortable": null
   },
   {
-    "id": "cffd845e-1dd8-b71b-0be8-be270f325eb5",
-    "title": "Castle Geyser & Milky Way",
-    "photographer": "NPS/Neal Herbert",
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/cffd845e-1dd8-b71b-0be8-be270f325eb5",
-    "image_url": "https://npgallery.nps.gov/GetAsset/cffd845e-1dd8-b71b-0be8-be270f325eb5/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "black",
-    "tags": [
-      "milky way",
-      "night sky",
-      "stars",
-      "reflection",
-      "forest",
-      "geothermal"
-    ],
-    "thumb": "thumbs/cffd845e-1dd8-b71b-0be8-be270f325eb5.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.289,
-    "date_sortable": null
-  },
-  {
-    "id": "d0032fd6-1dd8-b71b-0bce-338c114a7b70",
-    "title": "Enjoying the night sky, Mammoth Hot Springs",
-    "photographer": "NPS/Neal Herbert",
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/d0032fd6-1dd8-b71b-0bce-338c114a7b70",
-    "image_url": "https://npgallery.nps.gov/GetAsset/d0032fd6-1dd8-b71b-0bce-338c114a7b70/Original",
-    "time_of_day": "night",
-    "people_prominence": "midground",
-    "color_mode": "color",
-    "dominant_color": "black",
-    "tags": [
-      "milky way",
-      "night sky",
-      "stars",
-      "silhouette",
-      "rock"
-    ],
-    "thumb": "thumbs/d0032fd6-1dd8-b71b-0bce-338c114a7b70.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.282,
-    "date_sortable": null
-  },
-  {
     "id": "32ca6044-1dd8-b71b-0b72-b7a301ae5f4a",
     "title": "Morning fog in the Yellowstone River Valley",
     "photographer": null,
@@ -84658,32 +84344,6 @@
     "date_sortable": null
   },
   {
-    "id": "d14d8e41-6d41-4fc7-87fd-a1752f94d2a3",
-    "title": "Lower Falls with double rainbow",
-    "photographer": "NPS/Neal Herbert",
-    "date": "09/05/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/d14d8e41-6d41-4fc7-87fd-a1752f94d2a3",
-    "image_url": "https://npgallery.nps.gov/GetAsset/d14d8e41-6d41-4fc7-87fd-a1752f94d2a3/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "waterfall",
-      "canyon",
-      "rainbow",
-      "mist",
-      "forest"
-    ],
-    "thumb": "thumbs/d14d8e41-6d41-4fc7-87fd-a1752f94d2a3.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.034,
-    "date_sortable": "2014-09-05"
-  },
-  {
     "id": "7b3dcdec-dae3-4a35-a96d-31a87fcb830a",
     "title": "Sunrise at North Twin Lake",
     "photographer": "NPS/Neal Herbert",
@@ -84761,32 +84421,6 @@
     "aspect": "16/9",
     "aesthetic_score": 6.008,
     "date_sortable": null
-  },
-  {
-    "id": "b089f1ad-a726-413e-ace5-98fbc08726ad",
-    "title": "The Tetons as seen from Craig Pass",
-    "photographer": "NPS/Neal Herbert",
-    "date": "11/08/2013",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/b089f1ad-a726-413e-ace5-98fbc08726ad",
-    "image_url": "https://npgallery.nps.gov/GetAsset/b089f1ad-a726-413e-ace5-98fbc08726ad/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "monochrome",
-    "dominant_color": "gray",
-    "tags": [
-      "mountain",
-      "forest",
-      "mist",
-      "clouds",
-      "vista"
-    ],
-    "thumb": "thumbs/b089f1ad-a726-413e-ace5-98fbc08726ad.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.007,
-    "date_sortable": "2013-11-08"
   },
   {
     "id": "fd449f95-1dd8-b71b-0b2f-26a5fcf1fe86",
@@ -85528,33 +85162,6 @@
     "date_sortable": "2017-09-08"
   },
   {
-    "id": "c82c85cd-1dd8-b71b-0b80-133c8c548fad",
-    "title": "Firehole River",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c82c85cd-1dd8-b71b-0b80-133c8c548fad",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c82c85cd-1dd8-b71b-0b80-133c8c548fad/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "forest",
-      "river",
-      "winter",
-      "evergreen",
-      "fog"
-    ],
-    "thumb": "thumbs/c82c85cd-1dd8-b71b-0b80-133c8c548fad.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.887,
-    "date_sortable": null
-  },
-  {
     "id": "df716d5e-1dd8-b71b-0b5b-f093b532629b",
     "title": "Tree Covered in rime ice near Palette Spring,  Mammoth Hot Springs",
     "photographer": "NPS/Jacob W. Frank",
@@ -85789,33 +85396,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.865,
     "date_sortable": "2014-09-19"
-  },
-  {
-    "id": "84167e80-06f0-4bae-905f-563835a09fbf",
-    "title": "Rime ice on trees near Canary Spring - Mammoth Hot Springs",
-    "photographer": "NPS/Jim Peaco",
-    "date": "01/27/2009",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/84167e80-06f0-4bae-905f-563835a09fbf",
-    "image_url": "https://npgallery.nps.gov/GetAsset/84167e80-06f0-4bae-905f-563835a09fbf/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "forest",
-      "bridge",
-      "winter",
-      "railroad",
-      "trees"
-    ],
-    "thumb": "thumbs/84167e80-06f0-4bae-905f-563835a09fbf.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.862,
-    "date_sortable": "2009-01-27"
   },
   {
     "id": "c55f2156-1dd8-b71b-0be6-30aa80aeaf68",
@@ -86344,32 +85924,6 @@
     "date_sortable": null
   },
   {
-    "id": "1ac41bab-a351-4ac9-9b77-c7971e198d17",
-    "title": "Blowing snow, Electric Peak",
-    "photographer": "NPS/Neal Herbert",
-    "date": "12/05/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/1ac41bab-a351-4ac9-9b77-c7971e198d17",
-    "image_url": "https://npgallery.nps.gov/GetAsset/1ac41bab-a351-4ac9-9b77-c7971e198d17/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "monochrome",
-    "dominant_color": "white",
-    "tags": [
-      "mountain",
-      "snow",
-      "clouds",
-      "fog",
-      "trees"
-    ],
-    "thumb": "thumbs/1ac41bab-a351-4ac9-9b77-c7971e198d17.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.799,
-    "date_sortable": "2015-12-05"
-  },
-  {
     "id": "5b0863ba-1dd8-b71b-0bd0-e5a276600176",
     "title": "Lower Falls of the Yellowstone River",
     "photographer": "NPS/Jim Peaco",
@@ -86714,32 +86268,6 @@
     "date_sortable": null
   },
   {
-    "id": "c517b475-f46a-4a36-8531-d5ae3564f91f",
-    "title": "Lower Falls of the Yellowstone River",
-    "photographer": "NPS/Jim Peaco",
-    "date": "08/03/2013",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c517b475-f46a-4a36-8531-d5ae3564f91f",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c517b475-f46a-4a36-8531-d5ae3564f91f/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "waterfall",
-      "mist",
-      "canyon",
-      "forest",
-      "river"
-    ],
-    "thumb": "thumbs/c517b475-f46a-4a36-8531-d5ae3564f91f.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.777,
-    "date_sortable": "2013-08-03"
-  },
-  {
     "id": "a31c7832-423c-4e6e-8067-14b7e3cbdda4",
     "title": "View of Electric Peak from Sepulcher Mountain",
     "photographer": "NPS / Jacob W. Frank",
@@ -87033,32 +86561,6 @@
     "date_sortable": "2017-10-25"
   },
   {
-    "id": "ee4a0e4e-1dd8-b71b-0b5b-56c36bf539cc",
-    "title": "Smokey sunset over the Gardner River",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ee4a0e4e-1dd8-b71b-0b5b-56c36bf539cc",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ee4a0e4e-1dd8-b71b-0b5b-56c36bf539cc/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "river",
-      "sun",
-      "haze",
-      "trees",
-      "mountains"
-    ],
-    "thumb": "thumbs/ee4a0e4e-1dd8-b71b-0b5b-56c36bf539cc.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.761,
-    "date_sortable": null
-  },
-  {
     "id": "ddf843e7-1dd8-b71b-0b45-e22418f43c2b",
     "title": "Black Pool, West thumb Geyser Basin",
     "photographer": "NPS/Jim Peaco",
@@ -87083,33 +86585,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.758,
     "date_sortable": null
-  },
-  {
-    "id": "65ae005b-611a-4750-9e65-408ec21db36d",
-    "title": "Lower Falls in the Grand Canyon of the Yellowstone River",
-    "photographer": "NPS/Diane Renkin",
-    "date": "07/30/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/65ae005b-611a-4750-9e65-408ec21db36d",
-    "image_url": "https://npgallery.nps.gov/GetAsset/65ae005b-611a-4750-9e65-408ec21db36d/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "waterfall",
-      "canyon",
-      "river",
-      "coniferous",
-      "rocky",
-      "mist"
-    ],
-    "thumb": "thumbs/65ae005b-611a-4750-9e65-408ec21db36d.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.758,
-    "date_sortable": "2015-07-30"
   },
   {
     "id": "1ebee123-bebc-4348-9ddb-1bee1409be9e",
@@ -87163,33 +86638,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.754,
     "date_sortable": null
-  },
-  {
-    "id": "b10c31b0-e5a0-46fd-8bb9-bae1828efd28",
-    "title": "Visitors enjoying the view in a thermal basin.",
-    "photographer": "NPS/Neal Herbert",
-    "date": "10/11/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/b10c31b0-e5a0-46fd-8bb9-bae1828efd28",
-    "image_url": "https://npgallery.nps.gov/GetAsset/b10c31b0-e5a0-46fd-8bb9-bae1828efd28/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "midground",
-    "color_mode": "monochrome",
-    "dominant_color": "gray",
-    "tags": [
-      "mist",
-      "fog",
-      "bridge",
-      "steam",
-      "silhouette",
-      "geothermal"
-    ],
-    "thumb": "thumbs/b10c31b0-e5a0-46fd-8bb9-bae1828efd28.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.749,
-    "date_sortable": "2014-10-11"
   },
   {
     "id": "654d233e-d938-4da7-925d-8e2eb84446c7",
@@ -88355,33 +87803,6 @@
     "date_sortable": null
   },
   {
-    "id": "2781f82c-1127-47a9-afe6-83c2f0b25ee6",
-    "title": "Sunrise, Upper Terrace, Mammoth Hot Springs",
-    "photographer": "NPS/Neal Herbert",
-    "date": "10/10/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/2781f82c-1127-47a9-afe6-83c2f0b25ee6",
-    "image_url": "https://npgallery.nps.gov/GetAsset/2781f82c-1127-47a9-afe6-83c2f0b25ee6/Original",
-    "time_of_day": "morning",
-    "people_prominence": "midground",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "geothermal",
-      "steam",
-      "sun",
-      "boardwalk",
-      "mountains",
-      "clouds"
-    ],
-    "thumb": "thumbs/2781f82c-1127-47a9-afe6-83c2f0b25ee6.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.677,
-    "date_sortable": "2014-10-10"
-  },
-  {
     "id": "5b045c19-1dd8-b71b-0b19-53bb20d222da",
     "title": "Lower Falls of the Yellowstone River",
     "photographer": "NPS/Jim Peaco",
@@ -88567,33 +87988,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.671,
     "date_sortable": "2021-02-02"
-  },
-  {
-    "id": "a261ad01-214a-4473-8efe-5cadbfab2662",
-    "title": "Enjoying sunset along Firehole Lake Drive",
-    "photographer": "NPS/Neal Herbert",
-    "date": "10/08/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/a261ad01-214a-4473-8efe-5cadbfab2662",
-    "image_url": "https://npgallery.nps.gov/GetAsset/a261ad01-214a-4473-8efe-5cadbfab2662/Original",
-    "time_of_day": "evening",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "geyser",
-      "steam",
-      "wooden boardwalk",
-      "cloudy sky",
-      "sun reflection",
-      "two people"
-    ],
-    "thumb": "thumbs/a261ad01-214a-4473-8efe-5cadbfab2662.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.67,
-    "date_sortable": "2015-10-08"
   },
   {
     "id": "0005a3f1-1dd8-b71b-0b38-a6233082ec97",
@@ -89936,32 +89330,6 @@
     "date_sortable": null
   },
   {
-    "id": "a003067b-1dd8-b71b-0b59-af76b7227864",
-    "title": "Grand Prismatic Spring",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/a003067b-1dd8-b71b-0b59-af76b7227864",
-    "image_url": "https://npgallery.nps.gov/GetAsset/a003067b-1dd8-b71b-0b59-af76b7227864/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "hot_spring",
-      "steam",
-      "geothermal",
-      "forest",
-      "clouds"
-    ],
-    "thumb": "thumbs/a003067b-1dd8-b71b-0b59-af76b7227864.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.609,
-    "date_sortable": null
-  },
-  {
     "id": "ac847b71-32de-4981-bd04-fd35c699a60d",
     "title": "Abiathar Peak",
     "photographer": "NPS/Jim Peaco",
@@ -90172,32 +89540,6 @@
     "thumb": "thumbs/ee30d3de-1dd8-b71b-0be9-3cdd11a70ed1.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.601,
-    "date_sortable": null
-  },
-  {
-    "id": "df6323b7-1dd8-b71b-0b6b-7db5aa214dda",
-    "title": "Photographing steam shadows at Dryad Spring,  Mammoth Hot Springs",
-    "photographer": "NPS/Neal Herbert",
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/df6323b7-1dd8-b71b-0b6b-7db5aa214dda",
-    "image_url": "https://npgallery.nps.gov/GetAsset/df6323b7-1dd8-b71b-0b6b-7db5aa214dda/Original",
-    "time_of_day": "morning",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "geyser",
-      "steam",
-      "snow",
-      "sun",
-      "mist"
-    ],
-    "thumb": "thumbs/df6323b7-1dd8-b71b-0b6b-7db5aa214dda.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.6,
     "date_sortable": null
   },
   {
@@ -90625,32 +89967,6 @@
     "date_sortable": null
   },
   {
-    "id": "d360d6c5-1dd8-b71b-0b1f-02f7ea4fff16",
-    "title": "Skiers on Fawn Pass Trail",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/d360d6c5-1dd8-b71b-0b1f-02f7ea4fff16",
-    "image_url": "https://npgallery.nps.gov/GetAsset/d360d6c5-1dd8-b71b-0b1f-02f7ea4fff16/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snowy",
-      "mountains",
-      "forest",
-      "winter",
-      "hiking"
-    ],
-    "thumb": "thumbs/d360d6c5-1dd8-b71b-0b1f-02f7ea4fff16.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.586,
-    "date_sortable": null
-  },
-  {
     "id": "f8444f6e-1f70-4b3d-8f3d-ce4a2bd5c75b",
     "title": "Carrington Island on Yellowstone Lake and Mt. Sheridan",
     "photographer": "NPS/Neal Herbert",
@@ -90886,59 +90202,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.574,
     "date_sortable": "2014-06-03"
-  },
-  {
-    "id": "a66e7b91-1dd8-b71b-0bed-d11d0f13105b",
-    "title": "Visitor fishing",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/a66e7b91-1dd8-b71b-0bed-d11d0f13105b",
-    "image_url": "https://npgallery.nps.gov/GetAsset/a66e7b91-1dd8-b71b-0bed-d11d0f13105b/Original",
-    "time_of_day": "morning",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "mist",
-      "meadow",
-      "hills",
-      "trees",
-      "fog",
-      "water"
-    ],
-    "thumb": "thumbs/a66e7b91-1dd8-b71b-0bed-d11d0f13105b.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.574,
-    "date_sortable": null
-  },
-  {
-    "id": "92a65ad8-00a1-4987-929e-e0d363a84e2f",
-    "title": "Barronette Peak",
-    "photographer": "NPS/Neal Herbert",
-    "date": "01/05/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/92a65ad8-00a1-4987-929e-e0d363a84e2f",
-    "image_url": "https://npgallery.nps.gov/GetAsset/92a65ad8-00a1-4987-929e-e0d363a84e2f/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "mountain",
-      "forest",
-      "sky",
-      "clouds"
-    ],
-    "thumb": "thumbs/92a65ad8-00a1-4987-929e-e0d363a84e2f.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.573,
-    "date_sortable": "2014-01-05"
   },
   {
     "id": "2716ce1c-155d-451f-6777-0e3eb2e91f24",
@@ -91228,32 +90491,6 @@
     "date_sortable": "2021-09-28"
   },
   {
-    "id": "c77c27de-1dd8-b71b-0bae-e741da5b4672",
-    "title": "Cliff in Lamar Canyon",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c77c27de-1dd8-b71b-0bae-e741da5b4672",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c77c27de-1dd8-b71b-0bae-e741da5b4672/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "snow",
-      "rock",
-      "cliff",
-      "pine",
-      "winter"
-    ],
-    "thumb": "thumbs/c77c27de-1dd8-b71b-0bae-e741da5b4672.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.56,
-    "date_sortable": null
-  },
-  {
     "id": "9da42609-9f2d-4886-94fd-a9e5d4d66529",
     "title": "Summer in Lamar Valley",
     "photographer": "NPS/Neal Herbert",
@@ -91357,32 +90594,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.557,
     "date_sortable": "2014-07-26"
-  },
-  {
-    "id": "76025f74-2b18-4ba8-a92d-f5c867beca44",
-    "title": "Hayden Valley in winter",
-    "photographer": "NPS/Rachel Berger",
-    "date": "01/21/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/76025f74-2b18-4ba8-a92d-f5c867beca44",
-    "image_url": "https://npgallery.nps.gov/GetAsset/76025f74-2b18-4ba8-a92d-f5c867beca44/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "snow",
-      "mountains",
-      "winter",
-      "forest",
-      "blue sky"
-    ],
-    "thumb": "thumbs/76025f74-2b18-4ba8-a92d-f5c867beca44.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.557,
-    "date_sortable": "2015-01-21"
   },
   {
     "id": "6339e840-155d-451f-6702-640e1370abe3",
@@ -91804,32 +91015,6 @@
     "date_sortable": null
   },
   {
-    "id": "508b77b7-6fdf-46bf-a06c-d3d2b93c7d04",
-    "title": "Abiathar Peak",
-    "photographer": "NPS/Jim Peaco",
-    "date": "12/10/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/508b77b7-6fdf-46bf-a06c-d3d2b93c7d04",
-    "image_url": "https://npgallery.nps.gov/GetAsset/508b77b7-6fdf-46bf-a06c-d3d2b93c7d04/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "mountain",
-      "snow",
-      "forest",
-      "clouds",
-      "peak"
-    ],
-    "thumb": "thumbs/508b77b7-6fdf-46bf-a06c-d3d2b93c7d04.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.541,
-    "date_sortable": "2014-12-10"
-  },
-  {
     "id": "ee51c9d1-3220-43cd-819a-a4953ba7cfba",
     "title": "Mount Washburn",
     "photographer": "NPS/Diane Renkin",
@@ -91880,32 +91065,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.541,
     "date_sortable": "2019-10-04"
-  },
-  {
-    "id": "9ab827b4-1dd8-b71b-0be1-a36c2fce50bd",
-    "title": "Lower Falls of the Yellowstone",
-    "photographer": "NPS/Jim Peaco",
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/9ab827b4-1dd8-b71b-0be1-a36c2fce50bd",
-    "image_url": "https://npgallery.nps.gov/GetAsset/9ab827b4-1dd8-b71b-0be1-a36c2fce50bd/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "waterfall",
-      "canyon",
-      "rock",
-      "forest",
-      "mist"
-    ],
-    "thumb": "thumbs/9ab827b4-1dd8-b71b-0be1-a36c2fce50bd.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.541,
-    "date_sortable": null
   },
   {
     "id": "dd5bac55-1dd8-b71b-0b53-1e9788024cc7",
@@ -92621,32 +91780,6 @@
     "date_sortable": null
   },
   {
-    "id": "04c64fe9-a867-4fca-bfc7-332261a87607",
-    "title": "Fairy Falls in winter",
-    "photographer": "NPS/Diane Renkin",
-    "date": "01/15/2012",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/04c64fe9-a867-4fca-bfc7-332261a87607",
-    "image_url": "https://npgallery.nps.gov/GetAsset/04c64fe9-a867-4fca-bfc7-332261a87607/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "waterfall",
-      "icicles",
-      "snow",
-      "rocky cliff",
-      "winter"
-    ],
-    "thumb": "thumbs/04c64fe9-a867-4fca-bfc7-332261a87607.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.512,
-    "date_sortable": "2012-01-15"
-  },
-  {
     "id": "365ff37b-d012-49a0-8ccc-74c2a39407cf",
     "title": "Fairy Falls",
     "photographer": "NPS/Diane Renkin",
@@ -92803,59 +91936,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.506,
     "date_sortable": null
-  },
-  {
-    "id": "842c6417-db96-49b5-b49b-05ccab2a1f9a",
-    "title": "Barronette Peak",
-    "photographer": "NPS/Jim Peaco",
-    "date": "02/18/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/842c6417-db96-49b5-b49b-05ccab2a1f9a",
-    "image_url": "https://npgallery.nps.gov/GetAsset/842c6417-db96-49b5-b49b-05ccab2a1f9a/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "mountain",
-      "snow",
-      "evergreen",
-      "peak",
-      "forest",
-      "alpine"
-    ],
-    "thumb": "thumbs/842c6417-db96-49b5-b49b-05ccab2a1f9a.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.505,
-    "date_sortable": "2014-02-18"
-  },
-  {
-    "id": "f66ee50b-788c-4b27-a86f-2e1e70e2cf40",
-    "title": "Yellow pond lily",
-    "photographer": "NPS/Neal Herbert",
-    "date": "06/22/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/f66ee50b-788c-4b27-a86f-2e1e70e2cf40",
-    "image_url": "https://npgallery.nps.gov/GetAsset/f66ee50b-788c-4b27-a86f-2e1e70e2cf40/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "yellow_water_lilies",
-      "lily_pads",
-      "lake",
-      "conifer_forest",
-      "wetland"
-    ],
-    "thumb": "thumbs/f66ee50b-788c-4b27-a86f-2e1e70e2cf40.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.501,
-    "date_sortable": "2014-06-22"
   },
   {
     "id": "c78f59e6-1dd8-b71b-0b9e-995d68093eac",
@@ -93278,32 +92358,6 @@
     "date_sortable": "2015-12-01"
   },
   {
-    "id": "ddd10a97-1dd8-b71b-0be7-d042171469c0",
-    "title": "Black Pool, West thumb Geyser Basin",
-    "photographer": "NPS/Diane Renkin",
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ddd10a97-1dd8-b71b-0be7-d042171469c0",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ddd10a97-1dd8-b71b-0be7-d042171469c0/Original",
-    "time_of_day": "night",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "geyser",
-      "boardwalk",
-      "lake",
-      "steam",
-      "mountains"
-    ],
-    "thumb": "thumbs/ddd10a97-1dd8-b71b-0be7-d042171469c0.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.486,
-    "date_sortable": null
-  },
-  {
     "id": "de8683d3-1dd8-b71b-0b99-7f6b166c81b8",
     "title": "Palette Spring Sunset",
     "photographer": null,
@@ -93325,32 +92379,6 @@
       "sunset"
     ],
     "thumb": "thumbs/de8683d3-1dd8-b71b-0b99-7f6b166c81b8.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.486,
-    "date_sortable": null
-  },
-  {
-    "id": "34f80a97-1dd8-b71b-0bcf-fe69be9ef283",
-    "title": "Sun shining through a tree and steam at Norris Geyser Basin",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/34f80a97-1dd8-b71b-0bcf-fe69be9ef283",
-    "image_url": "https://npgallery.nps.gov/GetAsset/34f80a97-1dd8-b71b-0bcf-fe69be9ef283/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "sunbeams",
-      "fog",
-      "trees",
-      "mist",
-      "forest"
-    ],
-    "thumb": "thumbs/34f80a97-1dd8-b71b-0bcf-fe69be9ef283.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.486,
     "date_sortable": null
@@ -93511,32 +92539,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.482,
     "date_sortable": "2016-05-31"
-  },
-  {
-    "id": "54de336b-fd78-4836-a125-293e45fb0c66",
-    "title": "One-flower Helianthella - Helianthella uniflora",
-    "photographer": "NPS/jim Peaco",
-    "date": "06/30/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/54de336b-fd78-4836-a125-293e45fb0c66",
-    "image_url": "https://npgallery.nps.gov/GetAsset/54de336b-fd78-4836-a125-293e45fb0c66/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "yellow",
-    "tags": [
-      "wildflowers",
-      "prairie",
-      "meadow",
-      "blue sky",
-      "clouds"
-    ],
-    "thumb": "thumbs/54de336b-fd78-4836-a125-293e45fb0c66.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.478,
-    "date_sortable": "2015-06-30"
   },
   {
     "id": "f0e4dcc3-a0f4-4a54-8fd5-ebbd8cc23c16",
@@ -93884,32 +92886,6 @@
     "date_sortable": null
   },
   {
-    "id": "03e29029-1dd8-b71b-0bb3-39a037d388c4",
-    "title": "Storm brewing south of Yellowstone Lake",
-    "photographer": "NPS/Diane Renkin",
-    "date": "07/14/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/03e29029-1dd8-b71b-0bb3-39a037d388c4",
-    "image_url": "https://npgallery.nps.gov/GetAsset/03e29029-1dd8-b71b-0bb3-39a037d388c4/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "lake",
-      "mountains",
-      "clouds",
-      "log",
-      "water"
-    ],
-    "thumb": "thumbs/03e29029-1dd8-b71b-0bb3-39a037d388c4.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.466,
-    "date_sortable": "2015-07-14"
-  },
-  {
     "id": "7a3f1a3d-0529-458f-9f53-108dade92814",
     "title": "Sunrise in the upper Soda Butte Valley",
     "photographer": "NPS/Jim Peaco",
@@ -94096,32 +93072,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.461,
     "date_sortable": null
-  },
-  {
-    "id": "ad9ccf48-d8e8-4201-a38c-8b72cca11104",
-    "title": "Antler Peak from Swan Lake Flat",
-    "photographer": "NPS / Jacob W. Frank",
-    "date": "06/30/2018",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ad9ccf48-d8e8-4201-a38c-8b72cca11104",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ad9ccf48-d8e8-4201-a38c-8b72cca11104/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "mountain",
-      "alpine meadow",
-      "conifer forest",
-      "snow patches",
-      "cloudy sky"
-    ],
-    "thumb": "thumbs/ad9ccf48-d8e8-4201-a38c-8b72cca11104.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.46,
-    "date_sortable": "2018-06-30"
   },
   {
     "id": "a9e288e2-a4db-4e72-8906-ac7b344dd5e2",
@@ -94572,33 +93522,6 @@
     "date_sortable": "2014-01-17"
   },
   {
-    "id": "77399279-3ab8-4be8-87e9-62ab98ed5b0b",
-    "title": "Crystal falls",
-    "photographer": "NPS/Jim Peaco",
-    "date": "04/17/2020",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/77399279-3ab8-4be8-87e9-62ab98ed5b0b",
-    "image_url": "https://npgallery.nps.gov/GetAsset/77399279-3ab8-4be8-87e9-62ab98ed5b0b/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "frozen",
-      "waterfall",
-      "snow",
-      "winter",
-      "rock",
-      "forest"
-    ],
-    "thumb": "thumbs/77399279-3ab8-4be8-87e9-62ab98ed5b0b.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.446,
-    "date_sortable": "2020-04-17"
-  },
-  {
     "id": "e07c0283-1dd8-b71b-0b21-e25b4358a376",
     "title": "Liberty Pool, Upper Geyser Basin",
     "photographer": "NPS/Matt Poyner",
@@ -94832,32 +93755,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.44,
     "date_sortable": "2019-09-01"
-  },
-  {
-    "id": "3f883ab6-4f9e-4e92-b793-b85a530a94ed",
-    "title": "Steam and sun",
-    "photographer": "NPS/Neal Herbert",
-    "date": "10/25/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/3f883ab6-4f9e-4e92-b793-b85a530a94ed",
-    "image_url": "https://npgallery.nps.gov/GetAsset/3f883ab6-4f9e-4e92-b793-b85a530a94ed/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "sunbeams",
-      "fog",
-      "trees",
-      "forest",
-      "light rays"
-    ],
-    "thumb": "thumbs/3f883ab6-4f9e-4e92-b793-b85a530a94ed.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.439,
-    "date_sortable": "2014-10-25"
   },
   {
     "id": "6f2edb4e-d215-4651-a435-733795bd2cb9",
@@ -95680,33 +94577,6 @@
     "date_sortable": "2021-02-02"
   },
   {
-    "id": "a4d3a073-1dd8-b71b-0b8f-bdbcf1a8ac6d",
-    "title": "Campsite",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/a4d3a073-1dd8-b71b-0b8f-bdbcf1a8ac6d",
-    "image_url": "https://npgallery.nps.gov/GetAsset/a4d3a073-1dd8-b71b-0b8f-bdbcf1a8ac6d/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "lake",
-      "mountains",
-      "camping",
-      "tent",
-      "trees",
-      "grassland"
-    ],
-    "thumb": "thumbs/a4d3a073-1dd8-b71b-0b8f-bdbcf1a8ac6d.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.418,
-    "date_sortable": null
-  },
-  {
     "id": "5a85fd76-a9e5-42e3-9d4c-7c5c19eb326f",
     "title": "Mt. Washburn Dunraven Pass Trail",
     "photographer": "NPS/Neal Herbert",
@@ -95865,33 +94735,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.411,
     "date_sortable": null
-  },
-  {
-    "id": "7c40c221-5605-4a9a-9985-f7ac92f21149",
-    "title": "Visitors and ghost trees at Fountain Paint Pot",
-    "photographer": "NPS/Jim Peaco",
-    "date": "01/19/2016",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/7c40c221-5605-4a9a-9985-f7ac92f21149",
-    "image_url": "https://npgallery.nps.gov/GetAsset/7c40c221-5605-4a9a-9985-f7ac92f21149/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "midground",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "hot spring",
-      "boardwalk",
-      "winter",
-      "steam",
-      "hikers"
-    ],
-    "thumb": "thumbs/7c40c221-5605-4a9a-9985-f7ac92f21149.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.41,
-    "date_sortable": "2016-01-19"
   },
   {
     "id": "e9710465-96e1-4b97-ad28-f3cec6b4b936",
