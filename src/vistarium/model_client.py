@@ -60,6 +60,8 @@ ws ::= [ \t\n]*
 
 PROMPT = """Look at this photograph and produce a JSON object with exactly these fields:
 
+For any field that asks whether something is the photo's real subject versus incidental within it (fire/smoke, a structure, an activity, wildlife, a person), use this test: is that thing the documented event or subject this photo exists to record, or is it incidental within an otherwise landscape-forward composition? Judge by compositional focus and visual weight, not merely by presence somewhere in frame.
+
 - is_photograph: true/false -- false if this is a painting, illustration, engraving, sketch, map, or other non-photographic image
 - content_visible: true/false -- false if the frame is blank, washed-out/overexposed, or too degraded to make out any real content (e.g. a badly faded archival scan that's almost entirely white, or a damaged/artifacted negative). This is different from is_photograph: a severely overexposed scan is still a real photograph, it's just unusable -- judge whether there's anything actually visible in it, not whether it's a photograph.
 - time_of_day: morning | afternoon | evening | night (judge from the light in the image itself, not any filename or caption you might infer)

@@ -4482,32 +4482,6 @@
     "date_sortable": null
   },
   {
-    "id": "9116671b-afc5-4cc7-beca-394b7461ee4d",
-    "title": "215 Sounds of the Sea",
-    "photographer": "NPSPhoto",
-    "date": "03/29/2021",
-    "park": "Acadia National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/9116671b-afc5-4cc7-beca-394b7461ee4d",
-    "image_url": "https://npgallery.nps.gov/GetAsset/9116671b-afc5-4cc7-beca-394b7461ee4d/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "ocean",
-      "waves",
-      "cliffs",
-      "spray",
-      "coast"
-    ],
-    "thumb": "thumbs/9116671b-afc5-4cc7-beca-394b7461ee4d.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.785,
-    "date_sortable": "2021-03-29"
-  },
-  {
     "id": "6e9174df-e0d4-4511-820b-cea40bccb73d",
     "title": "Jesup Path",
     "photographer": "NPS Photo/Kent Miller",
@@ -8546,33 +8520,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.688,
     "date_sortable": null
-  },
-  {
-    "id": "7456dead-986b-4d2e-99c9-3e94efe9bd81",
-    "title": "Cooling off burnt fuels with a hoseline.",
-    "photographer": null,
-    "date": "05/22/2019",
-    "park": "Big Bend National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/7456dead-986b-4d2e-99c9-3e94efe9bd81",
-    "image_url": "https://npgallery.nps.gov/GetAsset/7456dead-986b-4d2e-99c9-3e94efe9bd81/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "hose",
-      "spray",
-      "smoke",
-      "hillside",
-      "sun"
-    ],
-    "thumb": "thumbs/7456dead-986b-4d2e-99c9-3e94efe9bd81.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.439,
-    "date_sortable": "2019-05-22"
   },
   {
     "id": "de3b5b2d-7015-4ca5-871b-4da5a8858774",
@@ -15624,32 +15571,6 @@
     "date_sortable": "2019-09-28"
   },
   {
-    "id": "f13391bf-1dd8-b71b-0bc6-5ba9041083a1",
-    "title": "smoke",
-    "photographer": "NPS",
-    "date": null,
-    "park": "Everglades National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/f13391bf-1dd8-b71b-0bc6-5ba9041083a1",
-    "image_url": "https://npgallery.nps.gov/GetAsset/f13391bf-1dd8-b71b-0bc6-5ba9041083a1/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "grassland",
-      "sky",
-      "clouds"
-    ],
-    "thumb": "thumbs/f13391bf-1dd8-b71b-0bc6-5ba9041083a1.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.585,
-    "date_sortable": null
-  },
-  {
     "id": "de880d08-a525-43c8-ae6e-4801dc4d2dfa",
     "title": "Sun Shines on Prescribed Fire in Everglades National Park",
     "photographer": "NPS photo/Michael Gue",
@@ -15677,84 +15598,6 @@
     "date_sortable": null
   },
   {
-    "id": "6b10296d-1a47-4180-8940-54c53fd72fd5",
-    "title": "Smoke Rises Over Prescribed Fire",
-    "photographer": "NPS photo/Michael Gue",
-    "date": null,
-    "park": "Everglades National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/6b10296d-1a47-4180-8940-54c53fd72fd5",
-    "image_url": "https://npgallery.nps.gov/GetAsset/6b10296d-1a47-4180-8940-54c53fd72fd5/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "smoke_plume",
-      "clouds",
-      "grassland",
-      "sky",
-      "fire"
-    ],
-    "thumb": "thumbs/6b10296d-1a47-4180-8940-54c53fd72fd5.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.561,
-    "date_sortable": null
-  },
-  {
-    "id": "ec600b28-9885-4e1c-bc7c-75643d323be6",
-    "title": "Pine Rockland Block C Prescribed Fire",
-    "photographer": "NPS photo/Michael Gue",
-    "date": null,
-    "park": "Everglades National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ec600b28-9885-4e1c-bc7c-75643d323be6",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ec600b28-9885-4e1c-bc7c-75643d323be6/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "forest",
-      "fire",
-      "smoke",
-      "burning"
-    ],
-    "thumb": "thumbs/ec600b28-9885-4e1c-bc7c-75643d323be6.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.534,
-    "date_sortable": null
-  },
-  {
-    "id": "f2d38787-1dd8-b71b-0bc1-e7d7cec89012",
-    "title": "Block C Eastline",
-    "photographer": "NPS",
-    "date": null,
-    "park": "Everglades National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/f2d38787-1dd8-b71b-0bc1-e7d7cec89012",
-    "image_url": "https://npgallery.nps.gov/GetAsset/f2d38787-1dd8-b71b-0bc1-e7d7cec89012/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "forest",
-      "flames",
-      "smoke",
-      "trees"
-    ],
-    "thumb": "thumbs/f2d38787-1dd8-b71b-0bc1-e7d7cec89012.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.515,
-    "date_sortable": null
-  },
-  {
     "id": "dd1cc0f8-64a6-45bd-a29e-477565eaba95",
     "title": "Flamingo Campground Amphitheater",
     "photographer": "NPS/Anthony Sleiman",
@@ -15779,32 +15622,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.478,
     "date_sortable": "2023-10-14"
-  },
-  {
-    "id": "28208731-b69a-46dc-8c17-cf5e17732dd7",
-    "title": "Prescribed Fire Burns Off Line",
-    "photographer": "NPS photo/Michael Gue",
-    "date": null,
-    "park": "Everglades National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/28208731-b69a-46dc-8c17-cf5e17732dd7",
-    "image_url": "https://npgallery.nps.gov/GetAsset/28208731-b69a-46dc-8c17-cf5e17732dd7/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "fire",
-      "forest",
-      "wildfire",
-      "flame",
-      "pine"
-    ],
-    "thumb": "thumbs/28208731-b69a-46dc-8c17-cf5e17732dd7.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.411,
-    "date_sortable": null
   },
   {
     "id": "5a5d6cf2-4698-4242-aaa5-8b7ecabad88c",
@@ -17439,32 +17256,6 @@
     "thumb": "thumbs/71337d91-9b65-4f5a-a044-c4845ba47d06.webp",
     "aspect": "9/16",
     "aesthetic_score": 6.089,
-    "date_sortable": null
-  },
-  {
-    "id": "cd146c74-155d-451f-6754-ade816d9621c",
-    "title": "Roberts Fire ridge",
-    "photographer": "NPS/Somer Treat",
-    "date": null,
-    "park": "Glacier National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/cd146c74-155d-451f-6754-ade816d9621c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/cd146c74-155d-451f-6754-ade816d9621c/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "mountains",
-      "forest",
-      "aerial_view"
-    ],
-    "thumb": "thumbs/cd146c74-155d-451f-6754-ade816d9621c.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.562,
     "date_sortable": null
   },
   {
@@ -30006,33 +29797,6 @@
     "date_sortable": "2018-08-17"
   },
   {
-    "id": "565d5631-f7d3-4351-8d24-ae260731206b",
-    "title": "Fire Recon",
-    "photographer": "NPS Photo / Chris Greenstein",
-    "date": "06/28/2019",
-    "park": "Denali National Park and Preserve",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/565d5631-f7d3-4351-8d24-ae260731206b",
-    "image_url": "https://npgallery.nps.gov/GetAsset/565d5631-f7d3-4351-8d24-ae260731206b/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "aerial",
-      "helicopter",
-      "forest",
-      "burn"
-    ],
-    "thumb": "thumbs/565d5631-f7d3-4351-8d24-ae260731206b.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.51,
-    "date_sortable": "2019-06-28"
-  },
-  {
     "id": "33ea45f0-4acd-4dc9-a617-158b31917ccf",
     "title": "Mountain Vista",
     "photographer": "NPS Photo / Kent Miller",
@@ -31033,32 +30797,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.474,
     "date_sortable": "2017-07-14"
-  },
-  {
-    "id": "61718ac8-1ba5-4132-ac26-c165e99e3977",
-    "title": "Fire #389 (Foraker)",
-    "photographer": "NPS Photo / Sarah Hayes",
-    "date": "06/28/2019",
-    "park": "Denali National Park and Preserve",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/61718ac8-1ba5-4132-ac26-c165e99e3977",
-    "image_url": "https://npgallery.nps.gov/GetAsset/61718ac8-1ba5-4132-ac26-c165e99e3977/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "helicopter",
-      "smoke",
-      "forest",
-      "firefighting"
-    ],
-    "thumb": "thumbs/61718ac8-1ba5-4132-ac26-c165e99e3977.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.471,
-    "date_sortable": "2019-06-28"
   },
   {
     "id": "073053b1-8f2b-420f-a052-1892a47f30a1",
@@ -39427,32 +39165,6 @@
     "date_sortable": "2023-08-21"
   },
   {
-    "id": "f2186ddb-2e7e-4a87-b612-c5c25c17a8b1",
-    "title": "Building Flames",
-    "photographer": "NPS Photo",
-    "date": "12/12/2024",
-    "park": "Grand Canyon National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/f2186ddb-2e7e-4a87-b612-c5c25c17a8b1",
-    "image_url": "https://npgallery.nps.gov/GetAsset/f2186ddb-2e7e-4a87-b612-c5c25c17a8b1/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "forest",
-      "pine trees",
-      "smoke",
-      "burning ground"
-    ],
-    "thumb": "thumbs/f2186ddb-2e7e-4a87-b612-c5c25c17a8b1.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.552,
-    "date_sortable": "2024-12-12"
-  },
-  {
     "id": "829415f6-4518-4c10-ab47-b235a3a47192",
     "title": "19_Figure 19 200703 JA(1).jpg",
     "photographer": "CARL BOWMAN",
@@ -39634,33 +39346,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.497,
     "date_sortable": "2023-08-16"
-  },
-  {
-    "id": "1229e828-e302-4895-a7e0-376d4a62a5a9",
-    "title": "Smoke at the Edge",
-    "photographer": "NPS Photo/Fire Effects",
-    "date": "12/12/2024",
-    "park": "Grand Canyon National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/1229e828-e302-4895-a7e0-376d4a62a5a9",
-    "image_url": "https://npgallery.nps.gov/GetAsset/1229e828-e302-4895-a7e0-376d4a62a5a9/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "canyon",
-      "hazy",
-      "trees"
-    ],
-    "thumb": "thumbs/1229e828-e302-4895-a7e0-376d4a62a5a9.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.473,
-    "date_sortable": "2024-12-12"
   },
   {
     "id": "108e2e93-831e-4c06-ac0f-8b0918b04361",
@@ -47691,32 +47376,6 @@
     "date_sortable": "2022-02-12"
   },
   {
-    "id": "c991fc56-c01f-43ca-8417-cc93203e21cf",
-    "title": "March 25th, 1984",
-    "photographer": "USGS/JD Griiggs",
-    "date": "03/25/1984",
-    "park": "Hawaii Volcanoes National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c991fc56-c01f-43ca-8417-cc93203e21cf",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c991fc56-c01f-43ca-8417-cc93203e21cf/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "volcano",
-      "eruption",
-      "lava",
-      "night",
-      "smoke"
-    ],
-    "thumb": "thumbs/c991fc56-c01f-43ca-8417-cc93203e21cf.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.695,
-    "date_sortable": "1984-03-25"
-  },
-  {
     "id": "83072293-6e08-4146-b91a-41b79bde5bcd",
     "title": "Visitors look at an eruption from an overlook near Keanak\u0101ko\u02bbi crater.",
     "photographer": "NPS Photo/J.Wei",
@@ -48113,32 +47772,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.64,
     "date_sortable": "2023-05-16"
-  },
-  {
-    "id": "1754e843-87f9-4ad8-9924-a0b62a2d2613",
-    "title": "Makamae Street, May 6th",
-    "photographer": "USGS Photos",
-    "date": "05/06/2018",
-    "park": "Hawaii Volcanoes National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/1754e843-87f9-4ad8-9924-a0b62a2d2613",
-    "image_url": "https://npgallery.nps.gov/GetAsset/1754e843-87f9-4ad8-9924-a0b62a2d2613/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "road",
-      "trees",
-      "burning"
-    ],
-    "thumb": "thumbs/1754e843-87f9-4ad8-9924-a0b62a2d2613.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.639,
-    "date_sortable": "2018-05-06"
   },
   {
     "id": "0ffd17c0-1dd8-b71b-0bf3-62db5b9238d9",
@@ -49195,59 +48828,6 @@
     "date_sortable": "2021-06-22"
   },
   {
-    "id": "6fd71529-64b7-4373-ab3d-c5d65dd3ab82",
-    "title": "Leilani Estates, May 5th",
-    "photographer": "USGS Photo",
-    "date": "05/05/2018",
-    "park": "Hawaii Volcanoes National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/6fd71529-64b7-4373-ab3d-c5d65dd3ab82",
-    "image_url": "https://npgallery.nps.gov/GetAsset/6fd71529-64b7-4373-ab3d-c5d65dd3ab82/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "sparks",
-      "palm trees",
-      "smoke",
-      "flames",
-      "night"
-    ],
-    "thumb": "thumbs/6fd71529-64b7-4373-ab3d-c5d65dd3ab82.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.503,
-    "date_sortable": "2018-05-05"
-  },
-  {
-    "id": "2a3801d5-6258-4d06-9d7e-ebc2c5b37a28",
-    "title": "K\u012blauea Iki Lava Fountain",
-    "photographer": "NPS Photo/L. Peterson",
-    "date": "01/01/1959",
-    "park": "Hawaii Volcanoes National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/2a3801d5-6258-4d06-9d7e-ebc2c5b37a28",
-    "image_url": "https://npgallery.nps.gov/GetAsset/2a3801d5-6258-4d06-9d7e-ebc2c5b37a28/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "volcano",
-      "lava",
-      "eruption",
-      "fire",
-      "night"
-    ],
-    "thumb": "thumbs/2a3801d5-6258-4d06-9d7e-ebc2c5b37a28.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.494,
-    "date_sortable": "1959-01-01"
-  },
-  {
     "id": "19e3cc5e-6ea1-4b17-aa02-4397fba9b267",
     "title": "IMG_3854.JPG",
     "photographer": "NPS Photo/M.Newman",
@@ -49351,32 +48931,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.485,
     "date_sortable": "1950-01-01"
-  },
-  {
-    "id": "2f494073-533c-4aef-80b5-7c342ece6cc0",
-    "title": "HAVO_20241010_Makaopuhi-Fire_NPS-Photo.JPG",
-    "photographer": "NPS Photo",
-    "date": "10/08/2024",
-    "park": "Hawaii Volcanoes National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/2f494073-533c-4aef-80b5-7c342ece6cc0",
-    "image_url": "https://npgallery.nps.gov/GetAsset/2f494073-533c-4aef-80b5-7c342ece6cc0/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "black",
-    "tags": [
-      "burnt forest",
-      "charcoal ground",
-      "smoke",
-      "post-fire",
-      "dead trees"
-    ],
-    "thumb": "thumbs/2f494073-533c-4aef-80b5-7c342ece6cc0.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.482,
-    "date_sortable": "2024-10-08"
   },
   {
     "id": "468171c3-63f8-4fb9-b67c-042e69ee9d7a",
@@ -51219,33 +50773,6 @@
     "date_sortable": "2018-09-27"
   },
   {
-    "id": "a73462cc-d647-492a-aa36-190a48bfad0c",
-    "title": "Smoke Rising From a Burned Hillside",
-    "photographer": "NPS / Bridget Byrne",
-    "date": "08/13/2022",
-    "park": "Isle Royale National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/a73462cc-d647-492a-aa36-190a48bfad0c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/a73462cc-d647-492a-aa36-190a48bfad0c/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "forest",
-      "smoke",
-      "burned",
-      "trees",
-      "landscape",
-      "fire"
-    ],
-    "thumb": "thumbs/a73462cc-d647-492a-aa36-190a48bfad0c.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.751,
-    "date_sortable": "2022-08-13"
-  },
-  {
     "id": "06c7c065-37e3-4245-999e-bcf94e60dab7",
     "title": "Burnt Ridge",
     "photographer": "NPS Photo / Bridget Byrne",
@@ -51378,32 +50905,6 @@
     "date_sortable": "2023-08-02"
   },
   {
-    "id": "f1d3222b-72af-49c0-bb33-9974e0cc8cc6",
-    "title": "Burn Area",
-    "photographer": "Sean Carey",
-    "date": "09/26/2021",
-    "park": "Isle Royale National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/f1d3222b-72af-49c0-bb33-9974e0cc8cc6",
-    "image_url": "https://npgallery.nps.gov/GetAsset/f1d3222b-72af-49c0-bb33-9974e0cc8cc6/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "midground",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "forest",
-      "fire",
-      "burned",
-      "trees",
-      "hiking"
-    ],
-    "thumb": "thumbs/f1d3222b-72af-49c0-bb33-9974e0cc8cc6.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.562,
-    "date_sortable": "2021-09-26"
-  },
-  {
     "id": "2924da1d-05e5-4bad-ae4c-251637a16fc0",
     "title": "Smoky Orange Sun",
     "photographer": "Mike Ausema",
@@ -51457,33 +50958,6 @@
     "date_sortable": "2021-08-21"
   },
   {
-    "id": "dc64df9d-008d-44a1-b54d-2a350b11f819",
-    "title": "Burn Area",
-    "photographer": "NPS Photo / Bridget Byrne",
-    "date": "08/15/2022",
-    "park": "Isle Royale National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/dc64df9d-008d-44a1-b54d-2a350b11f819",
-    "image_url": "https://npgallery.nps.gov/GetAsset/dc64df9d-008d-44a1-b54d-2a350b11f819/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "burned_hillside",
-      "charred_trees",
-      "rocky_slope",
-      "blue_sky",
-      "smoke",
-      "forest_fire_aftermath"
-    ],
-    "thumb": "thumbs/dc64df9d-008d-44a1-b54d-2a350b11f819.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.524,
-    "date_sortable": "2022-08-15"
-  },
-  {
     "id": "1c24f8c1-9ceb-4b95-8bb1-3ff22938f73e",
     "title": "Burnt Ridge",
     "photographer": "NPS Photo / Bridget Byrne",
@@ -51508,33 +50982,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.506,
     "date_sortable": "2022-08-17"
-  },
-  {
-    "id": "974aa299-8a48-4e0e-8b2e-fafc4c8fc3a6",
-    "title": "Horne Fire Orange Sky and Tree Torching",
-    "photographer": "Mike Ausema",
-    "date": "08/21/2021",
-    "park": "Isle Royale National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/974aa299-8a48-4e0e-8b2e-fafc4c8fc3a6",
-    "image_url": "https://npgallery.nps.gov/GetAsset/974aa299-8a48-4e0e-8b2e-fafc4c8fc3a6/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "lake",
-      "conifer",
-      "sunset",
-      "silhouette"
-    ],
-    "thumb": "thumbs/974aa299-8a48-4e0e-8b2e-fafc4c8fc3a6.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.486,
-    "date_sortable": "2021-08-21"
   },
   {
     "id": "9eb3cf53-4d5b-4026-940b-1482341e2f90",
@@ -59220,33 +58667,6 @@
     "date_sortable": "2024-02-10"
   },
   {
-    "id": "c697d658-155d-4519-3ee0-6bc036ad8113",
-    "title": "Crater Butte Run",
-    "photographer": null,
-    "date": null,
-    "park": "Lassen Volcanic National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c697d658-155d-4519-3ee0-6bc036ad8113",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c697d658-155d-4519-3ee0-6bc036ad8113/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "flames",
-      "mountain"
-    ],
-    "thumb": "thumbs/c697d658-155d-4519-3ee0-6bc036ad8113.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.751,
-    "date_sortable": null
-  },
-  {
     "id": "70d79159-2e9f-4488-a325-98a24d1182a2",
     "title": "Fall colors at Hat Creek",
     "photographer": "Amanda Sweeney",
@@ -59379,32 +58799,6 @@
     "date_sortable": "2022-03-30"
   },
   {
-    "id": "7d191fe7-e3dd-4441-ac34-e100dab38743",
-    "title": "Red Fire smolderinng",
-    "photographer": "Grant Gifford",
-    "date": "08/25/2019",
-    "park": "Lassen Volcanic National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/7d191fe7-e3dd-4441-ac34-e100dab38743",
-    "image_url": "https://npgallery.nps.gov/GetAsset/7d191fe7-e3dd-4441-ac34-e100dab38743/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "forest",
-      "smoke",
-      "coniferous",
-      "sunlight",
-      "trees"
-    ],
-    "thumb": "thumbs/7d191fe7-e3dd-4441-ac34-e100dab38743.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.689,
-    "date_sortable": "2019-08-25"
-  },
-  {
     "id": "9e3f7bea-fe5c-40da-8d03-3261fb5696e1",
     "title": "Lassen Peak above Reflection Lake",
     "photographer": "Amanda Sweeney",
@@ -59510,32 +58904,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.67,
     "date_sortable": null
-  },
-  {
-    "id": "e5b5c6fe-1baf-4508-a30b-eb8dacbbbac6",
-    "title": "View of Dixie Fire effects in Warner Valley from the park highway.",
-    "photographer": "NPS/Amanda Sweeney",
-    "date": "10/06/2021",
-    "park": "Lassen Volcanic National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/e5b5c6fe-1baf-4508-a30b-eb8dacbbbac6",
-    "image_url": "https://npgallery.nps.gov/GetAsset/e5b5c6fe-1baf-4508-a30b-eb8dacbbbac6/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "forest",
-      "mountains",
-      "scorched",
-      "trees"
-    ],
-    "thumb": "thumbs/e5b5c6fe-1baf-4508-a30b-eb8dacbbbac6.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.668,
-    "date_sortable": "2021-10-06"
   },
   {
     "id": "c87374d3-155d-4519-3ede-99d02f86df56",
@@ -60379,33 +59747,6 @@
     "date_sortable": "2019-06-27"
   },
   {
-    "id": "c83e5f19-155d-4519-3e3b-2a77a327b3d9",
-    "title": "Piles burning well",
-    "photographer": null,
-    "date": null,
-    "park": "Lassen Volcanic National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c83e5f19-155d-4519-3e3b-2a77a327b3d9",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c83e5f19-155d-4519-3e3b-2a77a327b3d9/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "campfire",
-      "snow",
-      "forest",
-      "flames",
-      "winter",
-      "outdoor"
-    ],
-    "thumb": "thumbs/c83e5f19-155d-4519-3e3b-2a77a327b3d9.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.546,
-    "date_sortable": null
-  },
-  {
     "id": "98d3cd04-3d40-4d02-bc3c-b4c362db7490",
     "title": "Southwest Entrance in spring following the 2021 Dixie Fire.",
     "photographer": "NPS/Amanda Sweeney",
@@ -61062,32 +60403,6 @@
     "date_sortable": "2019-08-12"
   },
   {
-    "id": "8371529f-7f02-430d-9894-d1f597613ab8",
-    "title": "Red Fire burned area",
-    "photographer": "Grant Gifford",
-    "date": "08/25/2019",
-    "park": "Lassen Volcanic National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/8371529f-7f02-430d-9894-d1f597613ab8",
-    "image_url": "https://npgallery.nps.gov/GetAsset/8371529f-7f02-430d-9894-d1f597613ab8/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "forest",
-      "smoke",
-      "charred",
-      "trees",
-      "wildfire"
-    ],
-    "thumb": "thumbs/8371529f-7f02-430d-9894-d1f597613ab8.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.467,
-    "date_sortable": "2019-08-25"
-  },
-  {
     "id": "d3a75ae1-29a0-40a2-a0db-17ddadd409c5",
     "title": "Effects of the Dixie Fire from Lake Almanor",
     "photographer": "NPS/Amanda Sweeney",
@@ -61271,32 +60586,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.449,
     "date_sortable": null
-  },
-  {
-    "id": "d432b27b-1616-4a22-9fbd-85890a89a698",
-    "title": "Red Fire smolderinng",
-    "photographer": "Grant Gifford",
-    "date": "08/25/2019",
-    "park": "Lassen Volcanic National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/d432b27b-1616-4a22-9fbd-85890a89a698",
-    "image_url": "https://npgallery.nps.gov/GetAsset/d432b27b-1616-4a22-9fbd-85890a89a698/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "forest",
-      "smoke",
-      "burned_ground",
-      "conifer",
-      "sunlight"
-    ],
-    "thumb": "thumbs/d432b27b-1616-4a22-9fbd-85890a89a698.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.448,
-    "date_sortable": "2019-08-25"
   },
   {
     "id": "a0dcd9b2-8eaf-4978-a15e-d6f2bcb16640",
@@ -61533,31 +60822,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.429,
     "date_sortable": "2000-01-01"
-  },
-  {
-    "id": "c8d4a2b6-155d-4519-3ee8-dbc076e12072",
-    "title": "Individual Tree Torching, Loomis Prescribed Fire",
-    "photographer": null,
-    "date": null,
-    "park": "Lassen Volcanic National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c8d4a2b6-155d-4519-3ee8-dbc076e12072",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c8d4a2b6-155d-4519-3ee8-dbc076e12072/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "trees",
-      "flames"
-    ],
-    "thumb": "thumbs/c8d4a2b6-155d-4519-3ee8-dbc076e12072.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.427,
-    "date_sortable": null
   },
   {
     "id": "aaf03eb8-2a58-4891-84ca-14585672d3b2",
@@ -72988,32 +72252,6 @@
     "date_sortable": null
   },
   {
-    "id": "01561c42-155d-451f-67bf-fe75848ce684",
-    "title": "Alpine Hotshots 2009",
-    "photographer": null,
-    "date": null,
-    "park": "Rocky Mountain National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/01561c42-155d-451f-67bf-fe75848ce684",
-    "image_url": "https://npgallery.nps.gov/GetAsset/01561c42-155d-451f-67bf-fe75848ce684/Original",
-    "time_of_day": "night",
-    "people_prominence": "midground",
-    "color_mode": "color",
-    "dominant_color": "red",
-    "tags": [
-      "wildfire",
-      "forest",
-      "firefighter",
-      "flames",
-      "smoke"
-    ],
-    "thumb": "thumbs/01561c42-155d-451f-67bf-fe75848ce684.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.793,
-    "date_sortable": null
-  },
-  {
     "id": "7ddada91-aedc-4d9c-a705-c7f44c4d3b0c",
     "title": "Bear Lake",
     "photographer": "NPS Photo / M. Reed",
@@ -74808,32 +74046,6 @@
     "date_sortable": null
   },
   {
-    "id": "5d2dc54a-acd1-4756-a262-f136b08fd255",
-    "title": "SEKI_20211107_ Daniel Jeffcoach_ KNP Complex Fire Effects in Redwood Canyon_Kings Canyon National Park (6).jpg",
-    "photographer": "Daniel Jeffcoach",
-    "date": "11/07/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/5d2dc54a-acd1-4756-a262-f136b08fd255",
-    "image_url": "https://npgallery.nps.gov/GetAsset/5d2dc54a-acd1-4756-a262-f136b08fd255/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "midground",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "burned_forest",
-      "giant_redwood",
-      "smoke",
-      "hiking",
-      "charred_trees"
-    ],
-    "thumb": "thumbs/5d2dc54a-acd1-4756-a262-f136b08fd255.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.126,
-    "date_sortable": "2021-11-07"
-  },
-  {
     "id": "8c6dd174-2ea2-4cbc-8c6c-7b0ecbe254c0",
     "title": "Wilderness_1st Place_SEKI_12232021_ElijahNevarez_High Sierra mountains and lakes (1).JPG",
     "photographer": "Elijah Nevarez",
@@ -75071,34 +74283,6 @@
     "date_sortable": null
   },
   {
-    "id": "cbc597c9-71bd-4127-b5f8-3d3d49f8d425",
-    "title": "SEKI_20211107_ Daniel Jeffcoach_ KNP Complex Fire Effects in Redwood Canyon_Kings Canyon National Park (11).jpg",
-    "photographer": "Daniel Jeffcoach",
-    "date": "11/07/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/cbc597c9-71bd-4127-b5f8-3d3d49f8d425",
-    "image_url": "https://npgallery.nps.gov/GetAsset/cbc597c9-71bd-4127-b5f8-3d3d49f8d425/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "black",
-    "tags": [
-      "forest",
-      "wildfire",
-      "burned trees",
-      "charred",
-      "aspen",
-      "desolate",
-      "smoke"
-    ],
-    "thumb": "thumbs/cbc597c9-71bd-4127-b5f8-3d3d49f8d425.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.915,
-    "date_sortable": "2021-11-07"
-  },
-  {
     "id": "67396319-2d7b-4220-9ca6-e7693439baea",
     "title": "Sequoias 3rd Place_SEKI_12012022_IvanMendoza_milky way over forest dark sky.JPG",
     "photographer": "Ivan Mendoza",
@@ -75281,33 +74465,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.872,
     "date_sortable": "2021-09-21"
-  },
-  {
-    "id": "bc9f8593-a1cb-40fc-9db9-229d737b3674",
-    "title": "SEKI_20211107_ Daniel Jeffcoach_ KNP Complex Fire Effects in Redwood Canyon_Kings Canyon National Park (10).jpg",
-    "photographer": "Daniel Jeffcoach",
-    "date": "11/07/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/bc9f8593-a1cb-40fc-9db9-229d737b3674",
-    "image_url": "https://npgallery.nps.gov/GetAsset/bc9f8593-a1cb-40fc-9db9-229d737b3674/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "burnt forest",
-      "dead trees",
-      "charred ground",
-      "smoke",
-      "mountain",
-      "wildfire aftermath"
-    ],
-    "thumb": "thumbs/bc9f8593-a1cb-40fc-9db9-229d737b3674.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.864,
-    "date_sortable": "2021-11-07"
   },
   {
     "id": "1fc3feac-4388-41aa-a3bc-8c1c4df5fa51",
@@ -75573,60 +74730,6 @@
     "date_sortable": null
   },
   {
-    "id": "cc9ef416-bf9a-475f-96c5-b409d5fae676",
-    "title": "Alder Creek_post-SQF fire 9.jpg",
-    "photographer": "Save the Redwoods League",
-    "date": "10/29/2020",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/cc9ef416-bf9a-475f-96c5-b409d5fae676",
-    "image_url": "https://npgallery.nps.gov/GetAsset/cc9ef416-bf9a-475f-96c5-b409d5fae676/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "foreground_focal",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "forest",
-      "wildfire",
-      "burned",
-      "trail",
-      "hiker",
-      "mountains"
-    ],
-    "thumb": "thumbs/cc9ef416-bf9a-475f-96c5-b409d5fae676.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.825,
-    "date_sortable": "2020-10-29"
-  },
-  {
-    "id": "01a21dc1-0757-4215-8039-f43f5f712cb4",
-    "title": "SEKI_20211107_ Daniel Jeffcoach_ KNP Complex Fire Effects in Redwood Canyon_Kings Canyon National Park (9).jpg",
-    "photographer": "Daniel Jeffcoach",
-    "date": "11/07/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/01a21dc1-0757-4215-8039-f43f5f712cb4",
-    "image_url": "https://npgallery.nps.gov/GetAsset/01a21dc1-0757-4215-8039-f43f5f712cb4/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "forest",
-      "fire",
-      "charred",
-      "trees",
-      "mist",
-      "landscape"
-    ],
-    "thumb": "thumbs/01a21dc1-0757-4215-8039-f43f5f712cb4.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.825,
-    "date_sortable": "2021-11-07"
-  },
-  {
     "id": "b6517de6-229f-45ed-a35e-1159dec385bd",
     "title": "Find Your Park Honorable mention_SEKI_12012022_DevinMonas_child hugging sequoia.JPG",
     "photographer": "Devin Monas",
@@ -75679,57 +74782,6 @@
     "date_sortable": null
   },
   {
-    "id": "897e69c8-cbca-4d56-9f3b-079e4b16c173",
-    "title": "SEQU_210422_AC_#004_Board Camp Grove.jpg",
-    "photographer": "NPS / Anthony Caprio",
-    "date": "04/22/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/897e69c8-cbca-4d56-9f3b-079e4b16c173",
-    "image_url": "https://npgallery.nps.gov/GetAsset/897e69c8-cbca-4d56-9f3b-079e4b16c173/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "burned_forest",
-      "wildfire",
-      "charred_trees",
-      "dead_vegetation"
-    ],
-    "thumb": "thumbs/897e69c8-cbca-4d56-9f3b-079e4b16c173.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.793,
-    "date_sortable": "2021-04-22"
-  },
-  {
-    "id": "876786c8-0b4b-4535-95f2-f7a8e3c5c02b",
-    "title": "NPS_SEKI_RebeccaPaterson_10192018_Fire in Forest.JPG",
-    "photographer": "NPS/Rebecca Paterson",
-    "date": "10/19/2018",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/876786c8-0b4b-4535-95f2-f7a8e3c5c02b",
-    "image_url": "https://npgallery.nps.gov/GetAsset/876786c8-0b4b-4535-95f2-f7a8e3c5c02b/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "forest",
-      "smoke",
-      "embers",
-      "charred"
-    ],
-    "thumb": "thumbs/876786c8-0b4b-4535-95f2-f7a8e3c5c02b.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.788,
-    "date_sortable": "2018-10-19"
-  },
-  {
     "id": "29a67c75-9e6a-4b2c-82dd-8f81112cdeec",
     "title": "Above Rae Lakes",
     "photographer": "NPS / Rick Cain",
@@ -75754,33 +74806,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.783,
     "date_sortable": "2008-08-05"
-  },
-  {
-    "id": "50ca1120-d108-4a99-911b-934b2af5ca15",
-    "title": "SEKI_20211107_ Daniel Jeffcoach_ KNP Complex Fire Effects in Redwood Canyon_Kings Canyon National Park (8).jpg",
-    "photographer": "Daniel Jeffcoach",
-    "date": "11/07/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/50ca1120-d108-4a99-911b-934b2af5ca15",
-    "image_url": "https://npgallery.nps.gov/GetAsset/50ca1120-d108-4a99-911b-934b2af5ca15/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "midground",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "forest",
-      "fire",
-      "scorched",
-      "trees",
-      "wildfire",
-      "ash"
-    ],
-    "thumb": "thumbs/50ca1120-d108-4a99-911b-934b2af5ca15.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.781,
-    "date_sortable": "2021-11-07"
   },
   {
     "id": "8663ca1d-6516-4c11-bcb3-96d189efd607",
@@ -76331,32 +75356,6 @@
     "date_sortable": "2018-05-10"
   },
   {
-    "id": "421fa51c-d8c4-4af5-a278-b5624268ed79",
-    "title": "Fire in Redwood Mountain Grove",
-    "photographer": "NPS/Joe Suarez",
-    "date": "10/03/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/421fa51c-d8c4-4af5-a278-b5624268ed79",
-    "image_url": "https://npgallery.nps.gov/GetAsset/421fa51c-d8c4-4af5-a278-b5624268ed79/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "silhouette",
-      "forest",
-      "fire"
-    ],
-    "thumb": "thumbs/421fa51c-d8c4-4af5-a278-b5624268ed79.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.63,
-    "date_sortable": "2021-10-03"
-  },
-  {
     "id": "6f8890d1-1dd8-b71b-0b5e-d409438398d9",
     "title": "Giant Forest Sunrise",
     "photographer": "David Dinette",
@@ -76803,32 +75802,6 @@
     "date_sortable": "2015-02-13"
   },
   {
-    "id": "fe6e297b-2399-4330-acd2-0365e0e2388e",
-    "title": "Fire in Redwood Mountain Grove",
-    "photographer": "NPS/Joe Suarez",
-    "date": "10/04/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/fe6e297b-2399-4330-acd2-0365e0e2388e",
-    "image_url": "https://npgallery.nps.gov/GetAsset/fe6e297b-2399-4330-acd2-0365e0e2388e/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "flames",
-      "trees"
-    ],
-    "thumb": "thumbs/fe6e297b-2399-4330-acd2-0365e0e2388e.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.548,
-    "date_sortable": "2021-10-04"
-  },
-  {
     "id": "a8679d5b-f35e-4362-ab8b-2c9471204161",
     "title": "SEKI_20211102_Greg Stock_01_high severity aerial.JPG",
     "photographer": "Greg Stock",
@@ -76853,32 +75826,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.548,
     "date_sortable": "2021-10-28"
-  },
-  {
-    "id": "468d232d-6c60-4579-88de-034ed5261768",
-    "title": "Fire Burns near Moro Rock, Sequoia National Park",
-    "photographer": null,
-    "date": "09/28/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/468d232d-6c60-4579-88de-034ed5261768",
-    "image_url": "https://npgallery.nps.gov/GetAsset/468d232d-6c60-4579-88de-034ed5261768/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "yosemite",
-      "half-dome",
-      "smoke",
-      "burned-trees"
-    ],
-    "thumb": "thumbs/468d232d-6c60-4579-88de-034ed5261768.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.545,
-    "date_sortable": "2021-09-28"
   },
   {
     "id": "edba414f-e525-4ca6-a2cc-5e5ae69451eb",
@@ -76984,32 +75931,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.531,
     "date_sortable": null
-  },
-  {
-    "id": "24328301-b7fa-436c-8506-cd20b5b79e30",
-    "title": "SEQU_210422_AC_#001_Board Camp Grove.jpg",
-    "photographer": "NPS / Anthony Caprio",
-    "date": "04/22/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/24328301-b7fa-436c-8506-cd20b5b79e30",
-    "image_url": "https://npgallery.nps.gov/GetAsset/24328301-b7fa-436c-8506-cd20b5b79e30/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "forest",
-      "fire",
-      "trees",
-      "landscape",
-      "nature"
-    ],
-    "thumb": "thumbs/24328301-b7fa-436c-8506-cd20b5b79e30.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.523,
-    "date_sortable": "2021-04-22"
   },
   {
     "id": "c6aa93ef-059f-452b-b6b7-6393a1f2c960",
@@ -77535,32 +76456,6 @@
     "date_sortable": null
   },
   {
-    "id": "e5cd0732-6887-4696-a03a-52c0884f3dbc",
-    "title": "SEKI_20211107_ Daniel Jeffcoach_ KNP Complex Fire Effects in Redwood Canyon_Kings Canyon National Park (5).jpg",
-    "photographer": "Daniel Jeffcoach",
-    "date": "11/07/2021",
-    "park": "Sequoia and Kings Canyon National Parks",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/e5cd0732-6887-4696-a03a-52c0884f3dbc",
-    "image_url": "https://npgallery.nps.gov/GetAsset/e5cd0732-6887-4696-a03a-52c0884f3dbc/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "forest",
-      "sequoia",
-      "fire",
-      "trees",
-      "trail"
-    ],
-    "thumb": "thumbs/e5cd0732-6887-4696-a03a-52c0884f3dbc.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.448,
-    "date_sortable": "2021-11-07"
-  },
-  {
     "id": "118e720e-0a92-4969-a070-94c0e67432fd",
     "title": "_63Q8537.JPG",
     "photographer": "NPS / Kiel Maddox",
@@ -77981,33 +76876,6 @@
     "date_sortable": "2020-10-26"
   },
   {
-    "id": "e86f3f13-1dd8-b71b-0bcf-5333b748c342",
-    "title": "Sunset",
-    "photographer": "NPS",
-    "date": null,
-    "park": "Shenandoah National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/e86f3f13-1dd8-b71b-0bcf-5333b748c342",
-    "image_url": "https://npgallery.nps.gov/GetAsset/e86f3f13-1dd8-b71b-0bcf-5333b748c342/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "landscape",
-      "sunset",
-      "mountains",
-      "sky",
-      "quote",
-      "national park"
-    ],
-    "thumb": "thumbs/e86f3f13-1dd8-b71b-0bcf-5333b748c342.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 6.107,
-    "date_sortable": null
-  },
-  {
     "id": "3068fcde-155d-451f-673c-2cfddd501a6b",
     "title": "Hiker on North Marshall",
     "photographer": "NPS/Neal Lewis",
@@ -78032,32 +76900,6 @@
     "thumb": "thumbs/3068fcde-155d-451f-673c-2cfddd501a6b.webp",
     "aspect": "16/9",
     "aesthetic_score": 6.085,
-    "date_sortable": null
-  },
-  {
-    "id": "e8823679-1dd8-b71b-0b16-8b38caf489bb",
-    "title": "Re-creation",
-    "photographer": "NPS",
-    "date": null,
-    "park": "Shenandoah National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/e8823679-1dd8-b71b-0b16-8b38caf489bb",
-    "image_url": "https://npgallery.nps.gov/GetAsset/e8823679-1dd8-b71b-0b16-8b38caf489bb/Original",
-    "time_of_day": "morning",
-    "people_prominence": "foreground_focal",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "mountain",
-      "sunset",
-      "tree",
-      "person",
-      "sky"
-    ],
-    "thumb": "thumbs/e8823679-1dd8-b71b-0b16-8b38caf489bb.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 6.08,
     "date_sortable": null
   },
   {
@@ -78454,33 +77296,6 @@
     "date_sortable": null
   },
   {
-    "id": "e88a0cf4-1dd8-b71b-0b48-0814e1aeec8c",
-    "title": "Sunrise",
-    "photographer": "NPS",
-    "date": null,
-    "park": "Shenandoah National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/e88a0cf4-1dd8-b71b-0b48-0814e1aeec8c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/e88a0cf4-1dd8-b71b-0b48-0814e1aeec8c/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "sunset",
-      "mountains",
-      "forest",
-      "shenandoah",
-      "horizon",
-      "quote"
-    ],
-    "thumb": "thumbs/e88a0cf4-1dd8-b71b-0b48-0814e1aeec8c.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.86,
-    "date_sortable": null
-  },
-  {
     "id": "a93e5e1a-c7ee-48e1-bd57-d96cdca282d2",
     "title": "Crescent Rock - October 18, 2024",
     "photographer": "NPS Photo",
@@ -78718,32 +77533,6 @@
     "date_sortable": "2017-05-07"
   },
   {
-    "id": "e886b816-1dd8-b71b-0b5d-002cfda023e9",
-    "title": "Mountains",
-    "photographer": "NPS",
-    "date": null,
-    "park": "Shenandoah National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/e886b816-1dd8-b71b-0b5d-002cfda023e9",
-    "image_url": "https://npgallery.nps.gov/GetAsset/e886b816-1dd8-b71b-0b5d-002cfda023e9/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "sunrise",
-      "mountains",
-      "valley",
-      "sunburst",
-      "hazy"
-    ],
-    "thumb": "thumbs/e886b816-1dd8-b71b-0b5d-002cfda023e9.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.764,
-    "date_sortable": null
-  },
-  {
     "id": "19d492ec-155d-451f-677f-f13753002a0a",
     "title": "What a View!",
     "photographer": null,
@@ -78845,32 +77634,6 @@
     "thumb": "thumbs/c62c8b27-1dd8-b71b-0b28-0b5d86b59956.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.72,
-    "date_sortable": null
-  },
-  {
-    "id": "e873a926-1dd8-b71b-0b2e-f0504abd4eea",
-    "title": "Skyline Drive",
-    "photographer": "NPS",
-    "date": null,
-    "park": "Shenandoah National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/e873a926-1dd8-b71b-0b2e-f0504abd4eea",
-    "image_url": "https://npgallery.nps.gov/GetAsset/e873a926-1dd8-b71b-0b2e-f0504abd4eea/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "autumn",
-      "road",
-      "forest",
-      "fall",
-      "trees"
-    ],
-    "thumb": "thumbs/e873a926-1dd8-b71b-0b2e-f0504abd4eea.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.69,
     "date_sortable": null
   },
   {
@@ -79290,32 +78053,6 @@
     "thumb": "thumbs/54b499f2-155d-451f-6721-af20a28c0e68.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.605,
-    "date_sortable": null
-  },
-  {
-    "id": "e87803dc-1dd8-b71b-0b51-7cd500e5fdd7",
-    "title": "Fog Ocean Sunrise",
-    "photographer": "NPS",
-    "date": null,
-    "park": "Shenandoah National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/e87803dc-1dd8-b71b-0b51-7cd500e5fdd7",
-    "image_url": "https://npgallery.nps.gov/GetAsset/e87803dc-1dd8-b71b-0b51-7cd500e5fdd7/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "sunrise",
-      "clouds",
-      "sky",
-      "mountain",
-      "landscape"
-    ],
-    "thumb": "thumbs/e87803dc-1dd8-b71b-0b51-7cd500e5fdd7.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.603,
     "date_sortable": null
   },
   {
@@ -84791,32 +83528,6 @@
     "date_sortable": null
   },
   {
-    "id": "914d32e0-1dd8-b71c-0725-00e3744c860e",
-    "title": "AK Dept. of Forestry- Chisana Wildfire",
-    "photographer": "Alaska Department of Forestry",
-    "date": null,
-    "park": "Wrangell-St. Elias National Park and Preserve",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/914d32e0-1dd8-b71c-0725-00e3744c860e",
-    "image_url": "https://npgallery.nps.gov/GetAsset/914d32e0-1dd8-b71c-0725-00e3744c860e/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "steam",
-      "geothermal",
-      "aerial",
-      "vegetation",
-      "smoke"
-    ],
-    "thumb": "thumbs/914d32e0-1dd8-b71c-0725-00e3744c860e.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.48,
-    "date_sortable": null
-  },
-  {
     "id": "3dde0e0f-1dd8-b71c-07fc-c85e2a8f0bd6",
     "title": "Summit of St. Elias",
     "photographer": null,
@@ -85208,84 +83919,6 @@
     "date_sortable": "2016-02-02"
   },
   {
-    "id": "cb11d0e5-1dd8-b71b-0bfb-649d8e18f7da",
-    "title": "Snow dunes, Hayden Valley",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/cb11d0e5-1dd8-b71b-0bfb-649d8e18f7da",
-    "image_url": "https://npgallery.nps.gov/GetAsset/cb11d0e5-1dd8-b71b-0bfb-649d8e18f7da/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "monochrome",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "tree",
-      "winter",
-      "landscape",
-      "snowdrift"
-    ],
-    "thumb": "thumbs/cb11d0e5-1dd8-b71b-0bfb-649d8e18f7da.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.358,
-    "date_sortable": null
-  },
-  {
-    "id": "dfcdb3c8-1dd8-b71b-0b8b-57fa9db8ade7",
-    "title": "Sunrise at Mammoth Hot Springs",
-    "photographer": "NPS/Neal Herbert",
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/dfcdb3c8-1dd8-b71b-0b8b-57fa9db8ade7",
-    "image_url": "https://npgallery.nps.gov/GetAsset/dfcdb3c8-1dd8-b71b-0b8b-57fa9db8ade7/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "geothermal",
-      "steam",
-      "frozen trees",
-      "sunstar"
-    ],
-    "thumb": "thumbs/dfcdb3c8-1dd8-b71b-0b8b-57fa9db8ade7.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.354,
-    "date_sortable": null
-  },
-  {
-    "id": "88e36fea-a2a0-4660-853c-b031027f970d",
-    "title": "Snow dunes, Hayden Valley",
-    "photographer": "NPS/Neal Herbert",
-    "date": "02/02/2016",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/88e36fea-a2a0-4660-853c-b031027f970d",
-    "image_url": "https://npgallery.nps.gov/GetAsset/88e36fea-a2a0-4660-853c-b031027f970d/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "monochrome",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "tree",
-      "winter",
-      "minimalist",
-      "snowfield"
-    ],
-    "thumb": "thumbs/88e36fea-a2a0-4660-853c-b031027f970d.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.347,
-    "date_sortable": "2016-02-02"
-  },
-  {
     "id": "3274332e-1dd8-b71b-0b37-1f91a43858b9",
     "title": "Rain over the Absarokas",
     "photographer": null,
@@ -85631,84 +84264,6 @@
     "date_sortable": null
   },
   {
-    "id": "36fff3c9-4c49-476d-b293-7c6161a6c89c",
-    "title": "Winter, Hayden Valley",
-    "photographer": "NPS/Neal Herbert",
-    "date": "02/02/2016",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/36fff3c9-4c49-476d-b293-7c6161a6c89c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/36fff3c9-4c49-476d-b293-7c6161a6c89c/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "valley",
-      "fog",
-      "hills",
-      "winter"
-    ],
-    "thumb": "thumbs/36fff3c9-4c49-476d-b293-7c6161a6c89c.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.136,
-    "date_sortable": "2016-02-02"
-  },
-  {
-    "id": "c8d25cf1-1dd8-b71b-0b0e-2d7e930e4450",
-    "title": "Electric Peak",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c8d25cf1-1dd8-b71b-0b0e-2d7e930e4450",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c8d25cf1-1dd8-b71b-0b0e-2d7e930e4450/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "mountain",
-      "snow",
-      "forest",
-      "alpenglow",
-      "winter"
-    ],
-    "thumb": "thumbs/c8d25cf1-1dd8-b71b-0b0e-2d7e930e4450.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.135,
-    "date_sortable": null
-  },
-  {
-    "id": "704a16e8-1dd8-b71b-0b52-02dfffde27b9",
-    "title": "Electric Peak",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/704a16e8-1dd8-b71b-0b52-02dfffde27b9",
-    "image_url": "https://npgallery.nps.gov/GetAsset/704a16e8-1dd8-b71b-0b52-02dfffde27b9/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "snowy",
-      "mountain",
-      "forest",
-      "alpine",
-      "winter"
-    ],
-    "thumb": "thumbs/704a16e8-1dd8-b71b-0b52-02dfffde27b9.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.135,
-    "date_sortable": null
-  },
-  {
     "id": "d0832b15-1a44-4e86-88f6-f05c9c14f6e6",
     "title": "Rainbows from Bunsen Peak, Mammoth Hot Springs",
     "photographer": "NPS/Neal Herbert",
@@ -85813,32 +84368,6 @@
     "date_sortable": "2014-05-14"
   },
   {
-    "id": "056e9fab-1dd8-b71b-0b21-3b4468349509",
-    "title": "Winter at Firehole Falls",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/056e9fab-1dd8-b71b-0b21-3b4468349509",
-    "image_url": "https://npgallery.nps.gov/GetAsset/056e9fab-1dd8-b71b-0b21-3b4468349509/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "monochrome",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "waterfall",
-      "river",
-      "forest",
-      "winter"
-    ],
-    "thumb": "thumbs/056e9fab-1dd8-b71b-0b21-3b4468349509.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.116,
-    "date_sortable": null
-  },
-  {
     "id": "ca618e12-1dd8-b71b-0bb0-87435a823007",
     "title": "Waxing moon seen from Lamar Valley",
     "photographer": null,
@@ -85918,33 +84447,6 @@
     "date_sortable": "2016-01-02"
   },
   {
-    "id": "38de8450-d225-4000-8ba7-e82cbdc8697f",
-    "title": "Winter, Hayden Valley",
-    "photographer": "NPS/Neal Herbert",
-    "date": "02/02/2016",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/38de8450-d225-4000-8ba7-e82cbdc8697f",
-    "image_url": "https://npgallery.nps.gov/GetAsset/38de8450-d225-4000-8ba7-e82cbdc8697f/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "steam",
-      "geothermal",
-      "winter",
-      "clouds",
-      "dunes"
-    ],
-    "thumb": "thumbs/38de8450-d225-4000-8ba7-e82cbdc8697f.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.077,
-    "date_sortable": "2016-02-02"
-  },
-  {
     "id": "097c5f37-1dd8-b71b-0beb-d54eb02e622e",
     "title": "Winter at Firehole Falls",
     "photographer": null,
@@ -85998,33 +84500,6 @@
     "date_sortable": null
   },
   {
-    "id": "c90b65a8-1dd8-b71b-0bbc-48e297847420",
-    "title": "\"Christmas tree rock\"",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c90b65a8-1dd8-b71b-0bbc-48e297847420",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c90b65a8-1dd8-b71b-0bbc-48e297847420/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snowy",
-      "river",
-      "mist",
-      "forest",
-      "rocks",
-      "winter"
-    ],
-    "thumb": "thumbs/c90b65a8-1dd8-b71b-0bbc-48e297847420.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.054,
-    "date_sortable": null
-  },
-  {
     "id": "003e3c02-1dd8-b71b-0b19-def065afeb73",
     "title": "Double rainbow at the Lower Falls of the Yellowstone River",
     "photographer": null,
@@ -86049,32 +84524,6 @@
     "aspect": "16/9",
     "aesthetic_score": 6.048,
     "date_sortable": null
-  },
-  {
-    "id": "e5eeb7d5-6009-4593-aa43-30ab3588ea50",
-    "title": "Winter at Firehole Falls",
-    "photographer": "NPS/Neal Herbert",
-    "date": "12/29/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/e5eeb7d5-6009-4593-aa43-30ab3588ea50",
-    "image_url": "https://npgallery.nps.gov/GetAsset/e5eeb7d5-6009-4593-aa43-30ab3588ea50/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "waterfall",
-      "forest",
-      "winter",
-      "rocks"
-    ],
-    "thumb": "thumbs/e5eeb7d5-6009-4593-aa43-30ab3588ea50.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.047,
-    "date_sortable": "2015-12-29"
   },
   {
     "id": "9b965263-8ad5-40c4-8a79-61f37ff970b5",
@@ -86262,32 +84711,6 @@
     "date_sortable": "2014-10-31"
   },
   {
-    "id": "ecc56a2c-1dd8-b71b-0baf-e4e54bf66d1a",
-    "title": "Spruce Fire from Dunraven Pass",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ecc56a2c-1dd8-b71b-0baf-e4e54bf66d1a",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ecc56a2c-1dd8-b71b-0baf-e4e54bf66d1a/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "wildfire",
-      "smoke_plume",
-      "forest",
-      "hazy",
-      "blue_sky"
-    ],
-    "thumb": "thumbs/ecc56a2c-1dd8-b71b-0baf-e4e54bf66d1a.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 6.016,
-    "date_sortable": null
-  },
-  {
     "id": "6980c15a-a401-4e64-abbe-49a65fc38659",
     "title": "Lower Falls of the Yellowstone River",
     "photographer": "NPS/Diane Renkin",
@@ -86472,32 +84895,6 @@
     "date_sortable": null
   },
   {
-    "id": "42364017-5900-48cc-a304-15f07f01b873",
-    "title": "\"Christmas Tree Rock\" in the Firehole River",
-    "photographer": "NPS/Neal Herbert",
-    "date": "01/17/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/42364017-5900-48cc-a304-15f07f01b873",
-    "image_url": "https://npgallery.nps.gov/GetAsset/42364017-5900-48cc-a304-15f07f01b873/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "river",
-      "mist",
-      "rocks",
-      "forest"
-    ],
-    "thumb": "thumbs/42364017-5900-48cc-a304-15f07f01b873.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.992,
-    "date_sortable": "2014-01-17"
-  },
-  {
     "id": "271aa22b-155d-451f-673d-561d04a97297",
     "title": "Kepler Cascades",
     "photographer": null,
@@ -86653,33 +85050,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.977,
     "date_sortable": "2015-12-20"
-  },
-  {
-    "id": "131be191-8f68-4bfe-b846-9b8b13e58187",
-    "title": "Thunderstorm at sunset, Swan Lake Flat",
-    "photographer": "NPS/Neal Herbert",
-    "date": "06/12/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/131be191-8f68-4bfe-b846-9b8b13e58187",
-    "image_url": "https://npgallery.nps.gov/GetAsset/131be191-8f68-4bfe-b846-9b8b13e58187/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "landscape",
-      "mountains",
-      "storm",
-      "sunset",
-      "clouds",
-      "meadow"
-    ],
-    "thumb": "thumbs/131be191-8f68-4bfe-b846-9b8b13e58187.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.975,
-    "date_sortable": "2015-06-12"
   },
   {
     "id": "330fda78-2354-4257-bc15-d3fa5fb678de",
@@ -86892,33 +85262,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.94,
     "date_sortable": "2017-03-19"
-  },
-  {
-    "id": "f09e7658-1dd8-b71b-0b8e-352cec40b638",
-    "title": "Fawn Fire, September 3, 2016",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/f09e7658-1dd8-b71b-0b8e-352cec40b638",
-    "image_url": "https://npgallery.nps.gov/GetAsset/f09e7658-1dd8-b71b-0b8e-352cec40b638/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "burned",
-      "forest",
-      "mountains",
-      "smoke",
-      "aerial"
-    ],
-    "thumb": "thumbs/f09e7658-1dd8-b71b-0b8e-352cec40b638.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.937,
-    "date_sortable": null
   },
   {
     "id": "c2221055-1b32-4bbd-af0a-22286f29c8b0",
@@ -87209,32 +85552,6 @@
     "thumb": "thumbs/c82c85cd-1dd8-b71b-0b80-133c8c548fad.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.887,
-    "date_sortable": null
-  },
-  {
-    "id": "eec6360d-1dd8-b71b-0ba2-1521b685bde4",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eec6360d-1dd8-b71b-0ba2-1521b685bde4",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eec6360d-1dd8-b71b-0ba2-1521b685bde4/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "flames"
-    ],
-    "thumb": "thumbs/eec6360d-1dd8-b71b-0ba2-1521b685bde4.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.886,
     "date_sortable": null
   },
   {
@@ -87577,32 +85894,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.861,
     "date_sortable": null
-  },
-  {
-    "id": "b33bb255-c5ec-4d76-a2ee-3897844b6699",
-    "title": "Tree Covered in rime ice near Palette Spring",
-    "photographer": "NPS / Jacob W. Frank",
-    "date": "01/05/2017",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/b33bb255-c5ec-4d76-a2ee-3897844b6699",
-    "image_url": "https://npgallery.nps.gov/GetAsset/b33bb255-c5ec-4d76-a2ee-3897844b6699/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "winter",
-      "trees",
-      "frost",
-      "mountain"
-    ],
-    "thumb": "thumbs/b33bb255-c5ec-4d76-a2ee-3897844b6699.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.849,
-    "date_sortable": "2017-01-05"
   },
   {
     "id": "de69fd48-1dd8-b71b-0b9a-3e2d48b9c58c",
@@ -88131,32 +86422,6 @@
     "date_sortable": null
   },
   {
-    "id": "a099cdae-161f-4803-a1de-10fc101df87c",
-    "title": "Spruce Fire from Dunraven Pass",
-    "photographer": "NPS/Neal Herbert",
-    "date": "09/12/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/a099cdae-161f-4803-a1de-10fc101df87c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/a099cdae-161f-4803-a1de-10fc101df87c/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "wildfire",
-      "smoke plume",
-      "forest",
-      "landscape",
-      "sky"
-    ],
-    "thumb": "thumbs/a099cdae-161f-4803-a1de-10fc101df87c.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.795,
-    "date_sortable": "2015-09-12"
-  },
-  {
     "id": "de385185-1dd8-b71b-0b25-c59f642e28c2",
     "title": "Dawn eruption of Great Fountain Geyser, Lower Geyser Basin",
     "photographer": "NPS/Neal Herbert",
@@ -88475,33 +86740,6 @@
     "date_sortable": "2013-08-03"
   },
   {
-    "id": "31b2d04a-1dd8-b71b-0b91-23cf45f91550",
-    "title": "Thunderstorm at sunset, Swan Lake Flat",
-    "photographer": "NPS/Neal Herbert",
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/31b2d04a-1dd8-b71b-0b91-23cf45f91550",
-    "image_url": "https://npgallery.nps.gov/GetAsset/31b2d04a-1dd8-b71b-0b91-23cf45f91550/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "storm",
-      "lightning",
-      "mountains",
-      "tundra",
-      "dramatic sky",
-      "sunset"
-    ],
-    "thumb": "thumbs/31b2d04a-1dd8-b71b-0b91-23cf45f91550.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.777,
-    "date_sortable": null
-  },
-  {
     "id": "a31c7832-423c-4e6e-8067-14b7e3cbdda4",
     "title": "View of Electric Peak from Sepulcher Mountain",
     "photographer": "NPS / Jacob W. Frank",
@@ -88661,31 +86899,6 @@
     "date_sortable": "2016-08-22"
   },
   {
-    "id": "eee51676-1dd8-b71b-0b6f-b7f7b6b7c35d",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eee51676-1dd8-b71b-0b6f-b7f7b6b7c35d",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eee51676-1dd8-b71b-0b6f-b7f7b6b7c35d/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial"
-    ],
-    "thumb": "thumbs/eee51676-1dd8-b71b-0b6f-b7f7b6b7c35d.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.769,
-    "date_sortable": null
-  },
-  {
     "id": "c557944d-1dd8-b71b-0b08-d90e316e4ab8",
     "title": "Fall colors in Lamar Valley",
     "photographer": null,
@@ -88794,32 +87007,6 @@
     "date_sortable": "2014-10-12"
   },
   {
-    "id": "eeca1d94-1dd8-b71b-0b81-ac1517e961f9",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eeca1d94-1dd8-b71b-0b81-ac1517e961f9",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eeca1d94-1dd8-b71b-0b81-ac1517e961f9/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "aerial",
-      "forest",
-      "plume"
-    ],
-    "thumb": "thumbs/eeca1d94-1dd8-b71b-0b81-ac1517e961f9.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.763,
-    "date_sortable": null
-  },
-  {
     "id": "1548dd86-640b-4ee5-b1a7-04ccf7439beb",
     "title": "Lodgepole sunrise",
     "photographer": "NPS / Jacob W. Frank",
@@ -88844,32 +87031,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.761,
     "date_sortable": "2017-10-25"
-  },
-  {
-    "id": "5fdd0780-4fa5-4b38-8585-cef2ce0661eb",
-    "title": "Lodgepole pine forest killed by hydrothermal activity",
-    "photographer": "NPS/Diane Renkin",
-    "date": "01/14/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/5fdd0780-4fa5-4b38-8585-cef2ce0661eb",
-    "image_url": "https://npgallery.nps.gov/GetAsset/5fdd0780-4fa5-4b38-8585-cef2ce0661eb/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "monochrome",
-    "dominant_color": "gray",
-    "tags": [
-      "frost",
-      "burned",
-      "forest",
-      "snow",
-      "trees"
-    ],
-    "thumb": "thumbs/5fdd0780-4fa5-4b38-8585-cef2ce0661eb.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.761,
-    "date_sortable": "2015-01-14"
   },
   {
     "id": "ee4a0e4e-1dd8-b71b-0b5b-56c36bf539cc",
@@ -89083,33 +87244,6 @@
     "date_sortable": "2017-10-01"
   },
   {
-    "id": "eed8d90c-1dd8-b71b-0b7b-99cc3ca46a60",
-    "title": "The Maple Fire",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eed8d90c-1dd8-b71b-0b7b-99cc3ca46a60",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eed8d90c-1dd8-b71b-0b7b-99cc3ca46a60/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "meadow",
-      "clouds",
-      "fire"
-    ],
-    "thumb": "thumbs/eed8d90c-1dd8-b71b-0b7b-99cc3ca46a60.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.741,
-    "date_sortable": null
-  },
-  {
     "id": "323dff3e-d508-4f02-ae44-18e9aeb27d29",
     "title": "Undine Falls",
     "photographer": "NPS/Diane Renkin",
@@ -89161,59 +87295,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.739,
     "date_sortable": "2020-12-13"
-  },
-  {
-    "id": "c9f59e00-1dd8-b71b-0b4b-edbd7c673522",
-    "title": "Frosty morning in the Lower Geyser Basin",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c9f59e00-1dd8-b71b-0b4b-edbd7c673522",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c9f59e00-1dd8-b71b-0b4b-edbd7c673522/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "monochrome",
-    "dominant_color": "gray",
-    "tags": [
-      "frost",
-      "dead_trees",
-      "forest",
-      "foggy",
-      "winter",
-      "charred"
-    ],
-    "thumb": "thumbs/c9f59e00-1dd8-b71b-0b4b-edbd7c673522.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.737,
-    "date_sortable": null
-  },
-  {
-    "id": "eeac19f1-1dd8-b71b-0b6c-b2e50d8d0bfc",
-    "title": "Fawn Fire August 8, 2016",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eeac19f1-1dd8-b71b-0b6c-b2e50d8d0bfc",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eeac19f1-1dd8-b71b-0b6c-b2e50d8d0bfc/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "aerial",
-      "hills",
-      "forest",
-      "burned_trees",
-      "mountains"
-    ],
-    "thumb": "thumbs/eeac19f1-1dd8-b71b-0b6c-b2e50d8d0bfc.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.736,
-    "date_sortable": null
   },
   {
     "id": "d66ad564-0cb8-414c-bedd-966d14b5611a",
@@ -89295,32 +87376,6 @@
     "date_sortable": "2015-06-07"
   },
   {
-    "id": "eecdd3f1-1dd8-b71b-0b13-72e0330b5499",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eecdd3f1-1dd8-b71b-0b13-72e0330b5499",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eecdd3f1-1dd8-b71b-0b13-72e0330b5499/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "smoke plume"
-    ],
-    "thumb": "thumbs/eecdd3f1-1dd8-b71b-0b13-72e0330b5499.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.732,
-    "date_sortable": null
-  },
-  {
     "id": "31e4629e-3486-4280-9ed5-41d469b1c423",
     "title": "Antler Peak",
     "photographer": "NPS/Neal Herbert",
@@ -89369,32 +87424,6 @@
       "mountain"
     ],
     "thumb": "thumbs/5add286b-1dd8-b71b-0bea-fae3f6c1c7e7.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.728,
-    "date_sortable": null
-  },
-  {
-    "id": "ecae1e46-1dd8-b71b-0bfe-e6a99551a8d4",
-    "title": "Spruce Fire from Dunraven Pass",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ecae1e46-1dd8-b71b-0bfe-e6a99551a8d4",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ecae1e46-1dd8-b71b-0bfe-e6a99551a8d4/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "hills",
-      "sky"
-    ],
-    "thumb": "thumbs/ecae1e46-1dd8-b71b-0bfe-e6a99551a8d4.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.728,
     "date_sortable": null
@@ -89478,32 +87507,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.724,
     "date_sortable": null
-  },
-  {
-    "id": "59c04feb-abb6-40ff-aa0d-e4f839a17b20",
-    "title": "Snow pillows, Pebble Creek",
-    "photographer": "NPS/Neal Herbert",
-    "date": "03/07/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/59c04feb-abb6-40ff-aa0d-e4f839a17b20",
-    "image_url": "https://npgallery.nps.gov/GetAsset/59c04feb-abb6-40ff-aa0d-e4f839a17b20/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "rock",
-      "stream",
-      "forest",
-      "winter"
-    ],
-    "thumb": "thumbs/59c04feb-abb6-40ff-aa0d-e4f839a17b20.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.721,
-    "date_sortable": "2015-03-07"
   },
   {
     "id": "033fa861-1dd8-b71b-0bda-d9a5c2112db3",
@@ -89822,32 +87825,6 @@
     "date_sortable": "2017-10-28"
   },
   {
-    "id": "eeac204b-1dd8-b71b-0bf4-c926b93aa8bf",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eeac204b-1dd8-b71b-0bf4-c926b93aa8bf",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eeac204b-1dd8-b71b-0bf4-c926b93aa8bf/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "lake",
-      "forest",
-      "aerial"
-    ],
-    "thumb": "thumbs/eeac204b-1dd8-b71b-0bf4-c926b93aa8bf.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.707,
-    "date_sortable": null
-  },
-  {
     "id": "52a91caa-c217-46bf-8225-b7c50e624aca",
     "title": "Canary Spring, Mammoth Hot Springs",
     "photographer": "NPS/Diane Renkin",
@@ -89872,33 +87849,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.705,
     "date_sortable": "2019-12-06"
-  },
-  {
-    "id": "eed85174-1dd8-b71b-0b9e-452d55c4fe1e",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eed85174-1dd8-b71b-0b9e-452d55c4fe1e",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eed85174-1dd8-b71b-0b9e-452d55c4fe1e/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "forest fire",
-      "smoke",
-      "coniferous forest",
-      "aerial view",
-      "wildfire",
-      "hills"
-    ],
-    "thumb": "thumbs/eed85174-1dd8-b71b-0b9e-452d55c4fe1e.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.705,
-    "date_sortable": null
   },
   {
     "id": "b529b1cf-e97b-480f-8df8-cb68c5594a49",
@@ -90165,33 +88115,6 @@
     "date_sortable": "2018-02-23"
   },
   {
-    "id": "f11e49a7-1dd8-b71b-0bec-dd0144b2059e",
-    "title": "Maple Fire, September 10, 2016",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/f11e49a7-1dd8-b71b-0bec-dd0144b2059e",
-    "image_url": "https://npgallery.nps.gov/GetAsset/f11e49a7-1dd8-b71b-0bec-dd0144b2059e/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "geyser",
-      "smoke",
-      "wetland",
-      "river",
-      "blue-sky",
-      "steam"
-    ],
-    "thumb": "thumbs/f11e49a7-1dd8-b71b-0bec-dd0144b2059e.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.685,
-    "date_sortable": null
-  },
-  {
     "id": "ca1d8cba-1dd8-b71b-0b6d-546dee9ff6ad",
     "title": "Cutoff Mountain and Slough Creek",
     "photographer": null,
@@ -90324,32 +88247,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.681,
     "date_sortable": null
-  },
-  {
-    "id": "1917c485-f401-488e-a3ab-cf774723ecb8",
-    "title": "Amphitheater Mountain",
-    "photographer": "NPS/Jim Peaco",
-    "date": "12/11/2013",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/1917c485-f401-488e-a3ab-cf774723ecb8",
-    "image_url": "https://npgallery.nps.gov/GetAsset/1917c485-f401-488e-a3ab-cf774723ecb8/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "mountain",
-      "snow",
-      "alpenglow",
-      "clouds",
-      "forest"
-    ],
-    "thumb": "thumbs/1917c485-f401-488e-a3ab-cf774723ecb8.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.68,
-    "date_sortable": "2013-12-11"
   },
   {
     "id": "2199225e-ab01-4bcd-b1cc-56cf7ca29351",
@@ -90909,33 +88806,6 @@
     "date_sortable": "2014-10-02"
   },
   {
-    "id": "ee886980-1dd8-b71b-0b3d-a338c47d14b3",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ee886980-1dd8-b71b-0b3d-a338c47d14b3",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ee886980-1dd8-b71b-0b3d-a338c47d14b3/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "forest",
-      "smoke",
-      "aerial",
-      "fire",
-      "trees"
-    ],
-    "thumb": "thumbs/ee886980-1dd8-b71b-0b3d-a338c47d14b3.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.664,
-    "date_sortable": null
-  },
-  {
     "id": "4b07b059-a0ad-48a0-bef7-2029a8a93766",
     "title": "Fog on Mt. Washburn",
     "photographer": "NPS/Jim Peaco",
@@ -90959,33 +88829,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.663,
     "date_sortable": "2014-08-04"
-  },
-  {
-    "id": "ec9918ae-1dd8-b71b-0b62-c8ef38bbbca6",
-    "title": "Spruce Fire from Dunraven Pass",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ec9918ae-1dd8-b71b-0b62-c8ef38bbbca6",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ec9918ae-1dd8-b71b-0b62-c8ef38bbbca6/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "hills",
-      "fire",
-      "wildland fire"
-    ],
-    "thumb": "thumbs/ec9918ae-1dd8-b71b-0b62-c8ef38bbbca6.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.661,
-    "date_sortable": null
   },
   {
     "id": "09387a40-1dd8-b71b-0bb5-daf068489524",
@@ -91383,32 +89226,6 @@
     "date_sortable": null
   },
   {
-    "id": "ece057fd-1dd8-b71b-0bf1-f5b06ca510d7",
-    "title": "Spruce Fire burn mosaic",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ece057fd-1dd8-b71b-0bf1-f5b06ca510d7",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ece057fd-1dd8-b71b-0bf1-f5b06ca510d7/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "forest",
-      "wildfire",
-      "smoke",
-      "burned_area",
-      "aerial_view"
-    ],
-    "thumb": "thumbs/ece057fd-1dd8-b71b-0bf1-f5b06ca510d7.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.641,
-    "date_sortable": null
-  },
-  {
     "id": "a619ac03-c1ee-4f36-ba30-240a1f07a19c",
     "title": "Hikers on Dailey Creek Trail",
     "photographer": "NPS/Jim Peaco",
@@ -91649,58 +89466,6 @@
     "date_sortable": "2014-07-31"
   },
   {
-    "id": "ee93a105-1dd8-b71b-0be2-39d482370d39",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ee93a105-1dd8-b71b-0be2-39d482370d39",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ee93a105-1dd8-b71b-0be2-39d482370d39/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "lake",
-      "aerial"
-    ],
-    "thumb": "thumbs/ee93a105-1dd8-b71b-0be2-39d482370d39.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.628,
-    "date_sortable": null
-  },
-  {
-    "id": "aa74db20-e69f-4629-8665-bc43d7bb0480",
-    "title": "Spruce Fire burn mosaic",
-    "photographer": "NPS/Neal Herbert",
-    "date": "09/14/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/aa74db20-e69f-4629-8665-bc43d7bb0480",
-    "image_url": "https://npgallery.nps.gov/GetAsset/aa74db20-e69f-4629-8665-bc43d7bb0480/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "forest",
-      "aerial",
-      "smoke",
-      "burned"
-    ],
-    "thumb": "thumbs/aa74db20-e69f-4629-8665-bc43d7bb0480.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.627,
-    "date_sortable": "2015-09-14"
-  },
-  {
     "id": "77985b2c-ab66-4079-b503-fe42f5391b04",
     "title": "Electric Peak  at sunrise",
     "photographer": "NPS / Jacob W. Frank",
@@ -91803,33 +89568,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.623,
     "date_sortable": "2020-11-12"
-  },
-  {
-    "id": "eef3fd59-1dd8-b71b-0b7a-90daabacac42",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eef3fd59-1dd8-b71b-0b7a-90daabacac42",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eef3fd59-1dd8-b71b-0b7a-90daabacac42/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "lake",
-      "forest",
-      "aerial",
-      "mountains"
-    ],
-    "thumb": "thumbs/eef3fd59-1dd8-b71b-0b7a-90daabacac42.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.623,
-    "date_sortable": null
   },
   {
     "id": "ebf37b2e-5a0b-46e3-ade7-35144020e67a",
@@ -92093,58 +89831,6 @@
     "date_sortable": "2014-06-10"
   },
   {
-    "id": "ecef6252-1dd8-b71b-0bb2-6d3aa08f13fb",
-    "title": "Spruce Fire burn mosaic",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ecef6252-1dd8-b71b-0bb2-6d3aa08f13fb",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ecef6252-1dd8-b71b-0bb2-6d3aa08f13fb/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "burned land"
-    ],
-    "thumb": "thumbs/ecef6252-1dd8-b71b-0bb2-6d3aa08f13fb.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.614,
-    "date_sortable": null
-  },
-  {
-    "id": "eec3b2fb-1dd8-b71b-0b13-06a174428584",
-    "title": "Fawn Fire August 6 2016",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eec3b2fb-1dd8-b71b-0b13-06a174428584",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eec3b2fb-1dd8-b71b-0b13-06a174428584/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "smoke",
-      "wildfire",
-      "hills",
-      "forest",
-      "sky"
-    ],
-    "thumb": "thumbs/eec3b2fb-1dd8-b71b-0b13-06a174428584.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.613,
-    "date_sortable": null
-  },
-  {
     "id": "dd096062-1dd8-b71b-0b79-6da8626696bc",
     "title": "Morning Glory Pool, Upper Geyser Basin",
     "photographer": "NPS/Neal Herbert",
@@ -92168,32 +89854,6 @@
     "thumb": "thumbs/dd096062-1dd8-b71b-0b79-6da8626696bc.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.612,
-    "date_sortable": null
-  },
-  {
-    "id": "ecf95eda-1dd8-b71b-0b65-fa866528004e",
-    "title": "Spruce Fire burn mosaic",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ecf95eda-1dd8-b71b-0b65-fa866528004e",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ecf95eda-1dd8-b71b-0b65-fa866528004e/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "forest",
-      "smoke",
-      "aerial",
-      "burn"
-    ],
-    "thumb": "thumbs/ecf95eda-1dd8-b71b-0b65-fa866528004e.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.611,
     "date_sortable": null
   },
   {
@@ -92302,32 +89962,6 @@
     "date_sortable": null
   },
   {
-    "id": "711904e3-70d5-4bf0-aaf8-9af97557756d",
-    "title": "Snow rollers next to road from Mammoth to Norris",
-    "photographer": "NPS/Diane Renkin",
-    "date": "02/06/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/711904e3-70d5-4bf0-aaf8-9af97557756d",
-    "image_url": "https://npgallery.nps.gov/GetAsset/711904e3-70d5-4bf0-aaf8-9af97557756d/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "footprints",
-      "forest",
-      "winter",
-      "trail"
-    ],
-    "thumb": "thumbs/711904e3-70d5-4bf0-aaf8-9af97557756d.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.608,
-    "date_sortable": "2015-02-06"
-  },
-  {
     "id": "ac847b71-32de-4981-bd04-fd35c699a60d",
     "title": "Abiathar Peak",
     "photographer": "NPS/Jim Peaco",
@@ -92352,32 +89986,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.608,
     "date_sortable": "2013-12-11"
-  },
-  {
-    "id": "ef1cbfec-1dd8-b71b-0bea-fbd806261af6",
-    "title": "20130818_152736",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ef1cbfec-1dd8-b71b-0bea-fbd806261af6",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ef1cbfec-1dd8-b71b-0bea-fbd806261af6/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "burn",
-      "aerial"
-    ],
-    "thumb": "thumbs/ef1cbfec-1dd8-b71b-0bea-fbd806261af6.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.607,
-    "date_sortable": null
   },
   {
     "id": "2b74eb83-8bdb-4766-b326-3d347fce9c25",
@@ -92617,59 +90225,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.599,
     "date_sortable": "2016-09-26"
-  },
-  {
-    "id": "18925557-c69a-4132-876d-2563fafd4d61",
-    "title": "Spruce Fire from Dunraven Pass",
-    "photographer": "NPS/Neal Herbert",
-    "date": "09/12/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/18925557-c69a-4132-876d-2563fafd4d61",
-    "image_url": "https://npgallery.nps.gov/GetAsset/18925557-c69a-4132-876d-2563fafd4d61/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "smoke plume",
-      "wildfire",
-      "forest",
-      "mountains",
-      "sky",
-      "landscape"
-    ],
-    "thumb": "thumbs/18925557-c69a-4132-876d-2563fafd4d61.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.599,
-    "date_sortable": "2015-09-12"
-  },
-  {
-    "id": "c7607322-1dd8-b71b-0bab-7ee6156af688",
-    "title": "Abiathar Peak",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c7607322-1dd8-b71b-0bab-7ee6156af688",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c7607322-1dd8-b71b-0bab-7ee6156af688/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "mountain",
-      "snow",
-      "alpenglow",
-      "forest",
-      "peak"
-    ],
-    "thumb": "thumbs/c7607322-1dd8-b71b-0bab-7ee6156af688.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.599,
-    "date_sortable": null
   },
   {
     "id": "9709ddec-efee-4fde-960e-dfd2197f9097",
@@ -92937,32 +90492,6 @@
     "date_sortable": "2012-08-22"
   },
   {
-    "id": "b39d744c-09fc-4db7-8f14-6ca0c432ba92",
-    "title": "Spruce Fire burn mosaic",
-    "photographer": "NPS/Neal Herbert",
-    "date": "09/14/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/b39d744c-09fc-4db7-8f14-6ca0c432ba92",
-    "image_url": "https://npgallery.nps.gov/GetAsset/b39d744c-09fc-4db7-8f14-6ca0c432ba92/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "forest",
-      "smoke",
-      "aerial",
-      "landscape"
-    ],
-    "thumb": "thumbs/b39d744c-09fc-4db7-8f14-6ca0c432ba92.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.59,
-    "date_sortable": "2015-09-14"
-  },
-  {
     "id": "5f77b17c-abb6-478a-aac9-d0e7a7ebe9c1",
     "title": "Tower Fall in December",
     "photographer": "NPS/Diane Renkin",
@@ -93012,32 +90541,6 @@
     "thumb": "thumbs/01ff4552-1dd8-b71b-0b10-b538dbd6d66f.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.589,
-    "date_sortable": null
-  },
-  {
-    "id": "eed48163-1dd8-b71b-0bb1-dbda39b94a9e",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eed48163-1dd8-b71b-0bb1-dbda39b94a9e",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eed48163-1dd8-b71b-0bb1-dbda39b94a9e/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "valley",
-      "flames"
-    ],
-    "thumb": "thumbs/eed48163-1dd8-b71b-0bb1-dbda39b94a9e.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.587,
     "date_sortable": null
   },
   {
@@ -93117,33 +90620,6 @@
       "yellowstone"
     ],
     "thumb": "thumbs/de417e9a-1dd8-b71b-0bb4-ae4f00712836.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.586,
-    "date_sortable": null
-  },
-  {
-    "id": "ef193a1f-1dd8-b71b-0b13-2994b4d17230",
-    "title": "20130818_152556",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ef193a1f-1dd8-b71b-0b13-2994b4d17230",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ef193a1f-1dd8-b71b-0b13-2994b4d17230/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "forest",
-      "smoke",
-      "fire",
-      "landscape",
-      "aerial",
-      "wildfire"
-    ],
-    "thumb": "thumbs/ef193a1f-1dd8-b71b-0b13-2994b4d17230.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.586,
     "date_sortable": null
@@ -93360,33 +90836,6 @@
     "date_sortable": "2019-06-12"
   },
   {
-    "id": "eea8e765-1dd8-b71b-0bb4-5b7cc8c7d90f",
-    "title": "Fawn Fire August 8, 2016",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eea8e765-1dd8-b71b-0bb4-5b7cc8c7d90f",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eea8e765-1dd8-b71b-0bb4-5b7cc8c7d90f/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "aerial",
-      "forest",
-      "burned",
-      "valley",
-      "mountains",
-      "wildfire"
-    ],
-    "thumb": "thumbs/eea8e765-1dd8-b71b-0bb4-5b7cc8c7d90f.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.579,
-    "date_sortable": null
-  },
-  {
     "id": "186faa13-efa5-4966-bac1-6b096fc060a0",
     "title": "Electric Peak see from Swan Lake Flat",
     "photographer": "NPS / Jacob W. Frank",
@@ -93411,33 +90860,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.576,
     "date_sortable": "2017-12-07"
-  },
-  {
-    "id": "de098770-1dd8-b71b-0bca-934b8b9d03a2",
-    "title": "Fishing Cone at sunrise, West thumb Geyser Basin",
-    "photographer": "NPS/Neal Herbert",
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/de098770-1dd8-b71b-0bca-934b8b9d03a2",
-    "image_url": "https://npgallery.nps.gov/GetAsset/de098770-1dd8-b71b-0bca-934b8b9d03a2/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "geyser",
-      "sunset",
-      "lake",
-      "steam",
-      "water",
-      "silhouette"
-    ],
-    "thumb": "thumbs/de098770-1dd8-b71b-0bca-934b8b9d03a2.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.576,
-    "date_sortable": null
   },
   {
     "id": "3055c30f-b659-4bcd-9846-c37ec8244a64",
@@ -93519,32 +90941,6 @@
     "date_sortable": "2014-01-05"
   },
   {
-    "id": "4eb6b5a2-ea20-4044-bfef-351ce3d2869e",
-    "title": "Trail to Tower Fall viewing platform",
-    "photographer": "NPS/Diane Renkin",
-    "date": "12/20/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/4eb6b5a2-ea20-4044-bfef-351ce3d2869e",
-    "image_url": "https://npgallery.nps.gov/GetAsset/4eb6b5a2-ea20-4044-bfef-351ce3d2869e/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "winter",
-      "trail",
-      "fence",
-      "trees"
-    ],
-    "thumb": "thumbs/4eb6b5a2-ea20-4044-bfef-351ce3d2869e.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.572,
-    "date_sortable": "2015-12-20"
-  },
-  {
     "id": "2716ce1c-155d-451f-6777-0e3eb2e91f24",
     "title": "Terraced Falls",
     "photographer": null,
@@ -93595,33 +90991,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.571,
     "date_sortable": "2020-12-13"
-  },
-  {
-    "id": "04024198-97ef-421b-b0e1-3dc605feede4",
-    "title": "Amphitheater Mountain",
-    "photographer": "NPS/Jim Peaco",
-    "date": "01/09/2013",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/04024198-97ef-421b-b0e1-3dc605feede4",
-    "image_url": "https://npgallery.nps.gov/GetAsset/04024198-97ef-421b-b0e1-3dc605feede4/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "mountain",
-      "rock",
-      "cliff",
-      "alpine",
-      "winter"
-    ],
-    "thumb": "thumbs/04024198-97ef-421b-b0e1-3dc605feede4.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.571,
-    "date_sortable": "2013-01-09"
   },
   {
     "id": "5a984ded-1dd8-b71b-0bb9-067c49b13fd4",
@@ -93676,59 +91045,6 @@
     "date_sortable": null
   },
   {
-    "id": "ee8ed4b0-1dd8-b71b-0b8c-ec314196a835",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ee8ed4b0-1dd8-b71b-0b8c-ec314196a835",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ee8ed4b0-1dd8-b71b-0b8c-ec314196a835/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "flames"
-    ],
-    "thumb": "thumbs/ee8ed4b0-1dd8-b71b-0b8c-ec314196a835.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.571,
-    "date_sortable": null
-  },
-  {
-    "id": "eee08cf9-1dd8-b71b-0b8b-0d04e21911ee",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eee08cf9-1dd8-b71b-0b8b-0d04e21911ee",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eee08cf9-1dd8-b71b-0b8b-0d04e21911ee/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "burning",
-      "conifer"
-    ],
-    "thumb": "thumbs/eee08cf9-1dd8-b71b-0b8b-0d04e21911ee.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.57,
-    "date_sortable": null
-  },
-  {
     "id": "a3477eba-1949-4465-ae33-00f1238f0300",
     "title": "Backlit Tree with hoar frost",
     "photographer": "NPS / Jacob W. Frank",
@@ -93779,33 +91095,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.569,
     "date_sortable": "1988-01-01"
-  },
-  {
-    "id": "03d34671-dc09-43f8-a08b-8431f9c0f2c1",
-    "title": "Spruce Fire from Dunraven Pass",
-    "photographer": "NPS/Neal Herbert",
-    "date": "09/12/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/03d34671-dc09-43f8-a08b-8431f9c0f2c1",
-    "image_url": "https://npgallery.nps.gov/GetAsset/03d34671-dc09-43f8-a08b-8431f9c0f2c1/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "plains",
-      "landscape",
-      "fire"
-    ],
-    "thumb": "thumbs/03d34671-dc09-43f8-a08b-8431f9c0f2c1.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.568,
-    "date_sortable": "2015-09-12"
   },
   {
     "id": "3339c666-6f63-4b72-9a6e-ba039bc9d8f4",
@@ -93886,33 +91175,6 @@
     "date_sortable": null
   },
   {
-    "id": "eebb705f-1dd8-b71b-0bec-72c2df5b0bad",
-    "title": "Fawn Fire August 8, 2016",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eebb705f-1dd8-b71b-0bec-72c2df5b0bad",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eebb705f-1dd8-b71b-0bec-72c2df5b0bad/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "hills",
-      "forest",
-      "smoke",
-      "mountain",
-      "aerial"
-    ],
-    "thumb": "thumbs/eebb705f-1dd8-b71b-0bec-72c2df5b0bad.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.563,
-    "date_sortable": null
-  },
-  {
     "id": "346efd89-1dd8-b71b-0bb0-0da1206a048d",
     "title": "Fog on Dunraven Pass",
     "photographer": null,
@@ -93987,33 +91249,6 @@
       "winter"
     ],
     "thumb": "thumbs/c77c27de-1dd8-b71b-0bae-e741da5b4672.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.56,
-    "date_sortable": null
-  },
-  {
-    "id": "ef3518a2-1dd8-b71b-0bbd-173d140e057b",
-    "title": "20130818_162404",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ef3518a2-1dd8-b71b-0bbd-173d140e057b",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ef3518a2-1dd8-b71b-0bbd-173d140e057b/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "forest",
-      "wildfire",
-      "smoke",
-      "mountain",
-      "aerial",
-      "conifer"
-    ],
-    "thumb": "thumbs/ef3518a2-1dd8-b71b-0bbd-173d140e057b.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.56,
     "date_sortable": null
@@ -94412,33 +91647,6 @@
     "date_sortable": null
   },
   {
-    "id": "30cdc757-fef4-4984-90b8-f7f035de4f82",
-    "title": "Visitor standing next to Yellowstone Lake",
-    "photographer": "NPS/Neal Herbert",
-    "date": "08/29/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/30cdc757-fef4-4984-90b8-f7f035de4f82",
-    "image_url": "https://npgallery.nps.gov/GetAsset/30cdc757-fef4-4984-90b8-f7f035de4f82/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "midground",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "lake",
-      "shoreline",
-      "driftwood",
-      "dead trees",
-      "hiker",
-      "clouds"
-    ],
-    "thumb": "thumbs/30cdc757-fef4-4984-90b8-f7f035de4f82.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.549,
-    "date_sortable": "2014-08-29"
-  },
-  {
     "id": "168706e5-d0be-4b39-a7b9-ec7f8778f891",
     "title": "Yellowstone Lake in winter",
     "photographer": "NPS / Neal Herbert",
@@ -94540,33 +91748,6 @@
     "thumb": "thumbs/d46d0559-1dd8-b71b-0bd3-6201a236ee73.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.547,
-    "date_sortable": null
-  },
-  {
-    "id": "ee0566e3-1dd8-b71b-0bdc-632b78c9f5cc",
-    "title": "Maple Fire August 12, 2016",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ee0566e3-1dd8-b71b-0bdc-632b78c9f5cc",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ee0566e3-1dd8-b71b-0bdc-632b78c9f5cc/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "aerial",
-      "forest",
-      "hills",
-      "plume"
-    ],
-    "thumb": "thumbs/ee0566e3-1dd8-b71b-0bdc-632b78c9f5cc.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.546,
     "date_sortable": null
   },
   {
@@ -94754,32 +91935,6 @@
     "date_sortable": null
   },
   {
-    "id": "eed10952-1dd8-b71b-0b91-ef8e9bc05126",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eed10952-1dd8-b71b-0b91-ef8e9bc05126",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eed10952-1dd8-b71b-0b91-ef8e9bc05126/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "landscape"
-    ],
-    "thumb": "thumbs/eed10952-1dd8-b71b-0b91-ef8e9bc05126.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.54,
-    "date_sortable": null
-  },
-  {
     "id": "b732bc22-d314-4559-b654-7778d5110dcd",
     "title": "Fall foliage near the confluence of Soda Butte Creek and the Lamar River",
     "photographer": "NPS/Diane Renkin",
@@ -94804,33 +91959,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.538,
     "date_sortable": "2021-09-28"
-  },
-  {
-    "id": "ee9c9992-1dd8-b71b-0b9f-7c117ca8ff40",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ee9c9992-1dd8-b71b-0b9f-7c117ca8ff40",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ee9c9992-1dd8-b71b-0b9f-7c117ca8ff40/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "lake",
-      "forest",
-      "smoke",
-      "wildfire",
-      "aerial",
-      "mountains"
-    ],
-    "thumb": "thumbs/ee9c9992-1dd8-b71b-0b9f-7c117ca8ff40.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.538,
-    "date_sortable": null
   },
   {
     "id": "6b63a8eb-25da-41ec-ad10-6cdf87cba087",
@@ -95096,32 +92224,6 @@
     "date_sortable": "2017-08-23"
   },
   {
-    "id": "b563c4ce-973d-44b1-9a3b-3143d7f3695b",
-    "title": "Abiathar Peak",
-    "photographer": "NPS/Jim Peaco",
-    "date": "12/09/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/b563c4ce-973d-44b1-9a3b-3143d7f3695b",
-    "image_url": "https://npgallery.nps.gov/GetAsset/b563c4ce-973d-44b1-9a3b-3143d7f3695b/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snowy",
-      "mountains",
-      "foggy",
-      "evergreen",
-      "rocky"
-    ],
-    "thumb": "thumbs/b563c4ce-973d-44b1-9a3b-3143d7f3695b.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.526,
-    "date_sortable": "2015-12-09"
-  },
-  {
     "id": "d43dc361-e649-45bb-bcb4-8ab11b9afcd6",
     "title": "Two skiers near a group of trees on Blacktail Deer Plateau",
     "photographer": "NPS / Jacob W. Frank",
@@ -95149,32 +92251,6 @@
     "date_sortable": "2017-01-16"
   },
   {
-    "id": "563ead0b-5b25-45c0-a51b-75ad1ee084a9",
-    "title": "Spruce Fire burn mosaic",
-    "photographer": "NPS/Neal Herbert",
-    "date": "09/14/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/563ead0b-5b25-45c0-a51b-75ad1ee084a9",
-    "image_url": "https://npgallery.nps.gov/GetAsset/563ead0b-5b25-45c0-a51b-75ad1ee084a9/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "forest",
-      "smoke",
-      "wildfire",
-      "aerial",
-      "burned area"
-    ],
-    "thumb": "thumbs/563ead0b-5b25-45c0-a51b-75ad1ee084a9.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.524,
-    "date_sortable": "2015-09-14"
-  },
-  {
     "id": "e1cc150e-bf9a-4126-8e58-b35602f0052f",
     "title": "Yellow aspens and willows at Blacktail Creek",
     "photographer": "NPS/Diane Renkin",
@@ -95200,32 +92276,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.523,
     "date_sortable": "2021-09-28"
-  },
-  {
-    "id": "eb1f0661-b26e-4f79-889c-32be201fa299",
-    "title": "Amphitheater Mountain",
-    "photographer": "NPS/Jim Peaco",
-    "date": "01/09/2013",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eb1f0661-b26e-4f79-889c-32be201fa299",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eb1f0661-b26e-4f79-889c-32be201fa299/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "mountain",
-      "rock",
-      "peak",
-      "winter"
-    ],
-    "thumb": "thumbs/eb1f0661-b26e-4f79-889c-32be201fa299.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.523,
-    "date_sortable": "2013-01-09"
   },
   {
     "id": "02ceb34b-0659-4498-a3c0-2da8caa0a1c2",
@@ -95386,33 +92436,6 @@
     "date_sortable": "1977-01-01"
   },
   {
-    "id": "eec26c16-1dd8-b71b-0bc9-c539bf27f04c",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eec26c16-1dd8-b71b-0bc9-c539bf27f04c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eec26c16-1dd8-b71b-0bc9-c539bf27f04c/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "wildfire",
-      "lake",
-      "island",
-      "aerial",
-      "smoke",
-      "mountain"
-    ],
-    "thumb": "thumbs/eec26c16-1dd8-b71b-0bc9-c539bf27f04c.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.52,
-    "date_sortable": null
-  },
-  {
     "id": "b494a89e-1dd8-b71b-0bce-4ef1a5d86664",
     "title": "Blooming lily pads, Lost Lake",
     "photographer": null,
@@ -95571,32 +92594,6 @@
     "date_sortable": null
   },
   {
-    "id": "d6757c66-8d69-4859-b172-6b704e00fb48",
-    "title": "Enjoying Sawmill Geyser",
-    "photographer": "NPS/Neal Herbert",
-    "date": "12/28/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/d6757c66-8d69-4859-b172-6b704e00fb48",
-    "image_url": "https://npgallery.nps.gov/GetAsset/d6757c66-8d69-4859-b172-6b704e00fb48/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "background",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "geyser",
-      "snow",
-      "steam",
-      "winter",
-      "park"
-    ],
-    "thumb": "thumbs/d6757c66-8d69-4859-b172-6b704e00fb48.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.512,
-    "date_sortable": "2015-12-28"
-  },
-  {
     "id": "def71dc7-1dd8-b71b-0b93-c7dbcc8a8b81",
     "title": "Canary Spring,  Mammoth Hot Springs",
     "photographer": "NPS/Jim Peaco",
@@ -95674,32 +92671,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.511,
     "date_sortable": "2019-08-31"
-  },
-  {
-    "id": "eeefd627-1dd8-b71b-0b97-ef65d161e397",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eeefd627-1dd8-b71b-0b97-ef65d161e397",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eeefd627-1dd8-b71b-0b97-ef65d161e397/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "plains",
-      "aerial"
-    ],
-    "thumb": "thumbs/eeefd627-1dd8-b71b-0b97-ef65d161e397.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.509,
-    "date_sortable": null
   },
   {
     "id": "26317f95-155d-451f-67d2-3a43da0f3cd2",
@@ -95861,32 +92832,6 @@
     "date_sortable": "2014-02-18"
   },
   {
-    "id": "ef317d8c-1dd8-b71b-0bba-96c261924e55",
-    "title": "20130818_161246",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ef317d8c-1dd8-b71b-0bba-96c261924e55",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ef317d8c-1dd8-b71b-0bba-96c261924e55/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "black",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "aerial",
-      "forest",
-      "flames"
-    ],
-    "thumb": "thumbs/ef317d8c-1dd8-b71b-0bba-96c261924e55.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.503,
-    "date_sortable": null
-  },
-  {
     "id": "f66ee50b-788c-4b27-a86f-2e1e70e2cf40",
     "title": "Yellow pond lily",
     "photographer": "NPS/Neal Herbert",
@@ -95966,32 +92911,6 @@
     "date_sortable": "2017-07-01"
   },
   {
-    "id": "eef4ce01-1dd8-b71b-0be7-4b64985bf73a",
-    "title": "Maple Fire, August 15, 2016",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eef4ce01-1dd8-b71b-0be7-4b64985bf73a",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eef4ce01-1dd8-b71b-0be7-4b64985bf73a/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "hills",
-      "burning trees"
-    ],
-    "thumb": "thumbs/eef4ce01-1dd8-b71b-0be7-4b64985bf73a.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.501,
-    "date_sortable": null
-  },
-  {
     "id": "dfb66148-1dd8-b71b-0b6d-35183a9b3566",
     "title": "Cold sunrise at Mammoth Hot Springs",
     "photographer": "NPS/Jim Peaco",
@@ -96015,32 +92934,6 @@
     ],
     "thumb": "thumbs/dfb66148-1dd8-b71b-0b6d-35183a9b3566.webp",
     "aspect": "16/9",
-    "aesthetic_score": 5.5,
-    "date_sortable": null
-  },
-  {
-    "id": "eee8cdc0-1dd8-b71b-0b49-3235eacb2e42",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eee8cdc0-1dd8-b71b-0b49-3235eacb2e42",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eee8cdc0-1dd8-b71b-0b49-3235eacb2e42/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "fire"
-    ],
-    "thumb": "thumbs/eee8cdc0-1dd8-b71b-0b49-3235eacb2e42.webp",
-    "aspect": "9/16",
     "aesthetic_score": 5.5,
     "date_sortable": null
   },
@@ -96123,32 +93016,6 @@
     "date_sortable": "2021-01-05"
   },
   {
-    "id": "eedc4e76-1dd8-b71b-0b85-b297c2e1a1d0",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eedc4e76-1dd8-b71b-0b85-b297c2e1a1d0",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eedc4e76-1dd8-b71b-0b85-b297c2e1a1d0/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "flames"
-    ],
-    "thumb": "thumbs/eedc4e76-1dd8-b71b-0b85-b297c2e1a1d0.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.497,
-    "date_sortable": null
-  },
-  {
     "id": "ec8b7045-1dd8-b71b-0bc6-417a126b115d",
     "title": "Spruce Fire from West Thumb",
     "photographer": null,
@@ -96174,32 +93041,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.497,
     "date_sortable": null
-  },
-  {
-    "id": "c6d2ed32-a31d-4d1d-83b8-951842bc4da8",
-    "title": "Round Prairie and Abiathar Peak",
-    "photographer": "NPS/Jim Peaco",
-    "date": "12/05/2013",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c6d2ed32-a31d-4d1d-83b8-951842bc4da8",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c6d2ed32-a31d-4d1d-83b8-951842bc4da8/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "mountain",
-      "forest",
-      "evergreen",
-      "winter"
-    ],
-    "thumb": "thumbs/c6d2ed32-a31d-4d1d-83b8-951842bc4da8.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.496,
-    "date_sortable": "2013-12-05"
   },
   {
     "id": "a11ac77b-6b0d-4416-9861-3d3e49355c01",
@@ -96383,32 +93224,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.49,
     "date_sortable": "2014-08-29"
-  },
-  {
-    "id": "c73c367a-1dd8-b71b-0b3e-a3657017f22c",
-    "title": "Amphitheater Mountain 3",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c73c367a-1dd8-b71b-0b3e-a3657017f22c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c73c367a-1dd8-b71b-0b3e-a3657017f22c/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "mountain",
-      "rocky",
-      "alpine",
-      "winter"
-    ],
-    "thumb": "thumbs/c73c367a-1dd8-b71b-0b3e-a3657017f22c.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.489,
-    "date_sortable": null
   },
   {
     "id": "6e75dd89-1dd8-b71b-0bbf-9949647cec96",
@@ -96777,85 +93592,6 @@
     "date_sortable": "2017-01-05"
   },
   {
-    "id": "ca7d0e87-1dd8-b71b-0bbf-e15beb8bac1e",
-    "title": "Evening alpenglow in Lamar Valley",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ca7d0e87-1dd8-b71b-0bbf-e15beb8bac1e",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ca7d0e87-1dd8-b71b-0bbf-e15beb8bac1e/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "snow",
-      "mountains",
-      "valley",
-      "dusk",
-      "winter"
-    ],
-    "thumb": "thumbs/ca7d0e87-1dd8-b71b-0bbf-e15beb8bac1e.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.474,
-    "date_sortable": null
-  },
-  {
-    "id": "eebb2293-1dd8-b71b-0bff-5a9f7f4f7632",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eebb2293-1dd8-b71b-0bff-5a9f7f4f7632",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eebb2293-1dd8-b71b-0bff-5a9f7f4f7632/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "aerial",
-      "wildfire",
-      "smoke",
-      "lake",
-      "forest",
-      "island"
-    ],
-    "thumb": "thumbs/eebb2293-1dd8-b71b-0bff-5a9f7f4f7632.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.474,
-    "date_sortable": null
-  },
-  {
-    "id": "c784a709-1dd8-b71b-0b23-8d48bad7fa83",
-    "title": "Round Prairie and Amphitheater Mountain",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c784a709-1dd8-b71b-0b23-8d48bad7fa83",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c784a709-1dd8-b71b-0b23-8d48bad7fa83/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "mountain",
-      "evergreen",
-      "valley",
-      "winter"
-    ],
-    "thumb": "thumbs/c784a709-1dd8-b71b-0b23-8d48bad7fa83.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.473,
-    "date_sortable": null
-  },
-  {
     "id": "3ea5afd9-0724-41a4-b41e-55d89c925e51",
     "title": "Winter at Fountain Paint Pot",
     "photographer": "NPS/Neal Herbert",
@@ -97016,32 +93752,6 @@
     "date_sortable": "2017-05-22"
   },
   {
-    "id": "f87f0409-52bd-44e4-885b-0fb225f99c0b",
-    "title": "Alpenglow, Lamar Valley",
-    "photographer": "NPS/Neal Herbert",
-    "date": "03/03/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/f87f0409-52bd-44e4-885b-0fb225f99c0b",
-    "image_url": "https://npgallery.nps.gov/GetAsset/f87f0409-52bd-44e4-885b-0fb225f99c0b/Original",
-    "time_of_day": "evening",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snowy",
-      "mountains",
-      "valley",
-      "dusk",
-      "winter"
-    ],
-    "thumb": "thumbs/f87f0409-52bd-44e4-885b-0fb225f99c0b.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.47,
-    "date_sortable": "2015-03-03"
-  },
-  {
     "id": "262aedf9-155d-451f-6761-157a59d9d1c5",
     "title": "Grand Canyon of the Yellowstone",
     "photographer": null,
@@ -97119,32 +93829,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.469,
     "date_sortable": "2018-07-01"
-  },
-  {
-    "id": "ee9855d5-1dd8-b71b-0b4e-234788ee486c",
-    "title": "Druid Complex",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ee9855d5-1dd8-b71b-0b4e-234788ee486c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ee9855d5-1dd8-b71b-0b4e-234788ee486c/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "orange",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "aerial",
-      "flames"
-    ],
-    "thumb": "thumbs/ee9855d5-1dd8-b71b-0b4e-234788ee486c.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.469,
-    "date_sortable": null
   },
   {
     "id": "8c7b7ade-1605-4eb4-9c20-743a4d8c1811",
@@ -97226,32 +93910,6 @@
     "date_sortable": "2015-07-14"
   },
   {
-    "id": "eeaf3e3f-1dd8-b71b-0b66-bbb2e3142ff7",
-    "title": "Fawn Fire August 8, 2016",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/eeaf3e3f-1dd8-b71b-0b66-bbb2e3142ff7",
-    "image_url": "https://npgallery.nps.gov/GetAsset/eeaf3e3f-1dd8-b71b-0b66-bbb2e3142ff7/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "aerial",
-      "burned forest",
-      "mountains",
-      "smoke",
-      "grassland"
-    ],
-    "thumb": "thumbs/eeaf3e3f-1dd8-b71b-0b66-bbb2e3142ff7.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.466,
-    "date_sortable": null
-  },
-  {
     "id": "7a3f1a3d-0529-458f-9f53-108dade92814",
     "title": "Sunrise in the upper Soda Butte Valley",
     "photographer": "NPS/Jim Peaco",
@@ -97276,32 +93934,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.465,
     "date_sortable": "2015-03-11"
-  },
-  {
-    "id": "a6932e35-1dd8-b71b-0bf0-1fb50222b823",
-    "title": "Enjoying the southeast arm of Yellowstone Lake",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "flagged_for_review",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/a6932e35-1dd8-b71b-0bf0-1fb50222b823",
-    "image_url": "https://npgallery.nps.gov/GetAsset/a6932e35-1dd8-b71b-0bf0-1fb50222b823/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "midground",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "lake",
-      "shoreline",
-      "hiker",
-      "dead trees",
-      "clouds"
-    ],
-    "thumb": "thumbs/a6932e35-1dd8-b71b-0bf0-1fb50222b823.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.465,
-    "date_sortable": null
   },
   {
     "id": "26c8f5ae-155d-451f-674e-9416bf07847b",
@@ -97492,32 +94124,6 @@
     "date_sortable": "2018-06-30"
   },
   {
-    "id": "a3b4e52f-1dd8-b71b-0ba4-ce43d737d593",
-    "title": "Campsite on Yellowstone Lake",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/a3b4e52f-1dd8-b71b-0ba4-ce43d737d593",
-    "image_url": "https://npgallery.nps.gov/GetAsset/a3b4e52f-1dd8-b71b-0ba4-ce43d737d593/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "tent",
-      "camping",
-      "lake",
-      "forest",
-      "nature"
-    ],
-    "thumb": "thumbs/a3b4e52f-1dd8-b71b-0ba4-ce43d737d593.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.459,
-    "date_sortable": null
-  },
-  {
     "id": "a9e288e2-a4db-4e72-8906-ac7b344dd5e2",
     "title": "Northeast Entrance Road Emergency Repairs - Soda Butte",
     "photographer": "NPS",
@@ -97649,59 +94255,6 @@
     "aspect": "16/9",
     "aesthetic_score": 5.456,
     "date_sortable": "2019-08-13"
-  },
-  {
-    "id": "a24aba67-24b4-4a88-9b8e-d6d0cab2c296",
-    "title": "Round Prairie and Amphitheater Mtn",
-    "photographer": "NPS/Jim Peaco",
-    "date": "12/05/2013",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/a24aba67-24b4-4a88-9b8e-d6d0cab2c296",
-    "image_url": "https://npgallery.nps.gov/GetAsset/a24aba67-24b4-4a88-9b8e-d6d0cab2c296/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "mountains",
-      "forest",
-      "winter",
-      "lake"
-    ],
-    "thumb": "thumbs/a24aba67-24b4-4a88-9b8e-d6d0cab2c296.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.455,
-    "date_sortable": "2013-12-05"
-  },
-  {
-    "id": "1958e612-a2e1-4b39-96d8-2f8489117a76",
-    "title": "18 below zero on Mammoth Hot Spring",
-    "photographer": "NPS/Jim Peaco",
-    "date": "12/30/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/1958e612-a2e1-4b39-96d8-2f8489117a76",
-    "image_url": "https://npgallery.nps.gov/GetAsset/1958e612-a2e1-4b39-96d8-2f8489117a76/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "sunrise",
-      "geothermal",
-      "steam",
-      "trail",
-      "forest"
-    ],
-    "thumb": "thumbs/1958e612-a2e1-4b39-96d8-2f8489117a76.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.455,
-    "date_sortable": "2014-12-30"
   },
   {
     "id": "b46ded24-0183-4fac-91da-984057f131ca",
@@ -98072,32 +94625,6 @@
     "date_sortable": null
   },
   {
-    "id": "50589163-e3fa-45ec-80dd-c153030d6ae5",
-    "title": "Sun light reflecting off ice crystals in the Grand Canyon of the Yellowstone",
-    "photographer": "NPS/Jim Peaco",
-    "date": "01/17/2014",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/50589163-e3fa-45ec-80dd-c153030d6ae5",
-    "image_url": "https://npgallery.nps.gov/GetAsset/50589163-e3fa-45ec-80dd-c153030d6ae5/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "canyon",
-      "snow",
-      "sunlight",
-      "pines",
-      "rocky"
-    ],
-    "thumb": "thumbs/50589163-e3fa-45ec-80dd-c153030d6ae5.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.444,
-    "date_sortable": "2014-01-17"
-  },
-  {
     "id": "e2f27ff0-0190-4b1d-957b-18a0359146cb",
     "title": "Yellow aspens in Custer Gallatin National Forest adjacent to Yellowstone",
     "photographer": "NPS/Diane Renkin",
@@ -98386,32 +94913,6 @@
     "date_sortable": "2015-12-28"
   },
   {
-    "id": "95582cbc-10a2-427a-b14a-712c4c14c9c0",
-    "title": "Round Prairie with bison and Amphitheater Mountain in the background",
-    "photographer": "NPS/Diane Renkin",
-    "date": "12/28/2015",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/95582cbc-10a2-427a-b14a-712c4c14c9c0",
-    "image_url": "https://npgallery.nps.gov/GetAsset/95582cbc-10a2-427a-b14a-712c4c14c9c0/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "mountains",
-      "forest",
-      "river",
-      "winter"
-    ],
-    "thumb": "thumbs/95582cbc-10a2-427a-b14a-712c4c14c9c0.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.437,
-    "date_sortable": "2015-12-28"
-  },
-  {
     "id": "366f3ebe-1dd8-b71b-0bb1-91888d67324b",
     "title": "Clouds in Soda Butte Valley",
     "photographer": null,
@@ -98492,32 +94993,6 @@
     "date_sortable": "2018-07-17"
   },
   {
-    "id": "cad1fa97-1dd8-b71b-0bea-18a55b01c1d1",
-    "title": "Bison in Round Prairie",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/cad1fa97-1dd8-b71b-0bea-18a55b01c1d1",
-    "image_url": "https://npgallery.nps.gov/GetAsset/cad1fa97-1dd8-b71b-0bea-18a55b01c1d1/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "snow",
-      "mountain",
-      "forest",
-      "wildlife",
-      "winter"
-    ],
-    "thumb": "thumbs/cad1fa97-1dd8-b71b-0bea-18a55b01c1d1.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.436,
-    "date_sortable": null
-  },
-  {
     "id": "027f0dda-1dd8-b71b-0b83-b097b77d44e5",
     "title": "Yellowstone Lake from Lake Butte Overlook",
     "photographer": "NPS/Neal Herbert",
@@ -98594,33 +95069,6 @@
     "thumb": "thumbs/ee084379-1dd8-b71b-0b00-a6a79f3d342d.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.436,
-    "date_sortable": null
-  },
-  {
-    "id": "ebe16993-1dd8-b71b-0b2b-43da83bd1b6c",
-    "title": "Alder fire looking north 8-16-2013",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/ebe16993-1dd8-b71b-0b2b-43da83bd1b6c",
-    "image_url": "https://npgallery.nps.gov/GetAsset/ebe16993-1dd8-b71b-0b2b-43da83bd1b6c/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "aerial",
-      "wildfire",
-      "smoke",
-      "lake",
-      "forest",
-      "island"
-    ],
-    "thumb": "thumbs/ebe16993-1dd8-b71b-0b2b-43da83bd1b6c.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.434,
     "date_sortable": null
   },
   {
@@ -99631,33 +96079,6 @@
     "date_sortable": "2014-11-12"
   },
   {
-    "id": "c8f84073-1dd8-b71b-0b4d-a9e09bcee83f",
-    "title": "Sun light reflecting off of ice crystals",
-    "photographer": null,
-    "date": null,
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/c8f84073-1dd8-b71b-0b4d-a9e09bcee83f",
-    "image_url": "https://npgallery.nps.gov/GetAsset/c8f84073-1dd8-b71b-0b4d-a9e09bcee83f/Original",
-    "time_of_day": "morning",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "blue",
-    "tags": [
-      "snow",
-      "canyon",
-      "trees",
-      "sunlight",
-      "winter",
-      "rock"
-    ],
-    "thumb": "thumbs/c8f84073-1dd8-b71b-0b4d-a9e09bcee83f.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.406,
-    "date_sortable": null
-  },
-  {
     "id": "633c3719-155d-451f-6734-5ff5df603d9a",
     "title": "Pebble Creek Campground",
     "photographer": "NPS/N. Herbert",
@@ -99868,33 +96289,6 @@
     "date_sortable": "2017-08-15"
   },
   {
-    "id": "719a2bae-39ab-4ccd-9806-db07094bc755",
-    "title": "Canary Spring, Mammoth Hot Springs",
-    "photographer": "NPS/Diane Renkin",
-    "date": "02/02/2021",
-    "park": "Yellowstone National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/719a2bae-39ab-4ccd-9806-db07094bc755",
-    "image_url": "https://npgallery.nps.gov/GetAsset/719a2bae-39ab-4ccd-9806-db07094bc755/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "white",
-    "tags": [
-      "geyser",
-      "terrace",
-      "mineral",
-      "snow",
-      "mountain",
-      "steam"
-    ],
-    "thumb": "thumbs/719a2bae-39ab-4ccd-9806-db07094bc755.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.4,
-    "date_sortable": "2021-02-02"
-  },
-  {
     "id": "3fe7cb29-0b0a-4810-9241-65a7c3988b5e",
     "title": "Climbers on Dinner Ledge",
     "photographer": "H. Kajitani",
@@ -100081,84 +96475,6 @@
     "date_sortable": "2020-09-21"
   },
   {
-    "id": "203fd64a-155d-4519-3ed5-b54917104a64",
-    "title": "Yose Valley Prescribed Fire, aerial",
-    "photographer": null,
-    "date": null,
-    "park": "Yosemite National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/203fd64a-155d-4519-3ed5-b54917104a64",
-    "image_url": "https://npgallery.nps.gov/GetAsset/203fd64a-155d-4519-3ed5-b54917104a64/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "forest",
-      "river",
-      "aerial"
-    ],
-    "thumb": "thumbs/203fd64a-155d-4519-3ed5-b54917104a64.webp",
-    "aspect": "9/16",
-    "aesthetic_score": 5.539,
-    "date_sortable": null
-  },
-  {
-    "id": "f9952645-2743-42d1-8d08-ae523dc1a44f",
-    "title": "Wildland firefighters walk perimeter of Blue Jay Fire north of Tioga Road in Yosemite National Park",
-    "photographer": "NPS / Jonathan Shafer",
-    "date": "09/21/2020",
-    "park": "Yosemite National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/f9952645-2743-42d1-8d08-ae523dc1a44f",
-    "image_url": "https://npgallery.nps.gov/GetAsset/f9952645-2743-42d1-8d08-ae523dc1a44f/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "forest",
-      "burned",
-      "conifer",
-      "wildfire",
-      "trees"
-    ],
-    "thumb": "thumbs/f9952645-2743-42d1-8d08-ae523dc1a44f.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.454,
-    "date_sortable": "2020-09-21"
-  },
-  {
-    "id": "8321a637-7a39-434b-a6ef-176571b5deee",
-    "title": "Wildland firefighters walk perimeter of Blue Jay Fire north of Tioga Road in Yosemite National Park",
-    "photographer": "NPS / Jonathan Shafer",
-    "date": "09/21/2020",
-    "park": "Yosemite National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/8321a637-7a39-434b-a6ef-176571b5deee",
-    "image_url": "https://npgallery.nps.gov/GetAsset/8321a637-7a39-434b-a6ef-176571b5deee/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "forest",
-      "fire_scar",
-      "smoke",
-      "trees",
-      "rocks"
-    ],
-    "thumb": "thumbs/8321a637-7a39-434b-a6ef-176571b5deee.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.449,
-    "date_sortable": "2020-09-21"
-  },
-  {
     "id": "203146b9-155d-4519-3e56-402c0ac1828a",
     "title": "Mariposa Grove Prescribed Fire",
     "photographer": null,
@@ -100314,32 +96630,6 @@
     "aspect": "9/16",
     "aesthetic_score": 5.866,
     "date_sortable": "2015-01-21"
-  },
-  {
-    "id": "b39341cd-dde8-40b3-95ca-1389d5343c09",
-    "title": "Crater Hill Fire",
-    "photographer": "NPS / John Warfle",
-    "date": "05/31/2023",
-    "park": "Zion National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/b39341cd-dde8-40b3-95ca-1389d5343c09",
-    "image_url": "https://npgallery.nps.gov/GetAsset/b39341cd-dde8-40b3-95ca-1389d5343c09/Original",
-    "time_of_day": "afternoon",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "gray",
-    "tags": [
-      "wildfire",
-      "scorch",
-      "smoke",
-      "landscape",
-      "burned"
-    ],
-    "thumb": "thumbs/b39341cd-dde8-40b3-95ca-1389d5343c09.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.836,
-    "date_sortable": "2023-05-31"
   },
   {
     "id": "7fdc5010-06c1-434c-b8b9-4ee7602c2c29",
@@ -101417,33 +97707,6 @@
     "thumb": "thumbs/96c5d7ea-155d-451f-6750-431381e7feea.webp",
     "aspect": "16/9",
     "aesthetic_score": 5.463,
-    "date_sortable": null
-  },
-  {
-    "id": "276ff02d-155d-451f-6733-26e9ac4c1dc2",
-    "title": "Langston Wildfire",
-    "photographer": null,
-    "date": null,
-    "park": "Zion National Park",
-    "license": "Public domain/Full",
-    "license_confidence": "confirmed",
-    "source_url": "https://npgallery.nps.gov/AssetDetail/276ff02d-155d-451f-6733-26e9ac4c1dc2",
-    "image_url": "https://npgallery.nps.gov/GetAsset/276ff02d-155d-451f-6733-26e9ac4c1dc2/Original",
-    "time_of_day": "night",
-    "people_prominence": "none",
-    "color_mode": "color",
-    "dominant_color": "green",
-    "tags": [
-      "wildfire",
-      "smoke",
-      "canyon",
-      "red rock",
-      "burn scar",
-      "pine forest"
-    ],
-    "thumb": "thumbs/276ff02d-155d-451f-6733-26e9ac4c1dc2.webp",
-    "aspect": "16/9",
-    "aesthetic_score": 5.441,
     "date_sortable": null
   },
   {
