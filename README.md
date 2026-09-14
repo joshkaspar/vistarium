@@ -4,15 +4,7 @@ Open-access landscape photography, filtered by location, time of day, and subjec
 
 **Site:** https://joshkaspar.github.io/vistarium/
 
-A curated selection (not an exhaustive catalog) of public domain and open-access landscape photographs, currently sourced from the US National Park Service. Images are pulled via API, filtered by predicted aesthetic quality, then classified with structured metadata (time of day, subject, people, etc.) by a local vision model. Additional sources (Library of Congress, Smithsonian, Met, Art Institute of Chicago, NYPL) are planned.
-
-## This repo vs. the pipeline
-
-**This repo holds only the published site and its data** — the static HTML/CSS/JS, the generated thumbnails, `data.json`, and the small hand-curated override files (`hidden_ids.json`, `confirmed_ids.json`) that feed into it. It does not contain the scraper, classifier, or site-builder that produce this data.
-
-That code lives in a separate repo, **[Cohobate](https://github.com/joshkaspar/Cohobate)** — the pipeline that scrapes source archives, curates and deduplicates candidates, classifies images with a local vision model, and builds this repo's `docs/` folder. Cohobate documents its own architecture, setup, and decision history; this repo is deliberately just the output plus the license/rights framing that governs reuse of that output.
-
-The two repos were split apart (rather than always having been one) because a repo that grows a thumbnail set on every scheduled scrape handles that kind of history very differently than one holding active code development, and because the code (MIT) and the catalog (CC BY 4.0) are genuinely differently licensed — see [License & Rights](#license--rights) below.
+A curated selection of public domain and open-access landscape photographs, currently sourced from the US National Park Service. Images are pulled via API, filtered by predicted aesthetic quality, then classified with structured metadata (time of day, subject, people, etc.) by a local vision model. Additional sources (Library of Congress, Smithsonian, Met, Art Institute of Chicago, NYPL) are planned.
 
 ## Data
 
@@ -74,12 +66,10 @@ The site defaults to sorting by a predicted aesthetic score ("Aesthetic Rating (
 
 ## License & Rights
 
-Three different things are licensed three different ways here — don't assume one license covers all of it:
-
-- **The pipeline code** (in [Cohobate](https://github.com/joshkaspar/Cohobate)) is MIT-licensed — yours to reuse freely.
-- **Vistarium's own catalog** (each curated, scored, classified record as a whole, not split field-by-field) is [CC BY 4.0](./LICENSE-DATA) — free to reuse, including commercially, with attribution.
+- **Vistarium's catalog** (each curated, scored, classified record as a whole, not split field-by-field) is [CC BY 4.0](./LICENSE-DATA) — free to reuse, including commercially, with attribution.
 - **The images themselves are not covered by either license.** Each image's rights status is recorded per-item in its own metadata (`license`, `license_confidence`, `license_evidence`), reflecting what the source institution states — not independently verified or guaranteed by this project.
 
+My goal is to make this data useful, while making it easy to reuse. However, if you plan to use these images in your projects - especially if they are commercial projects - verify the rights of the image from the sources.
 Copyright-free status does not necessarily resolve every right that may apply — notably, a depicted person's right of privacy or publicity is separate from copyright and is not waived by an archive's public-domain designation. Users are responsible for verifying licenses on the original source and for their own lawful use of any downloaded material, including not infringing on the rights of third parties.
 
 See [TERMS_OF_USE.md](./TERMS_OF_USE.md) for the full rights statement.
@@ -96,6 +86,6 @@ vistarium/
 └── LICENSE-DATA             # CC BY 4.0, covers the catalog
 ```
 
-## Status
+## The pipeline
 
-See [`STATUS.md`](./STATUS.md) for live progress on processing images from all 61 national parks.
+**[Cohobate](https://github.com/joshkaspar/Cohobate)** is the pipeline that scrapes source archives, curates and deduplicates candidates, classifies images with a local vision model, and builds this repo's `docs/` folder. If you want to know how this project was built, see the documentation there.
